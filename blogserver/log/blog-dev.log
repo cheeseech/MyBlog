@@ -1,0 +1,835 @@
+2020-09-04 02:11:22.193  WARN 23356 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h19s939ms869µs400ns).
+2020-09-04 09:10:09.218  WARN 23356 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h58m18s356ms576µs500ns).
+2020-09-04 09:55:30.586  INFO 20164 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 20164 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 09:55:30.591 DEBUG 20164 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 09:55:30.591  INFO 20164 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 09:55:32.192  INFO 20164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 09:55:32.192  INFO 20164 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 09:55:32.192  INFO 20164 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 09:55:32.291  INFO 20164 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 09:55:32.291  INFO 20164 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1655 ms
+2020-09-04 09:55:33.111  INFO 20164 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 09:55:33.281  INFO 20164 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a8e6e89, org.springframework.security.web.context.SecurityContextPersistenceFilter@15d42ccb, org.springframework.security.web.header.HeaderWriterFilter@7b32b129, org.springframework.security.web.authentication.logout.LogoutFilter@2e17a321, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@485e13d7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46383a78, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e146f93, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6fbb4061, org.springframework.security.web.session.SessionManagementFilter@1c9fbb61, org.springframework.security.web.access.ExceptionTranslationFilter@541179e7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a8816cc]
+2020-09-04 09:55:33.311  INFO 20164 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 09:55:33.441  INFO 20164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 09:55:33.441  INFO 20164 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 09:55:33.492  INFO 20164 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 09:55:33.541  INFO 20164 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 09:55:33.651  INFO 20164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 09:55:33.681  INFO 20164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 09:55:33.681  INFO 20164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 09:55:33.721  INFO 20164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 09:55:33.721  INFO 20164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 09:55:33.741  INFO 20164 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.546 seconds (JVM running for 4.505)
+2020-09-04 09:56:19.692  INFO 20164 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 09:56:19.692  INFO 20164 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 09:56:19.701  INFO 20164 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2020-09-04 09:56:19.811  INFO 20164 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:
+2020-09-04 09:56:19.821  INFO 20164 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 09:56:19.972  INFO 20164 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 09:56:19.983 DEBUG 20164 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 09:56:20.071 DEBUG 20164 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: (String)
+2020-09-04 09:56:20.316 DEBUG 20164 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 0
+2020-09-04 09:56:20.327 ERROR 20164 --- [http-nio-8081-exec-1] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: null
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:123) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:199) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:219) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:95) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:36) ~[classes/:na]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$bb3421c6.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$ff71e058.loadUserByUsername(<generated>) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:108) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	... 51 common frames omitted
+
+2020-09-04 09:56:43.672  INFO 20164 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 09:56:43.672 DEBUG 20164 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 09:56:43.681 DEBUG 20164 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 09:56:43.692 DEBUG 20164 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 09:56:43.692 ERROR 20164 --- [http-nio-8081-exec-2] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: null
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:123) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:199) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:219) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:95) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:36) ~[classes/:na]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$bb3421c6.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$ff71e058.loadUserByUsername(<generated>) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:108) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	... 51 common frames omitted
+
+2020-09-04 09:58:21.061  INFO 22116 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 22116 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 09:58:21.066 DEBUG 22116 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 09:58:21.066  INFO 22116 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 09:58:22.382  INFO 22116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 09:58:22.386  INFO 22116 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 09:58:22.386  INFO 22116 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 09:58:22.482  INFO 22116 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 09:58:22.482  INFO 22116 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1361 ms
+2020-09-04 09:58:23.123  INFO 22116 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 09:58:23.301  INFO 22116 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b6924cb, org.springframework.security.web.context.SecurityContextPersistenceFilter@6f2e1024, org.springframework.security.web.header.HeaderWriterFilter@39909d1a, org.springframework.security.web.authentication.logout.LogoutFilter@2aa7399c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@204abeff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c50ad4b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d247525, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a8d467e, org.springframework.security.web.session.SessionManagementFilter@7343922c, org.springframework.security.web.access.ExceptionTranslationFilter@4bd5849e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6fbb4061]
+2020-09-04 09:58:23.336  INFO 22116 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 09:58:23.451  INFO 22116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 09:58:23.451  INFO 22116 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 09:58:23.471  INFO 22116 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 09:58:23.501  INFO 22116 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 09:58:23.601  INFO 22116 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 09:58:23.621  INFO 22116 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 09:58:23.621  INFO 22116 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 09:58:23.662  INFO 22116 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 09:58:23.662  INFO 22116 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 09:58:23.681  INFO 22116 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 2.977 seconds (JVM running for 3.886)
+2020-09-04 09:58:39.427  INFO 22116 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 09:58:39.428  INFO 22116 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 09:58:39.433  INFO 22116 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 09:58:39.549  INFO 22116 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 09:58:39.561  INFO 22116 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 09:58:39.682  INFO 22116 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 09:58:39.682 DEBUG 22116 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 09:58:39.701 DEBUG 22116 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 09:58:39.891 DEBUG 22116 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 09:58:39.902 ERROR 22116 --- [http-nio-8081-exec-1] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: null
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:123) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:199) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:219) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:95) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:37) ~[classes/:na]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$bb3421c6.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$92407059.loadUserByUsername(<generated>) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:108) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	... 51 common frames omitted
+
+2020-09-04 09:59:33.231  INFO 23352 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 23352 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 09:59:33.241 DEBUG 23352 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 09:59:33.241  INFO 23352 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 09:59:34.452  INFO 23352 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 09:59:34.457  INFO 23352 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 09:59:34.457  INFO 23352 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 09:59:34.556  INFO 23352 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 09:59:34.556  INFO 23352 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1229 ms
+2020-09-04 09:59:35.296  INFO 23352 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 09:59:35.472  INFO 23352 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11e355ca, org.springframework.security.web.context.SecurityContextPersistenceFilter@4fd05028, org.springframework.security.web.header.HeaderWriterFilter@410ae5ac, org.springframework.security.web.authentication.logout.LogoutFilter@4bd5849e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@18371d89, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4fb392c4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7b81616b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70d63e05, org.springframework.security.web.session.SessionManagementFilter@7c112f5f, org.springframework.security.web.access.ExceptionTranslationFilter@310aee0b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e5fd2b1]
+2020-09-04 09:59:35.507  INFO 23352 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 09:59:35.631  INFO 23352 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 09:59:35.631  INFO 23352 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 09:59:35.647  INFO 23352 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 09:59:35.671  INFO 23352 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 09:59:35.812  INFO 23352 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 09:59:35.842  INFO 23352 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 09:59:35.842  INFO 23352 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 09:59:35.881  INFO 23352 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 09:59:35.891  INFO 23352 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 09:59:35.901  INFO 23352 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.087 seconds (JVM running for 4.028)
+2020-09-04 09:59:43.895  INFO 23352 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 09:59:43.895  INFO 23352 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 09:59:43.900  INFO 23352 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 09:59:44.018  INFO 23352 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 09:59:44.031  INFO 23352 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 09:59:44.136  INFO 23352 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 09:59:44.143 DEBUG 23352 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 09:59:44.162 DEBUG 23352 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 09:59:44.434 DEBUG 23352 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 09:59:44.434 ERROR 23352 --- [http-nio-8081-exec-1] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: null
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:123) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:199) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:219) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:95) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) [spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:37) ~[classes/:na]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$bb3421c6.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at cn.xmh.web.blogserver.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$63ca3d37.loadUserByUsername(<generated>) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:108) ~[spring-security-core-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	... 51 common frames omitted
+
+2020-09-04 10:00:51.422  INFO 23292 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 23292 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 10:00:51.426 DEBUG 23292 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 10:00:51.426  INFO 23292 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 10:00:52.662  INFO 23292 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 10:00:52.672  INFO 23292 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 10:00:52.672  INFO 23292 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 10:00:52.757  INFO 23292 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 10:00:52.757  INFO 23292 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1260 ms
+2020-09-04 10:00:53.212  WARN 23292 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userManageController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+2020-09-04 10:00:53.212  INFO 23292 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-09-04 10:00:53.222  INFO 23292 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-09-04 10:00:53.542 ERROR 23292 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+2020-09-04 10:03:01.142  INFO 8344 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 8344 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 10:03:01.142 DEBUG 8344 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 10:03:01.142  INFO 8344 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 10:03:02.342  INFO 8344 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 10:03:02.352  INFO 8344 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 10:03:02.352  INFO 8344 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 10:03:02.439  INFO 8344 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 10:03:02.439  INFO 8344 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1252 ms
+2020-09-04 10:03:03.087  INFO 8344 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 10:03:03.262  INFO 8344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3456558, org.springframework.security.web.context.SecurityContextPersistenceFilter@2be95d31, org.springframework.security.web.header.HeaderWriterFilter@788ba63e, org.springframework.security.web.authentication.logout.LogoutFilter@6056232d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@56b859a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2aa7399c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a0bef24, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2dfb885e, org.springframework.security.web.session.SessionManagementFilter@68ee3b6d, org.springframework.security.web.access.ExceptionTranslationFilter@3289079a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6ed043d3]
+2020-09-04 10:03:03.292  INFO 8344 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 10:03:03.422  INFO 8344 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 10:03:03.422  INFO 8344 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 10:03:03.432  INFO 8344 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 10:03:03.462  INFO 8344 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 10:03:03.552  INFO 8344 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 10:03:03.582  INFO 8344 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 10:03:03.582  INFO 8344 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 10:03:03.622  INFO 8344 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 10:03:03.622  INFO 8344 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 10:03:03.640  INFO 8344 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 2.893 seconds (JVM running for 3.826)
+2020-09-04 10:03:49.293  INFO 8344 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 10:03:49.293  INFO 8344 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 10:03:49.298  INFO 8344 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 10:03:49.417  INFO 8344 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:03:49.427  INFO 8344 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 10:03:49.522  INFO 8344 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 10:03:49.532 DEBUG 8344 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:03:49.552 DEBUG 8344 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:03:49.722 DEBUG 8344 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:03:49.817  INFO 8344 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$IPJAabyhBJCfxpFbjfZEO.snMWe9/IMs3Sc7Zl5lozsyulfB.BXPm
+2020-09-04 10:03:49.817  WARN 8344 --- [http-nio-8081-exec-2] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 10:31:08.594  INFO 14832 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 14832 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 10:31:08.599 DEBUG 14832 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 10:31:08.599  INFO 14832 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 10:31:09.804  INFO 14832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 10:31:09.809  INFO 14832 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 10:31:09.809  INFO 14832 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 10:31:09.894  INFO 14832 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 10:31:09.894  INFO 14832 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1225 ms
+2020-09-04 10:31:10.534  INFO 14832 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 10:31:10.709  INFO 14832 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58015e56, org.springframework.security.web.context.SecurityContextPersistenceFilter@68ee3b6d, org.springframework.security.web.header.HeaderWriterFilter@3289079a, org.springframework.security.web.authentication.logout.LogoutFilter@37d28f02, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@44af588b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2be95d31, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6415f61e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d3c6593, org.springframework.security.web.session.SessionManagementFilter@788ba63e, org.springframework.security.web.access.ExceptionTranslationFilter@4ba02375, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3a8d467e]
+2020-09-04 10:31:10.744  INFO 14832 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 10:31:10.864  INFO 14832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 10:31:10.864  INFO 14832 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 10:31:10.879  INFO 14832 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 10:31:10.914  INFO 14832 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 10:31:11.004  INFO 14832 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 10:31:11.039  INFO 14832 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 10:31:11.044  INFO 14832 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 10:31:11.084  INFO 14832 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 10:31:11.084  INFO 14832 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 10:31:11.094  INFO 14832 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 2.935 seconds (JVM running for 3.855)
+2020-09-04 10:32:26.365  INFO 14832 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 10:32:26.366  INFO 14832 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 10:32:26.371  INFO 14832 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 10:32:26.495  INFO 14832 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:32:26.504  INFO 14832 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 10:32:26.674  INFO 14832 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 10:32:26.684 DEBUG 14832 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:32:26.704 DEBUG 14832 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:32:26.784 DEBUG 14832 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:32:26.884  INFO 14832 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$AX4XAlo5Pr/LLa/fTXwnoedLsG9gvCFh0PxcKx.QWIS538RPs3fpG
+2020-09-04 10:32:26.884  WARN 14832 --- [http-nio-8081-exec-3] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 10:33:54.749  INFO 12416 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 12416 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 10:33:54.757 DEBUG 12416 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 10:33:54.757  INFO 12416 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 10:33:56.059  INFO 12416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 10:33:56.069  INFO 12416 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 10:33:56.069  INFO 12416 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 10:33:56.144  INFO 12416 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 10:33:56.144  INFO 12416 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1335 ms
+2020-09-04 10:33:56.919  INFO 12416 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 10:33:57.133  INFO 12416 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@485e13d7, org.springframework.security.web.context.SecurityContextPersistenceFilter@7e7fe6d, org.springframework.security.web.header.HeaderWriterFilter@3a2d3909, org.springframework.security.web.authentication.logout.LogoutFilter@526b2f3e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7af3874e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@24386839, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@244418a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@43984213, org.springframework.security.web.session.SessionManagementFilter@194d329e, org.springframework.security.web.access.ExceptionTranslationFilter@5961e92d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2f0ed952]
+2020-09-04 10:33:57.169  INFO 12416 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 10:33:57.297  INFO 12416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 10:33:57.298  INFO 12416 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 10:33:57.310  INFO 12416 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 10:33:57.334  INFO 12416 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 10:33:57.434  INFO 12416 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 10:33:57.454  INFO 12416 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 10:33:57.467  INFO 12416 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 10:33:57.494  INFO 12416 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 10:33:57.504  INFO 12416 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 10:33:57.514  INFO 12416 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.241 seconds (JVM running for 4.189)
+2020-09-04 10:35:38.165  INFO 12416 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 10:35:38.165  INFO 12416 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 10:35:38.225  INFO 12416 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 60 ms
+2020-09-04 10:35:38.424  INFO 12416 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:35:38.504  INFO 12416 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 10:35:38.714  INFO 12416 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 10:35:38.737 DEBUG 12416 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:35:38.754 DEBUG 12416 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:35:38.844 DEBUG 12416 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:35:38.944  INFO 12416 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$R4Xad0yKhGtgojGmImJJcOpeGS61Dp3t083XI5/y4YnVqPqGV.HRG
+2020-09-04 10:35:38.944  WARN 12416 --- [http-nio-8081-exec-1] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 10:35:43.491  INFO 12416 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:35:43.494 DEBUG 12416 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:35:43.494 DEBUG 12416 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:35:43.496 DEBUG 12416 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:35:43.584  INFO 12416 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$JY3APFN7dpC6uuFTqEWu4OkI7AFcqfYpXLP9PtikaXSu/mJZCaO.a
+2020-09-04 10:35:43.584  WARN 12416 --- [http-nio-8081-exec-2] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 10:37:42.428  INFO 12416 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:37:42.428 DEBUG 12416 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:37:42.429 DEBUG 12416 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:37:42.430 DEBUG 12416 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:37:42.537  INFO 12416 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$ep931DrBbaxzu7sI14AS4.gxfkwOspuif9Xw3lkSaLNzmDfnOdES6
+2020-09-04 10:37:42.538  WARN 12416 --- [http-nio-8081-exec-3] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 10:37:47.685  INFO 12416 --- [http-nio-8081-exec-4] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:37:47.685 DEBUG 12416 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:37:47.685 DEBUG 12416 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:37:47.685 DEBUG 12416 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:37:47.779  INFO 12416 --- [http-nio-8081-exec-4] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$.ldqmHle9Zw73RlzRurPf.vfKx.Mn00jxEO1GLukNPj0caykbFjI.
+2020-09-04 10:37:47.779  WARN 12416 --- [http-nio-8081-exec-4] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 10:38:01.525  INFO 12416 --- [http-nio-8081-exec-5] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 10:38:01.525 DEBUG 12416 --- [http-nio-8081-exec-5] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 10:38:01.525 DEBUG 12416 --- [http-nio-8081-exec-5] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 10:38:01.525 DEBUG 12416 --- [http-nio-8081-exec-5] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 10:38:01.619  INFO 12416 --- [http-nio-8081-exec-5] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$7rmd7EMpetlACCY5K.lB5eDWDPEYu8Ne.rApl4c1uWos0MVpLjqqe
+2020-09-04 10:38:01.619  WARN 12416 --- [http-nio-8081-exec-5] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 11:32:45.169  INFO 13396 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 13396 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 11:32:45.169 DEBUG 13396 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 11:32:45.169  INFO 13396 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 11:32:46.449  INFO 13396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 11:32:46.459  INFO 13396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 11:32:46.459  INFO 13396 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 11:32:46.549  INFO 13396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 11:32:46.549  INFO 13396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1345 ms
+2020-09-04 11:32:47.223  INFO 13396 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 11:32:47.379  INFO 13396 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44af588b, org.springframework.security.web.context.SecurityContextPersistenceFilter@32e652b6, org.springframework.security.web.header.HeaderWriterFilter@1a0c5e9, org.springframework.security.web.authentication.logout.LogoutFilter@6c1cfa53, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@141d3d43, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7593ea79, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2aa7399c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d19d85, org.springframework.security.web.session.SessionManagementFilter@1d247525, org.springframework.security.web.access.ExceptionTranslationFilter@521bb1a4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a034157]
+2020-09-04 11:32:47.417  INFO 13396 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 11:32:47.543  INFO 13396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 11:32:47.544  INFO 13396 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 11:32:47.558  INFO 13396 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 11:32:47.591  INFO 13396 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 11:32:47.687  INFO 13396 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 11:32:47.711  INFO 13396 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 11:32:47.714  INFO 13396 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 11:32:47.755  INFO 13396 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 11:32:47.756  INFO 13396 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 11:32:47.773  INFO 13396 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.077 seconds (JVM running for 4.091)
+2020-09-04 11:32:56.187  INFO 13396 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 11:32:56.187  INFO 13396 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 11:32:56.192  INFO 13396 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 11:35:06.537  INFO 13396 --- [http-nio-8081-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 11:35:06.869  INFO 13396 --- [http-nio-8081-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 11:35:06.879 DEBUG 13396 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getNewTitle      : ==>  Preparing: SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
+2020-09-04 11:35:06.909 DEBUG 13396 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getNewTitle      : ==> Parameters: 
+2020-09-04 11:35:06.909 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getAllArticle    : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id
+2020-09-04 11:35:06.909 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getAllArticle    : ==> Parameters: 
+2020-09-04 11:35:06.919 DEBUG 13396 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+2020-09-04 11:35:06.919 DEBUG 13396 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
+2020-09-04 11:35:06.959 DEBUG 13396 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.*,COUNT(a.article_id) counts FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+2020-09-04 11:35:06.959 DEBUG 13396 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
+2020-09-04 11:35:06.959 DEBUG 13396 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+2020-09-04 11:35:06.959 DEBUG 13396 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
+2020-09-04 11:35:07.184 DEBUG 13396 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 4
+2020-09-04 11:35:07.197 DEBUG 13396 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getNewTitle      : <==      Total: 4
+2020-09-04 11:35:07.266 DEBUG 13396 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
+2020-09-04 11:35:07.272 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getAllArticle    : <==      Total: 4
+2020-09-04 11:35:07.274 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 11:35:07.275 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-09-04 11:35:07.277 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-09-04 11:35:07.278 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 11:35:07.278 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-09-04 11:35:07.280 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-09-04 11:35:07.280 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 11:35:07.281 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-09-04 11:35:07.283 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-09-04 11:35:07.283 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 11:35:07.284 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 3(Long)
+2020-09-04 11:35:07.285 DEBUG 13396 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 2
+2020-09-04 11:35:07.412 DEBUG 13396 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 8
+2020-09-04 15:08:55.955  INFO 20732 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 20732 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 15:08:55.955 DEBUG 20732 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 15:08:55.955  INFO 20732 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 15:08:57.335  INFO 20732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 15:08:57.345  INFO 20732 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 15:08:57.345  INFO 20732 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 15:08:57.435  INFO 20732 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 15:08:57.435  INFO 20732 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1430 ms
+2020-09-04 15:08:58.075  INFO 20732 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 15:08:58.250  INFO 20732 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d19d85, org.springframework.security.web.context.SecurityContextPersistenceFilter@35ee466f, org.springframework.security.web.header.HeaderWriterFilter@35f3a22c, org.springframework.security.web.authentication.logout.LogoutFilter@696b4a95, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a8d467e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ba02375, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@338b49d3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ae62bb6, org.springframework.security.web.session.SessionManagementFilter@123d7057, org.springframework.security.web.access.ExceptionTranslationFilter@2e17a321, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f67761b]
+2020-09-04 15:08:58.285  INFO 20732 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 15:08:58.410  INFO 20732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 15:08:58.410  INFO 20732 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 15:08:58.424  INFO 20732 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 15:08:58.455  INFO 20732 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 15:08:58.545  INFO 20732 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 15:08:58.575  INFO 20732 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 15:08:58.575  INFO 20732 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 15:08:58.615  INFO 20732 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 15:08:58.615  INFO 20732 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 15:08:58.635  INFO 20732 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.054 seconds (JVM running for 3.98)
+2020-09-04 15:09:22.015  INFO 20732 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 15:09:22.015  INFO 20732 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 15:09:22.025  INFO 20732 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-09-04 15:09:22.135  INFO 20732 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:09:22.145  INFO 20732 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 15:09:22.395  INFO 20732 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 15:09:22.405 DEBUG 20732 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:09:22.425 DEBUG 20732 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:09:22.545 DEBUG 20732 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:09:22.655  INFO 20732 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$7YUKUwsJARUel15l6ZOiB.uk89Usotb096bOpC4oL7Mwp3PaWGxFS
+2020-09-04 15:09:22.655  WARN 20732 --- [http-nio-8081-exec-1] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Empty encoded password
+2020-09-04 15:36:50.947  INFO 16224 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 16224 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 15:36:50.947 DEBUG 16224 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 15:36:50.947  INFO 16224 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 15:36:52.197  INFO 16224 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 15:36:52.197  INFO 16224 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 15:36:52.197  INFO 16224 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 15:36:52.292  INFO 16224 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 15:36:52.292  INFO 16224 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1305 ms
+2020-09-04 15:36:52.917  INFO 16224 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 15:36:53.087  INFO 16224 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16a35bd, org.springframework.security.web.context.SecurityContextPersistenceFilter@6af91cc8, org.springframework.security.web.header.HeaderWriterFilter@6c1cfa53, org.springframework.security.web.authentication.logout.LogoutFilter@49f40c00, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3456558, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@330c1f61, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@404eca05, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@ba17be6, org.springframework.security.web.session.SessionManagementFilter@52b06bef, org.springframework.security.web.access.ExceptionTranslationFilter@2f860823, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@590adb41]
+2020-09-04 15:36:53.127  INFO 16224 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 15:36:53.252  INFO 16224 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 15:36:53.252  INFO 16224 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 15:36:53.262  INFO 16224 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 15:36:53.292  INFO 16224 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 15:36:53.387  INFO 16224 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 15:36:53.407  INFO 16224 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 15:36:53.407  INFO 16224 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 15:36:53.452  INFO 16224 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 15:36:53.452  INFO 16224 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 15:36:53.467  INFO 16224 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 2.919 seconds (JVM running for 3.843)
+2020-09-04 15:37:28.472  INFO 16224 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 15:37:28.472  INFO 16224 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 15:37:28.479  INFO 16224 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-09-04 15:37:28.592  INFO 16224 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:37:28.607  INFO 16224 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 15:37:28.837  INFO 16224 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 15:37:28.847 DEBUG 16224 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:37:28.867 DEBUG 16224 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:37:28.887 DEBUG 16224 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:37:28.977  INFO 16224 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$AHCY/KGJdajHmacHO2mKxeB.uIxFCIJDoHPcGxKy0SXxAxCU55Mrm
+2020-09-04 15:39:05.607  INFO 16224 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:39:05.617 DEBUG 16224 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:39:05.617 DEBUG 16224 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:39:05.617 DEBUG 16224 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:39:05.712  INFO 16224 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$Lo4PUAN/2t28eMh.rsi/8Ol1QdqKdW6lS5xEJd/h5jYeSKTs5wiNS
+2020-09-04 15:39:50.085  INFO 16224 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:39:50.086 DEBUG 16224 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:39:50.086 DEBUG 16224 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:39:50.087 DEBUG 16224 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:39:50.182  INFO 16224 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$aVEEvYQTSuk58XeZyDsPVOiUKklRkydzE6COgcYhb65CpY9pmcJRa
+2020-09-04 15:39:55.669  INFO 16224 --- [http-nio-8081-exec-4] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:39:55.678 DEBUG 16224 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:39:55.678 DEBUG 16224 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:39:55.678 DEBUG 16224 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:39:55.782  INFO 16224 --- [http-nio-8081-exec-4] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$LCb2tDBoGSUI0seSS9tXR.Ud/VCXxtYeqhr4WhhJ1qwQS9cZmatSW
+2020-09-04 15:43:33.212  INFO 21380 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 21380 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 15:43:33.212 DEBUG 21380 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 15:43:33.216  INFO 21380 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 15:43:34.494  INFO 21380 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 15:43:34.501  INFO 21380 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 15:43:34.501  INFO 21380 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 15:43:34.591  INFO 21380 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 15:43:34.591  INFO 21380 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1333 ms
+2020-09-04 15:43:35.250  INFO 21380 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 15:43:35.422  INFO 21380 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@590adb41, org.springframework.security.web.context.SecurityContextPersistenceFilter@2aa7399c, org.springframework.security.web.header.HeaderWriterFilter@68ee3b6d, org.springframework.security.web.authentication.logout.LogoutFilter@37d28f02, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6ed043d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@708f018e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f860823, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42aae04d, org.springframework.security.web.session.SessionManagementFilter@2be95d31, org.springframework.security.web.access.ExceptionTranslationFilter@788ba63e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3762c4fc]
+2020-09-04 15:43:35.458  INFO 21380 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 15:43:35.577  INFO 21380 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 15:43:35.577  INFO 21380 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 15:43:35.587  INFO 21380 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 15:43:35.623  INFO 21380 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 15:43:35.718  INFO 21380 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 15:43:35.748  INFO 21380 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 15:43:35.748  INFO 21380 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 15:43:35.788  INFO 21380 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 15:43:35.788  INFO 21380 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 15:43:35.807  INFO 21380 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 2.971 seconds (JVM running for 3.876)
+2020-09-04 15:44:00.548  INFO 21380 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 15:44:00.548  INFO 21380 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 15:44:00.548  INFO 21380 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2020-09-04 15:44:00.663  INFO 21380 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:44:00.673  INFO 21380 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 15:44:00.777  INFO 21380 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 15:44:00.783 DEBUG 21380 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:44:00.797 DEBUG 21380 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:44:00.917 DEBUG 21380 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:44:01.014  INFO 21380 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$CLXAqzsA3Vo249Kf1Vp1Kel7OlYyVQbdPQ2tE2TnVKIYSV2yYcr/K
+2020-09-04 15:50:53.574  INFO 21380 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:50:53.578 DEBUG 21380 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:50:53.578 DEBUG 21380 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:50:53.578 DEBUG 21380 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:50:53.663  INFO 21380 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$Xkfczh2HXRkNGTTKLowJw.HKF9WLjqhZlj3ui6TxQh6Avd01jVK4a
+2020-09-04 15:52:37.668  INFO 21380 --- [http-nio-8081-exec-4] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:52:37.668 DEBUG 21380 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:52:37.668 DEBUG 21380 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:52:37.668 DEBUG 21380 --- [http-nio-8081-exec-4] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:52:37.773  INFO 21380 --- [http-nio-8081-exec-4] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$NIXuLXvvniLiis2EvvAfhOGnRs6.9gAbSVhuR1CwJXgRMkCcat7Oe
+2020-09-04 15:52:51.292  INFO 21380 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 15:52:51.294 DEBUG 21380 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 15:52:51.295 DEBUG 21380 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 15:52:51.299 DEBUG 21380 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 15:52:51.408  INFO 21380 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$ZnDl5pdXVLsYHpq4aBKlEu2tRu5ug.q6u5UoEM/D4YqWlzrhFHt/q
+2020-09-04 16:41:12.052  INFO 17824 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 17824 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 16:41:12.052 DEBUG 17824 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 16:41:12.052  INFO 17824 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 16:41:13.292  INFO 17824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 16:41:13.292  INFO 17824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 16:41:13.292  INFO 17824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 16:41:13.452  INFO 17824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 16:41:13.452  INFO 17824 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1370 ms
+2020-09-04 16:41:14.102  INFO 17824 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 16:41:14.277  INFO 17824 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2daf06fc, org.springframework.security.web.context.SecurityContextPersistenceFilter@107bfcb2, org.springframework.security.web.header.HeaderWriterFilter@37d28f02, org.springframework.security.web.authentication.logout.LogoutFilter@3e5fd2b1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@36aa52d2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ab26378, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@462e1e64, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28237492, org.springframework.security.web.session.SessionManagementFilter@6056232d, org.springframework.security.web.access.ExceptionTranslationFilter@6232ffdb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@516462cc]
+2020-09-04 16:41:14.312  INFO 17824 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 16:41:14.432  INFO 17824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 16:41:14.432  INFO 17824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 16:41:14.447  INFO 17824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 16:41:14.472  INFO 17824 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 16:41:14.572  INFO 17824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 16:41:14.592  INFO 17824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 16:41:14.602  INFO 17824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 16:41:14.632  INFO 17824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 16:41:14.632  INFO 17824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 16:41:14.652  INFO 17824 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.015 seconds (JVM running for 3.938)
+2020-09-04 16:41:30.742  INFO 17824 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 16:41:30.742  INFO 17824 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 16:41:30.752  INFO 17824 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-09-04 16:41:30.852  INFO 17824 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:41:30.882  INFO 17824 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 16:41:31.122  INFO 17824 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 16:41:31.122 DEBUG 17824 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:41:31.147 DEBUG 17824 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:41:31.262 DEBUG 17824 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:41:31.362  INFO 17824 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$9qvhVPwe/1jE3qcBn0AFu.VcuL4C9e8MpolprgQVAbWE0e9XIRDXi
+2020-09-04 16:42:19.307  INFO 17824 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:42:19.307 DEBUG 17824 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:42:19.312 DEBUG 17824 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:42:19.312 DEBUG 17824 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:42:19.412  INFO 17824 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$hnEORgNuM8bUrycVJlf6Auwa7Hw/0VCzOAe95nETbbFAZwWu6bn86
+2020-09-04 16:43:17.122  INFO 2376 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 2376 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 16:43:17.122 DEBUG 2376 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 16:43:17.122  INFO 2376 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 16:43:18.462  INFO 2376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 16:43:18.472  INFO 2376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 16:43:18.472  INFO 2376 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 16:43:18.557  INFO 2376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 16:43:18.557  INFO 2376 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1400 ms
+2020-09-04 16:43:19.192  INFO 2376 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 16:43:19.372  INFO 2376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46e64760, org.springframework.security.web.context.SecurityContextPersistenceFilter@38c9e0d6, org.springframework.security.web.header.HeaderWriterFilter@414f13fc, org.springframework.security.web.authentication.logout.LogoutFilter@15d42ccb, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1806bc4c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@310aee0b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@194d329e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e5fd2b1, org.springframework.security.web.session.SessionManagementFilter@63a28987, org.springframework.security.web.access.ExceptionTranslationFilter@770beef5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2ab26378]
+2020-09-04 16:43:19.402  INFO 2376 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 16:43:19.522  INFO 2376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 16:43:19.522  INFO 2376 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 16:43:19.539  INFO 2376 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 16:43:19.572  INFO 2376 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 16:43:19.662  INFO 2376 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 16:43:19.692  INFO 2376 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 16:43:19.692  INFO 2376 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 16:43:19.732  INFO 2376 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 16:43:19.732  INFO 2376 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 16:43:19.752  INFO 2376 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 2.976 seconds (JVM running for 3.906)
+2020-09-04 16:43:32.966  INFO 2376 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 16:43:32.967  INFO 2376 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 16:43:32.972  INFO 2376 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 16:43:33.077  INFO 2376 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:43:33.082  INFO 2376 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 16:43:33.342  INFO 2376 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 16:43:33.356 DEBUG 2376 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:43:33.380 DEBUG 2376 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:43:33.572 DEBUG 2376 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:43:33.667  INFO 2376 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$SBIlHhvW1CpB0D3DcwWeleyItKoIJoYcaNM6XsZFEHC/ZUuOS/lHy
+2020-09-04 16:47:14.392  INFO 2376 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:47:14.392 DEBUG 2376 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:47:14.392 DEBUG 2376 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:47:14.392 DEBUG 2376 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:47:14.493  INFO 2376 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$MvMaXoTmYfEjIrD2pLB6zOQTcmneiYzRz23uZDIipvYQBZBvDpekS
+2020-09-04 16:48:04.629 DEBUG 2376 --- [http-nio-8081-exec-3] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+2020-09-04 16:48:04.630 DEBUG 2376 --- [http-nio-8081-exec-3] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
+2020-09-04 16:48:04.633 DEBUG 2376 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+2020-09-04 16:48:04.633 DEBUG 2376 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
+2020-09-04 16:48:04.634 DEBUG 2376 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==>  Preparing: SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
+2020-09-04 16:48:04.634 DEBUG 2376 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.*,COUNT(a.article_id) counts FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+2020-09-04 16:48:04.634 DEBUG 2376 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==> Parameters: 
+2020-09-04 16:48:04.634 DEBUG 2376 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
+2020-09-04 16:48:04.742 DEBUG 2376 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : <==      Total: 4
+2020-09-04 16:48:04.803 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getAllArticle    : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id
+2020-09-04 16:48:04.803 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getAllArticle    : ==> Parameters: 
+2020-09-04 16:48:05.140 DEBUG 2376 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 8
+2020-09-04 16:48:05.142 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getAllArticle    : <==      Total: 4
+2020-09-04 16:48:05.143 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 16:48:05.143 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-09-04 16:48:05.173 DEBUG 2376 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 4
+2020-09-04 16:48:05.202 DEBUG 2376 --- [http-nio-8081-exec-3] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-09-04 16:48:05.263 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 3(Long)
+2020-09-04 16:48:05.272 DEBUG 2376 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 2
+2020-09-04 16:49:22.952 DEBUG 2376 --- [http-nio-8081-exec-8] c.x.w.b.mapper.UserMapper.getAllUser     : ==>  Preparing: select * from user
+2020-09-04 16:49:22.952 DEBUG 2376 --- [http-nio-8081-exec-8] c.x.w.b.mapper.UserMapper.getAllUser     : ==> Parameters: 
+2020-09-04 16:49:22.953 DEBUG 2376 --- [http-nio-8081-exec-8] c.x.w.b.mapper.UserMapper.getAllUser     : <==      Total: 1
+2020-09-04 16:52:01.208  INFO 2376 --- [http-nio-8081-exec-9] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:52:01.230 DEBUG 2376 --- [http-nio-8081-exec-9] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:52:01.231 DEBUG 2376 --- [http-nio-8081-exec-9] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:52:01.232 DEBUG 2376 --- [http-nio-8081-exec-9] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:52:01.331  INFO 2376 --- [http-nio-8081-exec-9] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$NMTen0mC8ETWITS.u.GhMe2fHq4HY5JTIDcUUFtPfyrpCRxqo2m7u
+2020-09-04 16:52:18.833  INFO 2376 --- [http-nio-8081-exec-10] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:52:18.833 DEBUG 2376 --- [http-nio-8081-exec-10] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:52:18.843 DEBUG 2376 --- [http-nio-8081-exec-10] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:52:18.843 DEBUG 2376 --- [http-nio-8081-exec-10] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:52:18.928  INFO 2376 --- [http-nio-8081-exec-10] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$hvKVfCoii8uXfuvLAU5BMeKPEQc1ysHvdw8Jl5w4kr3G.3gg97N5K
+2020-09-04 16:52:26.361  INFO 2376 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:52:26.362 DEBUG 2376 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:52:26.362 DEBUG 2376 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:52:26.364 DEBUG 2376 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:52:26.460  INFO 2376 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$xDYxeH8tufejAR.MDeKLBO1tNf8el9kUFPNkUH0VbMUkKLHoP8zL2
+2020-09-04 16:58:53.143  INFO 22976 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 22976 (D:\project\WebStorm\blogserver\target\classes started by Show in D:\project\WebStorm\blogserver)
+2020-09-04 16:58:53.143 DEBUG 22976 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 16:58:53.143  INFO 22976 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-09-04 16:58:54.412  INFO 22976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-09-04 16:58:54.421  INFO 22976 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-04 16:58:54.421  INFO 22976 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 16:58:54.531  INFO 22976 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-04 16:58:54.531  INFO 22976 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1348 ms
+2020-09-04 16:58:55.199  INFO 22976 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 16:58:55.379  INFO 22976 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@575e572f, org.springframework.security.web.context.SecurityContextPersistenceFilter@19a31b9d, org.springframework.security.web.header.HeaderWriterFilter@338b49d3, org.springframework.security.web.authentication.logout.LogoutFilter@33f2df51, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@280d4882, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d60899e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d68b571, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58015e56, org.springframework.security.web.session.SessionManagementFilter@11eed657, org.springframework.security.web.access.ExceptionTranslationFilter@e76b097, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1b6924cb]
+2020-09-04 16:58:55.413  INFO 22976 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 16:58:55.533  INFO 22976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 16:58:55.534  INFO 22976 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-09-04 16:58:55.543  INFO 22976 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-09-04 16:58:55.578  INFO 22976 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-09-04 16:58:55.673  INFO 22976 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getTypeUsingGET_1
+2020-09-04 16:58:55.693  INFO 22976 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-09-04 16:58:55.693  INFO 22976 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCategoryUsingGET_1
+2020-09-04 16:58:55.733  INFO 22976 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-09-04 16:58:55.733  INFO 22976 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_2
+2020-09-04 16:58:55.753  INFO 22976 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 3.045 seconds (JVM running for 3.999)
+2020-09-04 16:59:17.460  INFO 22976 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 16:59:17.460  INFO 22976 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-04 16:59:17.465  INFO 22976 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-04 16:59:17.573  INFO 22976 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:59:17.583  INFO 22976 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-04 16:59:18.353  INFO 22976 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-04 16:59:18.353 DEBUG 22976 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:59:18.378 DEBUG 22976 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:59:18.431 DEBUG 22976 --- [http-nio-8081-exec-2] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:59:18.534  INFO 22976 --- [http-nio-8081-exec-2] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$aYYjcql58HwjlKYSI.dC6.Nz1FEl.jeFFJpLrwT0ThxTjxmz6zlu.
+2020-09-04 16:59:27.024  INFO 22976 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:59:27.024 DEBUG 22976 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:59:27.024 DEBUG 22976 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:59:27.033 DEBUG 22976 --- [http-nio-8081-exec-1] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:59:27.128  INFO 22976 --- [http-nio-8081-exec-1] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$WQElJTCXp3x/tzMbY9Ncg.wlOwLILcg83q0IBbVnOYO4Wll0B/0DK
+2020-09-04 16:59:33.923  INFO 22976 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-09-04 16:59:33.923 DEBUG 22976 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: select * from user where username=?
+2020-09-04 16:59:33.923 DEBUG 22976 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-09-04 16:59:33.928 DEBUG 22976 --- [http-nio-8081-exec-3] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 1
+2020-09-04 16:59:34.048  INFO 22976 --- [http-nio-8081-exec-3] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$3U91x4ABGdIlIOw9Ah./TudhI/epNaxWntnjFF5dh5sdf1tQvaL9u

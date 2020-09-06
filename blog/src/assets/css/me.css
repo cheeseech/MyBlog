@@ -1,0 +1,113 @@
+
+/*container*/
+.m-container{
+  max-width: 72em;
+  margin: auto;
+}
+.m-container-small{
+  max-width: 65em;
+  margin: auto;
+}
+
+/*padded*/
+.m-padded-mini{
+  padding: 0 !important;
+}
+.m-lf-padded-small{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/*margin*/
+.m-margin-mini{
+  margin:0.3em;
+}
+.m-margin-small{
+  margin:0.5em 0.8em 0.5em 0.5em;
+}
+.m-t-margin{
+  margin-top: 2.5em;
+}
+.m-t-margin-small{
+  margin-top: 1.5em;
+}
+.m-t-margin-mini{
+  margin-top: 0.8em;
+}
+.m-b-margin{
+  margin-bottom: 1.5em;
+}
+.m-b-margin-mini{
+  margin-bottom: 0.4em;
+}
+
+
+/*radius*/
+.m-radius-small{
+  border-radius: 20px;
+}
+.m-radius-big{
+  border-radius: 25px;
+}
+
+/*icon所需样式*/
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+/*icon尺寸*/
+.m-svg-size{
+  font-size: 24px;
+}
+
+/*标签圆角*/
+.m-tags-radius{
+  border-radius: 11px;
+}
+
+/*去除卡片padding*/
+.card-padded div.el-card__body{
+  padding: 0;
+}
+
+/*去除菜单下方白线*/
+.el-menu.el-menu--horizontal {
+  border-bottom: 0;
+}
+
+.m-padded div.el-collapse-item__header{
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/*鼠标悬浮图片放大*/
+.img-transform{
+  transition:transform 0.7s;
+}
+.img-transform:hover {
+  /*倍数*/
+  transform:scale(1.05)
+}
+
+/*文章icon文字对齐*/
+.m-article-icon{
+  vertical-align:middle;
+}
+.m-article-icon-text{
+  font-size:15px
+}
+
+/*行间距*/
+.m-text-lined{
+  line-height: 1.7;
+}
+
+/*圆角按钮padding*/
+.btnPadded.el-button.is-round{
+  padding: 6px 8px;
+}

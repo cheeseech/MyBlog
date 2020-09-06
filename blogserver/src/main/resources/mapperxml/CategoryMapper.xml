@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xmh.web.blogserver.mapper.CategoryMapper">
+    <resultMap id="cateArticleCount" type="HashMap">
+        <result column="cate_name"></result>
+        <result column="counts"></result>
+    </resultMap>
+
+    <insert id="insertCategory">
+        insert into category (cate_name, cate_summary, create_time) values (#{cateName},#{cateSummary},#{createTime})
+    </insert>
+
+    <update id="updateByCategory">
+        update category set cate_name=#{cateName},cate_summary=#{cateSummary} where cate_id=#{cateId}
+    </update>
+
+    <delete id="deleteByCategoryId">
+        delete from category where cate_id=#{cateId}
+    </delete>
+
+    <select id="getAllCategory" resultType="cn.xmh.web.blogserver.model.Category">
+        select * from category
+    </select>
+
+    <select id="getByCategoryName" resultType="cn.xmh.web.blogserver.model.Category">
+        select * from category where cate_name like concat('%',#{cateName},'%')
+    </select>
+
+    <select id="getByCategoryId" resultType="cn.xmh.web.blogserver.model.Category">
+        select * from category where cate_id=#{cateId}
+    </select>
+
+    <select id="getCateArticleCount" resultType="java.util.HashMap">
+        SELECT c.cate_id,cate_name,COUNT(a.article_id) counts FROM article a
+        LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+    </select>
+
+</mapper>

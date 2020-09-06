@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xmh.web.blogserver.mapper.ArticleTagsMapper">
+
+    <insert id="insertArticleTags">
+        insert into article_tags (article_id, tag_id) values (#{articleId},#{tagId})
+    </insert>
+
+    <update id="updateArticleTags">
+        update article_tags set tag_id=#{tagId} where article_id=#{articleId}
+    </update>
+
+    <delete id="deleteByArticleId">
+        delete from article_tags where article_id=#{articleId}
+    </delete>
+
+    <delete id="deleteByTagId">
+        delete from article_tags where tag_id=#{tagId}
+    </delete>
+</mapper>

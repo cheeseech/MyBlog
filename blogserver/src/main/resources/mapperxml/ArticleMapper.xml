@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xmh.web.blogserver.mapper.ArticleMapper">
+
+    <insert id="insertArticle" keyColumn="article_id" keyProperty="articleId" useGeneratedKeys="true">
+        insert into article (title, md_content, html_content, summary, type_id, cate_id, user_id, publish_time,
+        update_time, recommend, article_state, views, likes, comments, first_picture)
+        values (#{title},#{mdContent},#{htmlContent},#{summary},#{typeId},#{cateId},#{userId},#{publishTime},#{updateTime}
+        ,#{recommend},#{articleState},#{views},#{likes},#{comments},#{firstPicture})
+    </insert>
+
+    <update id="updateByArticleId">
+        update article set title=#{title}, md_content=#{mdContent}, html_content=#{htmlContent}, summary=#{summary},
+        type_id=#{typeId}, cate_id=#{cateId},update_time=#{updateTime},recommend=#{recommend},
+        article_state=#{articleState}, views=#{views}, likes=#{likes}, comments=#{comments}, first_picture=#{firstPicture})
+        where article_id=#{articleId}
+    </update>
+
+    <update id="resetArticleState">
+        update article set article_state=#{articleState} where article_id=#{articleId}
+    </update>
+
+    <delete id="deleteByArticleId">
+        delete from article where article_id=#{articleId}
+    </delete>
+
+    <select id="getAllArticle" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+    </select>
+
+    <select id="getLikeTitleArticle" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+        where title like concat('%',#{title},'%')
+    </select>
+
+    <select id="getNewRecommend" resultType="java.util.Map">
+        SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+    </select>
+
+    <select id="getNewTitle" resultType="java.util.Map">
+        SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
+    </select>
+
+    <select id="getTypeArticle" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+        where type_name=#{typeName}
+    </select>
+
+    <select id="getArticleByTagId" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+        LEFT JOIN article_tags t ON a.article_id=t.article_id
+        WHERE tag_id=#{tagId}
+    </select>
+
+    <select id="getArticleByCateName" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+        WHERE c.cate_name=#{cateName}
+    </select>
+
+    <select id="getYearsCountArticle" resultType="java.util.Map">
+        SELECT YEAR(publish_time) years,COUNT(article_id) counts FROM article GROUP BY years ORDER BY years DESC
+    </select>
+
+    <select id="getMonthsByYear" resultType="java.util.Map">
+        SELECT COUNT(article_id) monthCount, month(publish_time) months FROM article
+        WHERE YEAR(publish_time)=#{year} GROUP BY month(publish_time)
+    </select>
+
+    <select id="getInfoByMonthYear" resultType="java.util.Map">
+        SELECT article_id,title,publish_time FROM article
+        WHERE MONTH(publish_time)=#{month} AND YEAR(publish_time)=#{year}
+    </select>
+</mapper>

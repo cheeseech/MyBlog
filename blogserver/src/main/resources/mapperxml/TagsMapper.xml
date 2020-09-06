@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xmh.web.blogserver.mapper.TagsMapper">
+
+    <insert id="insertTag">
+        insert into tags (tag_name,tag_type)values(#{tagName},#{tagType})
+    </insert>
+
+    <update id="updateTagById">
+        update tags set tag_name=#{tagName},tag_type=#{tagType} where tag_id=#{tagId}
+    </update>
+
+    <delete id="deleteByTagId">
+        delete from tags where tag_id=#{tagId} limit 1
+    </delete>
+
+    <select id="getAllTags" resultType="cn.xmh.web.blogserver.model.Tags">
+        select * from tags
+    </select>
+
+    <select id="getTagsName" resultType="cn.xmh.web.blogserver.model.Tags">
+        select * from tags where tag_name=#{tagName}
+    </select>
+
+    <select id="getTagsByArticleId" resultType="cn.xmh.web.blogserver.model.Tags">
+        select tags.tag_id,tag_name,tag_type from tags,article_tags
+        where tags.tag_id=article_tags.tag_id and article_id=#{articleId}
+    </select>
+
+    <select id="getTagsAndCount" resultType="java.util.Map">
+        SELECT t.*,COUNT(a.article_id) counts FROM tags t
+        LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+    </select>
+</mapper>
