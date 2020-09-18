@@ -1,6 +1,8 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.mapper.RoleMapper;
 import cn.xmh.web.blogserver.mapper.UserMapper;
+import cn.xmh.web.blogserver.model.Role;
 import cn.xmh.web.blogserver.model.User;
 import cn.xmh.web.blogserver.service.UserService;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     @Resource
     private PasswordEncoder passwordEncoder;
 
+    @Resource
+    private RoleMapper roleMapper;
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         logger.info("登录用户名:{}",userName);
@@ -42,6 +47,10 @@ public class UserServiceImpl implements UserService , UserDetailsService {
         String passWord=passwordEncoder.encode(user.getPassword());
         logger.info("登录密码:{}",passWord);
         user.setPassword(passWord);
+
+        //添加用户的角色信息
+        List<Role> roles=roleMapper.getRoleByUserId(user.getUserId());
+        user.setRoles(roles);
         return user;
     }
 

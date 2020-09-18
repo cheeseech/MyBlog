@@ -54,8 +54,14 @@ export default {
         username: _this.loginForm.username,
         password: _this.loginForm.password
       }).then(response => {
+        console.log(response)
         if (response.status == 200) {
           Message.success(response.msg);
+
+          let redirect = decodeURIComponent(
+            _this.$router.query.redirect || "/"
+          );
+          _this.$router.push({ path: redirect });
         } else {
           Message.error(response.msg);
         }

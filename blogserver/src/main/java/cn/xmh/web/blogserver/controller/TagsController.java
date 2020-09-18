@@ -31,7 +31,8 @@ public class TagsController {
     @RequestMapping(value = "/",method = RequestMethod.GET)
     @ApiOperation("获取所有标签")
     public ResultJson getTags(){
-        try {
+
+            try {
             List<Tags> tags=tagsService.getAllTags();
             return new ResultJson("200","获取成功!",tags);
         }catch (NullPointerException e){

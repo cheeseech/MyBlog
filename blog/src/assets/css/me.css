@@ -111,3 +111,13 @@
 .btnPadded.el-button.is-round{
   padding: 6px 8px;
 }
+
+/* loading动画 */
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}

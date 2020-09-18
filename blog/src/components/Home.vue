@@ -7,11 +7,12 @@
       </el-header>
 
       <el-main>
+        <vue-progress-bar></vue-progress-bar>
         <div class="m-container-small">
           <!--路由渲染页面-->
-          <!--          <transition>-->
+                   <!-- <transition mode="out-in"> -->
           <router-view></router-view>
-          <!--          </transition>-->
+                   <!-- </transition> -->
         </div>
       </el-main>
 
@@ -32,11 +33,46 @@ export default {
   components: {
     blogNav: blogNav,
     blogFooter: blogFooter
+  },
+  mounted () {
+    //  [App.vue specific] 当App.vue加载完成，结束进度条
+    this.$Progress.finish()
+  },
+  created () {
+    //  [App.vue specific] 当App.vue创建时，启动进度条
+    this.$Progress.start()
+    //  当路由变化时，挂起进度条
+    this.$router.beforeEach((to, from, next) => {
+      //  判断页面是否存在 meta.progress
+      if (to.meta.progress !== undefined) {
+        let meta = to.meta.progress
+        // parse meta tags
+        this.$Progress.parseMeta(meta)
+      }
+      // 启动进度条
+      this.$Progress.start()
+      //  continue to next page
+      next()
+    })
+    //  路由完成时，完成进度条
+    this.$router.afterEach((to, from) => {
+      //  finish the progress bar
+      this.$Progress.finish()
+    })
   }
 };
 </script>
 
 <style>
+
+/* .v-enter,.v-leave-to{
+            opacity: 0;
+            transform: translateX(150px)
+        }
+        .v-enter-active,.v-leave-active{
+            transition: all 0.4s ease;
+        } */
+
 .el-header {
   padding: 0;
   background-color: #336699;

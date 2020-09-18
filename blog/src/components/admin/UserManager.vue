@@ -2,9 +2,10 @@
   <div id="userManager">
     <el-table
       :data="
-        tableData.filter(
+        userInfo.filter(
           data =>
-            !search || data.name.toLowerCase().includes(search.toLowerCase())
+            !search ||
+            data.username.toLowerCase().includes(search.toLowerCase())
         )
       "
       highlight-current-row
@@ -15,8 +16,62 @@
       <el-table-column type="selection" width="55"> </el-table-column>
       <el-table-column label="序号" type="index" width="50"> </el-table-column>
 
-      <el-table-column label="Date" prop="date" sortable> </el-table-column>
-      <el-table-column label="Name" prop="name" sortable> </el-table-column>
+      <el-table-column label="头像" width="90">
+        <template slot-scope="scope">
+          <el-avatar :size="50" :src="scope.row.userFace"></el-avatar>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="昵称"
+        prop="nickName"
+        width="100"
+        show-overflow-tooltip
+      >
+      </el-table-column>
+      <el-table-column
+        label="用户名"
+        prop="username"
+        width="100"
+        show-overflow-tooltip
+      >
+      </el-table-column>
+      <el-table-column
+        label="密码"
+        prop="password"
+        width="100"
+        show-overflow-tooltip
+      >
+      </el-table-column>
+      <el-table-column
+        label="邮箱"
+        prop="email"
+        width="190"
+        show-overflow-tooltip
+      >
+      </el-table-column>
+      <el-table-column label="状态" width="70">
+        <template slot-scope="scope">
+          <el-switch
+            style="display: block"
+            v-model="scope.row.enabled"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            height="30"
+          >
+          </el-switch>
+        </template>
+      </el-table-column>
+      <el-table-column label="创建时间" sortable width="200">
+        <template slot-scope="scope">
+          <span>{{ scope.row.createTime | dateFormat }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="更新时间" sortable width="200">
+        <template slot-scope="scope">
+          <span>{{ scope.row.updateTime | dateFormat }}</span>
+        </template>
+      </el-table-column>
+
       <el-table-column>
         <template slot="header" slot-scope="scope">
           <el-input
@@ -25,20 +80,69 @@
             size="mini"
             placeholder="输入关键字搜索"
           />
+          &emsp;
+          <el-button type="primary" size="mini">新增用户</el-button>
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-            >Edit</el-button
+          <el-button size="mini" @click="centerDialogVisible = true"
+            >编辑</el-button
           >
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)"
-            >Delete</el-button
+
+          <el-popconfirm
+            confirmButtonText="好的"
+            cancelButtonText="不用了"
+            icon="el-icon-info"
+            iconColor="red"
+            title="这是一段内容确定删除吗？"
           >
+            <el-button
+              slot="reference"
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)"
+              >删除</el-button
+            >
+          </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>
+
+    <el-dialog
+      title="编辑用户"
+      :visible.sync="centerDialogVisible"
+      width="30%"
+      center
+    >
+      <el-form :model="form" label-position="right">
+        <el-form-item label="昵称:" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="用户名:" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="密码:" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱:" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="状态:" :label-width="formLabelWidth">
+          <el-switch
+            style="display: block"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            height="30"
+          >
+          </el-switch>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="centerDialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="centerDialogVisible = false"
+            >确 定</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -49,210 +153,14 @@ export default {
   name: "UserManager",
   data() {
     return {
-      tableData1: [{}],
-      tableData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
-      search: ""
+      visible: false,
+      formLabelWidth: "100px",
+      centerDialogVisible: false,
+      userInfo: [],
+      search: "",
+      form: {
+        name: ""
+      }
     };
   },
   created() {
@@ -260,10 +168,12 @@ export default {
   },
   methods: {
     getUsers() {
+      var _this = this;
       getRequest("/admin/users/").then(response => {
         if (response.status == 200) {
-          console.log(response.data);
-        } 
+          _this.userInfo = response.data;
+          console.log(_this.userInfo);
+        }
       });
     },
     onSubmit() {
@@ -277,6 +187,32 @@ export default {
       this.multipleSelection = val;
       console.log(this.multipleSelection);
     }
+  },
+  filters: {
+    dateFormat: function(value) {
+      var date = new Date(value);
+
+      var years = date.getFullYear();
+      var months = (date.getMonth() + 1).toString().padStart(2, "0");
+      var days = date
+        .getDate()
+        .toString()
+        .padStart(2, "0");
+      var hours = date
+        .getHours()
+        .toString()
+        .padStart(2, "0");
+      var minutes = date
+        .getMinutes()
+        .toString()
+        .padStart(2, "0");
+      var seconds = date
+        .getSeconds()
+        .toString()
+        .padStart(2, "0");
+
+      return `${years}-${months}-${days} ${hours}:${minutes}:${seconds}`;
+    }
   }
 };
 </script>
@@ -285,5 +221,11 @@ export default {
 .el-table td,
 .el-table th {
   text-align: center;
+}
+.el-main {
+  padding: 0;
+}
+.el-switch {
+  height: auto;
 }
 </style>

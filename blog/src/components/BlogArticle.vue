@@ -2,12 +2,12 @@
   <div id="BlogArticle">
     <el-card
       class="box-card m-radius-big m-b-margin card-padded"
-      v-for="article in articles"
+      v-for="article in initial_articles"
       :key="article.articleId"
       shadow="hover"
     >
       <!--文章首图-->
-      <el-image :src="imgSrc" fit="fill" class="img-transform"></el-image>
+      <!-- <el-image :src="imgSrc" fit="fill" class="img-transform"></el-image> -->
 
       <!--文章主要内容-->
       <div style="padding: 20px">
@@ -109,11 +109,10 @@ import { eventBus } from "@/main";
 
 export default {
   name: "BlogArticle",
-  props: ["tag_id", "cate_Name"],
+  props: ["tag_id", "cate_Name", "initial_articles"],
   data() {
     return {
       imgSrc: require("./../assets/images/content.jpg"),
-      articles: "",
       categoryName: null,
       typeName: null
     };
@@ -128,19 +127,14 @@ export default {
     }
   },
   created() {
-    this.getArticles();
+    //兄弟组件传值：根据搜索框值检索文章
     eventBus.$on("title", data => {
       this.getArticlesByTitle(data);
     });
   },
   methods: {
-    getArticles() {
-      getRequest("/article/").then(response => {
-        if (response.status == 200) {
-          this.articles = response.data;
-        }
-      });
-    },
+    
+    //根据文章类别检索文章
     getArticlesByType(value) {
       getRequest("/article/types/" + value).then(response => {
         if (response.status == 200) {
@@ -148,6 +142,8 @@ export default {
         }
       });
     },
+
+    //根据文章标签检索文章
     getArticlesByTagId(value) {
       getRequest("/article/tags/" + value).then(response => {
         if (response.status == 200) {
@@ -155,6 +151,8 @@ export default {
         }
       });
     },
+
+    //根据文章标题模糊检索文章
     getArticlesByTitle(value) {
       getRequest("/article/" + value).then(response => {
         if (response.status == 200) {
@@ -162,6 +160,8 @@ export default {
         }
       });
     },
+    
+    //根据专栏检索文章
     getArticlesByCateName(value) {
       getRequest("/article/category/" + value).then(response => {
         if (response.status == 200) {

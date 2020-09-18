@@ -12,7 +12,7 @@
         </el-header>
 
         <el-main :style="height">
-          <userManager></userManager>
+          <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>

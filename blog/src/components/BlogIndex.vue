@@ -1,8 +1,8 @@
 <template>
-  <el-row :gutter="40">
+  <el-row :gutter="40" v-if="initialArticles">
     <!--文章列表-->
     <el-col :span="15">
-      <blogArticle></blogArticle>
+      <blogArticle :initial_articles="initialArticles"></blogArticle>
     </el-col>
 
     <!--专栏、标签、最新推荐、二维码-->
@@ -110,7 +110,7 @@
 </template>
 
 <script>
-const blogArticle = () =>import(/* webpackChunkName: "blog_article" */ "@/components/BlogArticle");
+import blogArticle from "./BlogArticle";
 import { getRequest } from "../../untils/axiosApi";
 import axios from "axios";
 
@@ -120,39 +120,53 @@ export default {
     return {
       wechatUrl: require("./../assets/images/wechat.png"),
       cateArticleCount: null,
+      initialArticles: null,
       tags: null,
       titles: null
     };
   },
-  created() {
+  beforeRouteEnter(to, from, next) {
     axios
-      .all([this.getData(), this.getTags(), this.getTitle()])
-      .then(axios.spread(data => {}));
+      .all([
+        getRequest("/article/"),
+        getRequest("/category/count/"),
+        getRequest("/tags/counts/"),
+        getRequest("/article/recommend/")
+      ])
+      .then(
+        axios.spread(
+          (articleResponse, categoryResponse, tagsResponse, titleResponse) => {
+            next(vm =>
+              vm.setData(
+                articleResponse,
+                categoryResponse,
+                tagsResponse,
+                titleResponse
+              )
+            );
+          }
+        )
+      );
   },
   methods: {
-    getData() {
+    setData(articleResponse, categoryResponse, tagsResponse, titleResponse) {
       var _this = this;
-      getRequest("/category/count/").then(response => {
-        if (response.status == 200) {
-          _this.cateArticleCount = response.data;
-        }
-      });
-    },
-    getTags() {
-      var _this = this;
-      getRequest("/tags/counts/").then(response => {
-        if (response.status == 200) {
-          _this.tags = response.data;
-        }
-      });
-    },
-    getTitle() {
-      var _this = this;
-      getRequest("/article/recommend/").then(response => {
-        if (response.status == 200) {
-          _this.titles = response.data;
-        }
-      });
+
+      if (articleResponse.status == 200) {
+        _this.initialArticles = articleResponse.data;
+      }
+
+      if (categoryResponse.status == 200) {
+        _this.cateArticleCount = categoryResponse.data;
+      }
+
+      if (tagsResponse.status == 200) {
+        _this.tags = tagsResponse.data;
+      }
+
+      if (titleResponse.status == 200) {
+        _this.titles = titleResponse.data;
+      }
     },
     goTags(value) {
       this.$router.push({
@@ -162,10 +176,12 @@ export default {
     }
   },
   filters: {
+    //数字过滤器：不足十位自动补0
     CountFormat: function(value) {
       var num = value.toString().padStart(2, "0");
       return `${num}`;
     },
+    //文章标题过滤器：限制标题为15字符超过加...
     TitleFormat: function(value) {
       if (value.length > 15) {
         value = value.substring(0, 15) + "...";

@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.xmh.web.blogserver.mapper.ArticleTagsMapper">
 
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
     <insert id="insertArticleTags">
         insert into article_tags (article_id, tag_id) values (#{articleId},#{tagId})
     </insert>

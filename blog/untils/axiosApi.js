@@ -50,7 +50,22 @@ axios.interceptors.response.use(
     var code = error.response.status;
     if (code === 401) {
       Message.error("尚未登录或登录过期，请先登录！");
-      router.push({ path: "/doLogin" });
+
+      router.beforeEach((to,from,next) => {
+        next({
+          path:'/doLogin',
+          query:{
+            redirect:to.fullPath
+          }
+        });
+      })
+      // console.log(router)
+      // router.push({ 
+      //   path: "/doLogin",
+      //   query:{
+      //     redirect:router.fullPath
+      //   }
+      //  });
     }
   }
 );

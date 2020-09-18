@@ -26,6 +26,7 @@ public class TagsServiceImpl implements TagsService {
 
     @Override
     public List<Tags> getAllTags() {
+
         List<Tags> tags=tagsMapper.getAllTags();
         if(tags.isEmpty()){
             throw new NullPointerException();

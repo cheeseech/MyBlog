@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.xmh.web.blogserver.mapper.ArticleMapper">
 
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
     <insert id="insertArticle" keyColumn="article_id" keyProperty="articleId" useGeneratedKeys="true">
         insert into article (title, md_content, html_content, summary, type_id, cate_id, user_id, publish_time,
         update_time, recommend, article_state, views, likes, comments, first_picture)

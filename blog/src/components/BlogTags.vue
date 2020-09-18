@@ -1,11 +1,7 @@
 <template>
-  <div id="blogTags">
+  <div id="blogTags" v-if="initialArticles">
     <el-card
       class="box-card m-radius-small m-b-margin"
-      v-loading="loading"
-      element-loading-text="玩命加载中..."
-      element-loading-spinner="el-icon-loading"
-      element-loading-background="rgba(0, 0, 0, 0.8)"
     >
       <div slot="header" class="clearfix">
         <span><strong style="font-size: 24px">标签</strong></span>
@@ -29,12 +25,16 @@
       </el-button>
     </el-card>
 
-    <blogArticle :tag_id="tagId"></blogArticle>
+    <blogArticle
+      :tag_id="tagId"
+      :initial_articles="initialArticles"
+    ></blogArticle>
   </div>
 </template>
 
 <script>
-const blogArticle = () =>import(/* webpackChunkName: "blog_article" */ "@/components/BlogArticle");
+import blogArticle from "./BlogArticle"
+import axios from "axios";
 import { getRequest } from "../../untils/axiosApi";
 
 export default {
@@ -42,36 +42,35 @@ export default {
   data() {
     return {
       tagItems: null,
+      initialArticles: null,
       tagItemsLen: 0,
-      loading: false,
       tagId: ""
     };
   },
-  created() {
-    var _this = this;
-    _this.getData();
+  beforeRouteEnter(to, from, next) {
+    axios.all([getRequest("/tags/"), getRequest("/article/")]).then(
+      axios.spread((tagsResponse, articleResponse) => {
+        next(vm => vm.setData(tagsResponse, articleResponse));
+      })
+    );
   },
   mounted() {
     /*
      * 在页面模版挂载后，判断BlogArticle是否传值过来(点击文章标签),
      * 成功则改变tagId即传值给BlogArticle生成文章列表
      * 如果没有在mounted中，将BlogArticle将监听不到tag_id的变化*/
+    // console.log("monted")
     var _this = this;
     if (_this.$route.params.value) {
       _this.tagId = _this.$route.params.value;
     }
   },
   methods: {
-    getData() {
+    setData(tagsResponse, articleResponse) {
       var _this = this;
-      getRequest("/tags/").then(response => {
-        _this.loading = true;
-        if (response.status == 200) {
-          _this.tagItems = response.data;
-          _this.tagItemsLen = _this.tagItems.length;
-          _this.loading = false;
-        }
-      });
+      _this.tagItems = tagsResponse.data;
+      _this.tagItemsLen= _this.tagItems.length;
+      _this.initialArticles = articleResponse.data;
     },
     sendIdForArticle(value) {
       var _this = this;
