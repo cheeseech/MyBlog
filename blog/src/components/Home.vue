@@ -3,16 +3,16 @@
     <el-container>
       <el-header>
         <!--导航栏-->
-        <blogNav></blogNav>
+        <blogNav class="navBarWrap"></blogNav>
       </el-header>
 
       <el-main>
         <vue-progress-bar></vue-progress-bar>
         <div class="m-container-small">
           <!--路由渲染页面-->
-                   <!-- <transition mode="out-in"> -->
-          <router-view></router-view>
-                   <!-- </transition> -->
+          <transition name="el-fade-in-linear">
+            <router-view></router-view>
+          </transition>
         </div>
       </el-main>
 
@@ -25,53 +25,53 @@
 </template>
 
 <script>
-const blogNav = () =>import(/* webpackChunkName: "blog_home" */ "@/components/BlogNav");
-const blogFooter = () =>import(/* webpackChunkName:"blog_home" */ "@/components/BlogFooter");
+const blogNav = () =>
+  import(/* webpackChunkName: "blog_home" */ "@/components/BlogNav");
+const blogFooter = () =>
+  import(/* webpackChunkName:"blog_home" */ "@/components/BlogFooter");
 
 export default {
   name: "Home",
   components: {
     blogNav: blogNav,
-    blogFooter: blogFooter
+    blogFooter: blogFooter,
   },
-  mounted () {
+  mounted() {
     //  [App.vue specific] 当App.vue加载完成，结束进度条
-    this.$Progress.finish()
+    this.$Progress.finish();
   },
-  created () {
+  created() {
     //  [App.vue specific] 当App.vue创建时，启动进度条
-    this.$Progress.start()
+    this.$Progress.start();
     //  当路由变化时，挂起进度条
     this.$router.beforeEach((to, from, next) => {
       //  判断页面是否存在 meta.progress
       if (to.meta.progress !== undefined) {
-        let meta = to.meta.progress
+        let meta = to.meta.progress;
         // parse meta tags
-        this.$Progress.parseMeta(meta)
+        this.$Progress.parseMeta(meta);
       }
       // 启动进度条
-      this.$Progress.start()
+      this.$Progress.start();
       //  continue to next page
-      next()
-    })
+      next();
+    });
     //  路由完成时，完成进度条
     this.$router.afterEach((to, from) => {
       //  finish the progress bar
-      this.$Progress.finish()
-    })
+      this.$Progress.finish();
+    });
   }
 };
 </script>
 
 <style>
-
-/* .v-enter,.v-leave-to{
-            opacity: 0;
-            transform: translateX(150px)
-        }
-        .v-enter-active,.v-leave-active{
-            transition: all 0.4s ease;
-        } */
+.navBarWrap {
+    position:fixed;
+    top:0;
+    z-index:999;
+    width:100%;
+  }
 
 .el-header {
   padding: 0;

@@ -29,92 +29,32 @@ export default new Router({
         {
           path: "index",
           name: "首页",
-          component: blogIndex,
-          meta: {
-            progress: {
-              func: [
-                {call: 'color', modifier: 'temp', argument: '#ffb000'},
-                {call: 'fail', modifier: 'temp', argument: '#6e0000'},
-                {call: 'location', modifier: 'temp', argument: 'top'},
-                {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
-              ]
-            }
-          }
+          component: blogIndex
         },
         {
           path: "article",
           name: "文章",
-          component: articleInfo,
-          meta: {
-            progress: {
-              func: [
-                {call: 'color', modifier: 'temp', argument: '#ffb000'},
-                {call: 'fail', modifier: 'temp', argument: '#6e0000'},
-                {call: 'location', modifier: 'temp', argument: 'top'},
-                {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
-              ]
-            }
-          }
+          component: articleInfo
         },
         {
           path: "category",
           name: "专栏",
-          component: blogCategory,
-          meta: {
-            progress: {
-              func: [
-                {call: 'color', modifier: 'temp', argument: '#ffb000'},
-                {call: 'fail', modifier: 'temp', argument: '#6e0000'},
-                {call: 'location', modifier: 'temp', argument: 'top'},
-                {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
-              ]
-            }
-          }
+          component: blogCategory
         },
         {
           path: "tags",
           name: "标签",
-          component: blogTags,
-          meta: {
-            progress: {
-              func: [
-                {call: 'color', modifier: 'temp', argument: '#ffb000'},
-                {call: 'fail', modifier: 'temp', argument: '#6e0000'},
-                {call: 'location', modifier: 'temp', argument: 'top'},
-                {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
-              ]
-            }
-          }
+          component: blogTags
         },
         {
           path: "archives",
           name: "归档",
-          component: blogArchives,
-          meta: {
-            progress: {
-              func: [
-                {call: 'color', modifier: 'temp', argument: '#ffb000'},
-                {call: 'fail', modifier: 'temp', argument: '#6e0000'},
-                {call: 'location', modifier: 'temp', argument: 'top'},
-                {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
-              ]
-            }
-          }
+          component: blogArchives
         },
         {
           path: "about",
           name: "关于我",
-          component: blogAbout,
-          meta: {
-            progress: {
-              func: [
-                {call: 'color', modifier: 'temp', argument: '#ffb000'},
-                {call: 'fail', modifier: 'temp', argument: '#6e0000'},
-                {call: 'location', modifier: 'temp', argument: 'top'},
-                {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
-              ]
-            }
-          }
+          component: blogAbout
         }
       ]
     },

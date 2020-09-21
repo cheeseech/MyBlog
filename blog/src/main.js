@@ -16,16 +16,16 @@ Vue.use(ElementUI);
 export const eventBus=new Vue();
 
 const options = {
-  color: '#bffaf3',
+  color: '#ffd04b',
   failedColor: '#874b4b',
-  thickness: '5px',
+  thickness: '4px',
   transition: {
-    speed: '0.2s',
-    opacity: '0.6s',
+    speed: '0.3s',
+    opacity: '0.7s',
     termination: 300
   },
   autoRevert: true,
-  location: 'left',
+  location: 'top',
   inverse: false
 }
 
@@ -39,21 +39,21 @@ new Vue({
   template: '<App/>'
 })
 
-router.beforeEach((to,from,next)=>{
-  //如果路由 meta中loginRequest为true，进行拦截
-  if(to.meta.loginRequest){
-    if(localStorage.getItem('user')){
-      next()
-    }else{
-      next({
-        path:'/doLogin',
-        query: {
-          redirect:to.fullPath
-        }
-      })
-    }
-  }else{
-    //直接进入页面
-    next()
-  }
-})
+// router.beforeEach((to,from,next)=>{
+//   //如果路由 meta中loginRequest为true，进行拦截
+//   if(to.meta.loginRequest){
+//     if(localStorage.getItem('user')){
+//       next()
+//     }else{
+//       next({
+//         path:'/doLogin',
+//         query: {
+//           redirect:to.fullPath
+//         }
+//       })
+//     }
+//   }else{
+//     //直接进入页面
+//     next()
+//   }
+// })

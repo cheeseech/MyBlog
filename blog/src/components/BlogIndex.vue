@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="40" v-if="initialArticles">
+  <el-row :gutter="40" v-show="initialArticles">
     <!--文章列表-->
     <el-col :span="15">
       <blogArticle :initial_articles="initialArticles"></blogArticle>
@@ -11,17 +11,25 @@
       <el-card shadow="always" class="box-card m-radius-small m-b-margin">
         <!--header-->
         <div slot="header" class="clearfix">
-          <span style="float: left;">
-            <svg class="icon m-svg-size" aria-hidden="true">
-              <use xlink:href="#icon-icon-"></use>
+          <span style="float: left">
+            <svg
+              class="icon m-svg-size"
+              aria-hidden="true"
+              style="font-size: 26px"
+            >
+              <use xlink:href="#icon-tuisong"></use>
             </svg>
-            专栏</span
+            <b>推荐专栏</b></span
           >
 
           <router-link to="category">
-            <el-button type="text" class="m-type-btn"
-              >更多<i class="el-icon-d-arrow-right"></i
-            ></el-button>
+            <svg
+              class="icon m-svg-size m-type-btn"
+              aria-hidden="true"
+              style="font-size: 26px"
+            >
+              <use xlink:href="#icon-jia1"></use>
+            </svg>
           </router-link>
         </div>
 
@@ -46,46 +54,53 @@
       </el-card>
 
       <!--标签-->
-      <el-card shadow="always" class="box-card m-radius-small m-b-margin">
+      <el-card shadow="always" class="m-radius-small m-b-margin card-wordCloud">
         <!--header-->
         <div slot="header" class="clearfix">
-          <span style="float: left;">
-            <svg class="icon m-svg-size" aria-hidden="true">
-              <use xlink:href="#icon-icon"></use>
+          <span style="float: left">
+            <svg
+              class="icon m-svg-size"
+              aria-hidden="true"
+              style="font-size: 26px"
+            >
+              <use xlink:href="#icon-huo"></use>
             </svg>
-            标签</span
+            <b>热门标签</b></span
           >
           <router-link to="tags">
-            <el-button type="text" class="m-type-btn"
-              >更多<i class="el-icon-d-arrow-right"></i
-            ></el-button>
+            <svg
+              class="icon m-svg-size m-type-btn"
+              aria-hidden="true"
+              style="font-size: 26px"
+            >
+              <use xlink:href="#icon-jia1"></use>
+            </svg>
           </router-link>
         </div>
 
-        <!--标签内容-->
-        <el-tag
-          class="m-margin-small m-tags-radius"
-          @click="goTags(item.tag_id)"
-          v-for="item in tags"
-          :key="item.tag_id"
-          :type="item.tag_type"
-          effect="dark"
-        >
-          <el-badge :value="item.counts" :max="10" class="item">
-            {{ item.tag_name }}
-          </el-badge>
-        </el-tag>
+        <!--引入词云组件：传入id(不能重复！) 宽高以及数据，当拿到数据后才开始渲染-->
+        <wordCloud
+          v-if="tagsData"
+          :wc_id="wordCloudId"
+          :wc_height="300"
+          :wc_width="340"
+          :wc_data="echartsData"
+        ></wordCloud>
       </el-card>
 
       <!--最新推荐-->
       <el-card shadow="always" class="box-card m-radius-small m-b-margin">
         <!--header-->
         <div slot="header" class="clearfix">
-          <span style="float: left;">
-            <svg class="icon m-svg-size" aria-hidden="true">
-              <use xlink:href="#icon-tuijian1"></use>
+          <span style="float: left">
+            <svg
+              class="icon m-svg-size"
+              aria-hidden="true"
+              style="font-size: 26px"
+            >
+              <use xlink:href="#icon-tuiguang"></use>
             </svg>
-            最新推荐</span
+            <b>最新推荐</b></span
           >
         </div>
 
@@ -101,7 +116,6 @@
       <el-divider content-position="center" class="m-t-margin divider-color"
         ><strong>扫码关注我</strong></el-divider
       >
-
       <el-card class="card-padded m-QR-size">
         <el-image :src="wechatUrl" fit="fill"></el-image>
       </el-card>
@@ -111,6 +125,7 @@
 
 <script>
 import blogArticle from "./BlogArticle";
+import wordCloud from "./WordCloud";
 import { getRequest } from "../../untils/axiosApi";
 import axios from "axios";
 
@@ -121,34 +136,1139 @@ export default {
       wechatUrl: require("./../assets/images/wechat.png"),
       cateArticleCount: null,
       initialArticles: null,
-      tags: null,
-      titles: null
+      tagsData: null,
+      titles: null,
+      wordCloudId: "wordCloud",
+      echartsData: [
+        {
+          name: "十九大精",
+          value: 15000,
+        },
+        {
+          name: "两学一",
+          value: 10081,
+        },
+        {
+          name: "中华",
+          value: 9386,
+        },
+        {
+          name: "马克义",
+          value: 7500,
+        },
+        {
+          name: "民族复兴",
+          value: 7500,
+        },
+        {
+          name: "社会主制度",
+          value: 6500,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+        {
+          name: "完整",
+          value: 2300,
+        },
+        {
+          name: "安全",
+          value: 2000,
+        },
+        {
+          name: "从治党",
+          value: 1900,
+        },
+        {
+          name: "现代化体系",
+          value: 1800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "国动员",
+          value: 1700,
+        },
+        {
+          name: "信息争",
+          value: 1600,
+        },
+        {
+          name: "局部争",
+          value: 1500,
+        },
+        {
+          name: "教育",
+          value: 1200,
+        },
+        {
+          name: "职教育",
+          value: 1100,
+        },
+        {
+          name: "法",
+          value: 900,
+        },
+        {
+          name: "两制",
+          value: 800,
+        },
+        {
+          name: "社会主义思想",
+          value: 700,
+        },
+        {
+          name: "国防皮书",
+          value: 6500,
+        },
+        {
+          name: "创新",
+          value: 6000,
+        },
+        {
+          name: "民革命",
+          value: 4500,
+        },
+        {
+          name: "文化国",
+          value: 3800,
+        },
+        {
+          name: "国权",
+          value: 3000,
+        },
+        {
+          name: "颠覆",
+          value: 2500,
+        },
+      ],
     };
   },
   beforeRouteEnter(to, from, next) {
+    //在路由组件跳转前获取数据
     axios
       .all([
         getRequest("/article/"),
         getRequest("/category/count/"),
         getRequest("/tags/counts/"),
-        getRequest("/article/recommend/")
+        getRequest("/article/recommend/"),
       ])
       .then(
         axios.spread(
           (articleResponse, categoryResponse, tagsResponse, titleResponse) => {
-            next(vm =>
+            next((vm) => {
               vm.setData(
                 articleResponse,
                 categoryResponse,
                 tagsResponse,
                 titleResponse
-              )
-            );
+              );
+            });
           }
         )
       );
   },
   methods: {
+    //数据处理
     setData(articleResponse, categoryResponse, tagsResponse, titleResponse) {
       var _this = this;
 
@@ -161,7 +1281,7 @@ export default {
       }
 
       if (tagsResponse.status == 200) {
-        _this.tags = tagsResponse.data;
+        _this.tagsData = tagsResponse.data;
       }
 
       if (titleResponse.status == 200) {
@@ -171,31 +1291,38 @@ export default {
     goTags(value) {
       this.$router.push({
         name: "标签",
-        params: { value }
+        params: { value },
       });
-    }
+    },
   },
   filters: {
     //数字过滤器：不足十位自动补0
-    CountFormat: function(value) {
+    CountFormat: function (value) {
       var num = value.toString().padStart(2, "0");
       return `${num}`;
     },
     //文章标题过滤器：限制标题为15字符超过加...
-    TitleFormat: function(value) {
+    TitleFormat: function (value) {
       if (value.length > 15) {
         value = value.substring(0, 15) + "...";
       }
       return `${value}`;
-    }
+    },
   },
   components: {
-    blogArticle: blogArticle
-  }
+    blogArticle: blogArticle,
+    wordCloud: wordCloud,
+  },
 };
 </script>
 
-<style scoped>
+<style>
+/* 词云卡片边距处理 */
+.card-wordCloud div.el-card__body {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
 /*分割线背景颜色*/
 .divider-color .el-divider__text {
   background-color: #f4f4f4;

@@ -32,7 +32,7 @@
     </select>
 
     <select id="getTagsAndCount" resultType="java.util.Map">
-        SELECT t.*,COUNT(a.article_id) counts FROM tags t
+        SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t
         LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
     </select>
 </mapper>

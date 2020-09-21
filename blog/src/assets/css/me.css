@@ -5,7 +5,7 @@
   margin: auto;
 }
 .m-container-small{
-  max-width: 65em;
+  max-width: 73em;
   margin: auto;
 }
 
@@ -120,4 +120,17 @@
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
+}
+
+/* 搜索框设置 */
+.m-search-input .el-input__inner {
+  border-top-left-radius:25px;
+  border-bottom-left-radius:25px;
+  width: auto;
+}
+.m-search-btn .el-input-group__append{
+  border-top-right-radius:25px;
+  border-bottom-right-radius:25px;
+  padding-left:5px;
+  padding-right: 5px;
 }
