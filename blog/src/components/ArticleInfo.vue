@@ -11,11 +11,19 @@
             <el-button
               type="warning"
               round
-              style="display: inline-block;float: right"
+              style="display: inline-block;float: right;margin-right: 13px;"
               class="btnPadded"
-              >原 创</el-button
+              >原创</el-button
             >
-            <h2 style="text-align: center;">失败要趁早</h2>
+            <!--专栏-->
+            <el-button
+              type="primary"
+              round
+              class="btnPadded m-r-margin-small"
+              style="float: right"
+              >Spring</el-button
+            >
+            <h2 class="m-article">失败要趁早</h2>
 
             <el-menu
               class="el-menu-demo"
@@ -146,29 +154,21 @@
               </p>
             </div>
 
-            <el-divider></el-divider>
-
-            <el-button type="primary" round class="btnPadded" effect="dark"
-              >测试</el-button
-            >
-            <el-button type="primary" round class="btnPadded" effect="dark"
-              >测试</el-button
-            >
-            <el-button type="primary" round class="btnPadded" effect="dark"
-              >测试</el-button
-            >
-            <el-button type="primary" round class="btnPadded" effect="dark"
-              >测试</el-button
-            >
-
-            <div style="margin: auto">
-              <el-button type="warning" round style="margin: auto"
-                >警告按钮</el-button
+            <div>
+              <el-button type="primary" round class="btnPadded" effect="dark"
+                >Html</el-button
+              >
+              <el-button type="primary" round class="btnPadded" effect="dark"
+                >Vue</el-button
+              >
+              <el-button type="primary" round class="btnPadded" effect="dark"
+                >Java</el-button
               >
             </div>
+            <el-divider></el-divider>
           </div>
 
-          <comment :comments="comments"></comment>
+          <!-- <comment :comments="comments"></comment> -->
         </el-card>
       </el-col>
 
@@ -187,7 +187,8 @@
 </template>
 
 <script>
-const comment = () =>import(/* webpackChunkName "blog_article" */ "@/components/Comment");
+const comment = () =>
+  import(/* webpackChunkName "blog_article" */ "@/components/Comment");
 export default {
   name: "ArticleInfo",
   data() {
@@ -260,4 +261,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.el-card >>> .el-card:hover {
+  color: #333;
+}
+.m-r-margin-small {
+  margin-right: 0.4em;
+}
+/*文章标题*/
+.m-article {
+  margin-top: 0;
+  margin-bottom: 1;
+  margin-left: 43%;
+  display: inline-block;
+}
+</style>

@@ -38,6 +38,32 @@ public class ArticleController {
         }
     }
 
+    @RequestMapping(value = "/de",method = RequestMethod.GET)
+    @ApiOperation("获取已删除状态的文章")
+    public ResultJson getArticlesDe(){
+        try {
+            List<Article> articles=articleService.getArticleByDe();
+            return new ResultJson("200","获取成功！",articles);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！"+e,null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/noDe",method = RequestMethod.GET)
+    @ApiOperation("获取未删除状态的文章")
+    public ResultJson getArticlesNoDe(){
+        try {
+            List<Article> articles=articleService.getArticleByNoDe();
+            return new ResultJson("200","获取成功！",articles);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
     @RequestMapping(value = "/{title}",method = RequestMethod.GET)
     @ApiOperation("根据标题模糊查询")
     @ApiImplicitParams({

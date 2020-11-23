@@ -27,16 +27,17 @@ public class UserManageController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/users",method = RequestMethod.POST)
+    @RequestMapping(value = "/users",method = RequestMethod.PUT)
     @ApiOperation("新建一个用户")
-    public ResultJson insertUser(@RequestBody User user){
+    public ResultJson insertUser(User user){
         try {
+            System.out.println(user);
             userService.insertUser(user);
-            return new ResultJson("201","新建成功！",null);
+            return new ResultJson("201","添加成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","新建失败！请稍后再试。",null);
+            return new ResultJson("422","添加失败！请稍后再试。",null);
         }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+            return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
     }
 
@@ -56,16 +57,16 @@ public class UserManageController {
         }
     }
 
-    @RequestMapping(value = "/users",method = RequestMethod.PUT)
+    @RequestMapping(value = "/users",method = RequestMethod.POST)
     @ApiOperation("更新一个用户")
-    public ResultJson updateUser(@RequestBody User user){
+    public ResultJson updateUser(User user){
         try {
             userService.updateByUserId(user.getUserId(),user);
             return new ResultJson("201", "更新成功！", null);
         }catch (IllegalArgumentException e){
             return new ResultJson("422","更新失败！请稍后再试。",null);
         }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+            return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
     }
 

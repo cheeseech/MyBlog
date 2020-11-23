@@ -22,6 +22,18 @@ public interface ArticleMapper {
     List<Article> getAllArticle();
 
     /**
+     * 获取删除状态的文章
+     * @return 文章集合
+     */
+    List<Article> getArticleByDe();
+
+    /**
+     * 获取未删除状态的文章
+     * @return 文章集合
+     */
+    List<Article> getArticleByNoDe();
+
+    /**
      * 根据标题模糊查询文章信息
      * @param title 标题
      * @return 文章集合
@@ -111,4 +123,24 @@ public interface ArticleMapper {
      * @return 文章信息
      */
     List<Map<String, Object>> getInfoByMonthYear(@Param("year") String year,@Param("month") String month);
+
+    /**
+     * 获取所有文章的浏览量、点赞数以及评论数
+     * @return 文章总信息集合
+     */
+    Map<String,String> getTotalData();
+
+    /**
+     * 获取近指定天数每天文章的浏览量、点赞数、评论数以及文章数量
+     * @param day 天数
+     * @return
+     */
+    List<Map<String, Object>> getMonthsData(int day);
+
+    /**
+     * 根据文章id获取文章信息
+     * @param articleId 文章ID
+     * @return 文章信息
+     */
+    Article getArticleById(@Param("article_id") Long articleId);
 }

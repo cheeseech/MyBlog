@@ -1,14 +1,22 @@
 <template>
-  <div id="blogArchives">
+  <div id="blogArchives" v-show="timeLine">
     <el-card
       class="box-card m-radius-small m-b-margin card-padded"
       v-for="(item, index) in timeLine"
       :key="index"
     >
       <div slot="header" class="clearfix">
+        <svg
+        class="icon m-svg-size"
+        aria-hidden="true"
+        style="font-size: 32px;"
+      >
+        <use xlink:href="#icon-nian"></use>
+      </svg>
         <span
           ><strong style="font-size: 24px">{{ item.years }}</strong></span
         >
+        
         <span style="float: right; padding: 3px 0"
           >共
           <strong style="font-size: 24px;color: orange">{{
@@ -25,9 +33,15 @@
           :key="index"
         >
           <template slot="title">
-            <svg class="icon m-svg-size" aria-hidden="true" color="#F56C6C">
-              <use xlink:href="#icon-shu"></use></svg>
+            <svg
+            class="icon m-svg-size"
+            aria-hidden="true"
+            style="font-size: 30px;"
+          >
+            <use xlink:href="#icon-yue"></use>
+          </svg>
               &nbsp;{{ m.months | MonthFormat }}
+              <strong style="font-size: 22px;color: orange">&nbsp;(5)</strong>
           </template>
           <el-timeline class="m-t-margin-mini">
             <el-timeline-item
@@ -37,11 +51,31 @@
               :key="index"
               :timestamp="i.publish_time"
             >
-              <i
-                class="el-icon-video-camera-solid"
-                style="font-size: 22px;color:#409EFF"
-              ></i>
-              {{ i.title }}
+            <svg
+            class="icon m-svg-size"
+            aria-hidden="true"
+            style="font-size: 28px;"
+          >
+            <use xlink:href="#icon-ri"></use>
+          </svg>
+              <b>{{ i.title }}</b>
+
+              <!--专栏-->
+        <el-button
+        type="primary"
+        round
+        class="btnPadded"
+      style="margin-left: 10px;"
+        >Java</el-button
+      >
+              <el-button
+          type="warning"
+          round
+          style="display: inline-block;"
+          class="btnPadded"
+          >原创</el-button
+        >
+        
             </el-timeline-item>
           </el-timeline>
         </el-collapse-item>
@@ -52,6 +86,7 @@
 
 <script>
 import { getRequest } from "../../untils/axiosApi";
+import axios from "axios";
 
 export default {
   name: "BlogArchives",
@@ -61,18 +96,17 @@ export default {
       timeLine: null
     };
   },
-  created() {
-    this.getTimeLine();
+  beforeRouteEnter(to,from, next){
+    getRequest("/article/timeline/").then(response => {
+        next(vm=>vm.setData(response))
+    })
   },
   methods: {
-    getTimeLine() {
-      getRequest("/article/timeline/").then(response => {
-        if (response.status == 200) {
+      setData(response){
+        if(response.status == 200){
           this.timeLine = response.data;
-          console.log(this.timeLine);
         }
-      });
-    },
+      },
     monthGroup(month, title) {
       var date1 = new Date(month);
       var date2 = new Date(title);

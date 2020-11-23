@@ -3,6 +3,7 @@ package cn.xmh.web.blogserver.service;
 import cn.xmh.web.blogserver.model.Tags;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -28,13 +29,13 @@ public interface TagsService {
      * 添加一个标签
      * @param tags 标签信息
      */
-    void insertTag(Tags tags);
+    void insertTag(Tags tags) throws SQLException;
 
     /**
      * 根据ID更新一个标签
      * @param tags 标签信息
      */
-    void updateTagById(Tags tags);
+    void updateTagById(Tags tags) throws SQLException;
 
     /**
      * 根据标签名称模糊查找

@@ -62,4 +62,10 @@ public interface CategoryMapper {
      */
     List<Map<String ,Long >> getCateArticleCount();
 
+    /**
+     * 获取专栏名、专栏概述、创建时间、浏览量、点赞数以及评论数
+     * @return 专栏分析信息
+     */
+    List<Map<String, Object>> getCateAnalysis();
+
 }

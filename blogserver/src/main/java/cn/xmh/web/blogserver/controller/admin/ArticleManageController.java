@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Xmh
@@ -79,4 +81,16 @@ public class ArticleManageController {
         }
     }
 
+    @RequestMapping(value = "/article/totalData",method = RequestMethod.GET)
+    @ApiOperation("获取文章总数据")
+    public ResultJson getTotalData(){
+        try{
+            Map<String,String> totalData=articleService.getTotalData();
+            return new ResultJson("200","获取成功！",totalData);
+        }catch (NullPointerException e){
+            return new ResultJson("422","获取失败！请稍后再试！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员！",null);
+        }
+    }
 }

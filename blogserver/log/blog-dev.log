@@ -1,1 +1,32 @@
-2020-09-21 08:23:48.360  WARN 5204 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9h31m30s12ms556µs600ns).
+2020-11-23 07:17:04.585  WARN 18360 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h8m9s438ms275µs300ns).
+2020-11-23 09:55:10.403  INFO 15600 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 15600 (D:\project\WebStorm\MyBlog\blogserver\target\classes started by Show in D:\project\WebStorm\MyBlog\blogserver)
+2020-11-23 09:55:10.406 DEBUG 15600 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-11-23 09:55:10.407  INFO 15600 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-11-23 09:55:12.844  INFO 15600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-11-23 09:55:12.852  INFO 15600 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-23 09:55:12.853  INFO 15600 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-23 09:55:12.968  INFO 15600 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-23 09:55:12.969  INFO 15600 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2521 ms
+2020-11-23 09:55:14.035  INFO 15600 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-23 09:55:14.483  INFO 15600 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@161aa04a, org.springframework.security.web.context.SecurityContextPersistenceFilter@6fbb4061, org.springframework.security.web.header.HeaderWriterFilter@43acd79e, org.springframework.security.web.authentication.logout.LogoutFilter@6ca372ef, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@11f9535b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@60c73e58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a034157, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@436bd4df, org.springframework.security.web.session.SessionManagementFilter@38f77cd9, org.springframework.security.web.access.ExceptionTranslationFilter@3b705be7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6801b414]
+2020-11-23 09:55:14.529  INFO 15600 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-23 09:55:14.811  WARN 15600 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8081 is already in use
+2020-11-23 09:55:14.812  INFO 15600 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-23 09:55:14.817  INFO 15600 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-11-23 09:55:14.825  INFO 15600 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-11-23 09:55:14.830 ERROR 15600 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+

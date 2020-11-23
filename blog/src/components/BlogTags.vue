@@ -16,10 +16,12 @@
         <el-input
           placeholder="请输入内容"
           style="float: right; width: 20%"
-          v-model="input3"
+          v-model="input"
           class="input-with-select m-search-input m-search-btn"
         >
-          <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-button slot="append"
+            ><svg class="icon m-svg-size" aria-hidden="true">
+              <use xlink:href="#icon-gosearch"></use></svg></el-button>
         </el-input>
       </div>
       <!--引入词云组件：传入id(不能重复！) 宽高以及数据,当拿到数据后才开始渲染-->
@@ -53,6 +55,7 @@ export default {
       initialArticles: null,
       tagsDataLen: 0,
       tagId: "",
+      input:"",
       wordCloudId: "wordCloud2",
       echartsData: [
         {

@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -56,26 +57,30 @@ public class TagsManageController {
         }
     }
 
-    @RequestMapping(value = "/tags",method = RequestMethod.POST)
+    @RequestMapping(value = "/tags",method = RequestMethod.PUT)
     @ApiOperation("新建一个标签")
-    public ResultJson insertTag(@RequestBody Tags tags){
+    public ResultJson insertTag(Tags tags){
         try {
             tagsService.insertTag(tags);
-            return new ResultJson("201","新建成功！",null);
+            return new ResultJson("201","新增成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","新建失败！请稍后再试。",null);
+            return new ResultJson("422","新增失败！已存在相同标签名。",null);
+        }catch (SQLException e){
+            return new ResultJson("422","新增失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
     }
 
-    @RequestMapping(value = "/tags",method = RequestMethod.PUT)
+    @RequestMapping(value = "/tags",method = RequestMethod.POST)
     @ApiOperation("更新一个标签")
-    public ResultJson updateTag(@RequestBody Tags tags){
+    public ResultJson updateTag(Tags tags){
         try {
             tagsService.updateTagById(tags);
             return new ResultJson("201", "更新成功！", null);
         }catch (IllegalArgumentException e){
+            return new ResultJson("422","更新失败！已存在相同标签名。",null);
+        }catch (SQLException e){
             return new ResultJson("422","更新失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);

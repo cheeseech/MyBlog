@@ -15,9 +15,9 @@
       active-text-color="#409eff"
       router 
     >
-      <el-menu-item index="/admin">
+      <el-menu-item index="/admin/welcome">
         <i class="el-icon-menu"></i>
-        <span slot="title">引导页</span>
+        <span slot="title">欢迎页</span>
       </el-menu-item>
       <el-menu-item index="/admin/user">
         <i class="el-icon-menu"></i>
@@ -31,7 +31,16 @@
         <i class="el-icon-document"></i>
         <span slot="title">专栏管理</span>
       </el-menu-item>
-      <el-menu-item index="5">
+      <el-submenu index="1">
+        <template slot="title">
+            <i class="el-icon-location"></i>
+            <span>文章管理</span>
+        </template>
+        <el-menu-item index="/admin/publishArticle">发布文章</el-menu-item>
+        <el-menu-item index="/admin/article">管理文章</el-menu-item>
+        <el-menu-item index="/admin/recycle">回收站</el-menu-item>
+      </el-submenu>
+      <el-menu-item index="/admin/dataManager">
         <i class="el-icon-setting"></i>
         <span slot="title">数据统计</span>
       </el-menu-item>

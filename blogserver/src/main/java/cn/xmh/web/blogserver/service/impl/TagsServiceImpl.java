@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -49,19 +50,33 @@ public class TagsServiceImpl implements TagsService {
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void insertTag(Tags tags) {
+    public void insertTag(Tags tags) throws SQLException {
+
+        //判断标签名是否相同
+        Tags checkTag=tagsMapper.getTagsName(tags.getTagName());
+        if(checkTag!=null){
+            throw  new IllegalArgumentException();
+        }
+
         int i= tagsMapper.insertTag(tags);
         if(i != 1){
-            throw new IllegalArgumentException();
+            throw new SQLException();
         }
     }
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void updateTagById(Tags tags) {
+    public void updateTagById(Tags tags) throws SQLException {
+
+        //判断标签名是否相同
+        Tags checkTag=tagsMapper.getTagsName(tags.getTagName());
+        if(checkTag!=null){
+            throw  new IllegalArgumentException();
+        }
+
         int i=tagsMapper.updateTagById(tags);
         if(i != 1){
-            throw new IllegalArgumentException();
+            throw new SQLException();
         }
     }
 

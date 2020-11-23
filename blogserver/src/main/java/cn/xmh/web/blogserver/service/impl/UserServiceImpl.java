@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,10 +41,9 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         logger.info("登录用户名:{}",userName);
         User user=userMapper.getUserByUserName(userName);
-
         if(user == null){
             //避免返回null，这里返回一个不含有任何值的User对象，在后期的密码比对过程中一样会验证失败
-            return new User();
+            return new User(true);
         }
         String passWord=passwordEncoder.encode(user.getPassword());
         logger.info("登录密码:{}",passWord);
@@ -66,6 +67,9 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void insertUser(User user) {
+        Date date=new Date();
+        user.setCreateTime(date);
+        user.setUpdateTime(date);
         int i=userMapper.insertUser(user);
         if(i != 1){
             throw new IllegalArgumentException();
@@ -84,6 +88,7 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void updateByUserId(Long userId, User user) {
+        user.setUpdateTime(new Date());
         int i= userMapper.updateByUserId(userId,user);
         if(i != 1){
             throw new IllegalArgumentException();

@@ -9,14 +9,13 @@
         )
       "
       highlight-current-row
-      @current-change="handleCurrentChange()"
       @selection-change="handleSelectionChange()"
       style="width: 100%;"
     >
-      <el-table-column type="selection" width="55"> </el-table-column>
+      <el-table-column type="selection" width="45"> </el-table-column>
       <el-table-column label="序号" type="index" width="50"> </el-table-column>
 
-      <el-table-column label="头像" width="90">
+      <el-table-column label="头像" width="75">
         <template slot-scope="scope">
           <el-avatar :size="50" :src="scope.row.userFace"></el-avatar>
         </template>
@@ -45,7 +44,7 @@
       <el-table-column
         label="邮箱"
         prop="email"
-        width="190"
+        width="170"
         show-overflow-tooltip
       >
       </el-table-column>
@@ -61,12 +60,12 @@
           </el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" sortable width="200">
+      <el-table-column label="创建时间" sortable width="170">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime | dateFormat }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="更新时间" sortable width="200">
+      <el-table-column label="更新时间" sortable width="170">
         <template slot-scope="scope">
           <span>{{ scope.row.updateTime | dateFormat }}</span>
         </template>
@@ -78,28 +77,28 @@
             style="width:50%"
             v-model="search"
             size="mini"
-            placeholder="输入关键字搜索"
+            placeholder="输入用户名搜索"
           />
           &emsp;
-          <el-button type="primary" size="mini">新增用户</el-button>
+          <el-button type="primary" size="mini" @click="handleCurrentChange()"
+            >新增用户</el-button
+          >
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" @click="centerDialogVisible = true"
+          <el-button size="mini" @click="handleCurrentChange(scope.row)"
             >编辑</el-button
           >
 
+          &emsp;
           <el-popconfirm
-            confirmButtonText="好的"
-            cancelButtonText="不用了"
+            confirmButtonText="残忍删除"
+            cancelButtonText="我再想想"
             icon="el-icon-info"
             iconColor="red"
-            title="这是一段内容确定删除吗？"
+            title="确定删除这一条信息吗？"
+            @onConfirm="handleDelete(scope.$index, scope.row)"
           >
-            <el-button
-              slot="reference"
-              size="mini"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)"
+            <el-button slot="reference" size="mini" type="danger"
               >删除</el-button
             >
           </el-popconfirm>
@@ -113,20 +112,30 @@
       width="30%"
       center
     >
-      <el-form :model="form" label-position="right">
+      <el-form :model="form" status-icon :rules="rules" ref="from" label-position="right" class="demo-ruleForm">
+        <el-form-item>
+          <el-avatar
+            :size="60"
+            :src="form.userFace"
+            style="margin-left: 43%;"
+          ></el-avatar>
+        </el-form-item>
         <el-form-item label="昵称:" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.nickName" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="用户名:" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+        <el-form-item label="用户名:" :label-width="formLabelWidth" required>
+          <el-input v-model="form.userName" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="密码:" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+        <el-form-item label="密码:" prop="password" :label-width="formLabelWidth" required>
+          <el-input v-model="form.password" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱:" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+        <el-form-item label="确认密码:" prop="checkPassword" :label-width="formLabelWidth" required>
+            <el-input v-model="form.checkPassword" autocomplete="off"></el-input>
+          </el-form-item>
+        <el-form-item label="邮箱:" :label-width="formLabelWidth" required>
+          <el-input v-model="form.email"></el-input>
         </el-form-item>
-        <el-form-item label="状态:" :label-width="formLabelWidth">
+        <el-form-item label="状态:" :label-width="formLabelWidth" required>
           <el-switch
             style="display: block"
             active-color="#13ce66"
@@ -135,57 +144,151 @@
           >
           </el-switch>
         </el-form-item>
-        <el-form-item>
-          <el-button @click="centerDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="centerDialogVisible = false"
-            >确 定</el-button
-          >
-        </el-form-item>
       </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
+      </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import { getRequest } from "../../../untils/axiosApi";
+import { deleteRequest } from "../../../untils/axiosApi";
+import { postRequest } from "../../../untils/axiosApi";
+import { putRequest } from "../../../untils/axiosApi";
+import { Message } from "element-ui";
+import axios from "axios";
+
 
 export default {
   name: "UserManager",
   data() {
+      var validatePass=(rule,value,callback)=>{
+          console.log(value)
+        if(value===''){
+            callback(new Error("请输入密码！"));
+        }else{
+            if(this.form.checkPassword !==''){
+                this.$refs.rules.validateField('checkPassword')
+            }
+            callback();
+        }
+      };
+      var validateCheckPass=(rule,value,callback)=>{
+          if(value ===''){
+              callback("请再次输入密码！");
+          }else if(value!==this.form.password){
+            callback("两次输入密码不一致！");
+          }else{
+              callback();
+          }
+      };
     return {
       visible: false,
-      formLabelWidth: "100px",
+      formLabelWidth: "90px",
       centerDialogVisible: false,
       userInfo: [],
       search: "",
       form: {
-        name: ""
+        userId: "",
+        userFace: "",
+        nickName: "",
+        userName: "",
+        password: "",
+        checkPassword:"",
+        email: "",
+        enabled: false
+      },
+      rules: {
+        password:[{validator:validatePass,trigger:'blur'}],
+          checkPassword:[{validator:validateCheckPass,trigger:'blur'}]
       }
     };
   },
-  created() {
-    this.getUsers();
+  beforeRouteEnter(to, from, next){
+    axios.all([getRequest("/admin/users/")]).then(
+        axios.spread(response => {
+        next(vm=>{
+            vm.setData(response)
+        })
+    }))
   },
   methods: {
-    getUsers() {
-      var _this = this;
-      getRequest("/admin/users/").then(response => {
+    setData(response) {
         if (response.status == 200) {
-          _this.userInfo = response.data;
-          console.log(_this.userInfo);
+          this.userInfo = response.data;
+        }
+    },
+    onSubmit() {
+      this.centerDialogVisible = false;
+      if (this.form.userId == "") {
+        this.insertUser();
+      } else {
+        this.updateUser();
+      }
+    },
+    updateUser() {
+      postRequest("/admin/users/", this.form).then(response => {
+        if (response.status == 201) {
+          Message.success(response.msg);
+          this.getUsers();
+        } else {
+          Message.error(response.msg);
         }
       });
     },
-    onSubmit() {
-      console.log("submit!");
+    insertUser() {
+        this.form.userFace="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80";
+        putRequest("/admin/users/",this.form).then(response =>{
+            if(response.status == 201){
+                Message.success(response.msg);
+                this.getUsers();
+            }else{
+                Message.error(response.msg);
+            }
+        });
     },
-    handleCurrentChange(val) {
-      this.currentRow = val;
-      console.log(this.currentRow);
+    handleCurrentChange(row) {
+      this.centerDialogVisible = true;
+      if (row != undefined) {
+        this.form = {
+          userId: row.userId,
+          userFace: row.userFace,
+          nickName: row.nickName,
+          userName: row.username,
+          password: row.password,
+          checkPassword:row.password,
+          email: row.email,
+          enabled: row.enabled
+        };
+      } else {
+        this.form = {
+          userId: "",
+          userFace: "",
+          nickName: "",
+          userName: "",
+          password: "",
+          checkPassword:"",
+          email: "",
+          enabled: false
+        };
+      }
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
       console.log(this.multipleSelection);
+    },
+    handleDelete(index, row) {
+      deleteRequest("/admin/users/" + row.userId).then(response => {
+        if (response.status == 204) {
+          Message.success(response.msg);
+          this.getUsers();
+        } else {
+          Message.error(response.msg);
+        }
+      });
     }
   },
   filters: {

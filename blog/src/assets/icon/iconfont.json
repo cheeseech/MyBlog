@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "7534048",
+      "name": "年",
+      "font_class": "nian",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "7534049",
+      "name": "月",
+      "font_class": "yue",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "8365440",
+      "name": "日",
+      "font_class": "ri",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "1835043",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "4194761",
+      "name": "信封",
+      "font_class": "xinfeng",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "9613101",
+      "name": "GitHub",
+      "font_class": "GitHub",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "10091012",
+      "name": "qq",
+      "font_class": "qq",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "11765468",
+      "name": "书签",
+      "font_class": "shuqian",
+      "unicode": "efb7",
+      "unicode_decimal": 61367
+    },
+    {
+      "icon_id": "12018263",
+      "name": "go search",
+      "font_class": "gosearch",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
       "icon_id": "11412555",
       "name": "推广",
       "font_class": "tuiguang",

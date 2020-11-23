@@ -1,59 +1,45 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import VueProgressBar from 'vue-progressbar'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import router from './router'
-import '@/assets/icon/iconfont.js'
-import '@/assets/css/me.css'
+import Vue from "vue";
+import App from "./App";
+import VueProgressBar from "vue-progressbar";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import router from "./router";
+import "@/assets/icon/iconfont.js";
+import "@/assets/css/me.css";
+import mavonEditor from "mavon-editor";
+import "mavon-editor/dist/css/index.css";
+import echarts from 'echarts'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
+Vue.prototype.$echarts=echarts;
 
 //使用eventBus架起兄弟之间通讯的桥梁
-export const eventBus=new Vue();
+export const eventBus = new Vue();
 
 const options = {
-  color: '#ffd04b',
-  failedColor: '#874b4b',
-  thickness: '4px',
+  color: "#ffd04b",
+  failedColor: "#874b4b",
+  thickness: "4px",
   transition: {
-    speed: '0.3s',
-    opacity: '0.7s',
+    speed: "0.3s",
+    opacity: "0.7s",
     termination: 300
   },
   autoRevert: true,
-  location: 'top',
+  location: "top",
   inverse: false
-}
+};
 
-Vue.use(VueProgressBar, options)
+Vue.use(mavonEditor);
+Vue.use(VueProgressBar, options);
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
   components: { App },
-  template: '<App/>'
-})
-
-// router.beforeEach((to,from,next)=>{
-//   //如果路由 meta中loginRequest为true，进行拦截
-//   if(to.meta.loginRequest){
-//     if(localStorage.getItem('user')){
-//       next()
-//     }else{
-//       next({
-//         path:'/doLogin',
-//         query: {
-//           redirect:to.fullPath
-//         }
-//       })
-//     }
-//   }else{
-//     //直接进入页面
-//     next()
-//   }
-// })
+  template: "<App/>"
+});

@@ -4,6 +4,7 @@ import cn.xmh.web.blogserver.model.Category;
 import cn.xmh.web.blogserver.model.Tags;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -37,24 +38,30 @@ public interface CategoryService {
      * 插入专栏信息
      * @param category 专栏信息
      */
-    void insertCategory(Category category);
+    void insertCategory(Category category) throws SQLException;
 
     /**
      *  根据专栏ID删除专栏
      * @param cateId 专栏ID
      */
-    void deleteByCategoryId(Long cateId);
+    void deleteByCategoryId(Long cateId) throws SQLException;
 
     /**
      * 根据专栏ID更新专栏信息
      * @param category 专栏信息
      */
-    void updateByCategoryId(Category category);
+    void updateByCategoryId(Category category) throws SQLException;
 
     /**
      * 获取专栏名及专栏的文章数
      * @return 专栏名及专栏的文章数
      */
     List<Map<String, Long>> getCateArticleCount();
+
+    /**
+     * 获取专栏名、专栏概述、创建时间、文章数、浏览量、点赞数以及评论数
+     * @return 专栏分析信息
+     */
+    List<Map<String, Object>> getCateAnalysis();
 
 }

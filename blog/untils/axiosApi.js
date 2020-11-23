@@ -1,4 +1,5 @@
 import axios from "axios";
+import Qs from "qs";
 import { Message } from "element-ui";
 import router from "@/router/index";
 
@@ -41,6 +42,34 @@ export const postRequest = (url, params) => {
   });
 };
 
+export const putRequest = (url, params) => {
+  return axios({
+    method: "put",
+    url: `${base}${url}`,
+    data: params,
+    transformRequest: [
+      function(data) {
+        let ret = "";
+        for (let it in data) {
+          ret +=
+            encodeURIComponent(it) + "=" + encodeURIComponent(data[it]) + "&";
+        }
+        return ret;
+      }
+    ],
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  });
+};
+
+export const deleteRequest = url => {
+  return axios({
+    method: "delete",
+    url: `${base}${url}`
+  });
+};
+
 axios.interceptors.response.use(
   response => {
     let { data } = response;
@@ -50,22 +79,9 @@ axios.interceptors.response.use(
     var code = error.response.status;
     if (code === 401) {
       Message.error("尚未登录或登录过期，请先登录！");
-
-      router.beforeEach((to,from,next) => {
-        next({
-          path:'/doLogin',
-          query:{
-            redirect:to.fullPath
-          }
-        });
-      })
-      // console.log(router)
-      // router.push({ 
-      //   path: "/doLogin",
-      //   query:{
-      //     redirect:router.fullPath
-      //   }
-      //  });
+      router.push({
+        path: "/doLogin"
+      });
     }
   }
 );

@@ -84,4 +84,32 @@
         SELECT article_id,title,publish_time FROM article
         WHERE MONTH(publish_time)=#{month} AND YEAR(publish_time)=#{year}
     </select>
+
+    <select id="getTotalData" resultType="java.util.Map">
+        SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+    </select>
+
+    <select id="getMonthsData" resultType="java.util.Map">
+        SELECT date_format(update_time, '%Y-%m-%d' ) days,SUM(views) views,SUM(likes) likes,SUM(comments) comments,COUNT(article_id) article
+        FROM ( SELECT * FROM article WHERE DATE_SUB( CURDATE( ), INTERVAL #{day} DAY ) &lt;= date( update_time) ) as t GROUP BY days
+    </select>
+
+    <select id="getArticleById" resultType="cn.xmh.web.blogserver.model.Article">
+        select * from article where article_id=#{article_id}
+    </select>
+
+    <select id="getArticleByDe" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+        where article_state = -1
+    </select>
+
+    <select id="getArticleByNoDe" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+        where article_state != -1
+    </select>
+
 </mapper>

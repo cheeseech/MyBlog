@@ -19,6 +19,18 @@ public interface ArticleService {
     List<Article> getAllArticle();
 
     /**
+     * 获取已删除状态的文章
+     * @return 文章集合
+     */
+    List<Article> getArticleByDe();
+
+    /**
+     * 获取未删除状态的文章
+     * @return 文章集合
+     */
+    List<Article> getArticleByNoDe();
+
+    /**
      * 根据标题模糊查询文章信息
      * @param title 标题
      * @return 文章集合
@@ -90,4 +102,9 @@ public interface ArticleService {
      */
     List<Map<String,Object>> getTimeLine();
 
+    /**
+     * 获取总文章数据
+     * @return 总文章数据
+     */
+    Map<String ,String> getTotalData();
 }

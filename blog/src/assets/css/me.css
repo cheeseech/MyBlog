@@ -1,52 +1,50 @@
-
 /*container*/
-.m-container{
+.m-container {
   max-width: 72em;
   margin: auto;
 }
-.m-container-small{
+.m-container-small {
   max-width: 73em;
   margin: auto;
 }
 
 /*padded*/
-.m-padded-mini{
+.m-padded-mini {
   padding: 0 !important;
 }
-.m-lf-padded-small{
+.m-lf-padded-small {
   padding-left: 30px;
   padding-right: 30px;
 }
 
 /*margin*/
-.m-margin-mini{
-  margin:0.3em;
+.m-margin-mini {
+  margin: 0.3em;
 }
-.m-margin-small{
-  margin:0.5em 0.8em 0.5em 0.5em;
+.m-margin-small {
+  margin: 0.5em 0.8em 0.5em 0.5em;
 }
-.m-t-margin{
+.m-t-margin {
   margin-top: 2.5em;
 }
-.m-t-margin-small{
+.m-t-margin-small {
   margin-top: 1.5em;
 }
-.m-t-margin-mini{
+.m-t-margin-mini {
   margin-top: 0.8em;
 }
-.m-b-margin{
+.m-b-margin {
   margin-bottom: 1.5em;
 }
-.m-b-margin-mini{
+.m-b-margin-mini {
   margin-bottom: 0.4em;
 }
 
-
 /*radius*/
-.m-radius-small{
+.m-radius-small {
   border-radius: 20px;
 }
-.m-radius-big{
+.m-radius-big {
   border-radius: 25px;
 }
 
@@ -60,17 +58,17 @@
 }
 
 /*icon尺寸*/
-.m-svg-size{
+.m-svg-size {
   font-size: 24px;
 }
 
 /*标签圆角*/
-.m-tags-radius{
+.m-tags-radius {
   border-radius: 11px;
 }
 
 /*去除卡片padding*/
-.card-padded div.el-card__body{
+.card-padded div.el-card__body {
   padding: 0;
 }
 
@@ -79,36 +77,42 @@
   border-bottom: 0;
 }
 
-.m-padded div.el-collapse-item__header{
+.m-padded div.el-collapse-item__header {
   padding-left: 20px;
   font-weight: bold;
   font-size: 14px;
 }
 
-/*鼠标悬浮图片放大*/
-.img-transform{
-  transition:transform 0.7s;
+/*鼠标悬浮卡片放大*/
+.img-transform {
+  transition: transform 0.4s;
 }
 .img-transform:hover {
   /*倍数*/
-  transform:scale(1.05)
+  transform: scale(1.04);
 }
-
+.el-card {
+  transition: transform 0.2s;
+}
+.el-card:hover {
+  /*倍数*/
+  transform: translateZ(0) scale(1.02);
+}
 /*文章icon文字对齐*/
-.m-article-icon{
-  vertical-align:middle;
+.m-article-icon {
+  vertical-align: middle;
 }
-.m-article-icon-text{
-  font-size:15px
+.m-article-icon-text {
+  font-size: 15px;
 }
 
 /*行间距*/
-.m-text-lined{
+.m-text-lined {
   line-height: 1.7;
 }
 
 /*圆角按钮padding*/
-.btnPadded.el-button.is-round{
+.btnPadded.el-button.is-round {
   padding: 6px 8px;
 }
 
@@ -124,13 +128,82 @@
 
 /* 搜索框设置 */
 .m-search-input .el-input__inner {
-  border-top-left-radius:25px;
-  border-bottom-left-radius:25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
   width: auto;
 }
-.m-search-btn .el-input-group__append{
-  border-top-right-radius:25px;
-  border-bottom-right-radius:25px;
-  padding-left:5px;
+.m-search-btn .el-input-group__append {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-left: 5px;
   padding-right: 5px;
+}
+/* 导航栏阴影 */
+.m-menu{
+    box-shadow: 0px 5px 4px rgb(131, 131, 131);
+}
+
+/* logo动态文字 */
+.logo-text{
+    width:230px;
+    height: 60px;
+    font-size: 200px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    
+}
+.logo-text svg{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+.text{
+    fill:none;
+    stroke-width: 17;
+    stroke-dasharray: 0 240;
+    stroke-dashoffset: 0;
+}
+.text:nth-child(4n + 1){
+    stroke:#409EFF;
+    animation: text1 4s ease-in-out forwards;
+}
+.text:nth-child(4n + 2){
+    stroke:#67C23A;
+    animation: text2 4s ease-in-out forwards;
+}
+
+.text:nth-child(4n + 3){
+    stroke:rgb(249,189,52);
+    animation: text3 4s ease-in-out forwards;
+}
+
+.text:nth-child(4n + 4){
+    stroke:rgb(235,61,50);
+    animation: text4 4s ease-in-out forwards;
+}
+
+@keyframes text1{
+    100%{
+        stroke-dashoffset: 1000;
+    stroke-dasharray:60 180;
+    }
+}
+@keyframes text2{
+    100%{
+        stroke-dashoffset: 1060;
+    stroke-dasharray:60 180;
+    }
+}
+@keyframes text3{
+    100%{
+        stroke-dashoffset: 1120;
+    stroke-dasharray:60 180;
+    }
+}
+@keyframes text4{
+    100%{
+        stroke-dashoffset: 1180;
+    stroke-dasharray:60 180;
+    }
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,8 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> getAllCategory() {
         List<Category> category= categoryMapper.getAllCategory();
+
+        //判断集合是否为空
         if(category.isEmpty()){
             throw  new NullPointerException();
         }
@@ -52,38 +56,60 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void insertCategory(Category category) {
+    public void insertCategory(Category category) throws SQLException {
+
+        //判断是否存在相同专栏名
+        Category checkCategory=categoryMapper.getByCategoryName(category.getCateName());
+        if(checkCategory!=null) {
+            throw new IllegalArgumentException();
+        }
+        category.setCreateTime(new Date());
         int i= categoryMapper.insertCategory(category);
         if (i != 1) {
-            throw new IllegalArgumentException();
+            throw new SQLException();
         }
     }
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void deleteByCategoryId(Long cateId) {
+    public void deleteByCategoryId(Long cateId) throws SQLException {
         int i= categoryMapper.deleteByCategoryId(cateId);
         if (i != 1) {
-            throw new IllegalArgumentException();
+            throw new SQLException();
         }
     }
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void updateByCategoryId(Category category) {
+    public void updateByCategoryId(Category category) throws SQLException {
+
+        //判断是否存在相同专栏名
+        Category checkCategory=categoryMapper.getByCategoryName(category.getCateName());
+        if(checkCategory!=null){
+            throw new IllegalArgumentException();
+        }
+
         int i= categoryMapper.updateByCategory(category);
         if (i != 1) {
-            throw new IllegalArgumentException();
+            throw new SQLException();
         }
     }
 
     @Override
     public List<Map<String, Long>> getCateArticleCount() {
         List<Map<String, Long>> map=categoryMapper.getCateArticleCount();
-        System.out.println(map);
         if(map.isEmpty()){
             throw  new NullPointerException();
         }
         return map;
+    }
+
+    @Override
+    public List<Map<String, Object>> getCateAnalysis() {
+        List<Map<String, Object>> category=categoryMapper.getCateAnalysis();
+        if(category.isEmpty()){
+            throw new NullPointerException();
+        }
+        return category;
     }
 }

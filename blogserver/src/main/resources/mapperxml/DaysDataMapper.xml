@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xmh.web.blogserver.mapper.DaysDataMapper">
+
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+    <insert id="newDay">
+        insert into days_data(days,views,likes,comments,article_id)
+        values (#{days},#{views},#{likes},#{comments},#{articleId})
+    </insert>
+
+    <select id="getDataByRange" resultType="cn.xmh.web.blogserver.model.DaysData">
+        select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments'
+        from days_data where days &gt;=#{start} and days &lt;=#{end}
+        GROUP BY days
+    </select>
+
+    <select id="getSingleArticle" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d
+        LEFT JOIN article a on d.article_id=a.article_id
+        where days &gt;=#{start} and days &lt;=#{end}
+        GROUP BY d.article_id
+    </select>
+</mapper>

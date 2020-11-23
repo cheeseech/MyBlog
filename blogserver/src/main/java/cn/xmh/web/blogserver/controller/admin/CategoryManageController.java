@@ -10,7 +10,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Xmh
@@ -40,29 +42,33 @@ public class CategoryManageController {
         }
     }
 
-    @RequestMapping(value = "/category",method = RequestMethod.POST)
+    @RequestMapping(value = "/category",method = RequestMethod.PUT)
     @ApiOperation("新建一个专栏")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name",value = "专栏名",dataType = "string",required = true)
     })
-    public ResultJson insertCategory(@RequestBody Category category){
+    public ResultJson insertCategory(Category category){
         try {
             categoryService.insertCategory(category);
-            return new ResultJson("201","新建成功！",null);
+            return new ResultJson("201","新增成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","新建失败！请稍后再试。",null);
+            return new ResultJson("422","新增失败！已存在相同专栏名。",null);
+        }catch (SQLException e){
+            return new ResultJson("422","新增失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
     }
 
-    @RequestMapping(value = "/category",method = RequestMethod.PUT)
+    @RequestMapping(value = "/category",method = RequestMethod.POST)
     @ApiOperation("更新一个专栏")
-    public ResultJson updateCategory(@RequestBody Category category){
+    public ResultJson updateCategory(Category category){
         try {
             categoryService.updateByCategoryId(category);
             return new ResultJson("201", "更新成功！", null);
         }catch (IllegalArgumentException e){
+            return new ResultJson("422","更新失败！已存在相同专栏名。",null);
+        }catch (SQLException e){
             return new ResultJson("422","更新失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
@@ -85,4 +91,16 @@ public class CategoryManageController {
         }
     }
 
+    @RequestMapping(value = "/category/analysis",method = RequestMethod.GET)
+    @ApiOperation("获取专栏数据分析")
+    public ResultJson getCateAnalysis(){
+        try{
+            List<Map<String,Object>> category=categoryService.getCateAnalysis();
+            return new ResultJson("200","获取成功！",category);
+        }catch (NullPointerException e){
+            return new ResultJson("422","获取失败！请稍后再试！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员！",null);
+        }
+    }
 }

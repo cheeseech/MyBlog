@@ -101,4 +101,8 @@ public class User implements UserDetails {
     public String getUsername() {
         return userName;
     }
+
+    public User(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }

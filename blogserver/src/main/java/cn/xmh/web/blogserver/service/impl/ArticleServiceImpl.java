@@ -6,22 +6,24 @@ import cn.xmh.web.blogserver.mapper.TagsMapper;
 import cn.xmh.web.blogserver.model.Article;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.ArticleService;
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import springfox.documentation.schema.Entry;
 
 import javax.annotation.Resource;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Xmh
  * @date 2020/7/29 15:44
  */
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class ArticleServiceImpl implements ArticleService
+{
 
     @Resource
     private ArticleMapper articleMapper;
@@ -33,6 +35,32 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<Article> getAllArticle() {
         List<Article> articles= articleMapper.getAllArticle();
+
+        return insertTagsIntoArticle(articles);
+    }
+
+    @Override
+    public List<Article> getArticleByDe() {
+        List<Article> articles= articleMapper.getArticleByDe();
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+        return articles;
+    }
+
+    @Override
+    public List<Article> getArticleByNoDe() {
+        List<Article> articles= articleMapper.getArticleByNoDe();
+
+        return insertTagsIntoArticle(articles);
+    }
+
+    /**
+     * 为文章集合添加标签信息
+     * @param articles
+     * @return
+     */
+    public List<Article> insertTagsIntoArticle(List<Article> articles){
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
@@ -76,14 +104,27 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void deleteByArticleId(Long articleId) {
-        //删除文章标签关联
-        articleTagsMapper.deleteByArticleId(articleId);
+        Article article=articleMapper.getArticleById(articleId);
+        //若文章是草稿箱状态则直接删除
+        if(article.getArticleState() == 0){
+            //删除文章标签关联
+            articleTagsMapper.deleteByArticleId(articleId);
 
-        //删除文章
-        int i= articleMapper.deleteByArticleId(articleId);
-        if(i != 1){
-            throw new IllegalArgumentException();
+            //删除文章
+            int i= articleMapper.deleteByArticleId(articleId);
+            if(i != 1){
+                throw new IllegalArgumentException();
+            }
+        }else {
+            //若文章是已发布状态，则将其修改为已删除状态并且添加删除时间
+            article.setArticleState(-1);
+            article.setUpdateTime(new Date());
+            int i=articleMapper.updateByArticleId(articleId,article);
+            if(i != 1){
+                throw new IllegalArgumentException();
+            }
         }
+
     }
 
     @Override
@@ -190,4 +231,14 @@ public class ArticleServiceImpl implements ArticleService {
         }
         return years;
     }
+
+    @Override
+    public Map<String, String> getTotalData() {
+        Map<String,String> totalData=articleMapper.getTotalData();
+        if(totalData.isEmpty()){
+            throw new NullPointerException();
+        }
+        return totalData;
+    }
 }
+

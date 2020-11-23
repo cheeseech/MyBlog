@@ -3,15 +3,33 @@
   <el-menu
     :default-active="activeIndex"
     router
-    class="el-menu-demo"
+    class="el-menu-demo m-menu"
     mode="horizontal"
-    background-color="#336699"
+    background-color="#3f72af"
     text-color="white"
     active-text-color="#ffd04b"
   >
     <!--logo-->
     <el-menu-item>
-      <el-image :src="logoUrl" fit="fill" class="m-logo-size"></el-image>
+      <el-image
+        :src="logoUrl"
+        fit="fill"
+        class="m-logo-size"
+        style="float: left;"
+      ></el-image>
+      <!-- 动态文字-->
+      <div class="logo-text">
+        <svg viewBox="0 0 1300 200">
+          <symbol id="line-text">
+            <text text-anchor="middle" x="33%" y="50%" dy=".4em">CHEESE</text>
+          </symbol>
+
+          <use xlink:href="#line-text" class="text"></use>
+          <use xlink:href="#line-text" class="text"></use>
+          <use xlink:href="#line-text" class="text"></use>
+          <use xlink:href="#line-text" class="text"></use>
+        </svg>
+      </div>
     </el-menu-item>
 
     <el-menu-item index="/index">
@@ -56,7 +74,9 @@
         v-model="input"
         class="input-with-select m-search-input m-search-btn"
       >
-        <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-button slot="append"
+          ><svg class="icon m-svg-size" aria-hidden="true">
+            <use xlink:href="#icon-gosearch"></use></svg></el-button>
       </el-input>
     </el-menu-item>
   </el-menu>
@@ -72,21 +92,21 @@ export default {
     return {
       activeIndex: "/index",
       input: "",
-      logoUrl: require("./../assets/images/logo.png"),
+      logoUrl: require("./../assets/images/logo.png")
     };
   },
   watch: {
     //监听路由变化切换导航
     $route(to, from) {
       this.activeIndex = to.path;
-    },
+    }
   },
   methods: {
     //发送搜索关键字到BlogArticle
     sendInput() {
       eventBus.$emit("title", this.input);
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
@@ -94,6 +114,7 @@ export default {
 .m-logo-size {
   width: 50px;
   height: 50px;
+  margin-top: 7px;
 }
 /* 导航栏搜索框 */
 .m-search {
