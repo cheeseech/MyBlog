@@ -1,4 +1,4 @@
-package cn.xmh.web.blogserver.config;
+package cn.xmh.web.blogserver.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

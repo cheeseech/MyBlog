@@ -22,6 +22,12 @@ public interface ArticleMapper {
     List<Article> getAllArticle();
 
     /**
+     * 分页查询用户
+     * @return 文章集合
+     */
+    List<Article> getAllPage();
+
+    /**
      * 获取删除状态的文章
      * @return 文章集合
      */
@@ -91,10 +97,10 @@ public interface ArticleMapper {
 
     /**
      * 获取某标签下的所有文章
-     * @param tagId
+     * @param tagId 标签ID
      * @return
      */
-    List<Article> getArticleByTagId(@Param("tagId") Long tagId);
+    List<Article> getArticleByTagId(@Param("tag_id") Long tagId);
 
     /**
      * 获取某专栏下的所有文章
@@ -143,4 +149,10 @@ public interface ArticleMapper {
      * @return 文章信息
      */
     Article getArticleById(@Param("article_id") Long articleId);
+
+    /**
+     * 获取文章数量
+     * @return 文章数量
+     */
+    Integer getArticleNum();
 }

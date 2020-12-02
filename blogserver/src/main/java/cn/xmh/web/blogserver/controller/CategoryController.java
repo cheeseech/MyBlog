@@ -1,6 +1,6 @@
 package cn.xmh.web.blogserver.controller;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Category;
 import cn.xmh.web.blogserver.service.CategoryService;
 import io.swagger.annotations.Api;
@@ -38,7 +38,7 @@ public class CategoryController {
         }
     }
 
-    @RequestMapping(value = "/count",method = RequestMethod.GET)
+    @RequestMapping(value = "/counts",method = RequestMethod.GET)
     @ApiOperation("获取所有专栏信息")
     public ResultJson getCateArticleCount(){
         try{

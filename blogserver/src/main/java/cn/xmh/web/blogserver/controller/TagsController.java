@@ -1,6 +1,6 @@
 package cn.xmh.web.blogserver.controller;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.TagsService;
 import io.swagger.annotations.Api;
@@ -68,6 +68,22 @@ public class TagsController {
             return new ResultJson("400","该文章标签不存在！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/like/{tagName}",method = RequestMethod.GET)
+    @ApiOperation("根据名称模糊搜索标签")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "tagName",value = "名称" ,dataType = "String",required = true)
+    })
+    public ResultJson getLikeTags(@PathVariable String tagName){
+        try{
+            List<Map<String, String>> tags=tagsService.getTagsAndCountLike(tagName);
+            return new ResultJson("200","搜索成功！",tags);
+        }catch (NullPointerException e){
+            return new ResultJson("422","搜索失败！请稍后再试！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员！",null);
         }
     }
 }

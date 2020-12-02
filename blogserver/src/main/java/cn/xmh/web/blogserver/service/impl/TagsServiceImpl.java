@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -105,5 +106,14 @@ public class TagsServiceImpl implements TagsService {
             throw new NullPointerException();
         }
         return maps;
+    }
+
+    @Override
+    public List<Map<String, String>> getTagsAndCountLike(String tagName) {
+        List<Map<String, String>> tags=tagsMapper.getTagsAndCountLike(tagName);
+        if(tags.isEmpty()){
+            throw new NullPointerException();
+        }
+        return tags;
     }
 }

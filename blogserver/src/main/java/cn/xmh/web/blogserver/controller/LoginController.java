@@ -1,6 +1,6 @@
 package cn.xmh.web.blogserver.controller;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -61,4 +61,31 @@ public interface TagsMapper {
      */
     List<Map<String,String>> getTagsAndCount();
 
+    /**
+     * 根据标签名模糊获取标签及标签文章数
+     * @param tagName
+     * @return
+     */
+    List<Map<String, String>> getTagsAndCountLike(@Param("tag_name") String tagName);
+
+    /**
+     * 根据名称模糊搜索标签
+     * @param input 名称
+     * @return 标签集合
+     */
+    List<Tags> getLikeTags(String input);
+
+    /**
+     * 获取标签数量
+     * @return 标签数量
+     */
+    Integer getTagsNum();
+
+    /**
+     * 根据标签名获取标签ID
+     * @param tagName 标签名
+     * @return
+     */
+    Long getIdByName(@Param("tag_name") String tagName);
+
 }

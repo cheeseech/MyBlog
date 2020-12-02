@@ -47,13 +47,13 @@
 </template>
 
 <script>
-import { getRequest } from "../../untils/axiosApi";
+import { getRequest } from "@/../untils/axiosApi";
 
 export default {
   name: "BlogFooter",
   data() {
     return {
-      wechatUrl: require("./../assets/images/wechat.png"),
+      wechatUrl: require("@/assets/images/wechat.png"),
       titles: null
     };
   },
@@ -61,6 +61,7 @@ export default {
     this.getData();
   },
   methods: {
+    //数据获取
     getData() {
       var _this = this;
       getRequest("/article/new/").then(response => {
@@ -71,6 +72,7 @@ export default {
     }
   },
   filters: {
+    //标题长度限制
     TitleFormat: function(value) {
       if (value.length > 15) {
         value = value.substring(0, 15) + "...";

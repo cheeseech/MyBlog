@@ -1,32 +1,83 @@
-2020-11-23 07:17:04.585  WARN 18360 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h8m9s438ms275µs300ns).
-2020-11-23 09:55:10.403  INFO 15600 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 15600 (D:\project\WebStorm\MyBlog\blogserver\target\classes started by Show in D:\project\WebStorm\MyBlog\blogserver)
-2020-11-23 09:55:10.406 DEBUG 15600 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
-2020-11-23 09:55:10.407  INFO 15600 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
-2020-11-23 09:55:12.844  INFO 15600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
-2020-11-23 09:55:12.852  INFO 15600 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-11-23 09:55:12.853  INFO 15600 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-11-23 09:55:12.968  INFO 15600 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-11-23 09:55:12.969  INFO 15600 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2521 ms
-2020-11-23 09:55:14.035  INFO 15600 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-11-23 09:55:14.483  INFO 15600 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@161aa04a, org.springframework.security.web.context.SecurityContextPersistenceFilter@6fbb4061, org.springframework.security.web.header.HeaderWriterFilter@43acd79e, org.springframework.security.web.authentication.logout.LogoutFilter@6ca372ef, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@11f9535b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@60c73e58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a034157, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@436bd4df, org.springframework.security.web.session.SessionManagementFilter@38f77cd9, org.springframework.security.web.access.ExceptionTranslationFilter@3b705be7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6801b414]
-2020-11-23 09:55:14.529  INFO 15600 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-11-23 09:55:14.811  WARN 15600 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8081 is already in use
-2020-11-23 09:55:14.812  INFO 15600 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-11-23 09:55:14.817  INFO 15600 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2020-11-23 09:55:14.825  INFO 15600 --- [main] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2020-11-23 09:55:14.830 ERROR 15600 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8081 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
-
+2020-12-02 07:17:25.989  INFO 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 9112 (D:\project\WebStorm\MyBlog\blogserver\target\classes started by Show in D:\project\WebStorm\MyBlog\blogserver)
+2020-12-02 07:17:25.995 DEBUG 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-02 07:17:25.995  INFO 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-12-02 07:17:28.450  INFO 9112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-12-02 07:17:28.459  INFO 9112 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-02 07:17:28.460  INFO 9112 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-02 07:17:28.546  INFO 9112 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-02 07:17:28.547  INFO 9112 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2450 ms
+2020-12-02 07:17:29.731  INFO 9112 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-12-02 07:17:29.910  INFO 9112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3003827c, org.springframework.security.web.context.SecurityContextPersistenceFilter@633cc6b5, org.springframework.security.web.header.HeaderWriterFilter@16a35bd, org.springframework.security.web.authentication.logout.LogoutFilter@5762658b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@35c9a231, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@403c3a01, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f1f7db2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@29b40b3, org.springframework.security.web.session.SessionManagementFilter@6f798482, org.springframework.security.web.access.ExceptionTranslationFilter@36aa52d2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@48eb001a]
+2020-12-02 07:17:29.948  INFO 9112 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-02 07:17:30.109  INFO 9112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-12-02 07:17:30.110  INFO 9112 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-02 07:17:30.136  INFO 9112 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-02 07:17:30.175  INFO 9112 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-02 07:17:30.311  INFO 9112 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-12-02 07:17:30.379  INFO 9112 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-12-02 07:17:30.404  INFO 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 4.939 seconds (JVM running for 6.418)
+2020-12-02 07:21:01.156  INFO 9112 --- [http-nio-8081-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-02 07:21:01.156  INFO 9112 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-02 07:21:01.213  INFO 9112 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 57 ms
+2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-02 07:21:01.975  INFO 9112 --- [http-nio-8081-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-12-02 07:21:02.234 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-02 07:21:02.464  INFO 9112 --- [http-nio-8081-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-12-02 07:21:02.473 DEBUG 9112 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+2020-12-02 07:21:02.479 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.A.getAllPage_COUNT             : ==>  Preparing: SELECT count(0) FROM article a LEFT JOIN category c ON a.cate_id = c.cate_id LEFT JOIN types tp ON tp.type_id = a.type_id
+2020-12-02 07:21:02.482 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+2020-12-02 07:21:02.487 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+2020-12-02 07:21:02.490 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : ==>  Preparing: select COUNT(article_id) from article
+2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.A.getAllPage_COUNT             : ==> Parameters: 
+2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
+2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
+2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : ==> Parameters: 
+2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
+2020-12-02 07:21:02.542 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.A.getAllPage_COUNT             : <==      Total: 1
+2020-12-02 07:21:02.544 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : <==      Total: 1
+2020-12-02 07:21:02.545 DEBUG 9112 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 9
+2020-12-02 07:21:02.547 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-02 07:21:02.547 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id LIMIT ?
+2020-12-02 07:21:02.547 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==> Parameters: 6(Integer)
+2020-12-02 07:21:02.549 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 5
+2020-12-02 07:21:02.551 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
+2020-12-02 07:21:02.552 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-02 07:21:02.553 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==>  Preparing: select COUNT(cate_id) from category
+2020-12-02 07:21:02.553 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==> Parameters: 
+2020-12-02 07:21:02.553 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.mapper.ArticleMapper.getAllPage  : <==      Total: 6
+2020-12-02 07:21:02.554 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : <==      Total: 1
+2020-12-02 07:21:02.555 DEBUG 9112 --- [http-nio-8081-exec-5] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.555 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==>  Preparing: select COUNT(tag_id) from tags
+2020-12-02 07:21:02.555 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==> Parameters: 
+2020-12-02 07:21:02.556 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : <==      Total: 1
+2020-12-02 07:21:02.558 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.558 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-02 07:21:02.558 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-02 07:21:02.634 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-02 07:21:02.635 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.635 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-02 07:21:02.635 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-02 07:21:02.636 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-02 07:21:02.637 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.637 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-02 07:21:02.638 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 5(Long)
+2020-12-02 07:21:02.638 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-02 07:21:02.639 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.639 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-02 07:21:02.639 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-02 07:21:02.640 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-02 07:21:02.640 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.641 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-02 07:21:02.641 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-02 07:21:02.644 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-02 07:21:03.332 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-02 07:21:03.334 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==>  Preparing: SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
+2020-12-02 07:21:03.334 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==> Parameters: 
+2020-12-02 07:21:03.336 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : <==      Total: 4

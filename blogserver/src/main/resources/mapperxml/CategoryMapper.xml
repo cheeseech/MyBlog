@@ -36,7 +36,7 @@
     </select>
 
     <select id="getCateArticleCount" resultType="java.util.HashMap">
-        SELECT c.cate_id,cate_name,COUNT(a.article_id) counts FROM article a
+        SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a
         LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
     </select>
 
@@ -44,6 +44,10 @@
         SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c
         LEFT JOIN article a on c.cate_id=a.cate_id
         GROUP BY c.cate_id
+    </select>
+
+    <select id="getCategoryNum" resultType="java.lang.Integer">
+        select COUNT(cate_id) from category
     </select>
 
 </mapper>

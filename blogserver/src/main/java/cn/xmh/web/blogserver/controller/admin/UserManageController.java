@@ -1,8 +1,7 @@
 package cn.xmh.web.blogserver.controller.admin;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.RoleUser;
-import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.model.User;
 import cn.xmh.web.blogserver.service.UserService;
 import io.swagger.annotations.Api;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author Xmh

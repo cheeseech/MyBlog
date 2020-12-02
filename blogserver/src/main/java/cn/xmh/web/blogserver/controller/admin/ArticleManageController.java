@@ -1,8 +1,7 @@
 package cn.xmh.web.blogserver.controller.admin;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Article;
-import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -11,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 /**

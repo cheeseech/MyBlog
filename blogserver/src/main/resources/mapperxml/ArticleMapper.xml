@@ -61,7 +61,7 @@
         LEFT JOIN category c on a.cate_id=c.cate_id
         LEFT JOIN types tp ON tp.type_id=a.type_id
         LEFT JOIN article_tags t ON a.article_id=t.article_id
-        WHERE tag_id=#{tagId}
+        WHERE tag_id=#{tag_id}
     </select>
 
     <select id="getArticleByCateName" resultType="cn.xmh.web.blogserver.model.Article">
@@ -110,6 +110,16 @@
         LEFT JOIN category c on a.cate_id=c.cate_id
         LEFT JOIN types tp ON tp.type_id=a.type_id
         where article_state != -1
+    </select>
+
+    <select id="getArticleNum" resultType="java.lang.Integer">
+        select COUNT(article_id) from article
+    </select>
+
+    <select id="getAllPage" resultType="cn.xmh.web.blogserver.model.Article">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
     </select>
 
 </mapper>

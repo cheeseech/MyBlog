@@ -1,6 +1,8 @@
 package cn.xmh.web.blogserver.controller;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Article;
 import cn.xmh.web.blogserver.service.ArticleService;
 import io.swagger.annotations.Api;
@@ -35,6 +37,17 @@ public class ArticleController {
             return new ResultJson("404","列表为空！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.POST)
+    @ApiOperation("分页获取文章")
+    public ResultJson getPage(PageRequest pageQuery){
+        try {
+            PageResult pageResult=articleService.findPage(pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员！",null);
         }
     }
 
@@ -119,12 +132,12 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/tags/{tagId}",method = RequestMethod.GET)
-    @ApiOperation("根据标签获取文章")
-    public ResultJson getType(@PathVariable Long tagId){
+    @RequestMapping(value = "/tags/{tagName}",method = RequestMethod.POST)
+    @ApiOperation("根据标签名获取文章")
+    public ResultJson getTags(@PathVariable String tagName,PageRequest pageQuery){
         try {
-            List<Article> articles=articleService.getArticleByTagId(tagId);
-            return new ResultJson("200","获取成功！",articles);
+            PageResult pageResult=articleService.getByTagNameInRange(tagName,pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);
         }catch (Exception e){
@@ -132,12 +145,12 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/category/{cateName}",method = RequestMethod.GET)
+    @RequestMapping(value = "/category/{cateName}",method = RequestMethod.POST)
     @ApiOperation("根据专栏获取文章")
-    public ResultJson getCategory(@PathVariable String cateName){
+    public ResultJson getCategory(@PathVariable String cateName,PageRequest pageQuery){
         try {
-            List<Article> articles=articleService.getArticleByCateName(cateName);
-            return new ResultJson("200","获取成功！",articles);
+            PageResult pageResult=articleService.getByCateNameInPage(cateName,pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);
         }catch (Exception e){
@@ -155,6 +168,17 @@ public class ArticleController {
             return new ResultJson("404","列表为空！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。"+e,null);
+        }
+    }
+
+    @RequestMapping(value = "/info",method = RequestMethod.GET)
+    @ApiOperation("获取文章、专栏以及标签数量")
+    public ResultJson getInfo(){
+        try {
+            Map<String, Integer> info=articleService.getInfo();
+            return new ResultJson("200","获取成功!",info);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员！",null);
         }
     }
 }

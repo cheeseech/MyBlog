@@ -1,6 +1,6 @@
 package cn.xmh.web.blogserver.controller.admin;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Category;
 import cn.xmh.web.blogserver.service.CategoryService;
 import io.swagger.annotations.Api;

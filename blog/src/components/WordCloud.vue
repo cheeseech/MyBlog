@@ -12,13 +12,32 @@ require("echarts-wordcloud");
 export default {
   name: "wordCloud",
   props: ["wc_id", "wc_height", "wc_width", "wc_data"],
+  data() {
+    return {
+      myChart: null
+    };
+  },
   mounted() {
     //初始化
     this.initChart();
   },
+  watch: {
+    wc_data: function() {
+      //重新渲染词云
+      this.myChart.setOption({
+        series: [
+          {
+            type: "wordCloud",
+            data: this.wc_data
+          }
+        ]
+      });
+    }
+  },
   methods: {
     initChart() {
-      var myChart = echarts.init(document.getElementById(this.wc_id));
+      const _this = this;
+      this.myChart = echarts.init(document.getElementById(this.wc_id));
       const option = {
         //背景颜色
         backgroundColor: "#fff",
@@ -42,7 +61,7 @@ export default {
               normal: {
                 fontFamily: "sans-serif",
                 fontWeight: "bold",
-                color: function () {
+                color: function() {
                   return (
                     "rgb(" +
                     Math.round(Math.random() * 255) +
@@ -52,13 +71,13 @@ export default {
                     Math.round(Math.random() * 255) +
                     ")"
                   );
-                },
+                }
               },
               //鼠标悬停的颜色
               emphasis: {
                 shadowBlur: 5,
-                shadowColor: "#E6A23C",
-              },
+                shadowColor: "#E6A23C"
+              }
             },
             //位置相关设置
             //紧随左上下宽高右下的位置用于放置单词cloud,默认放置在中间，大小为75％x 80％。
@@ -69,16 +88,17 @@ export default {
             width: "100%",
             height: "100%",
             //数据
-            data: this.wc_data,
-          },
-        ],
+            data: this.wc_data
+          }
+        ]
       };
-      myChart.setOption(option);
+      this.myChart.setOption(option);
       // 点击某个单词
-      myChart.on("click", function (params) {
-        console.log("myChart----click---:", params, "------", params.data);
+      this.myChart.on("click", function(params) {
+        //发送标签名到父组件中
+        _this.$emit("sendTagName", params.data.name);
       });
-    },
-  },
+    }
+  }
 };
 </script>

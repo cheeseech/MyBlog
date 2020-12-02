@@ -68,4 +68,9 @@ public interface CategoryMapper {
      */
     List<Map<String, Object>> getCateAnalysis();
 
+    /**
+     * 获取专栏数量
+     * @return 专栏数量
+     */
+    Integer getCategoryNum();
 }

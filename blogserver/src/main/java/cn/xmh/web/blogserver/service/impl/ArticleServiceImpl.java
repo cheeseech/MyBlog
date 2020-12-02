@@ -1,11 +1,17 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.config.PageUtils;
 import cn.xmh.web.blogserver.mapper.ArticleMapper;
 import cn.xmh.web.blogserver.mapper.ArticleTagsMapper;
+import cn.xmh.web.blogserver.mapper.CategoryMapper;
 import cn.xmh.web.blogserver.mapper.TagsMapper;
 import cn.xmh.web.blogserver.model.Article;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.ArticleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,12 +37,53 @@ public class ArticleServiceImpl implements ArticleService
     private ArticleTagsMapper articleTagsMapper;
     @Resource
     private TagsMapper tagsMapper;
+    @Resource
+    private CategoryMapper categoryMapper;
 
     @Override
     public List<Article> getAllArticle() {
         List<Article> articles= articleMapper.getAllArticle();
 
         return insertTagsIntoArticle(articles);
+    }
+
+    @Override
+    public PageResult findPage(PageRequest pageRequest) {
+        //调用分页插件完成分页
+        int pageNum = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        PageHelper.startPage(pageNum, pageSize);
+        List<Article> articles = articleMapper.getAllPage();
+        return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
+    }
+
+    @Override
+    public PageResult getByCateNameInPage(String cateName,PageRequest pageRequest) {
+        int pageNum = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        PageHelper.startPage(pageNum, pageSize);
+        List<Article> articles= articleMapper.getArticleByCateName(cateName);
+        return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
+    }
+
+    @Override
+    public PageResult getByTagNameInRange(String tagName, PageRequest pageRequest) {
+        int pageNum = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        PageHelper.startPage(pageNum, pageSize);
+
+        //根据标签名获取标签ID
+        Long tagId=tagsMapper.getIdByName(tagName);
+        if(tagId == null){
+            throw new NullPointerException();
+        }
+        //根据标签ID获取文章信息
+        List<Article> articles= articleMapper.getArticleByTagId(tagId);
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
     }
 
     @Override
@@ -183,19 +230,25 @@ public class ArticleServiceImpl implements ArticleService
         return articles;
     }
 
-    @Override
-    public List<Article> getArticleByTagId(Long tagId) {
-        List<Article> articles= articleMapper.getArticleByTagId(tagId);
-        if(articles.isEmpty()){
-            throw new NullPointerException();
-        }
-
-        //获取文章标签集合
-        for(Article article:articles){
-            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
-        }
-        return articles;
-    }
+//    @Override
+//    public List<Article> getArticleByTagName(String tagName) {
+//        //根据标签名获取标签ID
+//        Long tagId=tagsMapper.getIdByName(tagName);
+//        if(tagId == null){
+//            throw new NullPointerException();
+//        }
+//        //根据标签ID获取文章信息
+//        List<Article> articles= articleMapper.getArticleByTagId(tagId);
+//        if(articles.isEmpty()){
+//            throw new NullPointerException();
+//        }
+//
+//        //获取文章标签集合
+//        for(Article article:articles){
+//            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
+//        }
+//        return articles;
+//    }
 
     @Override
     public List<Article> getArticleByCateName(String cateName) {
@@ -217,6 +270,7 @@ public class ArticleServiceImpl implements ArticleService
         String keyMonth="months";
         String keyYear="years";
 
+        //获取每年的文章数量
         List<Map<String,Object>> years=articleMapper.getYearsCountArticle();
         for(Map<String,Object> y : years){
             String year=y.get(keyYear).toString();
@@ -239,6 +293,19 @@ public class ArticleServiceImpl implements ArticleService
             throw new NullPointerException();
         }
         return totalData;
+    }
+
+    @Override
+    public Map<String, Integer> getInfo() {
+        Map<String, Integer> info=new HashMap<>();
+        Integer article=articleMapper.getArticleNum();
+        Integer category=categoryMapper.getCategoryNum();
+        Integer tag=tagsMapper.getTagsNum();
+
+        info.put("article",article);
+        info.put("category",category);
+        info.put("tag",tag);
+        return info;
     }
 }
 

@@ -1,5 +1,4 @@
 <template>
-  <!-- <nav class="m-container"> -->
   <el-menu
     :default-active="activeIndex"
     router
@@ -11,12 +10,7 @@
   >
     <!--logo-->
     <el-menu-item>
-      <el-image
-        :src="logoUrl"
-        fit="fill"
-        class="m-logo-size"
-        style="float: left;"
-      ></el-image>
+      <el-image :src="logoUrl" fit="fill" class="m-logo-size"></el-image>
       <!-- 动态文字-->
       <div class="logo-text">
         <svg viewBox="0 0 1300 200">
@@ -76,11 +70,11 @@
       >
         <el-button slot="append"
           ><svg class="icon m-svg-size" aria-hidden="true">
-            <use xlink:href="#icon-gosearch"></use></svg></el-button>
+            <use xlink:href="#icon-gosearch"></use></svg>
+        </el-button>
       </el-input>
     </el-menu-item>
   </el-menu>
-  <!-- </nav> -->
 </template>
 
 <script>
@@ -92,7 +86,7 @@ export default {
     return {
       activeIndex: "/index",
       input: "",
-      logoUrl: require("./../assets/images/logo.png")
+      logoUrl: require("@/assets/images/logo.png")
     };
   },
   watch: {
@@ -100,6 +94,12 @@ export default {
     $route(to, from) {
       this.activeIndex = to.path;
     }
+  },
+  mounted() {
+      var path=this.$route.path;
+      if(path !== "/"){
+          this.activeIndex =path; 
+      }
   },
   methods: {
     //发送搜索关键字到BlogArticle
@@ -115,6 +115,7 @@ export default {
   width: 50px;
   height: 50px;
   margin-top: 7px;
+  float: left;
 }
 /* 导航栏搜索框 */
 .m-search {

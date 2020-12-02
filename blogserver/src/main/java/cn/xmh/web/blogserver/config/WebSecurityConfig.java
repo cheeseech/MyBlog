@@ -1,6 +1,7 @@
 package cn.xmh.web.blogserver.config;
 
 
+import cn.xmh.web.blogserver.model.ResultJson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

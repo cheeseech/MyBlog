@@ -38,7 +38,7 @@ public interface TagsService {
     void updateTagById(Tags tags) throws SQLException;
 
     /**
-     * 根据标签名称模糊查找
+     * 根据标签名称查找
      * @param tagName 标签名
      * @return 标签集合
      */
@@ -56,4 +56,12 @@ public interface TagsService {
      * @return
      */
     List<Map<String,String>> getTagsAndCount();
+
+    /**
+     * 根据名称模糊查找标签及标签文章数
+     * @param tagName
+     * @return
+     */
+    List<Map<String, String>> getTagsAndCountLike(String tagName);
+
 }

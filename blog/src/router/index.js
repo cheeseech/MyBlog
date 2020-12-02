@@ -1,19 +1,19 @@
 import Vue from "vue";
 import Router from "vue-router";
 const home = () =>
-  import(/* webpackChunkName: "blog_home" */ "@/components/Home");
+  import(/* webpackChunkName: "blog_home" */ "@/views/blog/home/index");
 const blogIndex = () =>
-  import(/* webpackChunkName: "blog_home" */ "@/components/BlogIndex");
+  import(/* webpackChunkName: "blog_home" */ "@/views/blog/blogIndex/index");
 const blogTags = () =>
-  import(/* webpackChunkName: "blog_tags" */ "@/components/BlogTags");
+  import(/* webpackChunkName: "blog_tags" */ "@/views/blog/BlogTags");
 const blogArchives = () =>
-  import(/* webpackChunkName: "blog_archives" */ "@/components/BlogArchives");
+  import(/* webpackChunkName: "blog_archives" */ "@/views/blog/BlogArchives");
 const blogCategory = () =>
-  import(/* webpackChunkName: "blog_category" */ "@/components/BlogCategory");
+  import(/* webpackChunkName: "blog_category" */ "@/views/blog/BlogCategory");
 const blogAbout = () =>
-  import(/* webpackChunkName: "blog_about" */ "@/components/BlogAbout");
+  import(/* webpackChunkName: "blog_about" */ "@/views/blog/BlogAbout");
 const articleInfo = () =>
-  import(/* webpackChunkName: "blog_article" */ "@/components/ArticleInfo");
+  import(/* webpackChunkName: "blog_article" */ "@/views/blog/BlogArticle");
 const adminHome = () =>
   import(/* webpackChunkName: "admin_home" */ "@/components/admin/Admin");
 const login = () =>
@@ -41,9 +41,13 @@ const articleManager = () =>
   import(
     /* webpackChunkName:"article_manager"*/ "@/components/admin/ArticleManager"
   );
-  const recycle = () => import(/* webpackChunkName:"recycle"*/ "@/components/admin/Recycle")
+const recycle = () =>
+  import(/* webpackChunkName:"recycle"*/ "@/components/admin/Recycle");
 
-  const dataManager = () => import(/* webpackChunkName:"data_manager"*/ "@/components/admin/dataManager/dataManager")
+const dataManager = () =>
+  import(
+    /* webpackChunkName:"data_manager"*/ "@/components/admin/dataManager/dataManager"
+  );
 
 Vue.use(Router);
 
@@ -134,14 +138,14 @@ export default new Router({
           component: publish
         },
         {
-            path:"recycle",
-            name: "回收站",
-            component:recycle
+          path: "recycle",
+          name: "回收站",
+          component: recycle
         },
         {
-            path:"dataManager",
-            name: "数据管理",
-            component:dataManager
+          path: "dataManager",
+          name: "数据管理",
+          component: dataManager
         }
       ]
     },
@@ -150,5 +154,9 @@ export default new Router({
       name: "登录",
       component: login
     }
-  ]
+  ],
+  // 每次做路由切换时，始终回到最顶部
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
 });

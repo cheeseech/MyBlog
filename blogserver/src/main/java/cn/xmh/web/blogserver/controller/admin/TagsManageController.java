@@ -1,6 +1,6 @@
 package cn.xmh.web.blogserver.controller.admin;
 
-import cn.xmh.web.blogserver.config.ResultJson;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.TagsService;
 import io.swagger.annotations.Api;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @author Xmh
