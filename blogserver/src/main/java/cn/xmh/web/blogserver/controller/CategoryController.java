@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/category")
-@Api(tags = "专栏")
+@Api(tags = "专栏浏览")
 public class CategoryController {
 
     @Resource
@@ -39,7 +39,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/counts",method = RequestMethod.GET)
-    @ApiOperation("获取所有专栏信息")
+    @ApiOperation("获取专栏文章数量")
     public ResultJson getCateArticleCount(){
         try{
             List<Map<String,Long>> map=categoryService.getCateArticleCount();

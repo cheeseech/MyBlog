@@ -16,12 +16,6 @@ import java.util.Map;
 public interface ArticleMapper {
 
     /**
-     * 获取所有文章
-     * @return 文章集合
-     */
-    List<Article> getAllArticle();
-
-    /**
      * 分页查询用户
      * @return 文章集合
      */
@@ -31,13 +25,13 @@ public interface ArticleMapper {
      * 获取删除状态的文章
      * @return 文章集合
      */
-    List<Article> getArticleByDe();
+    List<Article> getArticleByDelete();
 
     /**
      * 获取未删除状态的文章
      * @return 文章集合
      */
-    List<Article> getArticleByNoDe();
+    List<Article> getArticleByNotDelete();
 
     /**
      * 根据标题模糊查询文章信息
@@ -58,7 +52,7 @@ public interface ArticleMapper {
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int deleteByArticleId(@Param("articleId") Long articleId);
+    int deleteByArticleId(@Param("article_id") Long articleId);
 
     /**
      * 更新文章信息
@@ -66,7 +60,7 @@ public interface ArticleMapper {
      * @param article 文章信息
      * @return 受影响的行
      */
-    int updateByArticleId(@Param("articleId") Long articleId,Article article);
+    int updateByArticleId(@Param("article_id") Long articleId,Article article);
 
     /**
      *  更新文章状态
@@ -74,7 +68,7 @@ public interface ArticleMapper {
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int resetArticleState(@Param("articleState") Integer articleState,@Param("articleId") Long articleId);
+    int resetArticleState(@Param("article_state") Integer articleState,@Param("article_id") Long articleId);
 
     /**
      * 获取最新推荐五篇文章标题
@@ -93,7 +87,7 @@ public interface ArticleMapper {
      * @param typeName 类型名
      * @return 文章列表
      */
-    List<Article> getTypeArticle(@Param("typeName") String typeName);
+    List<Article> getTypeArticle(@Param("type_name") String typeName);
 
     /**
      * 获取某标签下的所有文章
@@ -107,7 +101,7 @@ public interface ArticleMapper {
      * @param cateName
      * @return
      */
-    List<Article> getArticleByCateName(@Param("cateName") String cateName);
+    List<Article> getArticleByCateName(@Param("cate_name") String cateName);
 
     /**
      * 获取每年的文章数量
@@ -131,17 +125,10 @@ public interface ArticleMapper {
     List<Map<String, Object>> getInfoByMonthYear(@Param("year") String year,@Param("month") String month);
 
     /**
-     * 获取所有文章的浏览量、点赞数以及评论数
+     * 获取总文章数、总浏览量、总点赞数以及总评论数
      * @return 文章总信息集合
      */
     Map<String,String> getTotalData();
-
-    /**
-     * 获取近指定天数每天文章的浏览量、点赞数、评论数以及文章数量
-     * @param day 天数
-     * @return
-     */
-    List<Map<String, Object>> getMonthsData(int day);
 
     /**
      * 根据文章id获取文章信息

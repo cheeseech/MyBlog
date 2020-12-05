@@ -128,7 +128,7 @@ export default {
   //在路由跳转前获取数据
   beforeRouteEnter(to, from, next) {
     //获取已被删除状态的文章
-    axios.all([getRequest("/article/de/")]).then(
+    axios.all([getRequest("/article/delete/")]).then(
       axios.spread(response => {
         next(vm => {
           vm.setData(response);

@@ -20,7 +20,7 @@
     </update>
 
     <delete id="deleteByCategoryId">
-        delete from category where cate_id=#{cateId}
+        delete from category where cate_id=#{cate_id}
     </delete>
 
     <select id="getAllCategory" resultType="cn.xmh.web.blogserver.model.Category">
@@ -28,11 +28,7 @@
     </select>
 
     <select id="getByCategoryName" resultType="cn.xmh.web.blogserver.model.Category">
-        select * from category where cate_name=#{cateName}
-    </select>
-
-    <select id="getByCategoryId" resultType="cn.xmh.web.blogserver.model.Category">
-        select * from category where cate_id=#{cateId}
+        select * from category where cate_name=#{cate_name}
     </select>
 
     <select id="getCateArticleCount" resultType="java.util.HashMap">

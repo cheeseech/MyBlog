@@ -173,7 +173,7 @@ export default {
   //在路由跳转前获取数据
   beforeRouteEnter(to, from, next) {
     //获取未被标记删除的文章
-    axios.all([getRequest("/article/noDe/")]).then(
+    axios.all([getRequest("/article/notDelete/")]).then(
       axios.spread(response => {
         next(vm => {
           vm.setData(response);

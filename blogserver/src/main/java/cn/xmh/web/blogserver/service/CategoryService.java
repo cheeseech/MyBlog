@@ -28,27 +28,23 @@ public interface CategoryService {
     Category getByCategoryName(String cateName);
 
     /**
-     *  根据专栏ID获取专栏信息
-     * @param cateId 专栏ID
-     * @return 专栏信息
-     */
-    Category getByCategoryId(Long cateId);
-
-    /**
-     * 插入专栏信息
+     * 添加一个专栏
      * @param category 专栏信息
+     * @throws SQLException
      */
     void insertCategory(Category category) throws SQLException;
 
     /**
      *  根据专栏ID删除专栏
      * @param cateId 专栏ID
+     * @throws SQLException
      */
     void deleteByCategoryId(Long cateId) throws SQLException;
 
     /**
      * 根据专栏ID更新专栏信息
      * @param category 专栏信息
+     * @throws SQLException
      */
     void updateByCategoryId(Category category) throws SQLException;
 

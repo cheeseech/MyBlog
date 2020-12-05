@@ -19,7 +19,7 @@ public interface ArticleTagsMapper {
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int insertArticleTags(@Param("tagId") Long tagId,@Param("articleId") Long articleId);
+    int insertArticleTags(@Param("tag_id") Long tagId,@Param("article_id") Long articleId);
 
     /**
      * 根据文章ID更新文章标签集合
@@ -27,20 +27,20 @@ public interface ArticleTagsMapper {
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int updateArticleTags(@Param("tagId") Long tagId,@Param("articleId") Long articleId);
+    int updateArticleTags(@Param("tag_id") Long tagId,@Param("article_id") Long articleId);
 
     /**
      * 根据文章ID删除文章标签关联
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int deleteByArticleId(@Param("articleId") Long articleId);
+    int deleteByArticleId(@Param("article_id") Long articleId);
 
     /**
      * 根据标签ID删除文章标签关联
      * @param tagId 标签ID
      * @return 受影响的行
      */
-    int deleteByTagId(@Param("tagId") Long tagId);
+    int deleteByTagId(@Param("tag_id") Long tagId);
 
 }

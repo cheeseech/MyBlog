@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/admin")
-@Api(tags = "日期数据")
+@Api(tags = "日期数据浏览")
 public class DaysDataController {
 
     @Resource

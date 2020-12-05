@@ -26,9 +26,6 @@ import java.io.PrintWriter;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -113,12 +110,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     out.flush();
                     out.close();
                 });
-    }
-
-    @Bean
-    RoleHierarchy roleHierarchy() {
-        RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
-        hierarchy.setHierarchy("ROLE_admin > ROLE_user");
-        return hierarchy;
     }
 }

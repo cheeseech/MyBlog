@@ -62,7 +62,6 @@ export default {
       getRequest("/admin/category/analysis/").then(response => {
         if (response.status == 200) {
           this.categoryData = response.data;
-          console.log(this.categoryData);
         }
       });
     }

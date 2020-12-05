@@ -7,18 +7,18 @@
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
 
     <insert id="insertArticleTags">
-        insert into article_tags (article_id, tag_id) values (#{articleId},#{tagId})
+        insert into article_tags (article_id, tag_id) values (#{article_id},#{tag_id})
     </insert>
 
     <update id="updateArticleTags">
-        update article_tags set tag_id=#{tagId} where article_id=#{articleId}
+        update article_tags set tag_id=#{tag_id} where article_id=#{article_id}
     </update>
 
     <delete id="deleteByArticleId">
-        delete from article_tags where article_id=#{articleId}
+        delete from article_tags where article_id=#{article_id}
     </delete>
 
     <delete id="deleteByTagId">
-        delete from article_tags where tag_id=#{tagId}
+        delete from article_tags where tag_id=#{tag_id}
     </delete>
 </mapper>

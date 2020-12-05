@@ -6,6 +6,12 @@
 
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
 
+    <sql id="selectAll">
+        SELECT a.*,c.cate_name,tp.type_name from article a
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types tp ON tp.type_id=a.type_id
+    </sql>
+
     <insert id="insertArticle" keyColumn="article_id" keyProperty="articleId" useGeneratedKeys="true">
         insert into article (title, md_content, html_content, summary, type_id, cate_id, user_id, publish_time,
         update_time, recommend, article_state, views, likes, comments, first_picture)
@@ -17,27 +23,19 @@
         update article set title=#{title}, md_content=#{mdContent}, html_content=#{htmlContent}, summary=#{summary},
         type_id=#{typeId}, cate_id=#{cateId},update_time=#{updateTime},recommend=#{recommend},
         article_state=#{articleState}, views=#{views}, likes=#{likes}, comments=#{comments}, first_picture=#{firstPicture})
-        where article_id=#{articleId}
+        where article_id=#{article_id}
     </update>
 
     <update id="resetArticleState">
-        update article set article_state=#{articleState} where article_id=#{articleId}
+        update article set article_state=#{article_state} where article_id=#{article_id}
     </update>
 
     <delete id="deleteByArticleId">
-        delete from article where article_id=#{articleId}
+        delete from article where article_id=#{article_id}
     </delete>
 
-    <select id="getAllArticle" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
-    </select>
-
     <select id="getLikeTitleArticle" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
+        <include refid="selectAll"></include>
         where title like concat('%',#{title},'%')
     </select>
 
@@ -50,25 +48,19 @@
     </select>
 
     <select id="getTypeArticle" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
-        where type_name=#{typeName}
+        <include refid="selectAll"></include>
+        where type_name=#{type_name}
     </select>
 
     <select id="getArticleByTagId" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
+        <include refid="selectAll"></include>
         LEFT JOIN article_tags t ON a.article_id=t.article_id
         WHERE tag_id=#{tag_id}
     </select>
 
     <select id="getArticleByCateName" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
-        WHERE c.cate_name=#{cateName}
+        <include refid="selectAll"></include>
+        WHERE c.cate_name=#{cate_name}
     </select>
 
     <select id="getYearsCountArticle" resultType="java.util.Map">
@@ -89,26 +81,17 @@
         SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
     </select>
 
-    <select id="getMonthsData" resultType="java.util.Map">
-        SELECT date_format(update_time, '%Y-%m-%d' ) days,SUM(views) views,SUM(likes) likes,SUM(comments) comments,COUNT(article_id) article
-        FROM ( SELECT * FROM article WHERE DATE_SUB( CURDATE( ), INTERVAL #{day} DAY ) &lt;= date( update_time) ) as t GROUP BY days
-    </select>
-
     <select id="getArticleById" resultType="cn.xmh.web.blogserver.model.Article">
         select * from article where article_id=#{article_id}
     </select>
 
-    <select id="getArticleByDe" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
+    <select id="getArticleByDelete" resultType="cn.xmh.web.blogserver.model.Article">
+        <include refid="selectAll"></include>
         where article_state = -1
     </select>
 
-    <select id="getArticleByNoDe" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
+    <select id="getArticleByNotDelete" resultType="cn.xmh.web.blogserver.model.Article">
+        <include refid="selectAll"></include>
         where article_state != -1
     </select>
 
@@ -117,9 +100,7 @@
     </select>
 
     <select id="getAllPage" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.*,c.cate_name,tp.type_name from article a
-        LEFT JOIN category c on a.cate_id=c.cate_id
-        LEFT JOIN types tp ON tp.type_id=a.type_id
+        <include refid="selectAll"></include>
     </select>
 
 </mapper>

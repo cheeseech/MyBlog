@@ -16,10 +16,6 @@
         <result column="enabled" property="enabled"></result>
         <result column="create_time" property="createTime"></result>
         <result column="update_time" property="updateTime"></result>
-        <collection property="roles" ofType="cn.xmh.web.blogserver.model.Role">
-            <id column="role_id" property="roleId"></id>
-            <result column="role_name" property="roleName"></result>
-        </collection>
     </resultMap>
 
     <insert id="insertUser">
@@ -40,25 +36,17 @@
         update user set password=#{password} where user_id=#{userId}
     </update>
 
-    <update id="setUserRole">
-        update role_user set role_id=#{roleId} where user_id=#{userId}
-    </update>
-
     <delete id="deleteByUserId">
         delete from user where user_id=#{userId}
     </delete>
 
     <select id="getUserByUserName" resultMap="BaseResultMap">
-        SELECT u.*,r.* FROM user u
-        LEFT JOIN role_user ru ON u.user_id=ru.user_id
-        LEFT JOIN role r ON r.role_id=ru.role_id
+        SELECT * from user
         where username=#{userName}
     </select>
 
     <select id="getAllUser" resultMap="BaseResultMap">
-        SELECT u.*,r.* FROM user u
-        LEFT JOIN role_user ru ON u.user_id=ru.user_id
-        LEFT JOIN role r ON r.role_id=ru.role_id
+        SELECT * from user
     </select>
 
 </mapper>

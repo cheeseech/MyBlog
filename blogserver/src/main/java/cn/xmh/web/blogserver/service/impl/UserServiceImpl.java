@@ -1,8 +1,6 @@
 package cn.xmh.web.blogserver.service.impl;
 
-import cn.xmh.web.blogserver.mapper.RoleMapper;
 import cn.xmh.web.blogserver.mapper.UserMapper;
-import cn.xmh.web.blogserver.model.Role;
 import cn.xmh.web.blogserver.model.User;
 import cn.xmh.web.blogserver.service.UserService;
 import org.slf4j.Logger;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -34,9 +31,6 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     @Resource
     private PasswordEncoder passwordEncoder;
 
-    @Resource
-    private RoleMapper roleMapper;
-
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         logger.info("登录用户名:{}",userName);
@@ -49,9 +43,6 @@ public class UserServiceImpl implements UserService , UserDetailsService {
         logger.info("登录密码:{}",passWord);
         user.setPassword(passWord);
 
-        //添加用户的角色信息
-        List<Role> roles=roleMapper.getRoleByUserId(user.getUserId());
-        user.setRoles(roles);
         return user;
     }
 
@@ -117,14 +108,6 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void resetPassword(Long userId, String password) {
         int i= userMapper.resetPassword(userId,password);
-        if(i != 1){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    @Override
-    public void setUserRole(Long userId, Long roleId) {
-        int i=userMapper.setUserRole(userId,roleId);
         if(i != 1){
             throw new IllegalArgumentException();
         }

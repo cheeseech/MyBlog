@@ -15,13 +15,7 @@ import java.util.Map;
 public interface ArticleService {
 
     /**
-     * 获取所有文章
-     * @return 文章集合
-     */
-    List<Article> getAllArticle();
-
-    /**
-     * 分页查询接口
+     * 分页查询文章接口
      * 这里统一封装了分页请求和结果，避免直接引入具体框架的分页对象, 如MyBatis或JPA的分页对象
      * 从而避免因为替换ORM框架而导致服务层、控制层的分页接口也需要变动的情况，替换ORM框架也不会
      * 影响服务层以上的分页接口，起到了解耦的作用
@@ -50,13 +44,13 @@ public interface ArticleService {
      * 获取已删除状态的文章
      * @return 文章集合
      */
-    List<Article> getArticleByDe();
+    List<Article> getArticleByDelete();
 
     /**
      * 获取未删除状态的文章
      * @return 文章集合
      */
-    List<Article> getArticleByNoDe();
+    List<Article> getArticleByNotDelete();
 
     /**
      * 根据标题模糊查询文章信息
@@ -66,19 +60,19 @@ public interface ArticleService {
     List<Article> getLikeTitleArticle(String title);
 
     /**
-     *  插入文章信息
+     *  添加一篇文章
      * @param article 文章信息
      */
     void insertArticle(Article article);
 
     /**
-     *  根据文章ID删除文章信息
+     *  根据文章ID删除一篇文章
      * @param articleId 文章ID
      */
     void deleteByArticleId(Long articleId);
 
     /**
-     * 更新文章信息
+     * 更新一篇文章
      * @param articleId 文章ID
      * @param article 文章信息
      */
@@ -111,20 +105,13 @@ public interface ArticleService {
     List<Article> getTypeArticle(String typeName);
 
     /**
-     * 获取某专栏下的所有文章
-     * @param cateName
-     * @return
-     */
-    List<Article> getArticleByCateName(String cateName);
-
-    /**
      * 获取每一年份下的文章数量，标题及发布时间信息
      * @return 每一年份下的文章数量，标题及发布时间信息
      */
     List<Map<String,Object>> getTimeLine();
 
     /**
-     * 获取总文章数据
+     * 获取总文章、浏览量、点赞数以及评论数数据
      * @return 总文章数据
      */
     Map<String ,String> getTotalData();

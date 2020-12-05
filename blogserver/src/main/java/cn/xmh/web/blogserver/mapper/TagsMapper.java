@@ -25,7 +25,7 @@ public interface TagsMapper {
      * @param tagId 标签ID
      * @return 受影响的行
      */
-    int deleteByTagId(@Param("tagId") Long tagId);
+    int deleteByTagId(@Param("tag_id") Long tagId);
 
     /**
      * 添加一个标签
@@ -46,14 +46,14 @@ public interface TagsMapper {
      * @param tagName 标签名
      * @return 标签集合
      */
-    Tags getTagsName(@Param("tagName") String tagName);
+    Tags getTagsName(@Param("tag_name") String tagName);
 
     /**
      * 根据文章ID获取标签集合
      * @param articleId 文章ID
      * @return 标签集合
      */
-    List<Tags> getTagsByArticleId(@Param("articleId") Long articleId);
+    List<Tags> getTagsByArticleId(@Param("article_id") Long articleId);
 
     /**
      * 获取标签及标签文章数

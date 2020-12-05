@@ -1,7 +1,6 @@
 package cn.xmh.web.blogserver.controller.admin;
 
 import cn.xmh.web.blogserver.model.ResultJson;
-import cn.xmh.web.blogserver.model.RoleUser;
 import cn.xmh.web.blogserver.model.User;
 import cn.xmh.web.blogserver.service.UserService;
 import io.swagger.annotations.Api;
@@ -117,19 +116,6 @@ public class UserManageController {
             return new ResultJson("400","该标签名不存在！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
-    @RequestMapping(value = "/users/role/",method = RequestMethod.POST)
-    @ApiOperation("设置用户角色")
-    public ResultJson setUserRole(@RequestBody RoleUser roleUser){
-        try{
-            userService.setUserRole(roleUser.getUserId(),roleUser.getRoleId());
-            return new ResultJson("200","设置成功！",null);
-        }catch (IllegalArgumentException e){
-            return new ResultJson("400","设置失败！请联系管理员！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员！",null);
         }
     }
 }

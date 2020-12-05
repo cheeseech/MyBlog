@@ -36,7 +36,6 @@ public class User implements UserDetails {
     private String email;
     private Date createTime;
     private Date updateTime;
-    private List<Role> roles;
     private Boolean enabled;
 
     /**
@@ -86,9 +85,7 @@ public class User implements UserDetails {
 
         //根据自定义逻辑返回用户权限即角色
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
-        }
+        authorities.add(new SimpleGrantedAuthority("ROLE_admin"));
         return authorities;
     }
 

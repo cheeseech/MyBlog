@@ -44,9 +44,6 @@ public class CategoryManageController {
 
     @RequestMapping(value = "/category",method = RequestMethod.PUT)
     @ApiOperation("新建一个专栏")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "name",value = "专栏名",dataType = "string",required = true)
-    })
     public ResultJson insertCategory(Category category){
         try {
             categoryService.insertCategory(category);

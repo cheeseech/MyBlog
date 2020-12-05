@@ -18,27 +18,15 @@ import java.util.Map;
 /**
  * @author Xmh
  * @date 2020/8/1 20:06
+ *
  */
 @RestController
 @RequestMapping("/article")
-@Api(tags = "文章")
+@Api(tags = "文章浏览")
 public class ArticleController {
 
     @Resource
     private ArticleService articleService;
-
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    @ApiOperation("获取所有文章")
-    public ResultJson getArticles(){
-        try {
-            List<Article> articles=articleService.getAllArticle();
-            return new ResultJson("200","获取成功！",articles);
-        }catch (NullPointerException e){
-            return new ResultJson("404","列表为空！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
 
     @RequestMapping(value = "/page",method = RequestMethod.POST)
     @ApiOperation("分页获取文章")
@@ -51,11 +39,11 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/de",method = RequestMethod.GET)
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
     @ApiOperation("获取已删除状态的文章")
     public ResultJson getArticlesDe(){
         try {
-            List<Article> articles=articleService.getArticleByDe();
+            List<Article> articles=articleService.getArticleByDelete();
             return new ResultJson("200","获取成功！",articles);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！"+e,null);
@@ -64,11 +52,11 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/noDe",method = RequestMethod.GET)
+    @RequestMapping(value = "/notDelete",method = RequestMethod.GET)
     @ApiOperation("获取未删除状态的文章")
     public ResultJson getArticlesNoDe(){
         try {
-            List<Article> articles=articleService.getArticleByNoDe();
+            List<Article> articles=articleService.getArticleByNotDelete();
             return new ResultJson("200","获取成功！",articles);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);
@@ -133,7 +121,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/tags/{tagName}",method = RequestMethod.POST)
-    @ApiOperation("根据标签名获取文章")
+    @ApiOperation("根据标签名分页获取文章")
     public ResultJson getTags(@PathVariable String tagName,PageRequest pageQuery){
         try {
             PageResult pageResult=articleService.getByTagNameInRange(tagName,pageQuery);
@@ -146,7 +134,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/category/{cateName}",method = RequestMethod.POST)
-    @ApiOperation("根据专栏获取文章")
+    @ApiOperation("根据专栏名分页获取文章")
     public ResultJson getCategory(@PathVariable String cateName,PageRequest pageQuery){
         try {
             PageResult pageResult=articleService.getByCateNameInPage(cateName,pageQuery);

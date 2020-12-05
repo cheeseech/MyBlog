@@ -41,19 +41,19 @@ public class ArticleServiceImpl implements ArticleService
     private CategoryMapper categoryMapper;
 
     @Override
-    public List<Article> getAllArticle() {
-        List<Article> articles= articleMapper.getAllArticle();
-
-        return insertTagsIntoArticle(articles);
-    }
-
-    @Override
     public PageResult findPage(PageRequest pageRequest) {
         //调用分页插件完成分页
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
+        //设置页码以及长度
         PageHelper.startPage(pageNum, pageSize);
+        //获取所有文章
         List<Article> articles = articleMapper.getAllPage();
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        //调用分页工具类完成分页信息的封装
         return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
     }
 
@@ -61,8 +61,15 @@ public class ArticleServiceImpl implements ArticleService
     public PageResult getByCateNameInPage(String cateName,PageRequest pageRequest) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
+        //设置页码以及长度
         PageHelper.startPage(pageNum, pageSize);
+        //根据专栏名获取文章
         List<Article> articles= articleMapper.getArticleByCateName(cateName);
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        //调用分页工具类完成分页信息的封装
         return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
     }
 
@@ -70,40 +77,23 @@ public class ArticleServiceImpl implements ArticleService
     public PageResult getByTagNameInRange(String tagName, PageRequest pageRequest) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
+        //设置页码以及长度
         PageHelper.startPage(pageNum, pageSize);
 
         //根据标签名获取标签ID
         Long tagId=tagsMapper.getIdByName(tagName);
-        if(tagId == null){
-            throw new NullPointerException();
-        }
         //根据标签ID获取文章信息
         List<Article> articles= articleMapper.getArticleByTagId(tagId);
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
 
+        //调用分页工具类完成分页信息的封装
         return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
     }
 
-    @Override
-    public List<Article> getArticleByDe() {
-        List<Article> articles= articleMapper.getArticleByDe();
-        if(articles.isEmpty()){
-            throw new NullPointerException();
-        }
-        return articles;
-    }
-
-    @Override
-    public List<Article> getArticleByNoDe() {
-        List<Article> articles= articleMapper.getArticleByNoDe();
-
-        return insertTagsIntoArticle(articles);
-    }
-
     /**
-     * 为文章集合添加标签信息
+     * 为文章添加标签信息
      * @param articles
      * @return
      */
@@ -120,16 +110,36 @@ public class ArticleServiceImpl implements ArticleService
     }
 
     @Override
+    public List<Article> getArticleByDelete() {
+        //获取删除状态的文章
+        List<Article> articles= articleMapper.getArticleByDelete();
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        return articles;
+    }
+
+    @Override
+    public List<Article> getArticleByNotDelete() {
+        //获取未删除状态的文章
+        List<Article> articles= articleMapper.getArticleByNotDelete();
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        return insertTagsIntoArticle(articles);
+    }
+
+    @Override
     public List<Article> getLikeTitleArticle(String title) {
         List<Article> articles= articleMapper.getLikeTitleArticle(title);
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
 
-        //获取文章标签集合
-        for(Article article:articles){
-            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
-        }
+        //为文章添加标签信息
+        articles=insertTagsIntoArticle(articles);
         return articles;
     }
 
@@ -192,6 +202,7 @@ public class ArticleServiceImpl implements ArticleService
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void resetArticleState(Integer articleState, Long articleId) {
+        //删除文章
         int i= articleMapper.resetArticleState(articleState,articleId);
         if(i != 1){
             throw new IllegalArgumentException();
@@ -200,19 +211,23 @@ public class ArticleServiceImpl implements ArticleService
 
     @Override
     public List<Map<String, String>> getNewRecommend() {
+        //获取推荐文章
         List<Map<String, String>> maps=articleMapper.getNewRecommend();
         if(maps.isEmpty()){
             throw new NullPointerException();
         }
+
         return maps;
     }
 
     @Override
     public List<Map<String, String>> getNewTitle() {
+        //获取最新文章
         List<Map<String, String>> maps=articleMapper.getNewTitle();
         if(maps.isEmpty()){
             throw new NullPointerException();
         }
+
         return maps;
     }
 
@@ -230,57 +245,27 @@ public class ArticleServiceImpl implements ArticleService
         return articles;
     }
 
-//    @Override
-//    public List<Article> getArticleByTagName(String tagName) {
-//        //根据标签名获取标签ID
-//        Long tagId=tagsMapper.getIdByName(tagName);
-//        if(tagId == null){
-//            throw new NullPointerException();
-//        }
-//        //根据标签ID获取文章信息
-//        List<Article> articles= articleMapper.getArticleByTagId(tagId);
-//        if(articles.isEmpty()){
-//            throw new NullPointerException();
-//        }
-//
-//        //获取文章标签集合
-//        for(Article article:articles){
-//            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
-//        }
-//        return articles;
-//    }
-
-    @Override
-    public List<Article> getArticleByCateName(String cateName) {
-        List<Article> articles= articleMapper.getArticleByCateName(cateName);
-        if(articles.isEmpty()){
-            throw new NullPointerException();
-        }
-
-        //获取文章标签集合
-        for(Article article:articles){
-            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
-        }
-        return articles;
-    }
-
     @Override
     public List<Map<String, Object>> getTimeLine() {
         //Map中的两个键
         String keyMonth="months";
         String keyYear="years";
 
-        //获取每年的文章数量
+        //获取年份以及文章数量
         List<Map<String,Object>> years=articleMapper.getYearsCountArticle();
         for(Map<String,Object> y : years){
+            //根据年份获取月份以及文章数量
             String year=y.get(keyYear).toString();
             List<Map<String, Object>> months = articleMapper.getMonthsByYear(year);
 
+            //遍历月份集合来添加文章信息
             for(Map<String,Object> m : months){
+                //根据年份以及月份获取文章信息
                 String month=m.get(keyMonth).toString();
                 List<Map<String, Object>> info=articleMapper.getInfoByMonthYear(year,month);
                 m.put("info",info);
             }
+            //添加月份以及文章信息
             y.put("months", months);
         }
         return years;
@@ -288,15 +273,18 @@ public class ArticleServiceImpl implements ArticleService
 
     @Override
     public Map<String, String> getTotalData() {
+        //获取总文章数、总浏览量、总点赞数以及总评论数
         Map<String,String> totalData=articleMapper.getTotalData();
         if(totalData.isEmpty()){
             throw new NullPointerException();
         }
+
         return totalData;
     }
 
     @Override
     public Map<String, Integer> getInfo() {
+        //获取文章数量、专栏数量以及标签数量
         Map<String, Integer> info=new HashMap<>();
         Integer article=articleMapper.getArticleNum();
         Integer category=categoryMapper.getCategoryNum();

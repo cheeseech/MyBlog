@@ -15,7 +15,7 @@
     </update>
 
     <delete id="deleteByTagId">
-        delete from tags where tag_id=#{tagId} limit 1
+        delete from tags where tag_id=#{tag_id}
     </delete>
 
     <select id="getAllTags" resultType="cn.xmh.web.blogserver.model.Tags">
@@ -23,12 +23,12 @@
     </select>
 
     <select id="getTagsName" resultType="cn.xmh.web.blogserver.model.Tags">
-        select * from tags where tag_name=#{tagName}
+        select * from tags where tag_name=#{tag_name}
     </select>
 
     <select id="getTagsByArticleId" resultType="cn.xmh.web.blogserver.model.Tags">
         select tags.tag_id,tag_name,tag_type from tags,article_tags
-        where tags.tag_id=article_tags.tag_id and article_id=#{articleId}
+        where tags.tag_id=article_tags.tag_id and article_id=#{article_id}
     </select>
 
     <select id="getTagsAndCount" resultType="java.util.Map">

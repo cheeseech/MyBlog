@@ -26,14 +26,7 @@ public interface CategoryMapper {
      * @param cateName 专栏名
      * @return 专栏信息
      */
-    Category getByCategoryName(@Param("cateName") String cateName);
-
-    /**
-     *  根据专栏ID获取专栏信息
-     * @param cateId 专栏ID
-     * @return 专栏信息
-     */
-    Category getByCategoryId(@Param("cateId") Long cateId);
+    Category getByCategoryName(@Param("cate_name") String cateName);
 
     /**
      * 插入专栏信息
@@ -47,7 +40,7 @@ public interface CategoryMapper {
      * @param cateId 专栏ID
      * @return 受影响的行
      */
-    int deleteByCategoryId(@Param("cateId") Long cateId);
+    int deleteByCategoryId(@Param("cate_id") Long cateId);
 
     /**
      * 更新专栏信息

@@ -56,12 +56,4 @@ public interface UserService {
      * @param password 密码
      */
     void resetPassword(Long userId,String password);
-
-    /**
-     * 设置用户角色
-     * @param userId 用户ID
-     * @param roleId 角色ID
-     */
-    void setUserRole(Long userId,Long roleId);
-
 }

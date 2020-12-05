@@ -27,42 +27,35 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getAllCategory() {
+        //获取所有专栏
         List<Category> category= categoryMapper.getAllCategory();
-
-        //判断集合是否为空
         if(category.isEmpty()){
             throw  new NullPointerException();
         }
+
         return category;
     }
 
     @Override
     public Category getByCategoryName(String cateName) {
+        //根据专栏名获取专栏
         Category category= categoryMapper.getByCategoryName(cateName);
         if(category == null){
             throw  new NullPointerException();
         }
-        return category;
-    }
 
-    @Override
-    public Category getByCategoryId(Long cateId) {
-        Category category= categoryMapper.getByCategoryId(cateId);
-        if(category == null){
-            throw  new NullPointerException();
-        }
         return category;
     }
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void insertCategory(Category category) throws SQLException {
-
         //判断是否存在相同专栏名
         Category checkCategory=categoryMapper.getByCategoryName(category.getCateName());
         if(checkCategory!=null) {
             throw new IllegalArgumentException();
         }
+        //添加创建时间
         category.setCreateTime(new Date());
         int i= categoryMapper.insertCategory(category);
         if (i != 1) {
@@ -73,6 +66,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void deleteByCategoryId(Long cateId) throws SQLException {
+        //删除专栏
         int i= categoryMapper.deleteByCategoryId(cateId);
         if (i != 1) {
             throw new SQLException();
@@ -82,13 +76,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void updateByCategoryId(Category category) throws SQLException {
-
         //判断是否存在相同专栏名
         Category checkCategory=categoryMapper.getByCategoryName(category.getCateName());
         if(checkCategory!=null){
             throw new IllegalArgumentException();
         }
 
+        //更新专栏
         int i= categoryMapper.updateByCategory(category);
         if (i != 1) {
             throw new SQLException();
@@ -97,19 +91,23 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Map<String, Long>> getCateArticleCount() {
+        //获取专栏文章数
         List<Map<String, Long>> map=categoryMapper.getCateArticleCount();
         if(map.isEmpty()){
             throw  new NullPointerException();
         }
+
         return map;
     }
 
     @Override
     public List<Map<String, Object>> getCateAnalysis() {
+        //获取专栏名、专栏概述、创建时间、浏览量、点赞数以及评论数
         List<Map<String, Object>> category=categoryMapper.getCateAnalysis();
         if(category.isEmpty()){
             throw new NullPointerException();
         }
+
         return category;
     }
 }

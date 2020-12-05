@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/admin")
-@Api(tags = "博客管理")
+@Api(tags = "文章管理")
 public class ArticleManageController {
 
     @Resource
@@ -26,7 +26,7 @@ public class ArticleManageController {
 
     @RequestMapping(value = "/article",method = RequestMethod.POST)
     @ApiOperation("新建一篇文章")
-    public ResultJson insertArticle(@RequestBody Article article){
+    public ResultJson insertArticle(Article article){
         try {
             articleService.insertArticle(article);
             return new ResultJson("201","新建成功！",null);
@@ -55,7 +55,7 @@ public class ArticleManageController {
 
     @RequestMapping(value = "/article",method = RequestMethod.PUT)
     @ApiOperation("更新一篇文章")
-    public ResultJson updateArticle(@RequestBody Article article){
+    public ResultJson updateArticle(Article article){
         try {
             articleService.updateByArticleId(article.getArticleId(),article);
             return new ResultJson("201", "更新成功！", null);
@@ -66,11 +66,15 @@ public class ArticleManageController {
         }
     }
 
-    @RequestMapping(value = "/article/{articleId}/state",method = RequestMethod.PUT)
+    @RequestMapping(value = "/article/{articleId}/{state}",method = RequestMethod.PUT)
     @ApiOperation("更新文章状态")
-    public ResultJson updateArticle(@PathVariable Long articleId,@RequestBody Integer articleState){
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "Long",required = true),
+            @ApiImplicitParam(name = "state",value = "文章状态",dataType = "Integer",required = true)
+    })
+    public ResultJson updateArticle(@PathVariable Long articleId,@PathVariable Integer state){
         try {
-            articleService.resetArticleState(articleState,articleId);
+            articleService.resetArticleState(state,articleId);
             return new ResultJson("201", "更新成功！", null);
         }catch (IllegalArgumentException e){
             return new ResultJson("422","更新失败！请稍后再试。",null);

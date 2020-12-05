@@ -32,7 +32,7 @@ public interface TagsService {
     void insertTag(Tags tags) throws SQLException;
 
     /**
-     * 根据ID更新一个标签
+     * 更新一个标签
      * @param tags 标签信息
      */
     void updateTagById(Tags tags) throws SQLException;

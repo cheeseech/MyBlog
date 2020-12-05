@@ -64,13 +64,4 @@ public interface UserMapper {
      * @return 受影响的行
      */
     int resetPassword(@Param("userId") Long userId,@Param("password") String password);
-
-    /**
-     * 设置用户角色
-     * @param userId 用户ID
-     * @param roleId 角色ID
-     * @return 受影响的行
-     */
-    int setUserRole(@Param("userId")Long userId,@Param("roleId")Long roleId);
-
 }
