@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import { getRequest } from "@/../untils/axiosApi";
 import axios from "axios";
+import { getRequest } from "@/../untils/axiosApi";
 
 export default {
   name: "BlogArchives",

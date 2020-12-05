@@ -11,7 +11,7 @@ import "@/assets/css/me.css";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import echarts from 'echarts'
-import * as filters from '@/views/blog/index' // global filters
+import * as filters from '@/views/index' // global filters
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {

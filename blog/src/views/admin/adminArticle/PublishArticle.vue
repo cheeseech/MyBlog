@@ -41,7 +41,4 @@ export default {
     margin-bottom:30px; */
     padding:10px;
 }
-.mavonEditor{
-    /* background-color: #fff; */
-}
 </style>

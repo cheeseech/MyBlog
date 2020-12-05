@@ -28,7 +28,7 @@
     </insert>
 
     <update id="updateUserState">
-        update user set user_state=#{userState} where user_id=#{userId}
+        update user set enabled=#{userState} where user_id=#{userId}
     </update>
 
     <update id="updateByUserId">

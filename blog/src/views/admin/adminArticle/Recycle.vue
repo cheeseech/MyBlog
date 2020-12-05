@@ -8,12 +8,11 @@
         )
       "
       highlight-current-row
-      @selection-change="handleSelectionChange()"
       style="width: 100%;"
     >
       <el-table-column label="序号" type="index" min-width="50" align="center">
       </el-table-column>
-
+      <!-- 文章标题 -->
       <el-table-column
         label="文章标题"
         prop="title"
@@ -23,6 +22,7 @@
         show-overflow-tooltip
       >
       </el-table-column>
+      <!-- 文章类型 -->
       <el-table-column label="类型" min-width="80" align="center">
         <template slot-scope="scope">
           <el-tag
@@ -48,6 +48,7 @@
           >
         </template>
       </el-table-column>
+      <!-- 文章专栏 -->
       <el-table-column
         label="专栏"
         prop="cateName"
@@ -55,18 +56,20 @@
         align="center"
       >
       </el-table-column>
+      <!-- 创建时间 -->
       <el-table-column label="创建时间" sortable min-width="170" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.publishTime | dateFormat }}</span>
+          <span>{{ scope.row.publishTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
+      <!-- 删除时间 -->
       <el-table-column label="删除时间" sortable min-width="170" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.updateTime | dateFormat }}</span>
+          <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" min-width="200">
+      <el-table-column align="center" min-width="250">
         <template slot="header" slot-scope="scope">
           <el-input
             style="width:80%"
@@ -76,12 +79,14 @@
           />
         </template>
         <template slot-scope="scope">
+          <!-- 编辑文章 -->
           <el-button
             size="mini"
             @click="handleCurrentChange(scope.row)"
             type="primary"
-            >查看</el-button
+            >编辑</el-button
           >
+          <!-- 更改文章状态 -->
           <el-button
             size="mini"
             @click="handleCurrentChange(scope.row)"
@@ -89,6 +94,7 @@
             >还原为草稿</el-button
           >
           &nbsp;
+          <!-- 删除文章 -->
           <el-popconfirm
             confirmButtonText="残忍删除"
             cancelButtonText="我再想想"
@@ -107,8 +113,7 @@
   </div>
 </template>
 <script>
-import { getRequest } from "../../../untils/axiosApi";
-import { deleteRequest } from "../../../untils/axiosApi";
+import { getRequest, deleteRequest } from "@/../untils/axiosApi";
 import { Message } from "element-ui";
 import axios from "axios";
 
@@ -116,11 +121,13 @@ export default {
   name: "recycle",
   data() {
     return {
-      articleInfo: [],
-      search: ""
+      search: "",
+      articleInfo: []
     };
   },
+  //在路由跳转前获取数据
   beforeRouteEnter(to, from, next) {
+    //获取已被删除状态的文章
     axios.all([getRequest("/article/de/")]).then(
       axios.spread(response => {
         next(vm => {
@@ -130,36 +137,17 @@ export default {
     );
   },
   methods: {
+    //数据处理
     setData(response) {
       if (response.status == 200) {
         this.articleInfo = response.data;
       }
-    }
-  },
-  filters: {
-    dateFormat: function(value) {
-      var date = new Date(value);
+    },
+    modifiedArticle(articleId){
 
-      var years = date.getFullYear();
-      var months = (date.getMonth() + 1).toString().padStart(2, "0");
-      var days = date
-        .getDate()
-        .toString()
-        .padStart(2, "0");
-      var hours = date
-        .getHours()
-        .toString()
-        .padStart(2, "0");
-      var minutes = date
-        .getMinutes()
-        .toString()
-        .padStart(2, "0");
-      var seconds = date
-        .getSeconds()
-        .toString()
-        .padStart(2, "0");
-
-      return `${years}-${months}-${days} ${hours}:${minutes}:${seconds}`;
+    },
+    updateArticleState(articleId){
+        
     }
   }
 };

@@ -2,6 +2,7 @@
   <div id="totalData">
     <el-row :gutter="20">
       <el-col :span="6">
+        <!-- 浏览次数 -->
         <el-card>
           <el-image
             :src="eyeImg"
@@ -20,6 +21,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
+        <!-- 点赞次数 -->
         <el-card>
           <el-image
             :src="heartImg"
@@ -38,6 +40,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
+        <!-- 评论次数 -->
         <el-card>
           <el-image
             :src="msgImg"
@@ -56,6 +59,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
+        <!-- 文章篇数 -->
         <el-card>
           <el-image
             :src="articleImg"
@@ -77,18 +81,19 @@
   </div>
 </template>
 <script>
-import { getRequest } from "../../../untils/axiosApi";
+import { getRequest } from "@/../untils/axiosApi";
 export default {
   data() {
     return {
-      msgImg: require("./../../assets/images/msg.png"),
-      eyeImg: require("./../../assets/images/eye.png"),
-      heartImg: require("./../../assets/images/heart.png"),
-      articleImg: require("./../../assets/images/article.png"),
+      msgImg: require("@/assets/images/msg.png"),
+      eyeImg: require("@/assets/images/eye.png"),
+      heartImg: require("@/assets/images/heart.png"),
+      articleImg: require("@/assets/images/article.png"),
       totalData: []
     };
   },
   created() {
+    //数据获取
     getRequest("/admin/article/totalData/").then(response => {
       this.totalData = response.data;
     });

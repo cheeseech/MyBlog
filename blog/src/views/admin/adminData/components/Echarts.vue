@@ -14,15 +14,16 @@ export default {
     };
   },
   watch:{
-      days: function() {
-        // console.log(this.days)
+    //当日期数据变化时重新渲染图表
+      days() {
         this.initChart();
       }
   },
-  mounted: function() {
+  mounted() {
+    //图表初始化
     this.initChart();
   },
-  beforeDestroy: function() {
+  beforeDestroy() {
     if (!this.chart) {
       return;
     }
@@ -30,7 +31,13 @@ export default {
     this.chart = null;
   },
   methods: {
-    setOptions: function() {
+    //图表初始化
+    initChart() {
+      this.chart = this.$echarts.init(this.$el);
+      this.setOptions();
+    },
+    //图表参数设置
+    setOptions() {
       var _this = this;
       this.chart.setOption({
         title: { text: "每天数据详情" },
@@ -61,15 +68,13 @@ export default {
           {
             type: "line",
             step: "strat",
+            //数据
             data: _this.data
           }
         ]
       });
-    },
-    initChart: function() {
-      this.chart = this.$echarts.init(this.$el);
-      this.setOptions();
     }
+    
   }
 };
 </script>

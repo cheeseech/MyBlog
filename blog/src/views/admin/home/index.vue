@@ -5,12 +5,14 @@
       <el-aside style="width:auto;">
         <sideBar></sideBar>
       </el-aside>
+
       <el-container>
         <!-- 导航栏 -->
         <el-header>
           <navBar></navBar>
         </el-header>
 
+        <!-- 路由组件 -->
         <el-main :style="height">
           <router-view></router-view>
         </el-main>
@@ -20,9 +22,14 @@
 </template>
 
 <script>
-const sideBar = () =>import(/* webpackChunkName:"admin_home" */ "@/components/admin/SideBar");
-const navBar = () =>import(/* webpackChunkName:"admin_home" */ "@/components/admin/NavBar");
-const userManager = () =>import(/* webpackChunkName:"admin_user" */ "@/components/admin/UserManager");
+const sideBar = () =>
+  import(
+    /* webpackChunkName:"admin_home" */ "@/views/admin/home/components/SideBar"
+  );
+const navBar = () =>
+  import(
+    /* webpackChunkName:"admin_home" */ "@/views/admin/home/components/NavBar"
+  );
 
 export default {
   name: "Admin",
@@ -33,11 +40,7 @@ export default {
       }
     };
   },
-  components: {
-    sideBar: sideBar,
-    navBar: navBar,
-    userManager: userManager
-  }
+  components: { sideBar, navBar }
 };
 </script>
 

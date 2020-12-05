@@ -42,7 +42,7 @@ public interface UserService {
      * @param userState 用户状态
      * @param id 用户ID
      */
-    void updateUserState(Integer userState,Long id);
+    void updateUserState(Boolean userState,Long id);
 
     /**
      * 获取所有用户集合

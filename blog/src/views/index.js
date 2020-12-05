@@ -1,5 +1,17 @@
-//日期时间格式化
+//年月日时间表示
 function dateTime(value) {
+  return getDate(value, 1);
+}
+//-号表示
+function dateTimeLong(value) {
+  return getDate(value, 0);
+}
+//返回年月日格式
+function date(value){
+    return getDate(value, 2);
+}
+//日期时间格式化,可以返回多种格式字符串
+function getDate(value, choose) {
   var date = new Date(value);
 
   var years = date.getFullYear();
@@ -20,8 +32,13 @@ function dateTime(value) {
     .getSeconds()
     .toString()
     .padStart(2, "0");
-
-  return `${years}年${months}月${days}日 ${hours}:${minutes}:${seconds}`;
+  if (choose === 1) {
+    return `${years}年${months}月${days}日 ${hours}:${minutes}:${seconds}`;
+  } else if(choose === 0){
+    return `${years}-${months}-${days} ${hours}:${minutes}:${seconds}`;
+  }else if(choose === 2){
+    return `${years}年${months}月${days}日`;
+  }
 }
 //月份格式化
 function months(value) {
@@ -88,6 +105,12 @@ function title(value) {
 
 export function dateTimeFormat(time) {
   return dateTime(time);
+}
+export function dateFormat(time) {
+    return date(time);
+  }
+export function dateTimeLongFormat(time) {
+  return dateTimeLong(time);
 }
 export function monthsFormat(month) {
   return months(month);

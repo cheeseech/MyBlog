@@ -68,16 +68,16 @@ public class UserManageController {
         }
     }
 
-    @RequestMapping(value = "/users/{userId}/state",method = RequestMethod.PUT)
+    @RequestMapping(value = "/users/{userId}/{state}",method = RequestMethod.PUT)
     @ApiOperation("更新用户状态")
-    public ResultJson updateUser(@PathVariable Long userId,@RequestBody Integer state){
+    public ResultJson updateUser(@PathVariable Long userId,@PathVariable Boolean state){
         try {
             userService.updateUserState(state,userId);
             return new ResultJson("201", "更新成功！", null);
         }catch (IllegalArgumentException e){
             return new ResultJson("422","更新失败！请稍后再试。",null);
         }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+            return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
     }
 

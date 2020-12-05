@@ -1,16 +1,17 @@
 <template>
   <div id="welcome" style="padding:20px;" v-if="days">
+    <!-- 文章总数据 -->
     <totalArticleData></totalArticleData>
-
+    <!-- echarts图表 -->
     <el-card style="margin-top:40px">
       <div id="tu" style="width:95%;height: 400px;"></div>
     </el-card>
   </div>
 </template>
 <script>
-import { getRequest } from "../../../untils/axiosApi";
-import totalArticleData from "./TotalArticleData"
 import axios from "axios";
+import { getRequest } from "@/../untils/axiosApi";
+import totalArticleData from "@/components/TotalArticleData";
 
 export default {
   name: "welcome",
@@ -23,17 +24,21 @@ export default {
     };
   },
   beforeRouteEnter(to, from, next) {
-      const end=new Date();
-      const start=new Date();
-      start.setTime(start.getTime()-3600*1000*24*30);
-      getRequest("/admin/daysEcharts/"+start+"/"+end).then(
-        monthsResponse => {
-          next(vm => {
-            vm.setData(monthsResponse);
-          });
-        })
+    //设置时间为近30天
+    const end = new Date();
+    const start = new Date();
+    start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+    //根据时间获取每天文章数据
+    getRequest("/admin/daysEcharts/" + start + "/" + end).then(
+      monthsResponse => {
+        next(vm => {
+          vm.setData(monthsResponse);
+        });
+      }
+    );
   },
   watch: {
+    //days变化时初始化echarts图表
     days() {
       this.$nextTick(() => {
         this.myEcharts();
@@ -41,14 +46,20 @@ export default {
     }
   },
   methods: {
+    //数据处理
     setData(monthsResponse) {
       if (monthsResponse.status == 200) {
+        //每天文章数据
         this.days = monthsResponse.data.days;
+        //总点赞数
         this.likes = monthsResponse.data.likes;
+        //总浏览量
         this.views = monthsResponse.data.views;
+        //总评论数
         this.comments = monthsResponse.data.comments;
       }
     },
+    //生成echarts图表
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例
       var myChart = this.$echarts.init(document.getElementById("tu"), "light");
@@ -143,9 +154,6 @@ export default {
       myChart.setOption(option);
     }
   },
-  components: {
-      totalArticleData: totalArticleData
-  }
+  components: { totalArticleData }
 };
 </script>
-<style scoped></style>

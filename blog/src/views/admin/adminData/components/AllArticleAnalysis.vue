@@ -1,5 +1,6 @@
 <template>
   <div id="allArticleAnalysis" v-if="days">
+    <!-- 筛选数据 -->
     <div style="margin-top:20px;margin-left:40px;">
       <span style="font-size: 19px;font-weight:bold">数据筛选：</span>
       <el-date-picker
@@ -16,9 +17,9 @@
     </div>
     <el-tabs
       v-model="activeName"
-      @tab-click="handleClick"
       style="margin-top:20px;margin-left: 40px;margin-right: 40px;"
     >
+      <!-- 浏览量图表 -->
       <el-tab-pane label="浏览量" name="views">
         <charts
           v-if="'views' === activeName"
@@ -29,6 +30,7 @@
           >views</charts
         >
       </el-tab-pane>
+      <!-- 点赞数图表 -->
       <el-tab-pane label="点赞数" name="likes">
         <charts
           v-if="'likes' === activeName"
@@ -39,6 +41,7 @@
           >likes</charts
         >
       </el-tab-pane>
+      <!-- 评论数图表 -->
       <el-tab-pane label="评论数" name="comments">
         <charts
           v-if="'comments' === activeName"
@@ -53,17 +56,17 @@
   </div>
 </template>
 <script>
-import { getRequest } from "../../../../untils/axiosApi";
 import { Message } from "element-ui";
-import charts from "./Echarts";
+import { getRequest } from "@/../untils/axiosApi";
+import charts from "@/views/admin/adminData/components/Echarts";
 export default {
   data() {
     return {
-      activeName: "views",
       days: null,
       likes: [],
       views: [],
       comments: [],
+      activeName: "views",
       timesEcharts: "",
       pickerOptions: {
         disabledDate(time) {
@@ -102,6 +105,7 @@ export default {
     };
   },
   watch: {
+    //时间变化时根据选择时间获取数据
     timesEcharts: function() {
       getRequest(
         "/admin/daysEcharts/" +
@@ -114,9 +118,11 @@ export default {
     }
   },
   mounted() {
+    //页面初始化时设置时间
     this.setTime();
   },
   methods: {
+    //设置时间为近90天
     setTime() {
       const end = new Date();
       const start = new Date();
@@ -125,11 +131,16 @@ export default {
       this.times = [start, end];
       this.timesEcharts = [start, end];
     },
+    //数据处理
     setData(response) {
       if (response.status == 200) {
+        //日期数据
         this.days = response.data.days;
+        //点赞数数据
         this.likes = response.data.likes;
+        //浏览量数据
         this.views = response.data.views;
+        //评论数数据
         this.comments = response.data.comments;
       } else {
         this.days = "";
@@ -137,11 +148,8 @@ export default {
         this.views = "";
         this.comments = "";
       }
-    },
-    handleClick(tab, event) {}
+    }
   },
-  components: {
-    charts: charts
-  }
+  components: { charts }
 };
 </script>

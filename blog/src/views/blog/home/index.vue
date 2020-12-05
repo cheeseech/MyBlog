@@ -7,14 +7,13 @@
       </el-header>
 
       <el-main>
-        <vue-progress-bar></vue-progress-bar>
         <div class="m-container-small">
           <!--路由渲染页面-->
           <transition name="el-fade-in-linear">
             <router-view></router-view>
           </transition>
         </div>
-
+        
         <!-- btnFlag 控制图片显示隐藏 -->
         <!-- backTop 回顶部的方法 -->
         <transition name="el-fade-in-linear">
@@ -52,9 +51,6 @@ export default {
     };
   },
   mounted() {
-    //  [App.vue specific] 当App.vue加载完成，结束进度条
-    this.$Progress.finish();
-
     // window对象，所有浏览器都支持window对象。它表示浏览器窗口，监听滚动事件
     window.addEventListener("scroll", this.scrollToTop);
   },
@@ -88,28 +84,6 @@ export default {
         _this.btnFlag = false;
       }
     }
-  },
-  created() {
-    //  [App.vue specific] 当App.vue创建时，启动进度条
-    this.$Progress.start();
-    //  当路由变化时，挂起进度条
-    this.$router.beforeEach((to, from, next) => {
-      //  判断页面是否存在 meta.progress
-      if (to.meta.progress !== undefined) {
-        let meta = to.meta.progress;
-        // parse meta tags
-        this.$Progress.parseMeta(meta);
-      }
-      // 启动进度条
-      this.$Progress.start();
-      //  continue to next page
-      next();
-    });
-    //  路由完成时，完成进度条
-    this.$router.afterEach((to, from) => {
-      //  finish the progress bar
-      this.$Progress.finish();
-    });
   }
 };
 </script>

@@ -14,40 +14,35 @@ const blogAbout = () =>
   import(/* webpackChunkName: "blog_about" */ "@/views/blog/BlogAbout");
 const articleInfo = () =>
   import(/* webpackChunkName: "blog_article" */ "@/views/blog/BlogArticle");
+
 const adminHome = () =>
-  import(/* webpackChunkName: "admin_home" */ "@/components/admin/Admin");
+  import(/* webpackChunkName: "admin_home" */ "@/views/admin/home/index");
+const welcome = () =>
+  import(/* webpackChunkName:"admin_welcome"*/ "@/views/admin/AdminWelcome");
+const adminUser = () =>
+  import(/* webpackChunkName: "admin_user" */ "@/views/admin/adminUser");
+const adminTag = () =>
+  import(/* webpackChunkName: "admin_tag" */ "@/views/admin/adminTags");
+const adminCategory = () =>
+  import(
+    /* webpackChunkName: "admin_category" */ "@/views/admin/AdminCategory"
+  );
 const login = () =>
   import(/* webpackChunkName: "login" */ "@/components/Login");
-const userManager = () =>
-  import(
-    /* webpackChunkName: "user_manager" */ "@/components/admin/UserManager"
-  );
-const tagsManager = () =>
-  import(
-    /* webpackChunkName: "tags_manager" */ "@/components/admin/TagsManager"
-  );
-const categoriesManager = () =>
-  import(
-    /* webpackChunkName: "category_manager" */ "@/components/admin/CategoryManager"
-  );
-const welcome = () =>
-  import(/* webpackChunkName:"welcome"*/ "@/components/admin/Welcome");
 
 const publish = () =>
   import(
-    /* webpackChunkName:"publish_article"*/ "@/components/admin/PublishArticle"
+    /* webpackChunkName:"publish_article"*/ "@/views/admin/adminArticle/PublishArticle"
   );
-const articleManager = () =>
+const adminArticle = () =>
   import(
-    /* webpackChunkName:"article_manager"*/ "@/components/admin/ArticleManager"
+    /* webpackChunkName:"article_manager"*/ "@/views/admin/adminArticle/AdminArticle"
   );
 const recycle = () =>
-  import(/* webpackChunkName:"recycle"*/ "@/components/admin/Recycle");
+  import(/* webpackChunkName:"recycle"*/ "@/views/admin/adminArticle/Recycle");
 
-const dataManager = () =>
-  import(
-    /* webpackChunkName:"data_manager"*/ "@/components/admin/dataManager/dataManager"
-  );
+const adminData = () =>
+  import(/* webpackChunkName:"data_manager"*/ "@/views/admin/adminData/index");
 
 Vue.use(Router);
 
@@ -115,22 +110,22 @@ export default new Router({
         {
           path: "user",
           name: "用户管理",
-          component: userManager
+          component: adminUser
         },
         {
           path: "tags",
           name: "标签管理",
-          component: tagsManager
+          component: adminTag
         },
         {
           path: "category",
           name: "专栏管理",
-          component: categoriesManager
+          component: adminCategory
         },
         {
           path: "article",
           name: "管理文章",
-          component: articleManager
+          component: adminArticle
         },
         {
           path: "publishArticle",
@@ -143,9 +138,9 @@ export default new Router({
           component: recycle
         },
         {
-          path: "dataManager",
+          path: "adminData",
           name: "数据管理",
-          component: dataManager
+          component: adminData
         }
       ]
     },

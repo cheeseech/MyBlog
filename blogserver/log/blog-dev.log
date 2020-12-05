@@ -1,83 +1,666 @@
-2020-12-02 07:17:25.989  INFO 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 9112 (D:\project\WebStorm\MyBlog\blogserver\target\classes started by Show in D:\project\WebStorm\MyBlog\blogserver)
-2020-12-02 07:17:25.995 DEBUG 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
-2020-12-02 07:17:25.995  INFO 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
-2020-12-02 07:17:28.450  INFO 9112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
-2020-12-02 07:17:28.459  INFO 9112 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-12-02 07:17:28.460  INFO 9112 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-12-02 07:17:28.546  INFO 9112 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-12-02 07:17:28.547  INFO 9112 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2450 ms
-2020-12-02 07:17:29.731  INFO 9112 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-12-02 07:17:29.910  INFO 9112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3003827c, org.springframework.security.web.context.SecurityContextPersistenceFilter@633cc6b5, org.springframework.security.web.header.HeaderWriterFilter@16a35bd, org.springframework.security.web.authentication.logout.LogoutFilter@5762658b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@35c9a231, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@403c3a01, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f1f7db2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@29b40b3, org.springframework.security.web.session.SessionManagementFilter@6f798482, org.springframework.security.web.access.ExceptionTranslationFilter@36aa52d2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@48eb001a]
-2020-12-02 07:17:29.948  INFO 9112 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-12-02 07:17:30.109  INFO 9112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
-2020-12-02 07:17:30.110  INFO 9112 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-12-02 07:17:30.136  INFO 9112 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-12-02 07:17:30.175  INFO 9112 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-12-02 07:17:30.311  INFO 9112 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
-2020-12-02 07:17:30.379  INFO 9112 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
-2020-12-02 07:17:30.404  INFO 9112 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 4.939 seconds (JVM running for 6.418)
-2020-12-02 07:21:01.156  INFO 9112 --- [http-nio-8081-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-12-02 07:21:01.156  INFO 9112 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-12-02 07:21:01.213  INFO 9112 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 57 ms
-2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
-2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
-2020-12-02 07:21:01.909 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
-2020-12-02 07:21:01.975  INFO 9112 --- [http-nio-8081-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-12-02 07:21:02.234 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
-2020-12-02 07:21:02.464  INFO 9112 --- [http-nio-8081-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-12-02 07:21:02.473 DEBUG 9112 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
-2020-12-02 07:21:02.479 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.A.getAllPage_COUNT             : ==>  Preparing: SELECT count(0) FROM article a LEFT JOIN category c ON a.cate_id = c.cate_id LEFT JOIN types tp ON tp.type_id = a.type_id
-2020-12-02 07:21:02.482 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
-2020-12-02 07:21:02.487 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
-2020-12-02 07:21:02.490 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : ==>  Preparing: select COUNT(article_id) from article
-2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.A.getAllPage_COUNT             : ==> Parameters: 
-2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
-2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
-2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : ==> Parameters: 
-2020-12-02 07:21:02.521 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
-2020-12-02 07:21:02.542 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.A.getAllPage_COUNT             : <==      Total: 1
-2020-12-02 07:21:02.544 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : <==      Total: 1
-2020-12-02 07:21:02.545 DEBUG 9112 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 9
-2020-12-02 07:21:02.547 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
-2020-12-02 07:21:02.547 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id LIMIT ?
-2020-12-02 07:21:02.547 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==> Parameters: 6(Integer)
-2020-12-02 07:21:02.549 DEBUG 9112 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 5
-2020-12-02 07:21:02.551 DEBUG 9112 --- [http-nio-8081-exec-1] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
-2020-12-02 07:21:02.552 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
-2020-12-02 07:21:02.553 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==>  Preparing: select COUNT(cate_id) from category
-2020-12-02 07:21:02.553 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==> Parameters: 
-2020-12-02 07:21:02.553 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.mapper.ArticleMapper.getAllPage  : <==      Total: 6
-2020-12-02 07:21:02.554 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : <==      Total: 1
-2020-12-02 07:21:02.555 DEBUG 9112 --- [http-nio-8081-exec-5] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.555 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==>  Preparing: select COUNT(tag_id) from tags
-2020-12-02 07:21:02.555 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==> Parameters: 
-2020-12-02 07:21:02.556 DEBUG 9112 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : <==      Total: 1
-2020-12-02 07:21:02.558 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.558 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
-2020-12-02 07:21:02.558 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
-2020-12-02 07:21:02.634 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
-2020-12-02 07:21:02.635 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.635 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
-2020-12-02 07:21:02.635 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
-2020-12-02 07:21:02.636 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
-2020-12-02 07:21:02.637 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.637 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
-2020-12-02 07:21:02.638 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 5(Long)
-2020-12-02 07:21:02.638 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
-2020-12-02 07:21:02.639 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.639 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
-2020-12-02 07:21:02.639 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
-2020-12-02 07:21:02.640 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
-2020-12-02 07:21:02.640 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.641 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
-2020-12-02 07:21:02.641 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
-2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
-2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
-2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
-2020-12-02 07:21:02.642 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
-2020-12-02 07:21:02.644 DEBUG 9112 --- [http-nio-8081-exec-3] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
-2020-12-02 07:21:03.332 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
-2020-12-02 07:21:03.334 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==>  Preparing: SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
-2020-12-02 07:21:03.334 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==> Parameters: 
-2020-12-02 07:21:03.336 DEBUG 9112 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : <==      Total: 4
+2020-12-05 11:32:52.265  INFO 11012 --- [main] c.x.w.blogserver.BlogserverApplication   : Starting BlogserverApplication on DESKTOP-VTCAIFT with PID 11012 (D:\project\WebStorm\MyBlog\blogserver\target\classes started by Show in D:\project\WebStorm\MyBlog\blogserver)
+2020-12-05 11:32:52.303 DEBUG 11012 --- [main] c.x.w.blogserver.BlogserverApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-05 11:32:52.303  INFO 11012 --- [main] c.x.w.blogserver.BlogserverApplication   : The following profiles are active: dev
+2020-12-05 11:32:59.508  INFO 11012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-12-05 11:32:59.530  INFO 11012 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-05 11:32:59.530  INFO 11012 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-05 11:32:59.728  INFO 11012 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-05 11:32:59.728  INFO 11012 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7307 ms
+2020-12-05 11:33:02.372  INFO 11012 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-12-05 11:33:02.988  INFO 11012 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30c4e352, org.springframework.security.web.context.SecurityContextPersistenceFilter@3ebe4ccc, org.springframework.security.web.header.HeaderWriterFilter@1b6924cb, org.springframework.security.web.authentication.logout.LogoutFilter@6cbe7d4d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@68a78f3c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@135a8c6f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42aae04d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f1dd5b4, org.springframework.security.web.session.SessionManagementFilter@141d3d43, org.springframework.security.web.access.ExceptionTranslationFilter@77ab22be, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5740ff5e]
+2020-12-05 11:33:03.081  INFO 11012 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-05 11:33:03.494  INFO 11012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-12-05 11:33:03.495  INFO 11012 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-05 11:33:03.582  INFO 11012 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-05 11:33:03.643  INFO 11012 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-05 11:33:03.977  INFO 11012 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateArticleUsingPUT_1
+2020-12-05 11:33:04.050  INFO 11012 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUserUsingPUT_1
+2020-12-05 11:33:04.126  INFO 11012 --- [main] c.x.w.blogserver.BlogserverApplication   : Started BlogserverApplication in 13.858 seconds (JVM running for 17.47)
+2020-12-05 11:42:00.934  INFO 11012 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-05 11:42:00.934  INFO 11012 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-05 11:42:00.948  INFO 11012 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2020-12-05 11:42:01.215 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 11:42:01.216 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 11:42:01.217 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-05 11:42:01.215 DEBUG 11012 --- [http-nio-8081-exec-5] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.233  INFO 11012 --- [http-nio-8081-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-12-05 11:42:01.512 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 11:42:01.684  INFO 11012 --- [http-nio-8081-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-12-05 11:42:01.695 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+2020-12-05 11:42:01.695 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+2020-12-05 11:42:01.695 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.A.getAllPage_COUNT             : ==>  Preparing: SELECT count(0) FROM article a LEFT JOIN category c ON a.cate_id = c.cate_id LEFT JOIN types tp ON tp.type_id = a.type_id
+2020-12-05 11:42:01.699 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+2020-12-05 11:42:01.703 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.ArticleMapper.getArticleNum    : ==>  Preparing: select COUNT(article_id) from article
+2020-12-05 11:42:01.721 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.ArticleMapper.getArticleNum    : ==> Parameters: 
+2020-12-05 11:42:01.722 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
+2020-12-05 11:42:01.722 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
+2020-12-05 11:42:01.722 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.A.getAllPage_COUNT             : ==> Parameters: 
+2020-12-05 11:42:01.723 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
+2020-12-05 11:42:01.764 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.A.getAllPage_COUNT             : <==      Total: 1
+2020-12-05 11:42:01.765 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.ArticleMapper.getArticleNum    : <==      Total: 1
+2020-12-05 11:42:01.766 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 9
+2020-12-05 11:42:01.766 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 5
+2020-12-05 11:42:01.767 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
+2020-12-05 11:42:01.769 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 11:42:01.769 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id LIMIT ?
+2020-12-05 11:42:01.770 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-05 11:42:01.771 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==>  Preparing: select COUNT(cate_id) from category
+2020-12-05 11:42:01.771 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==> Parameters: 6(Integer)
+2020-12-05 11:42:01.771 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==> Parameters: 
+2020-12-05 11:42:01.773 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.CategoryMapper.getCategoryNum  : <==      Total: 1
+2020-12-05 11:42:01.774 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.774 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==>  Preparing: select COUNT(tag_id) from tags
+2020-12-05 11:42:01.774 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==> Parameters: 
+2020-12-05 11:42:01.777 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.mapper.TagsMapper.getTagsNum     : <==      Total: 1
+2020-12-05 11:42:01.778 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.mapper.ArticleMapper.getAllPage  : <==      Total: 6
+2020-12-05 11:42:01.803 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.803 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 11:42:01.803 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 11:42:01.808 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 11:42:01.808 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.809 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 11:42:01.809 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 11:42:01.810 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 11:42:01.810 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.810 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 11:42:01.811 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 5(Long)
+2020-12-05 11:42:01.818 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 11:42:01.818 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.819 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 11:42:01.819 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 11:42:01.819 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 11:42:01.820 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.820 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 11:42:01.820 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 11:42:01.822 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 11:42:01.822 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 11:42:01.822 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 11:42:01.823 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 11:42:01.825 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 11:42:02.106 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 11:42:02.107 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==>  Preparing: SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
+2020-12-05 11:42:02.107 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : ==> Parameters: 
+2020-12-05 11:42:02.108 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.ArticleMapper.getNewTitle      : <==      Total: 4
+2020-12-05 13:38:59.751  INFO 11012 --- [http-nio-8081-exec-8] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-12-05 13:38:59.760 DEBUG 11012 --- [http-nio-8081-exec-8] cn.xmh.web.blogserver.mapper.UserMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.UserMapper]: 0.0
+2020-12-05 13:38:59.763 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: SELECT u.*,r.* FROM user u LEFT JOIN role_user ru ON u.user_id=ru.user_id LEFT JOIN role r ON r.role_id=ru.role_id where username=?
+2020-12-05 13:38:59.767 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-12-05 13:38:59.902 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 2
+2020-12-05 13:39:00.012  INFO 11012 --- [http-nio-8081-exec-8] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$.3kSSovTowyQPLv79hMARungV4P9LatAWj9eA0iTsk7KXk4TUCUI6
+2020-12-05 13:39:00.013 DEBUG 11012 --- [http-nio-8081-exec-8] cn.xmh.web.blogserver.mapper.RoleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.RoleMapper]: 0.0
+2020-12-05 13:39:00.014 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.RoleMapper.getRoleByUserId     : ==>  Preparing: select * from role r left join role_user ru on r.role_id=ru.role_id where user_id=?
+2020-12-05 13:39:00.014 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.RoleMapper.getRoleByUserId     : ==> Parameters: 1(Long)
+2020-12-05 13:39:00.062 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.RoleMapper.getRoleByUserId     : <==      Total: 2
+2020-12-05 13:39:01.414 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.0
+2020-12-05 13:39:01.436 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 13:39:01.451 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-11-05 13:39:00.0(Timestamp), 2020-12-05 13:39:00.0(Timestamp)
+2020-12-05 13:39:01.532 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 13
+2020-12-05 13:39:01.598 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:39:01.598 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 13:39:01.598 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 13:39:01.606 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 13:39:06.999 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.UserMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.UserMapper]: 0.0
+2020-12-05 13:39:06.999 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.mapper.UserMapper.getAllUser     : ==>  Preparing: SELECT u.*,r.* FROM user u LEFT JOIN role_user ru ON u.user_id=ru.user_id LEFT JOIN role r ON r.role_id=ru.role_id
+2020-12-05 13:39:06.999 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.mapper.UserMapper.getAllUser     : ==> Parameters: 
+2020-12-05 13:39:07.003 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.mapper.UserMapper.getAllUser     : <==      Total: 9
+2020-12-05 13:39:11.303 DEBUG 11012 --- [http-nio-8081-exec-5] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0
+2020-12-05 13:39:11.304 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getAllTags     : ==>  Preparing: select * from tags
+2020-12-05 13:39:11.304 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getAllTags     : ==> Parameters: 
+2020-12-05 13:39:11.316 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getAllTags     : <==      Total: 9
+2020-12-05 13:39:11.317 DEBUG 11012 --- [http-nio-8081-exec-5] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.1
+2020-12-05 13:39:16.224 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-05 13:39:16.225 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.CategoryMapper.getAllCategory  : ==>  Preparing: select * from category
+2020-12-05 13:39:16.225 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.CategoryMapper.getAllCategory  : ==> Parameters: 
+2020-12-05 13:39:16.228 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.CategoryMapper.getAllCategory  : <==      Total: 5
+2020-12-05 13:39:27.983 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:39:27.983 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.A.getArticleByNoDe             : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state != -1
+2020-12-05 13:39:27.984 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.A.getArticleByNoDe             : ==> Parameters: 
+2020-12-05 13:39:28.013 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.A.getArticleByNoDe             : <==      Total: 5
+2020-12-05 13:39:28.014 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.09090909090909091
+2020-12-05 13:39:28.014 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:39:28.014 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 13:39:28.016 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 13:39:28.016 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.08333333333333333
+2020-12-05 13:39:28.016 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:39:28.017 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 13:39:28.017 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:39:28.018 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.07692307692307693
+2020-12-05 13:39:28.018 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:39:28.018 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 13:39:28.019 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:39:28.019 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.07142857142857142
+2020-12-05 13:39:28.020 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:39:28.020 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 13:39:28.020 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:39:28.021 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.06666666666666667
+2020-12-05 13:39:28.021 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:39:28.023 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 13:39:28.024 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:41:24.757 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:41:24.758 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state = -1
+2020-12-05 13:41:24.760 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==> Parameters: 
+2020-12-05 13:41:24.772 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getArticleByDe   : <==      Total: 2
+2020-12-05 13:50:08.555 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:50:08.557 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.A.getArticleByNoDe             : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state != -1
+2020-12-05 13:50:08.558 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.A.getArticleByNoDe             : ==> Parameters: 
+2020-12-05 13:50:08.612 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.A.getArticleByNoDe             : <==      Total: 5
+2020-12-05 13:50:08.613 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0625
+2020-12-05 13:50:08.614 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:50:08.635 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 13:50:08.659 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 13:50:08.659 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.058823529411764705
+2020-12-05 13:50:08.659 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:50:08.660 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 13:50:08.661 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:50:08.661 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.05555555555555555
+2020-12-05 13:50:08.661 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:50:08.662 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 13:50:08.662 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:50:08.663 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.05263157894736842
+2020-12-05 13:50:08.663 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:50:08.664 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 13:50:08.664 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:50:08.665 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.05
+2020-12-05 13:50:08.666 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:50:08.666 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 13:50:08.667 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:51:16.901 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:51:16.901 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.A.getArticleByNoDe             : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state != -1
+2020-12-05 13:51:16.901 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.A.getArticleByNoDe             : ==> Parameters: 
+2020-12-05 13:51:16.904 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.A.getArticleByNoDe             : <==      Total: 5
+2020-12-05 13:51:16.904 DEBUG 11012 --- [http-nio-8081-exec-7] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.047619047619047616
+2020-12-05 13:51:16.904 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:51:16.905 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 13:51:16.906 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 13:51:16.906 DEBUG 11012 --- [http-nio-8081-exec-7] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.045454545454545456
+2020-12-05 13:51:16.906 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:51:16.906 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 13:51:16.907 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:51:16.907 DEBUG 11012 --- [http-nio-8081-exec-7] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.043478260869565216
+2020-12-05 13:51:16.907 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:51:16.908 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 13:51:16.908 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:51:16.909 DEBUG 11012 --- [http-nio-8081-exec-7] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.041666666666666664
+2020-12-05 13:51:16.909 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:51:16.909 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 13:51:16.909 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:51:16.910 DEBUG 11012 --- [http-nio-8081-exec-7] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.04
+2020-12-05 13:51:16.910 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:51:16.911 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 13:51:16.911 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:54:50.309 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:54:50.310 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state = -1
+2020-12-05 13:54:50.310 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==> Parameters: 
+2020-12-05 13:54:50.311 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.ArticleMapper.getArticleByDe   : <==      Total: 2
+2020-12-05 13:58:40.784 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:58:40.786 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state = -1
+2020-12-05 13:58:40.786 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==> Parameters: 
+2020-12-05 13:58:40.788 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getArticleByDe   : <==      Total: 2
+2020-12-05 13:59:20.333 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0
+2020-12-05 13:59:20.334 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.A.getArticleByNoDe             : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state != -1
+2020-12-05 13:59:20.334 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.A.getArticleByNoDe             : ==> Parameters: 
+2020-12-05 13:59:20.336 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.A.getArticleByNoDe             : <==      Total: 5
+2020-12-05 13:59:20.338 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.038461538461538464
+2020-12-05 13:59:20.338 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:59:20.338 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 13:59:20.340 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 13:59:20.340 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.037037037037037035
+2020-12-05 13:59:20.341 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:59:20.341 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 13:59:20.342 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:59:20.342 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.03571428571428571
+2020-12-05 13:59:20.343 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:59:20.343 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 13:59:20.344 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:59:20.344 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.034482758620689655
+2020-12-05 13:59:20.344 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:59:20.344 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 13:59:20.345 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 13:59:20.444 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.03333333333333333
+2020-12-05 13:59:20.445 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 13:59:20.446 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 13:59:20.449 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 13:59:40.005 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.07142857142857142
+2020-12-05 14:03:28.739 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.06666666666666667
+2020-12-05 14:03:28.740 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state = -1
+2020-12-05 14:03:28.740 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleByDe   : ==> Parameters: 
+2020-12-05 14:03:28.743 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleByDe   : <==      Total: 2
+2020-12-05 14:03:48.830 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0625
+2020-12-05 14:03:48.833 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.A.getArticleByNoDe             : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id where article_state != -1
+2020-12-05 14:03:48.833 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.A.getArticleByNoDe             : ==> Parameters: 
+2020-12-05 14:03:48.841 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.A.getArticleByNoDe             : <==      Total: 5
+2020-12-05 14:03:48.841 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.03225806451612903
+2020-12-05 14:03:48.841 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 14:03:48.842 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 14:03:48.843 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 14:03:48.843 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.03125
+2020-12-05 14:03:48.843 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 14:03:48.843 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 14:03:48.844 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 14:03:48.844 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.030303030303030304
+2020-12-05 14:03:48.845 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 14:03:48.845 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 14:03:48.845 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 14:03:48.846 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.029411764705882353
+2020-12-05 14:03:48.846 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 14:03:48.847 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 14:03:48.847 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 14:03:48.848 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.02857142857142857
+2020-12-05 14:03:48.848 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 14:03:48.848 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 14:03:48.850 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 14:05:44.665 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.0
+2020-12-05 14:05:44.666 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:05:44.673 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:05:44.0(Timestamp), 2020-12-05 14:05:44.0(Timestamp)
+2020-12-05 14:05:44.751 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:05:44.899 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.058823529411764705
+2020-12-05 14:05:44.900 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:05:44.900 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:05:44.901 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:05:45.202 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.3333333333333333
+2020-12-05 14:05:54.542 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.25
+2020-12-05 14:05:54.542 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:05:54.542 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:05:54.0(Timestamp), 2020-12-05 14:05:54.0(Timestamp)
+2020-12-05 14:05:54.544 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:06:01.154 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-05 14:06:01.155 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:06:01.156 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:06:01.202 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:27:15.167 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.2
+2020-12-05 14:27:15.178 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:27:15.179 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:27:14.0(Timestamp), 2020-12-05 14:27:14.0(Timestamp)
+2020-12-05 14:27:15.226 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:27:17.256 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.0
+2020-12-05 14:27:17.257 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:27:17.259 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:27:17.360 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:27:18.959 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.16666666666666666
+2020-12-05 14:27:18.960 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:27:18.961 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:27:18.0(Timestamp), 2020-12-05 14:27:18.0(Timestamp)
+2020-12-05 14:27:18.965 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:27:20.568 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.14285714285714285
+2020-12-05 14:27:20.569 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:27:20.666 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:27:20.0(Timestamp), 2020-12-05 14:27:20.0(Timestamp)
+2020-12-05 14:27:20.668 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:27:22.523 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.125
+2020-12-05 14:27:22.523 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:27:22.524 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:27:22.0(Timestamp), 2020-12-05 14:27:22.0(Timestamp)
+2020-12-05 14:27:22.526 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:27:46.213 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.16666666666666666
+2020-12-05 14:27:49.522 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.1111111111111111
+2020-12-05 14:27:49.523 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:27:49.523 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:27:49.0(Timestamp), 2020-12-05 14:27:49.0(Timestamp)
+2020-12-05 14:27:49.634 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:30:11.349 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.14285714285714285
+2020-12-05 14:30:11.453 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:30:11.453 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:30:11.454 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:30:13.153 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.1
+2020-12-05 14:30:13.154 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:30:13.154 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:30:13.0(Timestamp), 2020-12-05 14:30:13.0(Timestamp)
+2020-12-05 14:30:13.155 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:30:16.472 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.25
+2020-12-05 14:30:20.193 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.09090909090909091
+2020-12-05 14:30:20.193 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:30:20.194 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:30:20.0(Timestamp), 2020-12-05 14:30:20.0(Timestamp)
+2020-12-05 14:30:20.196 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:30:21.980 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.08333333333333333
+2020-12-05 14:30:21.982 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:30:21.983 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:30:21.0(Timestamp), 2020-12-05 14:30:21.0(Timestamp)
+2020-12-05 14:30:21.988 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:30:48.784 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.07692307692307693
+2020-12-05 14:30:48.786 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:30:48.786 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:30:48.0(Timestamp), 2020-12-05 14:30:48.0(Timestamp)
+2020-12-05 14:30:48.787 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:30:48.944 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.05555555555555555
+2020-12-05 14:30:48.945 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:30:48.945 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:30:48.946 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:30:48.948 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.3333333333333333
+2020-12-05 14:30:49.321 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.14285714285714285
+2020-12-05 14:30:49.321 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.13333333333333333
+2020-12-05 14:30:49.322 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:30:49.324 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:30:48.0(Timestamp), 2020-12-05 14:30:48.0(Timestamp)
+2020-12-05 14:30:49.326 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:42:22.989 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.125
+2020-12-05 14:42:22.991 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:42:22.992 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:42:22.0(Timestamp), 2020-12-05 14:42:22.0(Timestamp)
+2020-12-05 14:42:22.995 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:42:23.409 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.05263157894736842
+2020-12-05 14:42:23.427 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:42:23.428 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:42:23.430 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:42:23.433 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.11764705882352941
+2020-12-05 14:42:23.434 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:42:23.434 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:42:23.0(Timestamp), 2020-12-05 14:42:23.0(Timestamp)
+2020-12-05 14:42:23.433 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.3
+2020-12-05 14:42:23.545 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.1111111111111111
+2020-12-05 14:42:23.545 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:42:23.544 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:42:23.559 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:42:23.564 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:42:23.566 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:42:23.0(Timestamp), 2020-12-05 14:42:23.0(Timestamp)
+2020-12-05 14:42:23.570 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:42:23.585 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:43:33.518 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.10526315789473684
+2020-12-05 14:43:33.518 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:43:33.519 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:43:33.0(Timestamp), 2020-12-05 14:43:33.0(Timestamp)
+2020-12-05 14:43:33.521 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:43:33.951 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.05
+2020-12-05 14:43:33.951 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:43:33.951 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:43:33.952 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:43:33.966 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.15
+2020-12-05 14:43:33.966 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.2727272727272727
+2020-12-05 14:43:33.967 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:43:33.967 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:43:33.972 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.14285714285714285
+2020-12-05 14:43:33.972 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:43:33.973 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:43:33.0(Timestamp), 2020-12-05 14:43:33.0(Timestamp)
+2020-12-05 14:43:33.982 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:43:33.982 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:44:43.923 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.13636363636363635
+2020-12-05 14:44:43.924 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:44:43.924 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-11-05 14:44:43.0(Timestamp), 2020-12-05 14:44:43.0(Timestamp)
+2020-12-05 14:44:43.926 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 13
+2020-12-05 14:44:44.021 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.047619047619047616
+2020-12-05 14:44:44.021 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:44:44.021 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:44:44.023 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:47:04.339 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.13043478260869565
+2020-12-05 14:47:04.340 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:47:04.340 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:47:04.0(Timestamp), 2020-12-05 14:47:04.0(Timestamp)
+2020-12-05 14:47:04.342 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:47:04.473 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.045454545454545456
+2020-12-05 14:47:04.476 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:47:04.476 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:47:04.477 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:47:04.785 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.25
+2020-12-05 14:47:04.786 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:47:04.787 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:47:04.789 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:47:04.792 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.16666666666666666
+2020-12-05 14:47:04.793 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.16
+2020-12-05 14:47:04.793 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:47:04.795 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:47:04.0(Timestamp), 2020-12-05 14:47:04.0(Timestamp)
+2020-12-05 14:47:04.798 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:47:47.714 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.15384615384615385
+2020-12-05 14:47:47.715 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:47:47.715 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:47:47.0(Timestamp), 2020-12-05 14:47:47.0(Timestamp)
+2020-12-05 14:47:47.716 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:47:47.898 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.08695652173913043
+2020-12-05 14:47:48.116 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.3076923076923077
+2020-12-05 14:47:48.116 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.14814814814814814
+2020-12-05 14:47:48.117 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:47:48.117 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:47:47.0(Timestamp), 2020-12-05 14:47:47.0(Timestamp)
+2020-12-05 14:47:48.120 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:47:48.140 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.17857142857142858
+2020-12-05 14:48:55.440 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.1724137931034483
+2020-12-05 14:48:55.441 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:48:55.441 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:48:55.0(Timestamp), 2020-12-05 14:48:55.0(Timestamp)
+2020-12-05 14:48:55.443 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:48:55.643 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.08333333333333333
+2020-12-05 14:48:55.645 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:48:55.645 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:48:55.646 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:48:55.824 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.2
+2020-12-05 14:48:55.824 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.2857142857142857
+2020-12-05 14:48:55.824 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:48:55.824 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:48:55.826 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:48:55.827 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.1935483870967742
+2020-12-05 14:48:55.827 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:48:55.827 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:48:55.0(Timestamp), 2020-12-05 14:48:55.0(Timestamp)
+2020-12-05 14:48:55.829 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:50:55.497 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.1875
+2020-12-05 14:50:55.497 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:50:55.497 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:50:55.0(Timestamp), 2020-12-05 14:50:55.0(Timestamp)
+2020-12-05 14:50:55.499 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:50:55.676 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.08
+2020-12-05 14:50:55.676 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:50:55.677 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:50:55.677 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:50:55.985 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.26666666666666666
+2020-12-05 14:50:55.986 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:50:55.986 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:50:55.988 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:50:55.995 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.21212121212121213
+2020-12-05 14:50:55.995 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.20588235294117646
+2020-12-05 14:50:55.995 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:50:55.995 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:50:55.0(Timestamp), 2020-12-05 14:50:55.0(Timestamp)
+2020-12-05 14:50:55.997 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:51:50.756 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.2
+2020-12-05 14:51:50.756 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:51:50.757 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:51:50.0(Timestamp), 2020-12-05 14:51:50.0(Timestamp)
+2020-12-05 14:51:50.793 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:51:51.055 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.11538461538461539
+2020-12-05 14:51:51.228 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.2222222222222222
+2020-12-05 14:51:51.228 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.3125
+2020-12-05 14:51:51.228 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.21621621621621623
+2020-12-05 14:51:51.228 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:51:51.229 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:51:50.0(Timestamp), 2020-12-05 14:51:50.0(Timestamp)
+2020-12-05 14:51:51.231 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:52:02.226 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.21052631578947367
+2020-12-05 14:52:02.227 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:52:02.227 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:52:02.0(Timestamp), 2020-12-05 14:52:02.0(Timestamp)
+2020-12-05 14:52:02.228 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:52:02.487 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.1111111111111111
+2020-12-05 14:52:02.487 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:52:02.488 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:52:02.488 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:52:02.628 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.29411764705882354
+2020-12-05 14:52:02.629 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:52:02.630 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:52:02.631 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:52:02.642 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.20512820512820512
+2020-12-05 14:52:02.642 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:52:02.643 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.225
+2020-12-05 14:52:02.646 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:52:02.0(Timestamp), 2020-12-05 14:52:02.0(Timestamp)
+2020-12-05 14:52:02.647 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:54:06.587 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.21951219512195122
+2020-12-05 14:54:06.588 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 14:54:06.588 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 14:54:06.0(Timestamp), 2020-12-05 14:54:06.0(Timestamp)
+2020-12-05 14:54:06.589 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 14:54:06.815 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.10714285714285714
+2020-12-05 14:54:06.816 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 14:54:06.817 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 14:54:06.819 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 14:54:06.977 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.2777777777777778
+2020-12-05 14:54:06.977 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 14:54:06.977 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 14:54:06.980 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 14:54:06.987 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.21428571428571427
+2020-12-05 14:54:06.988 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 14:54:06.988 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 14:54:06.0(Timestamp), 2020-12-05 14:54:06.0(Timestamp)
+2020-12-05 14:54:06.992 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 14:54:07.081 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.23255813953488372
+2020-12-05 15:12:21.192 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.22727272727272727
+2020-12-05 15:12:21.194 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 15:12:21.195 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-09-06 15:12:21.0(Timestamp), 2020-12-05 15:12:21.0(Timestamp)
+2020-12-05 15:12:21.210 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 18
+2020-12-05 15:12:21.324 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.10344827586206896
+2020-12-05 15:12:21.324 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 15:12:21.325 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 15:12:21.351 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 15:12:21.639 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.2631578947368421
+2020-12-05 15:12:21.640 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.24444444444444444
+2020-12-05 15:12:21.640 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : ==>  Preparing: SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',views,likes,comments FROM category c LEFT JOIN article a on c.cate_id=a.cate_id GROUP BY c.cate_id
+2020-12-05 15:12:21.640 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : ==> Parameters: 
+2020-12-05 15:12:21.643 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.2391304347826087
+2020-12-05 15:12:21.656 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==>  Preparing: SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d LEFT JOIN article a on d.article_id=a.article_id where days >=? and days <=? GROUP BY d.article_id
+2020-12-05 15:12:21.656 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.C.getCateAnalysis              : <==      Total: 5
+2020-12-05 15:12:21.656 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : ==> Parameters: 2020-09-06 15:12:21.0(Timestamp), 2020-12-05 15:12:21.0(Timestamp)
+2020-12-05 15:12:21.660 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.D.getSingleArticle             : <==      Total: 7
+2020-12-05 15:55:39.556  INFO 11012 --- [http-nio-8081-exec-10] c.x.w.b.service.impl.UserServiceImpl     : 登录用户名:admin
+2020-12-05 15:55:39.556 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.UserMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.UserMapper]: 0.0
+2020-12-05 15:55:39.557 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.UserMapper.getUserByUserName   : ==>  Preparing: SELECT u.*,r.* FROM user u LEFT JOIN role_user ru ON u.user_id=ru.user_id LEFT JOIN role r ON r.role_id=ru.role_id where username=?
+2020-12-05 15:55:39.558 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.UserMapper.getUserByUserName   : ==> Parameters: admin(String)
+2020-12-05 15:55:39.719 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.UserMapper.getUserByUserName   : <==      Total: 2
+2020-12-05 15:55:39.833  INFO 11012 --- [http-nio-8081-exec-10] c.x.w.b.service.impl.UserServiceImpl     : 登录密码:$2a$10$rRnOJXxQEh1b9BAdTXPtR.FpJ20b6q/vHJn5MfptW9Ff/E5uHSp/S
+2020-12-05 15:55:39.833 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.RoleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.RoleMapper]: 0.0
+2020-12-05 15:55:39.833 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.RoleMapper.getRoleByUserId     : ==>  Preparing: select * from role r left join role_user ru on r.role_id=ru.role_id where user_id=?
+2020-12-05 15:55:39.833 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.RoleMapper.getRoleByUserId     : ==> Parameters: 1(Long)
+2020-12-05 15:55:39.835 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.RoleMapper.getRoleByUserId     : <==      Total: 2
+2020-12-05 15:55:40.598 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.blogserver.mapper.DaysDataMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.DaysDataMapper]: 0.23404255319148937
+2020-12-05 15:55:40.623 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==>  Preparing: select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' from days_data where days >=? and days <=? GROUP BY days
+2020-12-05 15:55:40.624 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : ==> Parameters: 2020-11-05 15:55:40.0(Timestamp), 2020-12-05 15:55:40.0(Timestamp)
+2020-12-05 15:55:40.628 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.w.b.m.DaysDataMapper.getDataByRange  : <==      Total: 13
+2020-12-05 15:55:40.718 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.1
+2020-12-05 15:55:40.718 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getTotalData     : ==>  Preparing: SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+2020-12-05 15:55:40.719 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getTotalData     : ==> Parameters: 
+2020-12-05 15:55:40.729 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.w.b.m.ArticleMapper.getTotalData     : <==      Total: 1
+2020-12-05 15:56:54.551 DEBUG 11012 --- [http-nio-8081-exec-8] cn.xmh.web.blogserver.mapper.UserMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.UserMapper]: 0.0
+2020-12-05 15:56:54.551 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.mapper.UserMapper.getAllUser     : ==>  Preparing: SELECT u.*,r.* FROM user u LEFT JOIN role_user ru ON u.user_id=ru.user_id LEFT JOIN role r ON r.role_id=ru.role_id
+2020-12-05 15:56:54.552 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.mapper.UserMapper.getAllUser     : ==> Parameters: 
+2020-12-05 15:56:54.556 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.b.mapper.UserMapper.getAllUser     : <==      Total: 9
+2020-12-05 15:59:52.549 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.25
+2020-12-05 15:59:52.549 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+2020-12-05 15:59:52.550 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
+2020-12-05 15:59:52.552 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
+2020-12-05 15:59:52.750 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.0967741935483871
+2020-12-05 15:59:52.751 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.A.getAllPage_COUNT             : ==>  Preparing: SELECT count(0) FROM article a LEFT JOIN category c ON a.cate_id = c.cate_id LEFT JOIN types tp ON tp.type_id = a.type_id
+2020-12-05 15:59:52.751 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.A.getAllPage_COUNT             : ==> Parameters: 
+2020-12-05 15:59:52.782 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.A.getAllPage_COUNT             : <==      Total: 1
+2020-12-05 15:59:52.812 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.09375
+2020-12-05 15:59:52.812 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id LIMIT ?
+2020-12-05 15:59:52.812 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==> Parameters: 6(Integer)
+2020-12-05 15:59:52.859 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.mapper.ArticleMapper.getAllPage  : <==      Total: 6
+2020-12-05 15:59:52.860 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.027777777777777776
+2020-12-05 15:59:52.860 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.02702702702702703
+2020-12-05 15:59:52.861 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+2020-12-05 15:59:52.861 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
+2020-12-05 15:59:52.861 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.09090909090909091
+2020-12-05 15:59:52.944 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 9
+2020-12-05 15:59:52.944 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 15:59:52.944 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getArticleNum    : ==>  Preparing: select COUNT(article_id) from article
+2020-12-05 15:59:52.945 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getArticleNum    : ==> Parameters: 
+2020-12-05 15:59:52.945 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.08823529411764706
+2020-12-05 15:59:52.945 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getArticleNum    : <==      Total: 1
+2020-12-05 15:59:52.945 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 15:59:52.946 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.23809523809523808
+2020-12-05 15:59:52.946 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==>  Preparing: select COUNT(cate_id) from category
+2020-12-05 15:59:52.946 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==> Parameters: 
+2020-12-05 15:59:52.946 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.CategoryMapper.getCategoryNum  : <==      Total: 1
+2020-12-05 15:59:52.946 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 15:59:52.947 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.02631578947368421
+2020-12-05 15:59:52.947 DEBUG 11012 --- [http-nio-8081-exec-7] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.02564102564102564
+2020-12-05 15:59:52.947 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==>  Preparing: select COUNT(tag_id) from tags
+2020-12-05 15:59:52.947 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 15:59:52.947 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==> Parameters: 
+2020-12-05 15:59:52.947 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 15:59:52.948 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.mapper.TagsMapper.getTagsNum     : <==      Total: 1
+2020-12-05 15:59:52.945 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+2020-12-05 15:59:52.948 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
+2020-12-05 15:59:52.948 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 15:59:52.948 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 5
+2020-12-05 15:59:52.948 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.025
+2020-12-05 15:59:52.949 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 15:59:52.949 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 5(Long)
+2020-12-05 15:59:52.950 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 15:59:52.951 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.024390243902439025
+2020-12-05 15:59:52.951 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 15:59:52.951 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 15:59:52.952 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 15:59:52.952 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.023809523809523808
+2020-12-05 15:59:52.952 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 15:59:52.953 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 15:59:52.953 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 15:59:52.954 DEBUG 11012 --- [http-nio-8081-exec-1] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.023255813953488372
+2020-12-05 15:59:52.954 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 15:59:52.954 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 15:59:52.955 DEBUG 11012 --- [http-nio-8081-exec-1] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 15:59:53.445 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.08571428571428572
+2020-12-05 15:59:53.446 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getNewTitle      : ==>  Preparing: SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
+2020-12-05 15:59:53.446 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getNewTitle      : ==> Parameters: 
+2020-12-05 15:59:53.447 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.w.b.m.ArticleMapper.getNewTitle      : <==      Total: 4
+2020-12-05 16:00:25.908 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.1111111111111111
+2020-12-05 16:00:25.908 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.10810810810810811
+2020-12-05 16:00:25.908 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id LIMIT ?, ?
+2020-12-05 16:00:25.909 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==> Parameters: 6(Integer), 6(Integer)
+2020-12-05 16:00:25.910 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.mapper.ArticleMapper.getAllPage  : <==      Total: 1
+2020-12-05 16:00:25.910 DEBUG 11012 --- [http-nio-8081-exec-10] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.022727272727272728
+2020-12-05 16:00:25.910 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:00:25.911 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 3(Long)
+2020-12-05 16:00:25.911 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 2
+2020-12-05 16:00:31.002 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.13157894736842105
+2020-12-05 16:00:31.004 DEBUG 11012 --- [http-nio-8081-exec-3] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.15384615384615385
+2020-12-05 16:00:31.004 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.044444444444444446
+2020-12-05 16:00:31.004 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.06521739130434782
+2020-12-05 16:00:31.005 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.0851063829787234
+2020-12-05 16:00:31.005 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.10416666666666667
+2020-12-05 16:00:31.005 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.12244897959183673
+2020-12-05 16:00:31.006 DEBUG 11012 --- [http-nio-8081-exec-3] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.14
+2020-12-05 16:00:34.609 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.175
+2020-12-05 16:00:34.610 DEBUG 11012 --- [http-nio-8081-exec-2] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.1951219512195122
+2020-12-05 16:00:34.610 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.1568627450980392
+2020-12-05 16:00:34.610 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.17307692307692307
+2020-12-05 16:00:34.610 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.18867924528301888
+2020-12-05 16:00:34.610 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.2037037037037037
+2020-12-05 16:00:34.610 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.21818181818181817
+2020-12-05 16:00:34.611 DEBUG 11012 --- [http-nio-8081-exec-2] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.23214285714285715
+2020-12-05 16:00:34.620 DEBUG 11012 --- [http-nio-8081-exec-8] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.2727272727272727
+2020-12-05 16:02:17.262 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.2608695652173913
+2020-12-05 16:02:17.262 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.C.getCateArticleCount          : ==>  Preparing: SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
+2020-12-05 16:02:17.262 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.C.getCateArticleCount          : ==> Parameters: 
+2020-12-05 16:02:17.263 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.C.getCateArticleCount          : <==      Total: 3
+2020-12-05 16:02:17.263 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.19047619047619047
+2020-12-05 16:02:17.264 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.A.getAllPage_COUNT             : ==>  Preparing: SELECT count(0) FROM article a LEFT JOIN category c ON a.cate_id = c.cate_id LEFT JOIN types tp ON tp.type_id = a.type_id
+2020-12-05 16:02:17.264 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.A.getAllPage_COUNT             : ==> Parameters: 
+2020-12-05 16:02:17.265 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.A.getAllPage_COUNT             : <==      Total: 1
+2020-12-05 16:02:17.266 DEBUG 11012 --- [http-nio-8081-exec-6] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.22807017543859648
+2020-12-05 16:02:17.379 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==>  Preparing: SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
+2020-12-05 16:02:17.379 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsAndCount     : ==> Parameters: 
+2020-12-05 16:02:17.380 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.18604651162790697
+2020-12-05 16:02:17.380 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==>  Preparing: SELECT a.*,c.cate_name,tp.type_name from article a LEFT JOIN category c on a.cate_id=c.cate_id LEFT JOIN types tp ON tp.type_id=a.type_id LIMIT ?
+2020-12-05 16:02:17.380 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.18181818181818182
+2020-12-05 16:02:17.380 DEBUG 11012 --- [http-nio-8081-exec-6] c.x.w.b.m.TagsMapper.getTagsAndCount     : <==      Total: 9
+2020-12-05 16:02:17.381 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==>  Preparing: SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
+2020-12-05 16:02:17.381 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getNewRecommend  : ==> Parameters: 
+2020-12-05 16:02:17.382 DEBUG 11012 --- [http-nio-8081-exec-7] c.x.w.b.m.ArticleMapper.getNewRecommend  : <==      Total: 5
+2020-12-05 16:02:17.382 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.17777777777777778
+2020-12-05 16:02:17.382 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.mapper.ArticleMapper.getAllPage  : ==> Parameters: 6(Integer)
+2020-12-05 16:02:17.382 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : ==>  Preparing: select COUNT(article_id) from article
+2020-12-05 16:02:17.383 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : ==> Parameters: 
+2020-12-05 16:02:17.383 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.ArticleMapper.getArticleNum    : <==      Total: 1
+2020-12-05 16:02:17.383 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.mapper.ArticleMapper.getAllPage  : <==      Total: 6
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.25
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.22413793103448276
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==>  Preparing: select COUNT(cate_id) from category
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 1(Long)
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : ==> Parameters: 
+2020-12-05 16:02:17.384 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.m.CategoryMapper.getCategoryNum  : <==      Total: 1
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 5
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-5] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.22033898305084745
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.21666666666666667
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==>  Preparing: select COUNT(tag_id) from tags
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 4(Long)
+2020-12-05 16:02:17.385 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : ==> Parameters: 
+2020-12-05 16:02:17.386 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 16:02:17.386 DEBUG 11012 --- [http-nio-8081-exec-5] c.x.w.b.mapper.TagsMapper.getTagsNum     : <==      Total: 1
+2020-12-05 16:02:17.386 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.21311475409836064
+2020-12-05 16:02:17.387 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:02:17.387 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 5(Long)
+2020-12-05 16:02:17.387 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 16:02:17.388 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.20967741935483872
+2020-12-05 16:02:17.388 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:02:17.388 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 6(Long)
+2020-12-05 16:02:17.390 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 16:02:17.392 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.20634920634920634
+2020-12-05 16:02:17.392 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:02:17.392 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 7(Long)
+2020-12-05 16:02:17.393 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 0
+2020-12-05 16:02:17.393 DEBUG 11012 --- [http-nio-8081-exec-4] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.203125
+2020-12-05 16:02:17.393 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==>  Preparing: select tags.tag_id,tag_name,tag_type from tags,article_tags where tags.tag_id=article_tags.tag_id and article_id=?
+2020-12-05 16:02:17.393 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : ==> Parameters: 2(Long)
+2020-12-05 16:02:17.394 DEBUG 11012 --- [http-nio-8081-exec-4] c.x.w.b.m.TagsMapper.getTagsByArticleId  : <==      Total: 3
+2020-12-05 16:02:40.721 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.1956521739130435
+2020-12-05 16:02:40.722 DEBUG 11012 --- [http-nio-8081-exec-9] c.x.web.blogserver.mapper.ArticleMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.ArticleMapper]: 0.2127659574468085
+2020-12-05 16:02:40.722 DEBUG 11012 --- [http-nio-8081-exec-9] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.2153846153846154
+2020-12-05 16:02:40.723 DEBUG 11012 --- [http-nio-8081-exec-9] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.22727272727272727
+2020-12-05 16:02:40.723 DEBUG 11012 --- [http-nio-8081-exec-9] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.23880597014925373
+2020-12-05 16:02:40.723 DEBUG 11012 --- [http-nio-8081-exec-9] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.25
+2020-12-05 16:02:40.723 DEBUG 11012 --- [http-nio-8081-exec-9] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.2608695652173913
+2020-12-05 16:02:40.724 DEBUG 11012 --- [http-nio-8081-exec-9] cn.xmh.web.blogserver.mapper.TagsMapper  : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.TagsMapper]: 0.2714285714285714
+2020-12-05 16:02:41.025 DEBUG 11012 --- [http-nio-8081-exec-10] c.x.w.blogserver.mapper.CategoryMapper   : Cache Hit Ratio [cn.xmh.web.blogserver.mapper.CategoryMapper]: 0.28

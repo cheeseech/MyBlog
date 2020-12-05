@@ -97,8 +97,8 @@ public class UserServiceImpl implements UserService , UserDetailsService {
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void updateUserState(Integer userState, Long id) {
-        int i= userMapper.updateUserState(userState,id);
+    public void updateUserState(Boolean userState, Long id) {
+        int i= userMapper.updateUserState(userState ? 1 : 0,id);
         if(i != 1){
             throw new IllegalArgumentException();
         }
