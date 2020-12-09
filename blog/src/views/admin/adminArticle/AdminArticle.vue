@@ -8,10 +8,12 @@
         )
       "
       highlight-current-row
-      style="width: 100%;"
+      class="m-table"
     >
+      <!-- 序号 -->
       <el-table-column label="序号" type="index" min-width="50" align="center">
       </el-table-column>
+
       <!-- 文章标题 -->
       <el-table-column
         label="文章标题"
@@ -22,6 +24,7 @@
         show-overflow-tooltip
       >
       </el-table-column>
+
       <!-- 简介 -->
       <el-table-column
         label="简介"
@@ -36,6 +39,7 @@
           </el-tooltip>
         </template>
       </el-table-column>
+
       <!-- 文章类型 -->
       <el-table-column label="类型" min-width="80" align="center">
         <template slot-scope="scope">
@@ -62,6 +66,7 @@
           >
         </template>
       </el-table-column>
+
       <!-- 文章标签列表 -->
       <el-table-column label="标签" min-width="70" header-align="center">
         <template slot-scope="scope">
@@ -83,6 +88,7 @@
           </el-popover>
         </template>
       </el-table-column>
+
       <!-- 文章专栏 -->
       <el-table-column
         label="专栏"
@@ -91,6 +97,7 @@
         align="center"
       >
       </el-table-column>
+
       <!-- 文章状态 -->
       <el-table-column label="状态" min-width="90" align="center">
         <template slot-scope="scope">
@@ -110,12 +117,14 @@
           >
         </template>
       </el-table-column>
+
       <!-- 创建时间 -->
       <el-table-column label="创建时间" sortable min-width="170" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.publishTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
+
       <!-- 更新时间 -->
       <el-table-column label="更新时间" sortable min-width="170" align="center">
         <template slot-scope="scope">
@@ -123,10 +132,11 @@
         </template>
       </el-table-column>
 
+      <!-- 工具列 -->
       <el-table-column align="center" min-width="180">
         <template slot="header" slot-scope="scope">
           <el-input
-            style="width:80%"
+            class="article-search"
             v-model="search"
             size="mini"
             placeholder="输入标题检索..."
@@ -158,7 +168,7 @@
 </template>
 
 <script>
-import { getRequest, deleteRequest } from "@/../untils/axiosApi";
+import { getRequest, postRequest } from "@/../untils/axiosApi";
 import { Message } from "element-ui";
 import axios from "axios";
 
@@ -188,17 +198,25 @@ export default {
         this.articleInfo = response.data;
       }
     },
+    //获取未被删除的文章数据
+    getArticle() {
+      getRequest("/article/notDelete/").then(response => {
+        this.setData(response);
+      });
+    },
     //执行删除文章
     handleDelete(index, row) {
-      deleteRequest("/admin/article/" + row.articleId).then(response => {
-        if (response.status == 204) {
-          Message.success(response.msg);
-          //重新获取文章
-          this.getArticle();
-        } else {
-          Message.error(response.msg);
+      postRequest("/admin/article/" + row.articleId + "/" + -1).then(
+        response => {
+          if (response.status == 201) {
+            //重新获取数据
+            this.getArticle();
+            Message.success("删除文章成功！");
+          } else {
+            Message.error("删除失败！请稍后再试。");
+          }
         }
-      });
+      );
     }
   }
 };

@@ -16,7 +16,7 @@
     </select>
 
     <select id="getSingleArticle" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.title,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d
+        SELECT a.title,a.update_time,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments' from days_data d
         LEFT JOIN article a on d.article_id=a.article_id
         where days &gt;=#{start} and days &lt;=#{end}
         GROUP BY d.article_id

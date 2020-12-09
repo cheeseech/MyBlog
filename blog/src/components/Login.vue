@@ -4,6 +4,8 @@
       <h3 class="login_title">系统登录</h3>
       <el-form-item>
         <el-input
+          id="userName"
+          v-focus
           type="text"
           v-model="loginForm.username"
           placeholder="账号"
@@ -15,6 +17,7 @@
           type="password"
           v-model="loginForm.password"
           placeholder="密码"
+          @keyup.enter.native="login"
         ></el-input>
       </el-form-item>
 
@@ -48,6 +51,7 @@ export default {
     };
   },
   methods: {
+    //用户登录
     login() {
       var _this = this;
       postRequest("/login", {
@@ -56,6 +60,7 @@ export default {
       }).then(response => {
         if (response != undefined && response.status == 200) {
           Message.success(response.msg);
+          //跳转页面
           _this.$router.push({ path: "/admin/welcome" });
         } else {
           if (response != undefined) {
@@ -63,6 +68,15 @@ export default {
           }
         }
       });
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function(el) {
+        //聚焦输入框
+        var element = document.getElementById("userName");
+        element.focus();
+      }
     }
   }
 };

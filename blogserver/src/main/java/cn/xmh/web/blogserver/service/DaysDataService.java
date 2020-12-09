@@ -20,7 +20,7 @@ public interface DaysDataService {
      * @param end 结束日期
      * @return 日期数据集合
      */
-    List<DaysData> getDataByRange(Date start,Date end) throws ParseException;
+    List<DaysData> getDataByRange(Date start,Date end);
 
     /**
      * 根据日期范围查询日期数据，返回echarts需要的数据
@@ -31,10 +31,8 @@ public interface DaysDataService {
     Map<String,Object> getDataByRangeToEcharts(Date start,Date end);
 
     /**
-     * 添加新日期数据
-     * @param daysData
+     * 添加新日期数据,已发布状态的文章浏览量、点赞数以及评论数都为0
      */
-    void newDay(DaysData daysData) throws ParseException;
 
     /**
      * 获取指定日期内文章标题、创建日期、浏览量、点赞数以及评论数
@@ -43,4 +41,6 @@ public interface DaysDataService {
      * @return 文章信息
      */
     List<Article> getSingleArticle(Date start,Date end);
+
+
 }

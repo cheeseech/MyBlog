@@ -9,17 +9,20 @@
         )
       "
       highlight-current-row
-      style="width: 100%;"
+      class="m-table"
     >
+      <!-- 序号 -->
       <el-table-column label="序号" type="index" min-width="60">
       </el-table-column>
 
+      <!-- 头像 -->
       <el-table-column label="头像" min-width="85">
         <template slot-scope="scope">
           <el-avatar :size="50" :src="scope.row.userFace"></el-avatar>
         </template>
       </el-table-column>
 
+      <!-- 昵称 -->
       <el-table-column
         label="昵称"
         prop="nickName"
@@ -28,6 +31,7 @@
       >
       </el-table-column>
 
+      <!-- 用户名 -->
       <el-table-column
         label="用户名"
         prop="username"
@@ -36,14 +40,17 @@
       >
       </el-table-column>
 
-      <el-table-column
-        label="密码"
-        prop="password"
-        min-width="140"
-        show-overflow-tooltip
-      >
+      <!-- 密码 -->
+      <el-table-column label="密码" min-width="140">
+        <template slot-scope="scope">
+          <el-tooltip placement="top" effect="light">
+            <div slot="content">{{ scope.row.password }}</div>
+            <el-button>查看密码</el-button>
+          </el-tooltip>
+        </template>
       </el-table-column>
 
+      <!-- 邮箱 -->
       <el-table-column
         label="邮箱"
         prop="email"
@@ -52,10 +59,10 @@
       >
       </el-table-column>
 
+      <!-- 状态 -->
       <el-table-column label="状态" min-width="80">
         <template slot-scope="scope">
           <el-switch
-            style="display: block"
             v-model="scope.row.enabled"
             active-color="#13ce66"
             inactive-color="#ff4949"
@@ -66,22 +73,25 @@
         </template>
       </el-table-column>
 
+      <!-- 创建时间 -->
       <el-table-column label="创建时间" sortable min-width="180">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
+      <!-- 更新时间 -->
       <el-table-column label="更新时间" sortable min-width="180">
         <template slot-scope="scope">
           <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
+      <!-- 工具列 -->
       <el-table-column min-width="270">
         <template slot="header" slot-scope="scope">
           <el-input
-            style="width:50%"
+            class="m-search"
             v-model="search"
             size="mini"
             placeholder="输入用户名搜索"
@@ -112,70 +122,93 @@
       </el-table-column>
     </el-table>
 
+    <!-- Dialog -->
     <el-dialog
+      center
+      top="7vh"
+      width="30%"
       title="编辑用户"
       :visible.sync="centerDialogVisible"
-      width="30%"
-      center
     >
       <el-form
         :model="form"
-        status-icon
         :rules="rules"
-        ref="from"
+        ref="form"
         label-position="right"
         class="demo-ruleForm"
       >
+        <!-- 头像 -->
         <el-form-item>
           <el-avatar
             :size="60"
             :src="form.userFace"
-            style="margin-left: 43%;"
+            class="dialog-img"
           ></el-avatar>
         </el-form-item>
 
-        <el-form-item label="昵称:" :label-width="formLabelWidth">
-          <el-input v-model="form.nickName" autocomplete="off"></el-input>
+        <!-- 昵称 -->
+        <el-form-item
+          label="昵称:"
+          prop="nickName"
+          :label-width="formLabelWidth"
+        >
+          <el-input v-model="form.nickName" id="nickName" v-focus autocomplete="off"></el-input>
         </el-form-item>
 
-        <el-form-item label="用户名:" :label-width="formLabelWidth" required>
+        <!-- 用户名 -->
+        <el-form-item
+          label="用户名:"
+          prop="userName"
+          :label-width="formLabelWidth"
+        >
           <el-input v-model="form.userName" autocomplete="off"></el-input>
         </el-form-item>
 
+        <!-- 密码 -->
         <el-form-item
           label="密码:"
           prop="password"
           :label-width="formLabelWidth"
-          required
         >
-          <el-input v-model="form.password" autocomplete="off"></el-input>
+          <el-input
+            type="password"
+            v-model="form.password"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
 
+        <!-- 确认密码 -->
         <el-form-item
           label="确认密码:"
           prop="checkPassword"
           :label-width="formLabelWidth"
-          required
         >
-          <el-input v-model="form.checkPassword" autocomplete="off"></el-input>
+          <el-input
+            type="password"
+            v-model="form.checkPassword"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
 
-        <el-form-item label="邮箱:" :label-width="formLabelWidth" required>
+        <!-- 邮箱 -->
+        <el-form-item label="邮箱:" prop="email" :label-width="formLabelWidth">
           <el-input v-model="form.email"></el-input>
         </el-form-item>
 
-        <el-form-item label="状态:" :label-width="formLabelWidth" required>
+        <!-- 状态 -->
+        <el-form-item label="状态:" :label-width="formLabelWidth">
           <el-switch
-            style="display: block"
+            class="dialog-switch"
             active-color="#13ce66"
             inactive-color="#ff4949"
             height="30"
+            v-model="form.enabled"
           >
           </el-switch>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button @click="resetForm">取 消</el-button>
         <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
     </el-dialog>
@@ -201,7 +234,7 @@ export default {
         callback(new Error("请输入密码！"));
       } else {
         if (this.form.checkPassword !== "") {
-          this.$refs.rules.validateField("checkPassword");
+          this.$refs.form.validateField("checkPassword");
         }
         callback();
       }
@@ -219,6 +252,7 @@ export default {
     return {
       search: "",
       userInfo: [],
+      switch: "true",
       formLabelWidth: "90px",
       centerDialogVisible: false,
       form: {
@@ -229,11 +263,27 @@ export default {
         password: "",
         checkPassword: "",
         email: "",
-        enabled: false
+        enabled: true
       },
       rules: {
-        password: [{ validator: validatePass, trigger: "blur" }],
-        checkPassword: [{ validator: validateCheckPass, trigger: "blur" }]
+        password: [
+          { required: true, validator: validatePass, trigger: "blur" }
+        ],
+        checkPassword: [
+          { required: true, validator: validateCheckPass, trigger: "blur" }
+        ],
+        nickName: [{ required: true, message: "请输入昵称", trigger: "blur" }],
+        userName: [
+          { required: true, message: "请输入用户名", trigger: "blur" }
+        ],
+        email: [
+          { required: true, message: "请输入邮箱地址", trigger: "blur" },
+          {
+            type: "email",
+            message: "请输入正确的邮箱地址",
+            trigger: ["blur", "change"]
+          }
+        ]
       }
     };
   },
@@ -254,16 +304,34 @@ export default {
         this.userInfo = response.data;
       }
     },
+    //获取用户数据
+    getUsers() {
+      getRequest("/admin/users/").then(response => {
+        this.setData(response);
+      });
+    },
     //提交用户信息
     onSubmit() {
+      this.$refs["form"].validate(valid => {
+        if (valid) {
+          //关闭Dialog
+          this.centerDialogVisible = false;
+          //用户ID为空则表示新增用户，否则更新用户
+          if (this.form.userId == "") {
+            this.insertUser();
+          } else {
+            this.updateUser();
+          }
+        } else {
+          return false;
+        }
+      });
+    },
+    //关闭Dialog，清除表单
+    resetForm() {
+      this.$refs["form"].resetFields();
       //关闭Dialog
       this.centerDialogVisible = false;
-      //用户ID为空则表示新增用户，否则更新用户
-      if (this.form.userId == "") {
-        this.insertUser();
-      } else {
-        this.updateUser();
-      }
     },
     //根据表单更新用户
     updateUser() {
@@ -319,7 +387,7 @@ export default {
           password: "",
           checkPassword: "",
           email: "",
-          enabled: false
+          enabled: true
         };
       }
     },
@@ -338,11 +406,19 @@ export default {
     changeUserState(userId, state) {
       putRequest("/admin/users/" + userId + "/" + state).then(response => {
         if (response.status == 201) {
-          Message.success("更新用户状态成功！");
+          Message.success(response.msg);
         } else {
-          Message.error("更新用户状态失败！");
+          Message.error(response.msg);
         }
       });
+    }
+  },
+  directives:{
+    focus: {
+        inserted: function (el) {
+          var element = document.getElementById("nickName");
+            element.focus();
+        }
     }
   }
 };
@@ -358,5 +434,11 @@ export default {
 }
 .el-switch {
   height: auto;
+}
+.dialog-img {
+  margin-left: 43%;
+}
+.dialog-switch {
+  margin-left: 25%;
 }
 </style>

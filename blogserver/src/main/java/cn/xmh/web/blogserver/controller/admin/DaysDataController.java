@@ -39,9 +39,9 @@ public class DaysDataController {
     public ResultJson getDataByRange(@PathVariable Date start,@PathVariable Date end){
         try{
             List<DaysData> daysData=daysDataService.getDataByRange(start,end);
-            return new ResultJson("200","获取成功！",daysData);
+            return new ResultJson("200","日期数据选择成功！",daysData);
         }catch (NullPointerException e){
-            return new ResultJson("422","数据为空！请稍后再试！",null);
+            return new ResultJson("422","日期数据选择失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员！",null);
         }
@@ -56,15 +56,15 @@ public class DaysDataController {
     public ResultJson getDataForEchartsByRange(@PathVariable Date start,@PathVariable Date end){
         try{
             Map<String,Object> data = daysDataService.getDataByRangeToEcharts(start,end);
-            return new ResultJson("200","获取成功！",data);
+            return new ResultJson("200","日期图表选择成功！",data);
         }catch (NullPointerException e){
-            return new ResultJson("422","数据为空！请稍后再试！",null);
+            return new ResultJson("422","日期图表选择失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员！",null);
         }
     }
 
-    @RequestMapping(value = "/single/{start}/{end}")
+    @RequestMapping(value = "/days/single/{start}/{end}")
     @ApiOperation("根据范围获取文章信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "start", value = "开始日期", dataType = "Date", required = true),
@@ -73,20 +73,9 @@ public class DaysDataController {
     public ResultJson getSingleArticle(@PathVariable Date start,@PathVariable Date end){
         try{
             List<Article> articles=daysDataService.getSingleArticle(start, end);
-            return new ResultJson("200","获取成功！",articles);
+            return new ResultJson("200","日期文章选择成功！",articles);
         }catch (NullPointerException e){
-            return new ResultJson("422","获取失败！请稍后再试！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员！",null);
-        }
-    }
-
-    @RequestMapping(value = "/daysData",method = RequestMethod.PUT)
-    @ApiOperation("新增日期数据")
-    public ResultJson newDays(DaysData daysData){
-        try{
-            daysDataService.newDay(new DaysData());
-            return new ResultJson("200","添加成功！",null);
+            return new ResultJson("422","日期文章选择失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员！",null);
         }

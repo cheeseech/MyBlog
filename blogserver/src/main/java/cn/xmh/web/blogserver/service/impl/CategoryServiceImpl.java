@@ -79,7 +79,11 @@ public class CategoryServiceImpl implements CategoryService {
         //判断是否存在相同专栏名
         Category checkCategory=categoryMapper.getByCategoryName(category.getCateName());
         if(checkCategory!=null){
-            throw new IllegalArgumentException();
+            //当表单ID等于根据专栏名获取的id时表示只更改了专栏概述
+            //否则表示专栏名重复
+            if(!category.getCateId().equals(checkCategory.getCateId())){
+                throw new IllegalArgumentException();
+            }
         }
 
         //更新专栏

@@ -24,7 +24,7 @@ public class ArticleManageController {
     @Resource
     private ArticleService articleService;
 
-    @RequestMapping(value = "/article",method = RequestMethod.POST)
+    @RequestMapping(value = "/article",method = RequestMethod.PUT)
     @ApiOperation("新建一篇文章")
     public ResultJson insertArticle(Article article){
         try {
@@ -53,7 +53,7 @@ public class ArticleManageController {
         }
     }
 
-    @RequestMapping(value = "/article",method = RequestMethod.PUT)
+    @RequestMapping(value = "/article",method = RequestMethod.POST)
     @ApiOperation("更新一篇文章")
     public ResultJson updateArticle(Article article){
         try {
@@ -66,7 +66,7 @@ public class ArticleManageController {
         }
     }
 
-    @RequestMapping(value = "/article/{articleId}/{state}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/article/{articleId}/{state}",method = RequestMethod.POST)
     @ApiOperation("更新文章状态")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "Long",required = true),

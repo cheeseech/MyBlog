@@ -3,22 +3,15 @@
     <el-menu class="el-menu-demo" mode="horizontal" active-text-color="#fff">
       <!-- 切换侧边栏状态 -->
       <el-menu-item index="1" class="sideBar_item">
-        <el-button @click="sendCollapse()" icon="el-icon-delete"></el-button>
+        <el-button @click="sendCollapse()">
+            <svg class="icon m-font-size-big" aria-hidden="true">
+                <use xlink:href="#icon-jia1"></use>
+              </svg>
+        </el-button>
       </el-menu-item>
-      <!-- 面包屑 -->
-      <el-menu-item index="2">
-        <el-breadcrumb
-          separator-class="el-icon-arrow-right"
-          style="line-height: 60px;"
-        >
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-          <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-          <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-        </el-breadcrumb>
-      </el-menu-item>
+      
       <!-- 头像 -->
-      <el-submenu index="3" style="float: right;">
+      <el-submenu index="2" style="float: right;">
         <template slot="title">
           <el-avatar shape="square" :size="45" :src="squareUrl"> </el-avatar>
         </template>

@@ -1,10 +1,10 @@
 <template>
-  <div id="welcome" style="padding:20px;" v-if="days">
+  <div id="welcome" v-if="days">
     <!-- 文章总数据 -->
     <totalArticleData></totalArticleData>
     <!-- echarts图表 -->
-    <el-card style="margin-top:40px">
-      <div id="tu" style="width:95%;height: 400px;"></div>
+    <el-card class="card">
+      <div id="tu"></div>
     </el-card>
   </div>
 </template>
@@ -157,3 +157,15 @@ export default {
   components: { totalArticleData }
 };
 </script>
+<style>
+#welcome {
+  padding: 20px;
+}
+.card {
+  margin-top: 40px;
+}
+#tu {
+  width: 95%;
+  height: 400px;
+}
+</style>

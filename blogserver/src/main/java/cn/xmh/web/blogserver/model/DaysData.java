@@ -22,5 +22,5 @@ public class DaysData implements Serializable {
     private int views;
     private int likes;
     private int comments;
-    private int articleId;
+    private long articleId;
 }

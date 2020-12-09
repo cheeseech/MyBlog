@@ -47,11 +47,11 @@ public class CategoryManageController {
     public ResultJson insertCategory(Category category){
         try {
             categoryService.insertCategory(category);
-            return new ResultJson("201","新增成功！",null);
+            return new ResultJson("201","专栏新增成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","新增失败！已存在相同专栏名。",null);
+            return new ResultJson("422","专栏新增失败！已存在相同专栏名。",null);
         }catch (SQLException e){
-            return new ResultJson("422","新增失败！请稍后再试。",null);
+            return new ResultJson("422","专栏新增失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
@@ -62,11 +62,11 @@ public class CategoryManageController {
     public ResultJson updateCategory(Category category){
         try {
             categoryService.updateByCategoryId(category);
-            return new ResultJson("201", "更新成功！", null);
+            return new ResultJson("201", "专栏更新成功！", null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","更新失败！已存在相同专栏名。",null);
+            return new ResultJson("422","专栏更新失败！已存在相同专栏名。",null);
         }catch (SQLException e){
-            return new ResultJson("422","更新失败！请稍后再试。",null);
+            return new ResultJson("422","专栏更新失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
@@ -80,9 +80,9 @@ public class CategoryManageController {
     public ResultJson deleteCategory(@PathVariable Long cateId){
         try {
             categoryService.deleteByCategoryId(cateId);
-            return new ResultJson("204","删除成功！",null);
+            return new ResultJson("204","专栏删除成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("400","删除失败！请稍后再试。",null);
+            return new ResultJson("400","专栏删除失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }

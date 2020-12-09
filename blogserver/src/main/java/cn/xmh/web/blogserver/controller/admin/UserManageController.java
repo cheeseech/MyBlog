@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -28,11 +29,12 @@ public class UserManageController {
     @ApiOperation("新建一个用户")
     public ResultJson insertUser(User user){
         try {
-            System.out.println(user);
             userService.insertUser(user);
-            return new ResultJson("201","添加成功！",null);
+            return new ResultJson("201","用户新增成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","添加失败！请稍后再试。",null);
+            return new ResultJson("422","用户新增失败！已存在相同用户名。",null);
+        }catch (SQLException e){
+            return new ResultJson("422","用户新增失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
@@ -46,9 +48,9 @@ public class UserManageController {
     public ResultJson deleteUser(@PathVariable Long userId){
         try {
             userService.deleteByUserId(userId);
-            return new ResultJson("204","删除成功！",null);
+            return new ResultJson("204","用户删除成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("400","删除失败！请稍后再试。",null);
+            return new ResultJson("400","用户删除失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
@@ -58,10 +60,12 @@ public class UserManageController {
     @ApiOperation("更新一个用户")
     public ResultJson updateUser(User user){
         try {
-            userService.updateByUserId(user.getUserId(),user);
-            return new ResultJson("201", "更新成功！", null);
+            userService.updateByUserId(user);
+            return new ResultJson("201", "用户更新成功！", null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","更新失败！请稍后再试。",null);
+            return new ResultJson("422","用户更新失败！已存在相同用户名。",null);
+        }catch (SQLException e){
+            return new ResultJson("422","用户更新失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
@@ -72,9 +76,9 @@ public class UserManageController {
     public ResultJson updateUser(@PathVariable Long userId,@PathVariable Boolean state){
         try {
             userService.updateUserState(state,userId);
-            return new ResultJson("201", "更新成功！", null);
+            return new ResultJson("201", "用户状态更新成功！", null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","更新失败！请稍后再试。",null);
+            return new ResultJson("422","用户状态更新失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }

@@ -48,9 +48,9 @@ public class TagsManageController {
     public ResultJson deleteTag(@PathVariable Long tagId){
         try {
             tagsService.deleteByTagId(tagId);
-            return new ResultJson("204","删除成功！",null);
+            return new ResultJson("204","标签删除成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("400","删除失败！请稍后再试。",null);
+            return new ResultJson("400","标签删除失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
@@ -61,11 +61,11 @@ public class TagsManageController {
     public ResultJson insertTag(Tags tags){
         try {
             tagsService.insertTag(tags);
-            return new ResultJson("201","新增成功！",null);
+            return new ResultJson("201","标签新增成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","新增失败！已存在相同标签名。",null);
+            return new ResultJson("422","标签新增失败！已存在相同标签名。",null);
         }catch (SQLException e){
-            return new ResultJson("422","新增失败！请稍后再试。",null);
+            return new ResultJson("422","标签新增失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
@@ -76,11 +76,11 @@ public class TagsManageController {
     public ResultJson updateTag(Tags tags){
         try {
             tagsService.updateTagById(tags);
-            return new ResultJson("201", "更新成功！", null);
+            return new ResultJson("201", "标签更新成功！", null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","更新失败！已存在相同标签名。",null);
+            return new ResultJson("422","标签更新失败！已存在相同标签名。",null);
         }catch (SQLException e){
-            return new ResultJson("422","更新失败！请稍后再试。",null);
+            return new ResultJson("422","标签更新失败！请稍后再试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }

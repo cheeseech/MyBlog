@@ -161,27 +161,15 @@ public class ArticleServiceImpl implements ArticleService
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void deleteByArticleId(Long articleId) {
-        Article article=articleMapper.getArticleById(articleId);
-        //若文章是草稿箱状态则直接删除
-        if(article.getArticleState() == 0){
-            //删除文章标签关联
-            articleTagsMapper.deleteByArticleId(articleId);
 
-            //删除文章
-            int i= articleMapper.deleteByArticleId(articleId);
-            if(i != 1){
-                throw new IllegalArgumentException();
-            }
-        }else {
-            //若文章是已发布状态，则将其修改为已删除状态并且添加删除时间
-            article.setArticleState(-1);
-            article.setUpdateTime(new Date());
-            int i=articleMapper.updateByArticleId(articleId,article);
-            if(i != 1){
-                throw new IllegalArgumentException();
-            }
+        //删除文章标签关联
+        articleTagsMapper.deleteByArticleId(articleId);
+
+        //删除文章
+        int i= articleMapper.deleteByArticleId(articleId);
+        if(i != 1){
+            throw new IllegalArgumentException();
         }
-
     }
 
     @Override
@@ -202,8 +190,10 @@ public class ArticleServiceImpl implements ArticleService
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void resetArticleState(Integer articleState, Long articleId) {
-        //删除文章
-        int i= articleMapper.resetArticleState(articleState,articleId);
+        Date day=new Date();
+
+        //更新文章状态
+        int i= articleMapper.resetArticleState(articleState,articleId,day);
         if(i != 1){
             throw new IllegalArgumentException();
         }

@@ -1,11 +1,13 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.mapper.ArticleMapper;
 import cn.xmh.web.blogserver.mapper.DaysDataMapper;
 import cn.xmh.web.blogserver.model.Article;
 import cn.xmh.web.blogserver.model.DaysData;
 import cn.xmh.web.blogserver.service.DaysDataService;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.boot.autoconfigure.session.NonUniqueSessionRepositoryException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,13 +26,12 @@ public class DaysDataServiceImpl implements DaysDataService {
     private DaysDataMapper daysDataMapper;
 
     @Override
-    public List<DaysData> getDataByRange(Date start, Date end) throws ParseException {
+    public List<DaysData> getDataByRange(Date start, Date end) {
+        //根据范围获取日期数据
         List<DaysData> daysData=daysDataMapper.getDataByRange(start, end);
-
         if(daysData.isEmpty()){
             throw new NullPointerException();
         }
-//        insertData();
         return daysData;
     }
 
@@ -67,36 +68,12 @@ public class DaysDataServiceImpl implements DaysDataService {
     }
 
     @Override
-    public void newDay(DaysData daysData) throws ParseException {
-//        insertData();
-    }
-
-    @Override
     public List<Article> getSingleArticle(Date start, Date end) {
+        //获取范围内每篇文章标题、创建日期、浏览量、点赞数以及评论数
         List<Article> articles=daysDataMapper.getSingleArticle(start, end);
-
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
         return articles;
-    }
-
-    public void insertData() throws ParseException {
-        String[] days={"2020-11-17","2020-11-16","2020-11-15","2020-11-14","2020-11-13","2020-11-12",
-        "2020-11-11","2020-11-10","2020-11-09","2020-11-08","2020-11-07","2020-11-06","2020-11-05"
-        ,"2020-11-04","2020-11-03","2020-11-02","2020-11-01"};
-        Random r = new Random(1);
-        SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd");
-        for(String s:days){
-            for(int i=1;i<8;i++){
-                DaysData element=new DaysData();
-                element.setComments(r.nextInt(10));
-                element.setLikes(r.nextInt(10));
-                element.setViews(r.nextInt(10));
-                element.setDays(sdf.parse(s));
-                element.setArticleId(i);
-                daysDataMapper.newDay(element);
-            }
-        }
     }
 }

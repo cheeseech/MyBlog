@@ -19,8 +19,9 @@
     </resultMap>
 
     <insert id="insertUser">
-        insert into user (user_face, username, nickname,password, email,create_time,update_time)
-        values (#{userFace},#{userName},#{nickName},#{password},#{email},#{createTime},#{updateTime})
+        insert into user (user_face, username, nickname,password, email,enabled,create_time,update_time)
+        values (#{user.userFace},#{user.userName},#{user.nickName},#{user.password},#{user.email},#{enabled},
+        #{user.createTime},#{user.updateTime})
     </insert>
 
     <update id="updateUserState">
@@ -29,7 +30,7 @@
 
     <update id="updateByUserId">
         update user set user_face=#{user.userFace},nickname=#{user.nickName},username=#{user.userName},
-        email=#{user.email}, update_time=#{user.updateTime} where user_id=#{userId}
+        password=#{user.password},email=#{user.email}, enabled=#{enabled},update_time=#{user.updateTime} where user_id=#{userId}
     </update>
 
     <update id="resetPassword">

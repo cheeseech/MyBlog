@@ -8,10 +8,12 @@
         )
       "
       highlight-current-row
-      style="width: 100%;"
+      class="m-table"
     >
+      <!-- 序号 -->
       <el-table-column label="序号" type="index" min-width="50" align="center">
       </el-table-column>
+
       <!-- 文章标题 -->
       <el-table-column
         label="文章标题"
@@ -22,6 +24,7 @@
         show-overflow-tooltip
       >
       </el-table-column>
+
       <!-- 文章类型 -->
       <el-table-column label="类型" min-width="80" align="center">
         <template slot-scope="scope">
@@ -48,6 +51,7 @@
           >
         </template>
       </el-table-column>
+
       <!-- 文章专栏 -->
       <el-table-column
         label="专栏"
@@ -56,12 +60,14 @@
         align="center"
       >
       </el-table-column>
+
       <!-- 创建时间 -->
       <el-table-column label="创建时间" sortable min-width="170" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.publishTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
+
       <!-- 删除时间 -->
       <el-table-column label="删除时间" sortable min-width="170" align="center">
         <template slot-scope="scope">
@@ -69,10 +75,11 @@
         </template>
       </el-table-column>
 
+      <!-- 工具列 -->
       <el-table-column align="center" min-width="250">
         <template slot="header" slot-scope="scope">
           <el-input
-            style="width:80%"
+            class="article-search"
             v-model="search"
             size="mini"
             placeholder="输入标题检索..."
@@ -86,13 +93,21 @@
             type="primary"
             >编辑</el-button
           >
+          &nbsp;
           <!-- 更改文章状态 -->
-          <el-button
-            size="mini"
-            @click="handleCurrentChange(scope.row)"
-            type="success"
-            >还原为草稿</el-button
+          <el-popconfirm
+            confirmButtonText="确定还原"
+            cancelButtonText="我再想想"
+            icon="el-icon-info"
+            iconColor="red"
+            title="确定还原这一篇文章嘛？"
+            @onConfirm="updateArticleState(scope.row.articleId)"
           >
+            <el-button slot="reference" size="mini" type="success"
+              >还原为草稿</el-button
+            >
+          </el-popconfirm>
+
           &nbsp;
           <!-- 删除文章 -->
           <el-popconfirm
@@ -100,8 +115,8 @@
             cancelButtonText="我再想想"
             icon="el-icon-info"
             iconColor="red"
-            title="确定删除这一条信息吗？"
-            @onConfirm="handleDelete(scope.$index, scope.row)"
+            title="确定删除这一篇文章嘛？"
+            @onConfirm="handleDelete(scope.row.articleId)"
           >
             <el-button slot="reference" size="mini" type="danger"
               >彻底删除</el-button
@@ -113,7 +128,7 @@
   </div>
 </template>
 <script>
-import { getRequest, deleteRequest } from "@/../untils/axiosApi";
+import { getRequest, deleteRequest, postRequest } from "@/../untils/axiosApi";
 import { Message } from "element-ui";
 import axios from "axios";
 
@@ -143,11 +158,37 @@ export default {
         this.articleInfo = response.data;
       }
     },
-    modifiedArticle(articleId){
-
+    //获取已被删除状态的文章数据
+    getArticle() {
+      getRequest("/article/delete/").then(response => {
+        this.setData(response);
+      });
     },
-    updateArticleState(articleId){
-        
+    //编辑文章
+    modifiedArticle(articleId) {},
+    //更新文章状态
+    updateArticleState(articleId) {
+      postRequest("/admin/article/" + articleId + "/" + 0).then(response => {
+        if (response.status == 201) {
+          //重新获取文章数据
+          this.getArticle();
+          Message.success("还原文章状态成功！");
+        } else {
+          Message.error("还原失败！请稍后再试！");
+        }
+      });
+    },
+    //执行删除文章
+    handleDelete(articleId) {
+      deleteRequest("/admin/article/" + articleId).then(response => {
+        if (response.status == 204) {
+          //重新获取文章数据
+          this.getArticle();
+          Message.success("删除文章成功！");
+        } else {
+          Message.error("删除文章失败！请稍后再试！");
+        }
+      });
     }
   }
 };

@@ -27,11 +27,16 @@
     </update>
 
     <update id="resetArticleState">
-        update article set article_state=#{article_state} where article_id=#{article_id}
+        update article set article_state=#{article_state},update_time=#{time} where article_id=#{article_id}
     </update>
 
     <delete id="deleteByArticleId">
         delete from article where article_id=#{article_id}
+    </delete>
+
+    <delete id="recycleArticle">
+        DELETE FROM article WHERE article_state = -1 and
+        update_time &gt;=#{start} and update_time &lt;=#{end}
     </delete>
 
     <select id="getLikeTitleArticle" resultType="cn.xmh.web.blogserver.model.Article">
@@ -101,6 +106,10 @@
 
     <select id="getAllPage" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
+    </select>
+
+    <select id="getAllArticleId" resultType="java.lang.Long">
+        select article_id from article where article_state=1
     </select>
 
 </mapper>

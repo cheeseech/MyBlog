@@ -9,12 +9,16 @@
         )
       "
       highlight-current-row
-      style="width: 100%;"
+      class="m-table"
     >
+      <!-- 序号 -->
       <el-table-column label="序号" type="index"> </el-table-column>
 
+      <!-- 专栏名称 -->
       <el-table-column label="专栏名" prop="cateName" show-overflow-tooltip>
       </el-table-column>
+
+      <!-- 专栏概述 -->
       <el-table-column
         label="专栏概述"
         prop="cateSummary"
@@ -22,16 +26,18 @@
       >
       </el-table-column>
 
+      <!-- 创建时间 -->
       <el-table-column label="创建时间">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
+      <!-- 工具列 -->
       <el-table-column>
         <template slot="header" slot-scope="scope">
           <el-input
-            style="width:50%"
+            class="m-search"
             v-model="search"
             size="mini"
             placeholder="输入专栏名搜索"
@@ -62,22 +68,49 @@
       </el-table-column>
     </el-table>
 
+    <!-- Dialog -->
     <el-dialog
       title="编辑专栏"
       :visible.sync="centerDialogVisible"
       width="30%"
       center
     >
-      <el-form :model="form" label-position="right">
-        <el-form-item label="专栏名:" :label-width="formLabelWidth">
-          <el-input v-model="form.cateName" autocomplete="off"></el-input>
+      <!-- 表单 -->
+      <el-form
+        :model="form"
+        :rules="rules"
+        ref="ruleForm"
+        :label-position="right"
+      >
+        <el-form-item
+          label="专栏名:"
+          prop="cateName"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="form.cateName"
+            id="cateName"
+            v-focus
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="专栏概述:" :label-width="formLabelWidth">
-          <el-input v-model="form.cateSummary" autocomplete="off"></el-input>
+
+        <el-form-item
+          label="专栏概述:"
+          prop="cateSummary"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 3, maxRows: 9 }"
+            v-model="form.cateSummary"
+            @keyup.enter.native="onSubmit"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button @click="resetForm">取 消</el-button>
         <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
     </el-dialog>
@@ -105,6 +138,14 @@ export default {
         cateId: "",
         cateName: "",
         cateSummary: ""
+      },
+      rules: {
+        cateName: [
+          { required: true, message: "请输入专栏名称", trigger: "blur" }
+        ],
+        cateSummary: [
+          { required: true, message: "请选择专栏概述", trigger: "blur" }
+        ]
       }
     };
   },
@@ -121,15 +162,27 @@ export default {
   methods: {
     //点击提交专栏信息
     onSubmit() {
-        //关闭Dialog
+      this.$refs["ruleForm"].validate(valid => {
+        if (valid) {
+          //关闭Dialog
+          this.centerDialogVisible = false;
+          //cateId为空时表示添加专栏
+          if (this.form.cateId == "") {
+            this.insertCategory();
+            //否则表示更新专栏
+          } else {
+            this.updateCategory();
+          }
+        } else {
+          return false;
+        }
+      });
+    },
+    //关闭Dialog，清除表单
+    resetForm() {
+      this.$refs["ruleForm"].resetFields();
+      //关闭Dialog
       this.centerDialogVisible = false;
-      //cateId为空时表示添加专栏
-      if (this.form.cateId == "") {
-        this.insertCategory();
-        //否则表示更新专栏
-      } else {
-        this.updateCategory();
-      }
     },
     //数据处理
     setData(response) {
@@ -163,7 +216,7 @@ export default {
     },
     //点击新建或编辑按钮时
     handleCurrentChange(row) {
-        //弹出Dialog
+      //弹出Dialog
       this.centerDialogVisible = true;
       //若row不为undefined则表示更新专栏，将row数据赋值给表单
       if (row != undefined) {
@@ -194,13 +247,21 @@ export default {
       });
     },
     //获取专栏数据
-    getCategory(){
-        getRequest("/category/").then(response => {
-            if(response.status == 200){
-                this.category = response.data;
-                Message.success("专栏数据获取成功！")
-            }
-        })
+    getCategory() {
+      getRequest("/category/").then(response => {
+        if (response.status == 200) {
+          this.category = response.data;
+        }
+      });
+    }
+  },
+  directives: {
+    focus: {
+      //聚焦输入框
+      inserted: function(el) {
+        var element = document.getElementById("cateName");
+        element.focus();
+      }
     }
   }
 };

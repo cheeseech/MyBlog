@@ -1,8 +1,8 @@
 <template>
   <div id="allArticleAnalysis" v-if="days">
     <!-- 筛选数据 -->
-    <div style="margin-top:20px;margin-left:40px;">
-      <span style="font-size: 19px;font-weight:bold">数据筛选：</span>
+    <div class="m-all-single-picker">
+      <span>数据筛选：</span>
       <el-date-picker
         v-model="timesEcharts"
         type="daterange"
@@ -15,10 +15,9 @@
       >
       </el-date-picker>
     </div>
-    <el-tabs
-      v-model="activeName"
-      style="margin-top:20px;margin-left: 40px;margin-right: 40px;"
-    >
+
+    <!-- Echarts图表 -->
+    <el-tabs v-model="activeName" class="m-all-tabs">
       <!-- 浏览量图表 -->
       <el-tab-pane label="浏览量" name="views">
         <charts
@@ -30,6 +29,7 @@
           >views</charts
         >
       </el-tab-pane>
+
       <!-- 点赞数图表 -->
       <el-tab-pane label="点赞数" name="likes">
         <charts
@@ -41,6 +41,7 @@
           >likes</charts
         >
       </el-tab-pane>
+
       <!-- 评论数图表 -->
       <el-tab-pane label="评论数" name="comments">
         <charts
@@ -52,6 +53,7 @@
           >comments</charts
         >
       </el-tab-pane>
+      
     </el-tabs>
   </div>
 </template>
@@ -142,14 +144,29 @@ export default {
         this.views = response.data.views;
         //评论数数据
         this.comments = response.data.comments;
+        Message.success(response.msg);
       } else {
         this.days = "";
         this.likes = "";
         this.views = "";
         this.comments = "";
+        Message.error(response.msg);
       }
     }
   },
   components: { charts }
 };
 </script>
+<style>
+#tab-single,
+#tab-all,
+#tab-category {
+  font-size: 20px;
+  font-weight: bold;
+}
+.m-all-tabs {
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+</style>

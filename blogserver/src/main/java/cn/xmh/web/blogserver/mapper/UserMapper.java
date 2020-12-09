@@ -24,9 +24,10 @@ public interface UserMapper {
     /**
      * 添加用户
      * @param user 用户信息
+     * @param enabled 用户状态
      * @return 受影响的行
      */
-    int insertUser(User user);
+    int insertUser(User user,int enabled);
 
     /**
      * 根据ID删除用户
@@ -39,9 +40,10 @@ public interface UserMapper {
      * 根据ID更新用户信息
      * @param userId 用户ID
      * @param user 用户信息
+     * @param enabled 用户状态
      * @return 受影响的行
      */
-    int updateByUserId(@Param("userId") Long userId,User user);
+    int updateByUserId(@Param("userId") Long userId,User user,int enabled);
 
     /**
      * 更新用户状态

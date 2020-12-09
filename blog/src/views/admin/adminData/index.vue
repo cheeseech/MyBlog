@@ -1,13 +1,10 @@
 <template>
-  <div
-    id="dataManager"
-    style="padding:20px;background-color:#fff"
-    v-if="daysData"
-  >
+  <div id="dataManager" style="padding:20px;background-color:#fff">
     <!-- 所有文章数据统计 -->
     <totalArticleData></totalArticleData>
 
-    <el-tabs type="border-card" v-model="activeName" style="margin-top:25px;">
+    <!-- 全部/单篇/专栏文章分析 -->
+    <el-tabs type="border-card" v-model="activeName" class="m-tabs">
       <el-tab-pane label="全部文章分析" name="all">
         <allArticleAnalysis v-show="'all' === activeName"></allArticleAnalysis>
       </el-tab-pane>
@@ -23,9 +20,9 @@
       </el-tab-pane>
     </el-tabs>
 
-    <!-- 日期数据统计 -->
-    <div style="margin-top:40px;margin-left: 40px;">
-      <span style="font-size:18px;font-weight: bold">日期数据报表：</span>
+    <!-- 日期数据筛选 -->
+    <div class="m-date-picker">
+      <span>日期数据报表：</span>
       <el-date-picker
         v-model="times"
         type="daterange"
@@ -40,23 +37,36 @@
     </div>
     <el-divider></el-divider>
 
-    <el-table
-      :data="daysData"
-      highlight-current-row
-      :row-class-name="tableRowClassName"
-      style="margin-top:20px;width:84%;margin-left: 8%;"
-    >
+    <!-- 日期数据表格 -->
+    <el-table :data="daysData" highlight-current-row class="m-analysis-table">
+      <!-- 日期 -->
       <el-table-column label="日期" sortable align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.days | dateFormat }}</span>
         </template>
       </el-table-column>
+
+      <!-- 浏览数 -->
       <el-table-column label="浏览" prop="views" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="primary" effect="dark">{{ scope.row.views }}</el-tag>
+        </template>
       </el-table-column>
+
+      <!-- 点赞数 -->
       <el-table-column label="点赞" prop="likes" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="danger" effect="dark">{{ scope.row.likes }}</el-tag>
+        </template>
       </el-table-column>
+
+      <!-- 评论数 -->
       <el-table-column label="评论" prop="comments" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="warning" effect="dark">{{ scope.row.comments }}</el-tag>
+        </template>
       </el-table-column>
+      
     </el-table>
   </div>
 </template>
@@ -130,22 +140,17 @@ export default {
     setData(response) {
       if (response.status == 200) {
         this.daysData = response.data;
+        Message.success(response.msg)
       } else {
         this.daysData = "";
+        Message.error(response.msg)
       }
     },
-    //表格行数据不为0时添加背景色
-    tableRowClassName({ row, rowIndex }) {
-      if (row.views !== 0 || row.likes !== 0 || row.comments !== 0) {
-        return "warning-row";
-      }
-      return "";
-    },
-    //设置时间为近90天
+    //设置时间为近30天
     setTime() {
       const end = new Date();
       const start = new Date();
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
 
       this.times = [start, end];
     }
@@ -164,5 +169,21 @@ export default {
 }
 .el-table .warning-row {
   background: oldlace;
+}
+.m-tabs {
+  margin-top: 25px;
+}
+.m-date-picker {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+.m-date-picker span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.m-analysis-table {
+  margin-top: 20px;
+  width: 84%;
+  margin-left: 8%;
 }
 </style>

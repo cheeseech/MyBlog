@@ -4,43 +4,62 @@
       :data="categoryData"
       highlight-current-row
       @selection-change="handleSelectionChange()"
-      style="margin-top:20px;width:90%;margin-left: 5%;margin-bottom: 25px;"
+      class="m-single-category-table"
     >
       <!-- 专栏名称 -->
       <el-table-column label="专栏名称" sortable min-width="70" align="center">
         <template slot-scope="scope">
-          <el-tag size="medium" type="primary" effect="dark">{{
-            scope.row.name
-          }}</el-tag>
+          <span class="categpry-name">{{ scope.row.name }}</span>
         </template>
       </el-table-column>
+
       <!-- 专栏概述 -->
       <el-table-column
         label="专栏概述"
-        prop="summary"
         show-overflow-tooltip
-        min-width="250"
+        min-width="300"
         align="center"
       >
+        <template slot-scope="scope">
+          <span style="font-size:16px;">{{ scope.row.summary }}</span>
+        </template>
       </el-table-column>
+
       <!-- 创建时间 -->
       <el-table-column label="创建时间" sortable align="center" min-width="160">
         <template slot-scope="scope">
           <span>{{ scope.row.create_time | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
+
       <!-- 文章数 -->
-      <el-table-column label="文章数" prop="articles" sortable align="center">
+      <el-table-column label="文章数" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="success" effect="dark">{{ scope.row.articles }}</el-tag>
+        </template>
       </el-table-column>
+
       <!-- 浏览量 -->
-      <el-table-column label="浏览" prop="views" sortable align="center">
+      <el-table-column label="浏览" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="primary" effect="dark">{{ scope.row.views }}</el-tag>
+        </template>
       </el-table-column>
+
       <!-- 点赞数 -->
-      <el-table-column label="点赞" prop="likes" sortable align="center">
+      <el-table-column label="点赞" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="danger" effect="dark">{{ scope.row.likes }}</el-tag>
+        </template>
       </el-table-column>
+
       <!-- 评论数 -->
-      <el-table-column label="评论" prop="comments" sortable align="center">
+      <el-table-column label="评论" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="warning" effect="dark">{{ scope.row.comments }}</el-tag>
+        </template>
       </el-table-column>
+      
     </el-table>
   </div>
 </template>
@@ -68,3 +87,9 @@ export default {
   }
 };
 </script>
+<style>
+.category-name {
+  font-size: 17px;
+  font-weight: bold;
+}
+</style>

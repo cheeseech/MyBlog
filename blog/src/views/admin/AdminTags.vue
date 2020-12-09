@@ -8,13 +8,16 @@
         )
       "
       highlight-current-row
-      style="width: 100%;"
+      class="m-table"
     >
+      <!-- 序号 -->
       <el-table-column label="序号" type="index"> </el-table-column>
 
+      <!-- 标签名称 -->
       <el-table-column label="标签名" prop="tagName" show-overflow-tooltip>
       </el-table-column>
 
+      <!-- 标签类型 -->
       <el-table-column label="标签类型" show-overflow-tooltip>
         <template slot-scope="scope">
           <el-tag size="medium" :type="scope.row.tagType" effect="dark">{{
@@ -23,10 +26,11 @@
         </template>
       </el-table-column>
 
+      <!-- 工具列 -->
       <el-table-column>
         <template slot="header" slot-scope="scope">
           <el-input
-            style="width:50%"
+            class="m-search"
             v-model="search"
             size="mini"
             placeholder="输入标签名搜索"
@@ -57,29 +61,53 @@
       </el-table-column>
     </el-table>
 
+    <!-- Dialog -->
     <el-dialog
       title="编辑标签"
       :visible.sync="centerDialogVisible"
       width="30%"
       center
     >
-      <el-form :model="form" label-position="right">
-        <el-form-item label="标签名:" :label-width="formLabelWidth">
-          <el-input v-model="form.tagName" autocomplete="off"></el-input>
+      <!-- 表单 -->
+      <el-form
+        :model="form"
+        :rules="rules"
+        ref="ruleForm"
+        label-position="right"
+      >
+        <el-form-item
+          label="标签名:"
+          prop="tagName"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            id="tagName"
+            v-focus
+            v-model="form.tagName"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
 
-        <el-form-item label="标签类型:" :label-width="formLabelWidth">
-          <el-select v-model="form.tagType" placeholder="请选择标签颜色：">
-            <el-option label="绿色" value="success"></el-option>
-            <el-option label="蓝色" value="primary"></el-option>
-            <el-option label="黄色" value="warning"></el-option>
-            <el-option label="红色" value="danger"></el-option>
-            <el-option label="灰色" value="info"></el-option>
+        <el-form-item
+          label="标签类型:"
+          prop="tagType"
+          :label-width="formLabelWidth"
+        >
+          <el-select v-model="form.tagType" placeholder="请选择标签：">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.value"
+              :value="item.value"
+            >
+              <span class="tag-value">{{ item.value }}</span>
+              <span class="tag-label">{{ item.label }}</span>
+            </el-option>
           </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button @click="resetForm">取 消</el-button>
         <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
     </el-dialog>
@@ -106,7 +134,37 @@ export default {
       form: {
         tagName: "",
         tagType: ""
-      }
+      },
+      rules: {
+        tagName: [
+          { required: true, message: "请输入标签名称", trigger: "blur" }
+        ],
+        tagType: [
+          { required: true, message: "请选择标签类型", trigger: "blur" }
+        ]
+      },
+      options: [
+        {
+          value: "success",
+          label: "绿色"
+        },
+        {
+          value: "primary",
+          label: "蓝色"
+        },
+        {
+          value: "warning",
+          label: "黄色"
+        },
+        {
+          value: "danger",
+          label: "红色"
+        },
+        {
+          value: "info",
+          label: "灰色"
+        }
+      ]
     };
   },
   //在路由跳转前获取数据
@@ -125,21 +183,32 @@ export default {
       getRequest("/tags/").then(response => {
         if (response.status == 200) {
           this.tags = response.data;
-          Message.success("数据更新成功！");
         }
       });
     },
     //点击提交执行方法
     onSubmit() {
+      this.$refs["ruleForm"].validate(valid => {
+        if (valid) {
+          //关闭Dialog
+          this.centerDialogVisible = false;
+          //tagId为空则添加标签
+          if (this.form.tagId === "") {
+            this.insertTag();
+            //tagId不为空则更新标签
+          } else {
+            this.updateTag();
+          }
+        } else {
+          return false;
+        }
+      });
+    },
+    //关闭Dialog，清除表单
+    resetForm() {
+      this.$refs["ruleForm"].resetFields();
       //关闭Dialog
       this.centerDialogVisible = false;
-      //tagId为空则添加标签
-      if (this.form.tagId == "") {
-        this.insertTag();
-        //tagId不为空则更新标签
-      } else {
-        this.updateTag();
-      }
     },
     //根据表单更新标签
     updateTag() {
@@ -202,6 +271,15 @@ export default {
         }
       });
     }
+  },
+  directives: {
+    focus: {
+      //聚焦输入框
+      inserted: function(el) {
+        var element = document.getElementById("tagName");
+        element.focus();
+      }
+    }
   }
 };
 </script>
@@ -215,5 +293,13 @@ export default {
 }
 .el-switch {
   height: auto;
+}
+.tag-value {
+  float: left;
+}
+.tag-label {
+  float: right;
+  color: #8492a6;
+  font-size: 13px;
 }
 </style>

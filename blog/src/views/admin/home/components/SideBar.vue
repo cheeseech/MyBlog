@@ -1,7 +1,7 @@
 <template>
   <div id="sideBar">
     <el-menu
-      default-active="1-4-1"
+      :default-active="activePath"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
       background-color="#304156"
@@ -26,13 +26,17 @@
       </el-menu-item>
       <!-- 专栏管理 -->
       <el-menu-item index="/admin/category">
-        <i class="el-icon-document"></i>
+        <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+          <use xlink:href="#icon-book-2"></use>
+        </svg>
         <span slot="title">专栏管理</span>
       </el-menu-item>
       <!-- 文章管理 -->
       <el-submenu index="1">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+            <use xlink:href="#icon-shuqian"></use>
+          </svg>
           <span>文章管理</span>
         </template>
         <el-menu-item index="/admin/publishArticle">发布文章</el-menu-item>
@@ -55,8 +59,20 @@ export default {
   name: "SideBar",
   data() {
     return {
+      activePath: "/admin/welcome",
       isCollapse: true
     };
+  },
+  watch: {
+    //监听路由变化切换导航
+    $route(to, from) {
+      this.activePath = to.path;
+    }
+  },
+  mounted() {
+    //选中当前路由
+    var path = this.$route.path;
+    this.activePath = path;
   },
   created() {
     //   接受并设置侧边栏状态

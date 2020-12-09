@@ -3,6 +3,7 @@ package cn.xmh.web.blogserver.service;
 import cn.xmh.web.blogserver.model.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public interface UserService {
      * 添加用户
      * @param user 用户信息
      */
-    void insertUser(User user);
+    void insertUser(User user) throws SQLException;
 
     /**
      * 根据ID删除用户
@@ -32,10 +33,9 @@ public interface UserService {
 
     /**
      * 根据ID更新用户信息
-     * @param userId 用户ID
      * @param user 用户信息
      */
-    void updateByUserId(Long userId,User user);
+    void updateByUserId(User user) throws SQLException;
 
     /**
      * 更新用户状态

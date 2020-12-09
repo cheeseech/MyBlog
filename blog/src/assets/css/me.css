@@ -39,8 +39,8 @@
 .m-b-margin-mini {
   margin-bottom: 0.4em;
 }
-.m-l-margin-small{
-    margin-left: 10px;
+.m-l-margin-small {
+  margin-left: 10px;
 }
 
 /*radius*/
@@ -52,7 +52,7 @@
 }
 
 /* font */
-.m-font-size-large{
+.m-font-size-large {
   font-size: 32px;
 }
 .m-font-size-big {
@@ -62,19 +62,19 @@
   font-size: 24px;
   color: orange;
 }
-.m-font-size-normal{
-    font-size:22px;
+.m-font-size-normal {
+  font-size: 22px;
 }
 .m-font-size-normal-orange {
   font-size: 22px;
   color: orange;
 }
 .m-font-size-normal-blue {
-    font-size: 22px;
-    color: #409EFF;
-  }
+  font-size: 22px;
+  color: #409eff;
+}
 /* span */
-.m-span-right-pd{
+.m-span-right-pd {
   float: right;
   padding: 3px 0;
 }
@@ -93,7 +93,7 @@
   font-size: 24px;
 }
 .m-svg-size-normal {
-    font-size: 26px;
+  font-size: 26px;
 }
 .m-svg-size-big {
   font-size: 28px;
@@ -246,3 +246,28 @@
     stroke-dasharray: 60 180;
   }
 }
+
+.m-table {
+  width: 100%;
+}
+.m-search {
+  width: 50%;
+}
+.article-search {
+  width: 80%;
+}
+.m-all-single-picker {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+.m-all-single-picker span {
+  font-size: 19px;
+  font-weight: bold;
+}
+.m-single-category-table {
+  margin-top: 20px;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 25px;
+}
+

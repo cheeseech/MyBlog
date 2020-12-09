@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.awt.event.MouseAdapter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -66,9 +67,10 @@ public interface ArticleMapper {
      *  更新文章状态
      * @param articleState 文章状态
      * @param articleId 文章ID
+     * @param time 更新时间
      * @return 受影响的行
      */
-    int resetArticleState(@Param("article_state") Integer articleState,@Param("article_id") Long articleId);
+    int resetArticleState(@Param("article_state") Integer articleState,@Param("article_id") Long articleId,Date time);
 
     /**
      * 获取最新推荐五篇文章标题
@@ -142,4 +144,18 @@ public interface ArticleMapper {
      * @return 文章数量
      */
     Integer getArticleNum();
+
+    /**
+     * 获取所有已发布状态文章id集合
+     * @return 文章ID集合
+     */
+    List<Long> getAllArticleId();
+
+    /**
+     * 删除近一个月内为已删除状态的文章
+     * @param start 开始时间
+     * @param end 结束时间
+     * @return 删除的文章数
+     */
+    int recycleArticle(Date start,Date end);
 }

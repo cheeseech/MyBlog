@@ -72,7 +72,11 @@ public class TagsServiceImpl implements TagsService {
         //判断标签名是否相同
         Tags checkTag=tagsMapper.getTagsName(tags.getTagName());
         if(checkTag!=null){
-            throw  new IllegalArgumentException();
+            //当表单传值的id等于根据标签名查找的id时表示只进行了标签类型的更改，
+            //否则表示标签名重复
+            if(!tags.getTagId().equals(checkTag.getTagId())){
+                throw  new IllegalArgumentException();
+            }
         }
 
         int i=tagsMapper.updateTagById(tags);

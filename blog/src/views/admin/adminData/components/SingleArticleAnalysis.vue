@@ -1,8 +1,8 @@
 <template>
   <div id="single" v-show="articleData">
     <!-- 文章日期数据筛选 -->
-    <div style="margin-top:20px;margin-left:40px;">
-      <span style="font-size: 19px;font-weight:bold">文章数据报表：</span>
+    <div class="m-all-single-picker">
+      <span>文章数据报表：</span>
       <el-date-picker
         v-model="timesTables"
         type="daterange"
@@ -18,37 +18,56 @@
 
     <el-divider></el-divider>
 
-    <el-table
-      :data="articleData"
-      highlight-current-row
-      style="margin-top:20px;width:90%;margin-left: 5%;margin-bottom: 25px;"
-    >
+    <!-- 文章数据表格 -->
+    <el-table :data="articleData" highlight-current-row class="m-single-category-table">
       <!-- 文章标题 -->
-      <el-table-column label="文章标题" sortable min-width="200">
+      <el-table-column label="文章标题" sortable min-width="150">
         <template slot-scope="scope">
-          <span style="font-size:17px">{{ scope.row.title }}</span>
+          <span class="article-title">{{ scope.row.title }}</span>
         </template>
       </el-table-column>
+
       <!-- 创建日期 -->
       <el-table-column label="创建日期" sortable align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.publishTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
-      <!-- 浏览量 -->
-      <el-table-column label="浏览" prop="views" sortable align="center">
+
+      <!-- 创建日期 -->
+      <el-table-column label="更新日期" sortable align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
+        </template>
       </el-table-column>
+
+      <!-- 浏览量 -->
+      <el-table-column label="浏览" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="primary" effect="dark">{{ scope.row.views }}</el-tag>
+        </template>
+      </el-table-column>
+
       <!-- 点赞数 -->
       <el-table-column label="点赞" prop="likes" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="danger" effect="dark">{{ scope.row.likes }}</el-tag>
+        </template>
       </el-table-column>
+
       <!-- 评论数 -->
       <el-table-column label="评论" prop="comments" sortable align="center">
+        <template slot-scope="scope">
+          <el-tag type="warning" effect="dark">{{ scope.row.comments }}</el-tag>
+        </template>
       </el-table-column>
+      
     </el-table>
   </div>
 </template>
 <script>
 import { getRequest } from "@/../untils/axiosApi";
+import { Message } from "element-ui";
 export default {
   name: "single",
   data() {
@@ -95,10 +114,13 @@ export default {
     //当时间变化时根据选择时间获取数据
     timesTables: function() {
       getRequest(
-        "/admin/single/" + this.timesTables[0] + "/" + this.timesTables[1]
+        "/admin/days/single/" + this.timesTables[0] + "/" + this.timesTables[1]
       ).then(response => {
         if (response.status == 200) {
           this.articleData = response.data;
+          Message.success("日期文章数据选择成功！");
+        } else {
+          Message.error("日期文章数据选择失败！请稍后再试。");
         }
       });
     }
@@ -119,3 +141,9 @@ export default {
   }
 };
 </script>
+<style>
+.article-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+</style>
