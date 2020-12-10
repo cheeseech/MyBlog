@@ -21,28 +21,28 @@
     <!-- 文章数据表格 -->
     <el-table :data="articleData" highlight-current-row class="m-single-category-table">
       <!-- 文章标题 -->
-      <el-table-column label="文章标题" sortable min-width="150">
+      <el-table-column label="文章标题" sortable prop="title" min-width="150">
         <template slot-scope="scope">
           <span class="article-title">{{ scope.row.title }}</span>
         </template>
       </el-table-column>
 
       <!-- 创建日期 -->
-      <el-table-column label="创建日期" sortable align="center">
+      <el-table-column label="创建日期" sortable prop="publishTime" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.publishTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
       <!-- 创建日期 -->
-      <el-table-column label="更新日期" sortable align="center">
+      <el-table-column label="更新日期" sortable prop="updateTime" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
       <!-- 浏览量 -->
-      <el-table-column label="浏览" sortable align="center">
+      <el-table-column label="浏览" sortable prop="views" align="center">
         <template slot-scope="scope">
           <el-tag type="primary" effect="dark">{{ scope.row.views }}</el-tag>
         </template>

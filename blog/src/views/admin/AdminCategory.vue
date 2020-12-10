@@ -15,7 +15,7 @@
       <el-table-column label="序号" type="index"> </el-table-column>
 
       <!-- 专栏名称 -->
-      <el-table-column label="专栏名" prop="cateName" show-overflow-tooltip>
+      <el-table-column label="专栏名" prop="cateName" sortable show-overflow-tooltip>
       </el-table-column>
 
       <!-- 专栏概述 -->
@@ -27,7 +27,7 @@
       </el-table-column>
 
       <!-- 创建时间 -->
-      <el-table-column label="创建时间">
+      <el-table-column label="创建时间" sortable prop="createTime">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime | dateTimeLongFormat }}</span>
         </template>
@@ -80,7 +80,7 @@
         :model="form"
         :rules="rules"
         ref="ruleForm"
-        :label-position="right"
+        label-position="right"
       >
         <el-form-item
           label="专栏名:"

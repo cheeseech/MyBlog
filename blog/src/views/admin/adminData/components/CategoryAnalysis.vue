@@ -7,7 +7,7 @@
       class="m-single-category-table"
     >
       <!-- 专栏名称 -->
-      <el-table-column label="专栏名称" sortable min-width="70" align="center">
+      <el-table-column label="专栏名称" sortable prop="name" min-width="70" align="center">
         <template slot-scope="scope">
           <span class="categpry-name">{{ scope.row.name }}</span>
         </template>
@@ -26,35 +26,35 @@
       </el-table-column>
 
       <!-- 创建时间 -->
-      <el-table-column label="创建时间" sortable align="center" min-width="160">
+      <el-table-column label="创建时间" prop="create_time" sortable align="center" min-width="160">
         <template slot-scope="scope">
           <span>{{ scope.row.create_time | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
       <!-- 文章数 -->
-      <el-table-column label="文章数" sortable align="center">
+      <el-table-column label="文章数" sortable prop="articles" align="center">
         <template slot-scope="scope">
           <el-tag type="success" effect="dark">{{ scope.row.articles }}</el-tag>
         </template>
       </el-table-column>
 
       <!-- 浏览量 -->
-      <el-table-column label="浏览" sortable align="center">
+      <el-table-column label="浏览" sortable prop="views" align="center">
         <template slot-scope="scope">
           <el-tag type="primary" effect="dark">{{ scope.row.views }}</el-tag>
         </template>
       </el-table-column>
 
       <!-- 点赞数 -->
-      <el-table-column label="点赞" sortable align="center">
+      <el-table-column label="点赞" sortable prop="likes" align="center">
         <template slot-scope="scope">
           <el-tag type="danger" effect="dark">{{ scope.row.likes }}</el-tag>
         </template>
       </el-table-column>
 
       <!-- 评论数 -->
-      <el-table-column label="评论" sortable align="center">
+      <el-table-column label="评论" sortable prop="comments" align="center">
         <template slot-scope="scope">
           <el-tag type="warning" effect="dark">{{ scope.row.comments }}</el-tag>
         </template>

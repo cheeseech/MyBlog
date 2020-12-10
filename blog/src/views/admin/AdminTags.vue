@@ -14,7 +14,7 @@
       <el-table-column label="序号" type="index"> </el-table-column>
 
       <!-- 标签名称 -->
-      <el-table-column label="标签名" prop="tagName" show-overflow-tooltip>
+      <el-table-column label="标签名" prop="tagName" sortable show-overflow-tooltip>
       </el-table-column>
 
       <!-- 标签类型 -->

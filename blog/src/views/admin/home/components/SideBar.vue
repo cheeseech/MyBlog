@@ -4,50 +4,78 @@
       :default-active="activePath"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
-      background-color="#304156"
+      background-color="#112d4e"
       text-color="#bfcbd9"
       active-text-color="#409eff"
       router
     >
       <!--欢迎页  -->
       <el-menu-item index="/admin/welcome">
-        <i class="el-icon-menu"></i>
+        <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+          <use xlink:href="#icon-shouye"></use>
+        </svg>
         <span slot="title">欢迎页</span>
       </el-menu-item>
+
       <!-- 用户管理 -->
       <el-menu-item index="/admin/user">
-        <i class="el-icon-menu"></i>
+        <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+          <use xlink:href="#icon-ai-user"></use>
+        </svg>
         <span slot="title">用户管理</span>
       </el-menu-item>
+
       <!-- 标签管理 -->
       <el-menu-item index="/admin/tags">
-        <i class="el-icon-menu"></i>
+        <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+          <use xlink:href="#icon-icon"></use>
+        </svg>
         <span slot="title">标签管理</span>
       </el-menu-item>
+
       <!-- 专栏管理 -->
       <el-menu-item index="/admin/category">
         <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
-          <use xlink:href="#icon-book-2"></use>
+          <use xlink:href="#icon-icon-"></use>
         </svg>
         <span slot="title">专栏管理</span>
       </el-menu-item>
+
       <!-- 文章管理 -->
       <el-submenu index="1">
         <template slot="title">
           <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
-            <use xlink:href="#icon-shuqian"></use>
+            <use xlink:href="#icon-shu"></use>
           </svg>
           <span>文章管理</span>
         </template>
-        <el-menu-item index="/admin/publishArticle">发布文章</el-menu-item>
-        <el-menu-item index="/admin/article">管理文章</el-menu-item>
-        <el-menu-item index="/admin/recycle">回收站</el-menu-item>
+        <el-menu-item index="/admin/publishArticle">
+          <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+            <use xlink:href="#icon-xie"></use>
+          </svg>
+          发布文章</el-menu-item
+        >
+        <el-menu-item index="/admin/article">
+          <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+            <use xlink:href="#icon-085shucezhongxin"></use>
+          </svg>
+          管理文章</el-menu-item
+        >
+        <el-menu-item index="/admin/recycle">
+          <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+            <use xlink:href="#icon-huishouzhanlajixiang"></use>
+          </svg>
+          回收站</el-menu-item
+        >
       </el-submenu>
       <!-- 数据统计 -->
       <el-menu-item index="/admin/adminData">
-        <i class="el-icon-setting"></i>
+        <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
+          <use xlink:href="#icon-shuju"></use>
+        </svg>
         <span slot="title">数据统计</span>
       </el-menu-item>
+
     </el-menu>
   </div>
 </template>
@@ -86,7 +114,7 @@ export default {
 <style scoped>
 #sideBar {
   height: 100%;
-  background-color: #304156;
+  background-color: #112d4e;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;

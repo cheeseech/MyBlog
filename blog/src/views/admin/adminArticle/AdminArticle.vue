@@ -119,14 +119,14 @@
       </el-table-column>
 
       <!-- 创建时间 -->
-      <el-table-column label="创建时间" sortable min-width="170" align="center">
+      <el-table-column label="创建时间" sortable prop="createTime" min-width="170" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.publishTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
       <!-- 更新时间 -->
-      <el-table-column label="更新时间" sortable min-width="170" align="center">
+      <el-table-column label="更新时间" sortable prop="updateTime" min-width="170" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
         </template>

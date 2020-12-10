@@ -27,6 +27,7 @@
         label="昵称"
         prop="nickName"
         min-width="110"
+        sortable
         show-overflow-tooltip
       >
       </el-table-column>
@@ -36,6 +37,7 @@
         label="用户名"
         prop="username"
         min-width="110"
+        sortable
         show-overflow-tooltip
       >
       </el-table-column>
@@ -74,14 +76,14 @@
       </el-table-column>
 
       <!-- 创建时间 -->
-      <el-table-column label="创建时间" sortable min-width="180">
+      <el-table-column label="创建时间" sortable min-width="180" prop="createTime">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime | dateTimeLongFormat }}</span>
         </template>
       </el-table-column>
 
       <!-- 更新时间 -->
-      <el-table-column label="更新时间" sortable min-width="180">
+      <el-table-column label="更新时间" sortable prop="updateTime" min-width="180">
         <template slot-scope="scope">
           <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
         </template>
