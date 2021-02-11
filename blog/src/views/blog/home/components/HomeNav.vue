@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客标题栏组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-06 09:54:27
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-11 12:13:01
+ * @FilePath: \src\views\blog\home\components\HomeNav.vue
+-->
 <template>
   <el-menu
     :default-active="activeIndex"
@@ -9,7 +17,7 @@
     active-text-color="#ffd04b"
   >
     <!--logo-->
-    <el-menu-item>
+    <el-menu-item index="/" style="border-bottom-color:#3f72af">
       <el-image :src="logoUrl" fit="fill" class="m-logo-size"></el-image>
       <!-- 动态文字-->
       <div class="logo-text">
@@ -62,15 +70,19 @@
     </el-menu-item>
 
     <!--搜索框-->
-    <el-menu-item style="float: right; width: 17%; margin-right: 40px">
+    <el-menu-item
+      style="float: right; width: 17%; margin-right: 3%; border-bottom-color:#3f72af"
+    >
       <el-input
-        placeholder="请输入内容"
+        placeholder="输入标题检索"
         v-model="input"
         class="input-with-select m-search-input m-search-btn"
+        @keyup.enter.native="sendInput"
       >
-        <el-button slot="append"
+        <el-button slot="append" @click="sendInput"
           ><svg class="icon m-svg-size" aria-hidden="true">
-            <use xlink:href="#icon-gosearch"></use></svg>
+            <use xlink:href="#icon-gosearch"></use>
+          </svg>
         </el-button>
       </el-input>
     </el-menu-item>
@@ -84,9 +96,9 @@ export default {
   name: "NavMenu",
   data() {
     return {
-      activeIndex: "/index",
-      input: "",
-      logoUrl: require("@/assets/images/logo.png")
+      input: "", // 搜索关键字
+      activeIndex: "/index", // 默认选中导航
+      logoUrl: require("@/assets/images/logo.png") // 导航栏图标
     };
   },
   watch: {
@@ -96,13 +108,26 @@ export default {
     }
   },
   mounted() {
-      var path=this.$route.path;
-      if(path !== "/"){
-          this.activeIndex =path; 
-      }
+    let vm = this;
+    this.init();
   },
   methods: {
-    //发送搜索关键字到BlogArticle
+    /**
+     * @description: 根据当前路由切换选中导航
+     * @return void
+     */
+    init() {
+      let vm = this;
+      var path = vm.$route.path;
+      if (path !== "/") {
+        vm.activeIndex = path;
+      }
+    },
+
+    /**
+     * @description: 发送搜索关键字到当前页面
+     * @return void
+     */
     sendInput() {
       eventBus.$emit("title", this.input);
     }
@@ -118,9 +143,13 @@ export default {
   float: left;
 }
 /* 导航栏搜索框 */
-.m-search {
+.m-nav-search {
   float: right;
   width: 17%;
   margin-right: 40px;
+}
+/* 去掉搜索框及图标下划线 */
+.remove-underscore {
+  border-bottom-color: #3f72af;
 }
 </style>

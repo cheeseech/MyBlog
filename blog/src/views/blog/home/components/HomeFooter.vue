@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客底部组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-05 16:33:15
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-11 11:58:22
+ * @FilePath: \src\views\blog\home\components\HomeFooter.vue
+-->
 <template>
   <div class="m-container">
     <el-row :gutter="20">
@@ -12,7 +20,11 @@
       <el-col :span="6" class="m-t-margin-mini">
         <div class="m-new-blog">
           <h3>最新博客</h3>
-          <li v-for="item in titles" :key="item.article_id">
+          <li
+            v-for="item in articles"
+            :key="item.article_id"
+            @click="goBlogArticle(item.article_id)"
+          >
             <a href="#">{{ item.title | TitleFormat }}</a>
           </li>
         </div>
@@ -20,10 +32,10 @@
 
       <!--联系我-->
       <el-col :span="6" class="m-t-margin-mini">
-        <div class="m-new-blog">
+        <div class="m-new-blog contact-me">
           <h3>联系我</h3>
-          <a>Email:xumaohua98@163.com</a>
-          <a>QQ:1355125277</a>
+          <a>Email：xumaohua98@163.com</a>
+          <a>QQ：1355125277</a>
         </div>
       </el-col>
 
@@ -53,31 +65,51 @@ export default {
   name: "BlogFooter",
   data() {
     return {
-      wechatUrl: require("@/assets/images/wechat.png"),
-      titles: null
+      wechatUrl: require("@/assets/images/wechat.png"), // 二维码图片
+      articles: null , // 文章列表集合
     };
   },
   created() {
-    this.getData();
+    let vm = this;
+    vm.init();
   },
   methods: {
-    //数据获取
-    getData() {
-      var _this = this;
+    /**
+     * @description: 获取最新博客数据
+     * @return void
+     */
+    init() {
       getRequest("/article/new/").then(response => {
         if (response.status == 200) {
-          _this.titles = response.data;
+          this.articles = response.data;
         }
+      });
+    },
+
+    /**
+     * @description: 跳转到文章详情页并传递文章ID
+     * @param {Number} id
+     * @return void
+     */
+    goBlogArticle(id) {
+      this.$router.push({
+        name: "文章详情",
+        params: { articleId: id }
       });
     }
   },
   filters: {
-    //标题长度限制
-    TitleFormat: function(value) {
-      if (value.length > 15) {
-        value = value.substring(0, 15) + "...";
+    /**
+     * @description: 文章标题长度限制
+     * @param {String} title
+     * @return {String} 修改后标题
+     */
+    TitleFormat: function(title) {
+      // 限制标题长度为15，超过后加...
+      if (title.length > 15) {
+        title = title.substring(0, 15) + "...";
       }
-      return `${value}`;
+      return `${title}`;
     }
   }
 };
@@ -96,7 +128,7 @@ export default {
   margin: auto;
 }
 
-/*博客样式*/
+/*博客标题样式*/
 .m-new-blog {
   text-align: center;
 }
@@ -107,8 +139,16 @@ export default {
   color: #e9eef3;
   line-height: 1.8;
 }
+.m-new-blog a:hover {
+  color: #3476d2;
+}
 .m-footer-p {
   color: #e9eef3;
   line-height: 1.8;
+}
+
+/* 联系我a标签 */
+.contact-me a {
+  cursor: default;
 }
 </style>
