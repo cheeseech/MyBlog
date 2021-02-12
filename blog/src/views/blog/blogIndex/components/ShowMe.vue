@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客首页关于我组件
+ * @Author: 徐茂华
+ * @Date: 2020-11-24 15:32:29
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-12 14:34:28
+ * @FilePath: \src\views\blog\blogIndex\components\ShowMe.vue
+-->
 <template>
   <div id="show" v-if="article_cate_tag_count">
     <el-card class="m-radius-small m-b-margin">
@@ -76,11 +84,14 @@ export default {
   props: ["article_cate_tag_count"],
   data() {
     return {
-      meUrl: require("@/assets/images/me.png")
+      meUrl: require("@/assets/images/me.png") // 头像
     };
   },
   methods: {
-    //滑动到底部
+    /**
+     * @description: 点击微信图标滑动到底部微信二维码处
+     * @return void
+     */
     backBottom() {
       let ispeed = 500;
       let timer = setInterval(() => {

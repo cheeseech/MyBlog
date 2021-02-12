@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客首页推荐专栏组件
+ * @Author: 徐茂华
+ * @Date: 2020-11-25 09:12:35
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-12 14:41:32
+ * @FilePath: \src\views\blog\blogIndex\components\CategoryCount.vue
+-->
 <template>
   <div id="category">
     <!--专栏-->
@@ -13,6 +21,7 @@
           </svg>
           <b>推荐专栏</b>
         </span>
+
         <!-- 跳转到专栏页 -->
         <router-link to="category">
           <svg
@@ -28,7 +37,7 @@
       <el-collapse accordion class="m-padded">
         <el-collapse-item
           :name="item.cate_id"
-          v-for="item in category_count"
+          v-for="item in categories"
           :key="item.cate_id"
         >
           <template slot="title">
@@ -47,14 +56,19 @@
           </div>
         </el-collapse-item>
       </el-collapse>
+
     </el-card>
   </div>
 </template>
 <script>
 export default {
-  props: ["category_count"],
+  props: ["categories"],
   methods: {
-    //跳转到专栏页并且传递专栏名称
+    /**
+     * @description: 跳转到专栏页并且传递专栏名
+     * @param {String} value
+     * @return void
+     */
     goCategory(value) {
       this.$router.push({
         name: "专栏",

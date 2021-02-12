@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客首页主组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-07 19:45:49
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-12 15:01:04
+ * @FilePath: \src\views\blog\blogIndex\index.vue
+-->
 <template>
   <el-row :gutter="40" v-if="initArticles">
     <!--文章列表-->
@@ -8,7 +16,7 @@
       <el-pagination
         background
         layout="prev, pager, next"
-        :total="totalSize"
+        :total="totalArticleLen"
         :page-size="pageSize"
         @current-change="getArticlesByCurrentPage"
       ></el-pagination>
@@ -20,7 +28,7 @@
       <showMe :article_cate_tag_count="articleCateTagCount"></showMe>
 
       <!-- 专栏 -->
-      <category :category_count="initCategoryCount"></category>
+      <category :categories="initCategoryCount"></category>
 
       <!--标签-->
       <hotTags :tags_count="initTagsCount"></hotTags>
@@ -41,9 +49,10 @@
 
 <script>
 import axios from "axios";
+import { eventBus } from "@/main";
+import { Message } from "element-ui";
 import wordCloud from "@/components/WordCloud";
-import { getRequest } from "@/../untils/axiosApi";
-import { postRequest } from "@/../untils/axiosApi";
+import { postRequest, getRequest } from "@/../untils/axiosApi";
 import articleInfo from "@/components/ArticleInfo";
 import hotTags from "@/views/blog/blogIndex/components/TagsCount";
 import showMe from "@/views/blog/blogIndex/components/showMe";
@@ -54,21 +63,24 @@ export default {
   name: "BlogIndex",
   data() {
     return {
-      pageSize: 6,
-      totalSize: 0,
-      initArticles: null,
-      initTagsCount: null,
-      initRecommend: null,
-      initCategoryCount: null,
-      articleCateTagCount: null,
-      wechatUrl: require("@/assets/images/wechat.png")
+      title: "", // 搜索框值，为""时默认搜索全部
+      pageSize: 6, // 分页长度
+      scrollTop: 0, // 距离顶部距离
+      currentPage: 1, // 当前页码
+      totalArticleLen: 0, // 总文章数
+      initArticles: null, // 文章列表集合
+      initTagsCount: null, // 标签及标签文章数集合
+      initRecommend: null, // 最新推荐文章列表集合
+      initCategoryCount: null, // 专栏集合
+      articleCateTagCount: null, // 文章数、专栏数及标签数
+      wechatUrl: require("@/assets/images/wechat.png") // 微信二维码
     };
   },
+  //在路由组件跳转前获取数据
   beforeRouteEnter(to, from, next) {
-    //在路由组件跳转前获取数据
     axios
       .all([
-        postRequest("/article/page/", { pageNum: 1, pageSize: 6 }),
+        postRequest("/article/", { pageNum: 1, pageSize: 6 }),
         getRequest("/category/counts/"),
         getRequest("/tags/counts/"),
         getRequest("/article/recommend/"),
@@ -96,8 +108,17 @@ export default {
         )
       );
   },
+  created() {
+    //兄弟组件传值：根据搜索框值检索文章
+    eventBus.$on("title", data => {
+      this.getArticlesByTitle(data);
+    });
+  },
   methods: {
-    //数据处理
+    /**
+     * @description: 处理首页相关数据
+     * @return void
+     */
     setData(
       articleResponse,
       categoryResponse,
@@ -105,6 +126,7 @@ export default {
       recommendResponse,
       infoResponse
     ) {
+      //初始化文章数据
       this.setArticleData(articleResponse);
 
       //初始化专栏文章数数据
@@ -124,22 +146,87 @@ export default {
         this.articleCateTagCount = infoResponse.data;
       }
     },
-    //设置文章数据
+
+    /**
+     * @description: 处理文章相关数据
+     * @param {Map} articleResponse
+     * @return void
+     */
     setArticleData(articleResponse) {
       if (articleResponse.status == 200) {
         //设置文章信息
         this.initArticles = articleResponse.data.content;
         //总条数
-        this.totalSize = articleResponse.data.totalSize;
+        this.totalArticleLen = articleResponse.data.totalSize;
       }
     },
-    //分页获取文章信息
+
+    /**
+     * @description: 分页获取文章信息
+     * @param {Number} currentPage
+     * @return void
+     */
     getArticlesByCurrentPage(currentPage) {
-      postRequest("/article/page/", { pageNum: currentPage, pageSize: 6 }).then(
+      postRequest("/article/" + this.title, {
+        pageNum: currentPage,
+        pageSize: 6
+      }).then(response => {
+        // 处理文章相关数据
+        this.setArticleData(response);
+      });
+
+      // 点击页码时回到顶部
+      this.backTop();
+    },
+
+    /**
+     * @description: 根据标题模糊查找文章
+     * @param {String} value
+     * @return void
+     */
+    getArticlesByTitle(value) {
+      this.title = value;
+      postRequest("/article/" + value, { pageNum: 1, pageSize: 6 }).then(
         response => {
-          this.setArticleData(response);
+          if (response.status == 200) {
+            this.setArticleData(response);
+            // 获取查找文章篇数
+            var articleLen = response.data.totalSize;
+            // 查找成功消息提示
+            Message({
+              type: "success",
+              dangerouslyUseHTMLString: true,
+              message:
+                "<strong>搜索成功！共检索到<span style='font-size:20px;color:orange'> " +
+                articleLen +
+                " </span>篇文章。</strong>"
+            });
+          } else {
+            // 查找失败消息提示
+            Message({
+              type: "error",
+              dangerouslyUseHTMLString: true,
+              message: "<strong>搜索失败！未找到相关文章。</strong>"
+            });
+          }
         }
       );
+    },
+
+    /**
+     * @description: 回到顶部方法
+     * @return void
+     */
+    backTop() {
+      const _this = this;
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-_this.scrollTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          _this.scrollTop + ispeed;
+        if (_this.scrollTop === 0) {
+          clearInterval(timer);
+        }
+      }, 16);
     }
   },
   components: {

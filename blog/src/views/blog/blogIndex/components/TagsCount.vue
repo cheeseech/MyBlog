@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客首页热门标签组件
+ * @Author: 徐茂华
+ * @Date: 2020-11-25 15:39:28
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-12 14:36:01
+ * @FilePath: \src\views\blog\blogIndex\components\TagsCount.vue
+-->
 <template>
   <div id="tags">
     <el-card shadow="always" class="m-radius-small m-b-margin card-wordCloud">
@@ -42,11 +50,15 @@ export default {
   props: ["tags_count"],
   data() {
     return {
-      wordCloudId: "wordCloud"
+      wordCloudId: "wordCloud" // 词云组件ID
     };
   },
   methods: {
-    //传递标签名并跳转到标签页
+    /**
+     * @description: 跳转到标签页并传递标签名
+     * @param {String} value
+     * @return void
+     */
     goTags(value) {
       this.$router.push({
         name: "标签",
