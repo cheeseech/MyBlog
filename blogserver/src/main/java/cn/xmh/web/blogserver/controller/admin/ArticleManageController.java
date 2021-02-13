@@ -2,6 +2,7 @@ package cn.xmh.web.blogserver.controller.admin;
 
 import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Article;
+import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,15 +27,16 @@ public class ArticleManageController {
     private ArticleService articleService;
 
     @RequestMapping(value = "/article",method = RequestMethod.PUT)
+    @ResponseBody
     @ApiOperation("新建一篇文章")
-    public ResultJson insertArticle(Article article){
+    public ResultJson insertArticle(@RequestBody Article article){
         try {
             articleService.insertArticle(article);
-            return new ResultJson("201","新建成功！",null);
+            return new ResultJson("201","创建文章成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","新建失败！请稍后再试。",null);
+            return new ResultJson("422","创建文章失败！请稍后再试。",null);
         }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+            return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
     }
 
@@ -55,7 +58,8 @@ public class ArticleManageController {
 
     @RequestMapping(value = "/article",method = RequestMethod.POST)
     @ApiOperation("更新一篇文章")
-    public ResultJson updateArticle(Article article){
+    @ResponseBody
+    public ResultJson updateArticle(@RequestBody Article article){
         try {
             articleService.updateByArticleId(article.getArticleId(),article);
             return new ResultJson("201", "更新成功！", null);

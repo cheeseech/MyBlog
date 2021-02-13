@@ -25,20 +25,29 @@ public interface ArticleService {
     PageResult findPage(PageRequest pageRequest);
 
     /**
-     * 根据专栏名分页查询文章信息
+     * 根据专栏名和标题分页模糊查询文章信息
      * @param pageRequest 统一分页查询请求
      * @param cateName 专栏名
+     * @param title 文章标题
      * @return 统一分页查询结果
      */
-    PageResult getByCateNameInPage(String cateName,PageRequest pageRequest);
+    PageResult getByCateNameAndTitleInPage(String cateName,String title,PageRequest pageRequest);
 
     /**
-     * 获取某标签下的所有文章
+     * 获取标签名分页查询文章信息
      * @param pageRequest 统一分页查询请求
      * @param tagName 标签名
-     * @return
+     * @return 统一分页查询结果
      */
-    PageResult getByTagNameInRange(String tagName,PageRequest pageRequest);
+    PageResult getByTagNameInPage(String tagName,PageRequest pageRequest);
+
+    /**
+     * 根据标题分页模糊查询文章信息
+     * @param pageRequest 统一分页查询请求
+     * @param title 标题
+     * @return 统一分页查询结果
+     */
+    PageResult getLikeTitleArticleInPage(String title,PageRequest pageRequest);
 
     /**
      * 获取已删除状态的文章
@@ -51,13 +60,6 @@ public interface ArticleService {
      * @return 文章集合
      */
     List<Article> getArticleByNotDelete();
-
-    /**
-     * 根据标题模糊查询文章信息
-     * @param title 标题
-     * @return 文章集合
-     */
-    List<Article> getLikeTitleArticle(String title);
 
     /**
      *  添加一篇文章
@@ -122,4 +124,18 @@ public interface ArticleService {
      * @return 集合
      */
     Map<String, Integer> getInfo();
+
+    /**
+     * 根据文章ID获取文章详细信息
+     * @param articleId 文章ID
+     * @return 文章详细信息
+     */
+    Map<String, Object> getArticleInfoById(Long articleId);
+
+    /**
+     * 根据文章ID获取文章详细信息以及markdown数据
+     * @param articleId 文章ID
+     * @return 文章详细信息
+     */
+    Map<String, Object> getMarkdownInfoById(Long articleId);
 }

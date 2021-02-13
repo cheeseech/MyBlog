@@ -10,6 +10,7 @@ import cn.xmh.web.blogserver.model.PageRequest;
 import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.ArticleService;
+import cn.xmh.web.blogserver.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.omg.CORBA.OBJ_ADAPTER;
@@ -28,8 +29,7 @@ import java.util.*;
  * @date 2020/7/29 15:44
  */
 @Service
-public class ArticleServiceImpl implements ArticleService
-{
+public class ArticleServiceImpl implements ArticleService {
 
     @Resource
     private ArticleMapper articleMapper;
@@ -58,13 +58,13 @@ public class ArticleServiceImpl implements ArticleService
     }
 
     @Override
-    public PageResult getByCateNameInPage(String cateName,PageRequest pageRequest) {
+    public PageResult getByCateNameAndTitleInPage(String cateName,String title,PageRequest pageRequest) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         //设置页码以及长度
         PageHelper.startPage(pageNum, pageSize);
         //根据专栏名获取文章
-        List<Article> articles= articleMapper.getArticleByCateName(cateName);
+        List<Article> articles= articleMapper.getArticleByCateNameAndTitle(cateName,title);
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
@@ -74,7 +74,7 @@ public class ArticleServiceImpl implements ArticleService
     }
 
     @Override
-    public PageResult getByTagNameInRange(String tagName, PageRequest pageRequest) {
+    public PageResult getByTagNameInPage(String tagName, PageRequest pageRequest) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         //设置页码以及长度
@@ -87,6 +87,25 @@ public class ArticleServiceImpl implements ArticleService
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
+
+        //调用分页工具类完成分页信息的封装
+        return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
+    }
+
+    @Override
+    public PageResult getLikeTitleArticleInPage(String title,PageRequest pageRequest) {
+        int pageNum = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        //设置页码以及长度
+        PageHelper.startPage(pageNum, pageSize);
+
+        List<Article> articles= articleMapper.getLikeTitleArticle(title);
+        if(articles.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        //为文章添加标签信息
+        articles=insertTagsIntoArticle(articles);
 
         //调用分页工具类完成分页信息的封装
         return PageUtils.getPageResult(pageRequest,new PageInfo<Article>(insertTagsIntoArticle(articles)));
@@ -132,25 +151,26 @@ public class ArticleServiceImpl implements ArticleService
     }
 
     @Override
-    public List<Article> getLikeTitleArticle(String title) {
-        List<Article> articles= articleMapper.getLikeTitleArticle(title);
-        if(articles.isEmpty()){
-            throw new NullPointerException();
-        }
-
-        //为文章添加标签信息
-        articles=insertTagsIntoArticle(articles);
-        return articles;
-    }
-
-    @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void insertArticle(Article article) {
-        //新建文章
-        int i= articleMapper.insertArticle(article);
-        if(i != 1){
-            throw new IllegalArgumentException();
+        //添加文章发布时间以及更新时间
+        Date day=new Date();
+        article.setUpdateTime(day);
+        article.setPublishTime(day);
+        //初始化文章浏览量、点赞数以及评论数
+        article.setViews(0);
+        article.setLikes(0);
+        article.setComments(0);
+        //设置文章概述
+        String content=article.getMdContent();
+        if(content.length() > 100){
+            content=content.substring(0,101);
         }
+        article.setSummary(content);
+        //设置用户ID
+        article.setUserId(1L);
+        //新建文章
+        articleMapper.insertArticle(article);
 
         //关联文章标签
         for(Tags tags : article.getTags()){
@@ -175,6 +195,15 @@ public class ArticleServiceImpl implements ArticleService
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void updateByArticleId(Long articleId, Article article) {
+        //设置文章更新时间
+        Date day=new Date();
+        article.setUpdateTime(day);
+        //设置文章概述
+        String content=article.getMdContent();
+        if(content.length() > 100){
+            content=content.substring(0,101);
+        }
+        article.setSummary(content);
         //更新文章
         int i= articleMapper.updateByArticleId(articleId,article);
         if(i != 1){
@@ -284,6 +313,29 @@ public class ArticleServiceImpl implements ArticleService
         info.put("category",category);
         info.put("tag",tag);
         return info;
+    }
+
+    @Override
+    public Map<String, Object> getArticleInfoById(Long articleId) {
+        Map<String, Object> articleInfo=articleMapper.getArticleInfoById(articleId);
+        if(articleInfo.isEmpty()){
+            throw new NullPointerException();
+        }
+        List<Tags> tags=tagsMapper.getTagsByArticleId(articleId);
+        articleInfo.put("tags",tags);
+        return articleInfo;
+    }
+
+    @Override
+    public Map<String, Object> getMarkdownInfoById(Long articleId) {
+        Map<String, Object> articleInfo=articleMapper.getMarkdownInfoById(articleId);
+        if(articleInfo.isEmpty()){
+            throw new NullPointerException();
+        }
+        List<Tags> tags=tagsMapper.getTagsByArticleId(articleId);
+        articleInfo.put("tags",tags);
+
+        return articleInfo;
     }
 }
 

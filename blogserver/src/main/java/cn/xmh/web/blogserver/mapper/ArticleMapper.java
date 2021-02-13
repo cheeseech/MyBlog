@@ -100,10 +100,11 @@ public interface ArticleMapper {
 
     /**
      * 获取某专栏下的所有文章
-     * @param cateName
+     * @param cateName 专栏名
+     * @param title 文章标题
      * @return
      */
-    List<Article> getArticleByCateName(@Param("cate_name") String cateName);
+    List<Article> getArticleByCateNameAndTitle(@Param("cate_name") String cateName,String title);
 
     /**
      * 获取每年的文章数量
@@ -158,4 +159,18 @@ public interface ArticleMapper {
      * @return 删除的文章数
      */
     int recycleArticle(Date start,Date end);
+
+    /**
+     * 根据文章ID获取文章详细ID
+     * @param articleId 文章ID
+     * @return 文章详细信息
+     */
+    Map<String, Object> getArticleInfoById(@Param("article_id") Long articleId);
+
+    /**
+     * 根据文章ID获取文章详细信息以及markdown数据
+     * @param articleId 文章ID
+     * @return 文章详细信息
+     */
+    Map<String, Object> getMarkdownInfoById(@Param("article_id") Long articleId);
 }

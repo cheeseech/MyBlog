@@ -39,6 +39,35 @@ public class ArticleController {
         }
     }
 
+    @RequestMapping(value = "/{title}",method = RequestMethod.POST)
+    @ApiOperation("根据标题分页模糊查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "title",value = "标题",dataType = "string",required = true)
+    })
+    public ResultJson getArticleByTitle(@PathVariable String title,PageRequest pageQuery){
+        try {
+            PageResult articles=articleService.getLikeTitleArticleInPage(title,pageQuery);
+            return new ResultJson("200","获取成功！",articles);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/",method = RequestMethod.POST)
+    @ApiOperation("标题为空时查询全部文章并分页")
+    public ResultJson getArticleByTitle(PageRequest pageQuery){
+        try {
+            PageResult articles=articleService.getLikeTitleArticleInPage("",pageQuery);
+            return new ResultJson("200","获取成功！",articles);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
     @ApiOperation("获取已删除状态的文章")
     public ResultJson getArticlesDe(){
@@ -57,22 +86,6 @@ public class ArticleController {
     public ResultJson getArticlesNoDe(){
         try {
             List<Article> articles=articleService.getArticleByNotDelete();
-            return new ResultJson("200","获取成功！",articles);
-        }catch (NullPointerException e){
-            return new ResultJson("404","列表为空！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
-    @RequestMapping(value = "/{title}",method = RequestMethod.GET)
-    @ApiOperation("根据标题模糊查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "title",value = "标题",dataType = "string",required = true)
-    })
-    public ResultJson getArticleByTitle(@PathVariable String title){
-        try {
-            List<Article> articles=articleService.getLikeTitleArticle(title);
             return new ResultJson("200","获取成功！",articles);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);
@@ -124,7 +137,7 @@ public class ArticleController {
     @ApiOperation("根据标签名分页获取文章")
     public ResultJson getTags(@PathVariable String tagName,PageRequest pageQuery){
         try {
-            PageResult pageResult=articleService.getByTagNameInRange(tagName,pageQuery);
+            PageResult pageResult=articleService.getByTagNameInPage(tagName,pageQuery);
             return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);
@@ -133,11 +146,24 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/category/{cateName}",method = RequestMethod.POST)
-    @ApiOperation("根据专栏名分页获取文章")
+    @RequestMapping(value = "/category/{cateName}/{title}",method = RequestMethod.POST)
+    @ApiOperation("根据专栏名和标题分页获取文章")
+    public ResultJson getCategory(@PathVariable String cateName,@PathVariable String title,PageRequest pageQuery){
+        try {
+            PageResult pageResult=articleService.getByCateNameAndTitleInPage(cateName,title,pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/category/{cateName}/",method = RequestMethod.POST)
+    @ApiOperation("标题为空时根据专栏名分页获取全部文章")
     public ResultJson getCategory(@PathVariable String cateName,PageRequest pageQuery){
         try {
-            PageResult pageResult=articleService.getByCateNameInPage(cateName,pageQuery);
+            PageResult pageResult=articleService.getByCateNameAndTitleInPage(cateName,"",pageQuery);
             return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);
@@ -167,6 +193,33 @@ public class ArticleController {
             return new ResultJson("200","获取成功!",info);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员！",null);
+        }
+    }
+
+    @RequestMapping(value = "/info/{articleId}",method = RequestMethod.GET)
+    @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "Long",required = true)
+    public ResultJson getArticleInfo(@PathVariable Long articleId){
+        try{
+            Map<String, Object> articleInfo=articleService.getArticleInfoById(articleId);
+            return new ResultJson("200","获取成功！",articleInfo);
+        }catch (NullPointerException e){
+            return new ResultJson("422","获取失败！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/markdown/{articleId}",method = RequestMethod.GET)
+    @ApiOperation("获取文章markdown数据")
+    @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "long",required = true)
+    public ResultJson getMarkdownById(@PathVariable Long articleId){
+        try{
+            Map<String, Object> articleInfo=articleService.getMarkdownInfoById(articleId);
+            return new ResultJson("200","读取文章数据成功！",articleInfo);
+        }catch (NullPointerException e){
+            return new ResultJson("422","获取文章数据失败！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
         }
     }
 }

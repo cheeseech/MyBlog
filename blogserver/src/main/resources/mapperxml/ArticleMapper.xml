@@ -13,10 +13,11 @@
     </sql>
 
     <insert id="insertArticle" keyColumn="article_id" keyProperty="articleId" useGeneratedKeys="true">
-        insert into article (title, md_content, html_content, summary, type_id, cate_id, user_id, publish_time,
-        update_time, recommend, article_state, views, likes, comments, first_picture)
-        values (#{title},#{mdContent},#{htmlContent},#{summary},#{typeId},#{cateId},#{userId},#{publishTime},#{updateTime}
-        ,#{recommend},#{articleState},#{views},#{likes},#{comments},#{firstPicture})
+        insert into article (title, md_content, html_content, summary, type_id, cate_id, publish_time,
+        update_time, recommend, article_state, views, likes, comments,user_id)
+        values (#{title},#{mdContent},#{htmlContent},#{summary},
+        #{typeId},#{cateId},#{publishTime},#{updateTime}
+        ,#{recommend},#{articleState},#{views},#{likes},#{comments},#{userId})
     </insert>
 
     <update id="updateByArticleId">
@@ -63,9 +64,10 @@
         WHERE tag_id=#{tag_id}
     </select>
 
-    <select id="getArticleByCateName" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="getArticleByCateNameAndTitle" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         WHERE c.cate_name=#{cate_name}
+        and title like concat('%',#{title},'%')
     </select>
 
     <select id="getYearsCountArticle" resultType="java.util.Map">
@@ -110,6 +112,24 @@
 
     <select id="getAllArticleId" resultType="java.lang.Long">
         select article_id from article where article_state=1
+    </select>
+
+    <select id="getArticleInfoById" resultType="java.util.Map">
+        SELECT a.article_id,title,html_content,type_name,cate_name,nickname,user_face,a.update_time,recommend,views,likes,comments
+        from article a
+        LEFT JOIN user u on a.user_id=u.user_id
+        LEFT JOIN types t on a.type_id=t.type_id
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        WHERE a.article_id=#{article_id}
+    </select>
+
+    <select id="getMarkdownInfoById" resultType="java.util.Map">
+        SELECT a.article_id,title,md_content,a.type_id,a.cate_id,nickname,user_face,recommend
+        from article a
+        LEFT JOIN user u on a.user_id=u.user_id
+        LEFT JOIN types t on a.type_id=t.type_id
+        LEFT JOIN category c on a.cate_id=c.cate_id
+        WHERE a.article_id=#{article_id}
     </select>
 
 </mapper>
