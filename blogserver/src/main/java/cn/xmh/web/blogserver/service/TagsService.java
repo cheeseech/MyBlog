@@ -58,6 +58,12 @@ public interface TagsService {
     List<Map<String,String>> getTagsAndCount();
 
     /**
+     * 从大到小获取标签及标签文章数
+     * @return 标签及标签文章数
+     */
+    List<Map<String, Object>> getTagsAndCountOrder();
+
+    /**
      * 根据名称模糊查找标签及标签文章数
      * @param tagName
      * @return

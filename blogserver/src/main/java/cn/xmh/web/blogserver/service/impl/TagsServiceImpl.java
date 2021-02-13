@@ -113,6 +113,17 @@ public class TagsServiceImpl implements TagsService {
     }
 
     @Override
+    public List<Map<String, Object>> getTagsAndCountOrder() {
+        //获取标签及标签文章数
+        List<Map<String, Object>> tagsCount=tagsMapper.getTagsAndCountOrder();
+        if(tagsCount.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        return tagsCount;
+    }
+
+    @Override
     public List<Map<String, String>> getTagsAndCountLike(String tagName) {
         List<Map<String, String>> tags=tagsMapper.getTagsAndCountLike(tagName);
         if(tags.isEmpty()){

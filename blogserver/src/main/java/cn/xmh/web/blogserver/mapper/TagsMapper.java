@@ -57,9 +57,15 @@ public interface TagsMapper {
 
     /**
      * 获取标签及标签文章数
-     * @return
+     * @return 标签及标签文章数
      */
     List<Map<String,String>> getTagsAndCount();
+
+    /**
+     * 从大到小获取标签及标签文章数
+     * @return 标签及标签文章数
+     */
+    List<Map<String, Object>> getTagsAndCountOrder();
 
     /**
      * 根据标签名模糊获取标签及标签文章数

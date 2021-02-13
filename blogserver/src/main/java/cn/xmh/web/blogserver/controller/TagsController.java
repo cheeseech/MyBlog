@@ -71,6 +71,19 @@ public class TagsController {
         }
     }
 
+    @RequestMapping(value = "/order",method = RequestMethod.GET)
+    @ApiOperation("顺序获取标签及标签文章数")
+    public ResultJson getTagsAndCountOrder(){
+        try {
+            List<Map<String, Object>> tagsCount=tagsService.getTagsAndCountOrder();
+            return new ResultJson("200","查找成功！",tagsCount);
+        }catch (NullPointerException e){
+            return new ResultJson("400","标签集合为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
     @RequestMapping(value = "/like/{tagName}",method = RequestMethod.GET)
     @ApiOperation("根据名称模糊搜索标签")
     @ApiImplicitParams({
