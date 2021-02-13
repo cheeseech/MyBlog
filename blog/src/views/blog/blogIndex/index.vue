@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-07 19:45:49
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-12 15:01:04
+ * @LastEditTime: 2021-02-12 19:42:24
  * @FilePath: \src\views\blog\blogIndex\index.vue
 -->
 <template>
@@ -65,7 +65,6 @@ export default {
     return {
       title: "", // 搜索框值，为""时默认搜索全部
       pageSize: 6, // 分页长度
-      scrollTop: 0, // 距离顶部距离
       currentPage: 1, // 当前页码
       totalArticleLen: 0, // 总文章数
       initArticles: null, // 文章列表集合
@@ -176,7 +175,7 @@ export default {
       });
 
       // 点击页码时回到顶部
-      this.backTop();
+      this.common.backTop();
     },
 
     /**
@@ -211,22 +210,6 @@ export default {
           }
         }
       );
-    },
-
-    /**
-     * @description: 回到顶部方法
-     * @return void
-     */
-    backTop() {
-      const _this = this;
-      let timer = setInterval(() => {
-        let ispeed = Math.floor(-_this.scrollTop / 5);
-        document.documentElement.scrollTop = document.body.scrollTop =
-          _this.scrollTop + ispeed;
-        if (_this.scrollTop === 0) {
-          clearInterval(timer);
-        }
-      }, 16);
     }
   },
   components: {
