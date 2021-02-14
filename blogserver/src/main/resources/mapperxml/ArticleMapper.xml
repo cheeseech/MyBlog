@@ -62,6 +62,7 @@
         <include refid="selectAll"></include>
         LEFT JOIN article_tags t ON a.article_id=t.article_id
         WHERE tag_id=#{tag_id}
+        and title like concat('%',#{title},'%')
     </select>
 
     <select id="getArticleByCateNameAndTitle" resultType="cn.xmh.web.blogserver.model.Article">

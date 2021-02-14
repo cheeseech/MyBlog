@@ -133,11 +133,24 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/tags/{tagName}",method = RequestMethod.POST)
+    @RequestMapping(value = "/tags/{tagName}/{title}",method = RequestMethod.POST)
     @ApiOperation("根据标签名分页获取文章")
+    public ResultJson getTags(@PathVariable String tagName,@PathVariable String title, PageRequest pageQuery){
+        try {
+            PageResult pageResult=articleService.getByTagNameAndTitleInPage(tagName,title,pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/tags/{tagName}/",method = RequestMethod.POST)
+    @ApiOperation("标题为空时根据标签名分页获取文章")
     public ResultJson getTags(@PathVariable String tagName,PageRequest pageQuery){
         try {
-            PageResult pageResult=articleService.getByTagNameInPage(tagName,pageQuery);
+            PageResult pageResult=articleService.getByTagNameAndTitleInPage(tagName,"",pageQuery);
             return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
             return new ResultJson("404","列表为空！",null);

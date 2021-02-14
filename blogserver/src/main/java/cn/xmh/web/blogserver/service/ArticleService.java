@@ -37,9 +37,10 @@ public interface ArticleService {
      * 获取标签名分页查询文章信息
      * @param pageRequest 统一分页查询请求
      * @param tagName 标签名
+     * @param title 标题关键字
      * @return 统一分页查询结果
      */
-    PageResult getByTagNameInPage(String tagName,PageRequest pageRequest);
+    PageResult getByTagNameAndTitleInPage(String tagName,String title,PageRequest pageRequest);
 
     /**
      * 根据标题分页模糊查询文章信息

@@ -74,7 +74,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public PageResult getByTagNameInPage(String tagName, PageRequest pageRequest) {
+    public PageResult getByTagNameAndTitleInPage(String tagName, String title,PageRequest pageRequest) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         //设置页码以及长度
@@ -83,7 +83,7 @@ public class ArticleServiceImpl implements ArticleService {
         //根据标签名获取标签ID
         Long tagId=tagsMapper.getIdByName(tagName);
         //根据标签ID获取文章信息
-        List<Article> articles= articleMapper.getArticleByTagId(tagId);
+        List<Article> articles= articleMapper.getArticleByTagId(tagId,title);
         if(articles.isEmpty()){
             throw new NullPointerException();
         }

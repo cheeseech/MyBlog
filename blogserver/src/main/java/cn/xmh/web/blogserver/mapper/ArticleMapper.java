@@ -94,9 +94,10 @@ public interface ArticleMapper {
     /**
      * 获取某标签下的所有文章
      * @param tagId 标签ID
+     * @param title 标题关键字
      * @return
      */
-    List<Article> getArticleByTagId(@Param("tag_id") Long tagId);
+    List<Article> getArticleByTagId(@Param("tag_id") Long tagId,String title);
 
     /**
      * 获取某专栏下的所有文章
