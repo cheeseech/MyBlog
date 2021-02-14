@@ -110,6 +110,11 @@ export default {
   mounted() {
     let vm = this;
     this.init();
+
+    //兄弟组件传值：清空输入框
+    eventBus.$on("cleared", data => {
+      vm.input="";
+    });
   },
   methods: {
     /**

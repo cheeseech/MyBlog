@@ -157,6 +157,9 @@ export default {
         this.initArticles = articleResponse.data.content;
         //总条数
         this.totalArticleLen = articleResponse.data.totalSize;
+
+        // 获取完毕后回到顶部
+        this.common.backTop();
       }
     },
 
@@ -173,9 +176,6 @@ export default {
         // 处理文章相关数据
         this.setArticleData(response);
       });
-
-      // 点击页码时回到顶部
-      this.common.backTop();
     },
 
     /**
