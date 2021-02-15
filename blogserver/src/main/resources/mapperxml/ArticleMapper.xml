@@ -81,7 +81,9 @@
     </select>
 
     <select id="getInfoByMonthYear" resultType="java.util.Map">
-        SELECT article_id,title,publish_time FROM article
+        SELECT article_id,title,publish_time,cate_name,type_name
+        FROM article a LEFT JOIN category c on a.cate_id=c.cate_id
+        LEFT JOIN types t on a.type_id =t.type_id
         WHERE MONTH(publish_time)=#{month} AND YEAR(publish_time)=#{year}
     </select>
 
