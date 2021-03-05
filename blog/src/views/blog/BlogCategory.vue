@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-07 17:47:56
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-13 16:56:39
+ * @LastEditTime: 2021-03-05 16:23:28
  * @FilePath: \src\views\blog\BlogCategory.vue
 -->
 <template>
@@ -103,7 +103,7 @@ export default {
     //判断路由组件是否传参，是则改变请求语句
     if (categoryName) {
       list = [
-        postRequest("/article/category/" + categoryName, page),
+        postRequest("/article/category/" + categoryName + "/", page),
         getRequest("/category/counts")
       ];
     } else {
@@ -116,13 +116,18 @@ export default {
       })
     );
   },
-  created() {
+  mounted() {
     let vm = this;
 
     //兄弟组件传值：根据搜索框值检索文章
+    //判断是否是当前路由
     eventBus.$on("title", data => {
       vm.getArticlesByTitleAndCategory(data);
     });
+  },
+  //兄弟组件解绑，避免切换组件后造成调用多次情况
+  beforeDestroy() {
+    eventBus.$off("title");
   },
   methods: {
     /**
@@ -183,7 +188,7 @@ export default {
       this.checkedCategorySummary = summary;
       // 重置搜索关键字
       this.title = "";
-      eventBus.$emit("cleared", this.title);
+      eventBus.$emit("cleared", true);
       //根据条件获取文章
       this.getArticlesByCurrentPage(1);
     },
@@ -199,7 +204,6 @@ export default {
       if (this.checkedCateName === "暂无") {
         postRequest("/article/" + this.title, page).then(response => {
           this.setArticleData(response);
-
           // 是否显示消息提示
           if (this.flag == true) {
             this.searchMessage(response);

@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-06 16:38:31
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-11 11:19:02
+ * @LastEditTime: 2021-03-05 16:21:21
  * @FilePath: \src\views\blog\BlogTags.vue
 -->
 <template>
@@ -116,7 +116,7 @@ export default {
     if (tagName) {
       list = [
         getRequest("/tags/counts/"),
-        postRequest("/article/tags/" + tagName, page)
+        postRequest("/article/tags/" + tagName + "/", page)
       ];
     } else {
       list = [getRequest("/tags/counts/"), postRequest("/article/", page)];
@@ -131,9 +131,14 @@ export default {
   mounted() {
     let vm = this;
     //兄弟组件传值：根据搜索框值检索文章
+    //判断是否是当前路由
     eventBus.$on("title", data => {
       vm.getArticlesByTitleAndTag(data);
     });
+  },
+  //兄弟组件解绑，避免切换组件后造成调用多次情况
+  beforeDestroy() {
+    eventBus.$off("title");
   },
   methods: {
     /**
@@ -150,13 +155,13 @@ export default {
         this.totalTagsLen = this.tagsArticles.length;
       }
 
-      //文章相关数据
-      this.setArticleData(articleResponse);
-
       //标签名
       if (tagName !== undefined) {
         this.chooseTags = tagName;
       }
+
+      //文章相关数据
+      this.setArticleData(articleResponse);
     },
 
     /**
@@ -190,7 +195,7 @@ export default {
       this.chooseTags = tagName;
       // 重置搜索关键字
       this.title = "";
-      eventBus.$emit("cleared", this.title);
+      eventBus.$emit("cleared", true);
       // 获取文章相关数据
       this.getArticlesByCurrentPage(1);
     },
@@ -220,7 +225,7 @@ export default {
         axios
           .all([
             getRequest("/tags/counts/"),
-            postRequest("/article/page/", page)
+            postRequest("/article/" + this.title, page)
           ])
           .then(
             axios.spread((tagsResponse, articleResponse) => {
@@ -228,7 +233,7 @@ export default {
 
               // 是否显示消息提示
               if (this.flag == true) {
-                this.searchMessage(response);
+                this.searchMessage(articleResponse);
               }
             })
           );

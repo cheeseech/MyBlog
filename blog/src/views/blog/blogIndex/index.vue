@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-07 19:45:49
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-12 19:42:24
+ * @LastEditTime: 2021-03-05 16:30:53
  * @FilePath: \src\views\blog\blogIndex\index.vue
 -->
 <template>
@@ -107,11 +107,16 @@ export default {
         )
       );
   },
-  created() {
+  mounted() {
     //兄弟组件传值：根据搜索框值检索文章
+    //判断是否是当前路由
     eventBus.$on("title", data => {
       this.getArticlesByTitle(data);
     });
+  },
+  //兄弟组件解绑，避免切换组件后造成调用多次情况
+  beforeDestroy() {
+    eventBus.$off("title");
   },
   methods: {
     /**

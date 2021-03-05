@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-08 18:08:24
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-10 17:36:04
+ * @LastEditTime: 2021-03-05 16:31:01
  * @FilePath: \src\views\blog\BlogArchives.vue
 -->
 <template>
@@ -65,12 +65,9 @@
               <a @click="goArticleInfo(i.article_id)">{{ i.title }}</a>
 
               <!--专栏-->
-              <el-button
-                type="primary"
-                round
-                class="btnPadded cate-margin-left cate-button"
-                >{{ i.cate_name }}</el-button
-              >
+              <el-button type="primary" round class="btnPadded cate-button">{{
+                i.cate_name
+              }}</el-button>
               <!-- 类型 -->
               <el-button type="warning" round class="btnPadded type-button">{{
                 i.type_name
@@ -119,7 +116,6 @@ export default {
      * @return void
      */
     goArticleInfo(value) {
-      console.log(value);
       this.$router.push({
         name: "文章详情",
         params: { articleId: value }
@@ -129,9 +125,6 @@ export default {
 };
 </script>
 <style scoped>
-.cate-margin-left {
-  margin-left: 10px;
-}
 .m-title a {
   color: #000;
   cursor: pointer;

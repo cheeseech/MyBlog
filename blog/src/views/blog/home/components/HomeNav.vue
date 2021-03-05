@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-06 09:54:27
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-11 12:13:01
+ * @LastEditTime: 2021-03-03 10:57:05
  * @FilePath: \src\views\blog\home\components\HomeNav.vue
 -->
 <template>
@@ -107,14 +107,15 @@ export default {
       this.activeIndex = to.path;
     }
   },
+  created() {
+    //兄弟组件传值：清空输入框
+    eventBus.$on("cleared", data => {
+      this.input = "";
+    });
+  },
   mounted() {
     let vm = this;
     this.init();
-
-    //兄弟组件传值：清空输入框
-    eventBus.$on("cleared", data => {
-      vm.input="";
-    });
   },
   methods: {
     /**
