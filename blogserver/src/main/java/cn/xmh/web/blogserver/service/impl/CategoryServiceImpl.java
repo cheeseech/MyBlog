@@ -1,9 +1,14 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.config.PageUtils;
 import cn.xmh.web.blogserver.mapper.CategoryMapper;
 import cn.xmh.web.blogserver.model.Category;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.CategoryService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -105,13 +110,20 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Map<String, Object>> getCateAnalysis() {
+    public PageResult getCateAnalysis(PageRequest pageRequest) {
+        int pageNum=pageRequest.getPageNum();
+        int pageSize=pageRequest.getPageSize();
+        //设置页码以及长度
+        PageHelper.startPage(pageNum,pageSize);
+
         //获取专栏名、专栏概述、创建时间、浏览量、点赞数以及评论数
         List<Map<String, Object>> category=categoryMapper.getCateAnalysis();
+        //专栏数据判空
         if(category.isEmpty()){
             throw new NullPointerException();
         }
 
-        return category;
+        //调用分页工具类完成分页信息的封装
+        return PageUtils.getPageResult(pageRequest, new PageInfo<>(category));
     }
 }

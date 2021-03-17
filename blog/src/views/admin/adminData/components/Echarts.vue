@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: Echarts图表组件
+ * @Author: 徐茂华
+ * @Date: 2020-11-12 16:01:04
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-03-17 15:44:09
+ * @FilePath: \src\views\admin\adminData\components\Echarts.vue
+-->
 <template>
   <div
     :style="{ width: e_width + '%', height: e_height + 'px' }"
@@ -10,11 +18,15 @@ export default {
   props: ["e_width", "e_height", "days", "data"],
   data() {
     return {
-      chart: null
+      chart: null // 图表实例
     };
   },
   watch:{
-    //当日期数据变化时重新渲染图表
+
+    /**
+       * @description: 当日期数据变化时重新渲染图表
+       * @return {void}
+       */
       days() {
         this.initChart();
       }
@@ -31,12 +43,20 @@ export default {
     this.chart = null;
   },
   methods: {
-    //图表初始化
+    
+    /**
+     * @description: 图表初始化
+     * @return {void}
+     */
     initChart() {
       this.chart = this.$echarts.init(this.$el);
       this.setOptions();
     },
-    //图表参数设置
+
+    /**
+     * @description: 图表参数设置
+     * @return {void}
+     */
     setOptions() {
       var _this = this;
       this.chart.setOption({

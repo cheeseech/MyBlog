@@ -1,5 +1,7 @@
 package cn.xmh.web.blogserver.controller.admin;
 
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Category;
 import cn.xmh.web.blogserver.service.CategoryService;
@@ -88,12 +90,12 @@ public class CategoryManageController {
         }
     }
 
-    @RequestMapping(value = "/category/analysis",method = RequestMethod.GET)
-    @ApiOperation("获取专栏数据分析")
-    public ResultJson getCateAnalysis(){
+    @RequestMapping(value = "/category/analysis",method = RequestMethod.POST)
+    @ApiOperation("分页获取专栏数据分析")
+    public ResultJson getCateAnalysis(PageRequest pageQuery){
         try{
-            List<Map<String,Object>> category=categoryService.getCateAnalysis();
-            return new ResultJson("200","获取成功！",category);
+            PageResult pageResult =categoryService.getCateAnalysis(pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
             return new ResultJson("422","获取失败！请稍后再试！",null);
         }catch (Exception e){

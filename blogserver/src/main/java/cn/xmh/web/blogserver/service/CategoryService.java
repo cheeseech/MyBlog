@@ -1,6 +1,8 @@
 package cn.xmh.web.blogserver.service;
 
 import cn.xmh.web.blogserver.model.Category;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.Tags;
 import org.apache.ibatis.annotations.Param;
 
@@ -55,9 +57,10 @@ public interface CategoryService {
     List<Map<String, Long>> getCateArticleCount();
 
     /**
-     * 获取专栏名、专栏概述、创建时间、文章数、浏览量、点赞数以及评论数
+     * 分页获取专栏名、专栏概述、创建时间、文章数、浏览量、点赞数以及评论数
+     * @param pageRequest 分页
      * @return 专栏分析信息
      */
-    List<Map<String, Object>> getCateAnalysis();
+    PageResult getCateAnalysis(PageRequest pageRequest);
 
 }

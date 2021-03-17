@@ -1,11 +1,8 @@
 package cn.xmh.web.blogserver.service;
 
-import cn.xmh.web.blogserver.model.Article;
-import cn.xmh.web.blogserver.model.DaysData;
-
-import java.text.ParseException;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,12 +12,13 @@ import java.util.Map;
 public interface DaysDataService {
 
     /**
-     * 根据日期范围查询日期数据
+     * 根据日期范围分页查询日期数据
      * @param start 开始日期
      * @param end 结束日期
-     * @return 日期数据集合
+     * @param pageQuery 统一分页查询请求
+     * @return 分页日期数据集合
      */
-    List<DaysData> getDataByRange(Date start,Date end);
+    PageResult getDataByRange(Date start, Date end, PageRequest pageQuery);
 
     /**
      * 根据日期范围查询日期数据，返回echarts需要的数据
@@ -31,16 +29,13 @@ public interface DaysDataService {
     Map<String,Object> getDataByRangeToEcharts(Date start,Date end);
 
     /**
-     * 添加新日期数据,已发布状态的文章浏览量、点赞数以及评论数都为0
-     */
-
-    /**
-     * 获取指定日期内文章标题、创建日期、浏览量、点赞数以及评论数
+     * 分页获取指定日期内文章标题、创建日期、浏览量、点赞数以及评论数
      * @param start 开始日期
      * @param end 结束日期
+     * @param pageQuery
      * @return 文章信息
      */
-    List<Article> getSingleArticle(Date start,Date end);
+    PageResult getSingleArticle(Date start,Date end,PageRequest pageQuery);
 
 
 }
