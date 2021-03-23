@@ -3,7 +3,6 @@ package cn.xmh.web.blogserver.mapper;
 import cn.xmh.web.blogserver.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 
@@ -58,12 +57,4 @@ public interface UserMapper {
      * @return 用户集合
      */
     List<User> getAllUser();
-
-    /**
-     * 根据ID更新密码
-     * @param userId 用户ID
-     * @param password 密码
-     * @return 受影响的行
-     */
-    int resetPassword(@Param("userId") Long userId,@Param("password") String password);
 }

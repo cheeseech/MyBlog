@@ -33,10 +33,6 @@
         password=#{user.password},email=#{user.email}, enabled=#{enabled},update_time=#{user.updateTime} where user_id=#{userId}
     </update>
 
-    <update id="resetPassword">
-        update user set password=#{password} where user_id=#{userId}
-    </update>
-
     <delete id="deleteByUserId">
         delete from user where user_id=#{userId}
     </delete>

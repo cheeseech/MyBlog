@@ -1,8 +1,13 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.config.PageUtils;
 import cn.xmh.web.blogserver.mapper.UserMapper;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.User;
 import cn.xmh.web.blogserver.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,17 +48,6 @@ public class UserServiceImpl implements UserService , UserDetailsService {
         String passWord=passwordEncoder.encode(user.getPassword());
         logger.info("登录密码:{}",passWord);
         user.setPassword(passWord);
-
-        return user;
-    }
-
-    @Override
-    public User getUserByUserName(String userName) {
-        //根据用户名获取用户
-        User user=userMapper.getUserByUserName(userName);
-        if(user == null){
-            throw new NullPointerException();
-        }
 
         return user;
     }
@@ -103,6 +97,7 @@ public class UserServiceImpl implements UserService , UserDetailsService {
                 throw new IllegalArgumentException();
             }
         }
+
         //设置更新时间
         user.setUpdateTime(new Date());
         //用户状态
@@ -125,22 +120,19 @@ public class UserServiceImpl implements UserService , UserDetailsService {
     }
 
     @Override
-    public List<User> getAllUser() {
+    public PageResult getAllUser(PageRequest pageRequest) {
+        int pageSize=pageRequest.getPageSize();
+        int pageNum=pageRequest.getPageNum();
+        //设置页码及长度
+        PageHelper.startPage(pageNum,pageSize);
+
         //获取所有用户信息
         List<User> users= userMapper.getAllUser();
+        //用户数据判空
         if(users.isEmpty()){
             throw new NullPointerException();
         }
 
-        return users;
-    }
-
-    @Override
-    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public void resetPassword(Long userId, String password) {
-        int i= userMapper.resetPassword(userId,password);
-        if(i != 1){
-            throw new IllegalArgumentException();
-        }
+        return PageUtils.getPageResult(pageRequest,new PageInfo<>(users));
     }
 }

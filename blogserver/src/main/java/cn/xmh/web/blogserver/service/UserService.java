@@ -1,10 +1,10 @@
 package cn.xmh.web.blogserver.service;
 
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.User;
-import org.apache.ibatis.annotations.Param;
 
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @author Xmh
@@ -13,15 +13,9 @@ import java.util.List;
 public interface UserService {
 
     /**
-     * 根据用户名获取用户信息
-     * @param userName 用户名
-     * @return 用户信息
-     */
-    User getUserByUserName(String userName);
-
-    /**
-     * 添加用户
+     * 添加一个用户
      * @param user 用户信息
+     * @throws SQLException
      */
     void insertUser(User user) throws SQLException;
 
@@ -34,6 +28,7 @@ public interface UserService {
     /**
      * 根据ID更新用户信息
      * @param user 用户信息
+     * @throws SQLException
      */
     void updateByUserId(User user) throws SQLException;
 
@@ -45,15 +40,9 @@ public interface UserService {
     void updateUserState(Boolean userState,Long id);
 
     /**
-     * 获取所有用户集合
-     * @return 用户集合
+     * 分页获取用户数据集合
+     * @param pageRequest 统一分页查询请求
+     * @return 用户数据集合
      */
-    List<User> getAllUser();
-
-    /**
-     * 根据ID更新密码
-     * @param userId 用户ID
-     * @param password 密码
-     */
-    void resetPassword(Long userId,String password);
+    PageResult getAllUser(PageRequest pageRequest);
 }

@@ -1,5 +1,7 @@
 package cn.xmh.web.blogserver.controller.admin;
 
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.User;
 import cn.xmh.web.blogserver.service.UserService;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @author Xmh
@@ -84,40 +85,14 @@ public class UserManageController {
         }
     }
 
-    @RequestMapping(value = "/users/{userId}/password",method = RequestMethod.PUT)
-    @ApiOperation("更新用户密码")
-    public ResultJson updateUser(@PathVariable Long userId,@RequestBody String password){
+    @RequestMapping(value = "/users/page/",method = RequestMethod.POST)
+    @ApiOperation("分页获取用户数据")
+    public ResultJson getUsers(PageRequest pageQuery){
         try {
-            userService.resetPassword(userId,password);
-            return new ResultJson("201", "更新成功！", null);
-        }catch (IllegalArgumentException e){
-            return new ResultJson("422","更新失败！请稍后再试。",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
-    @RequestMapping(value = "/users",method = RequestMethod.GET)
-    @ApiOperation("获取所有用户")
-    public ResultJson getUsers(){
-        try {
-            List<User> users=userService.getAllUser();
-            return new ResultJson("200", "查找成功！", users);
+            PageResult pageResult =userService.getAllUser(pageQuery);
+            return new ResultJson("200", "查找成功！", pageResult);
         }catch (NullPointerException e){
-            return new ResultJson("400","该标签名不存在！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
-    @RequestMapping(value = "/users/{userName}",method = RequestMethod.GET)
-    @ApiOperation("获取所有用户")
-    public ResultJson getUser(@PathVariable String userName){
-        try {
-            User users=userService.getUserByUserName(userName);
-            return new ResultJson("200", "查找成功！", users);
-        }catch (NullPointerException e){
-            return new ResultJson("400","该标签名不存在！",null);
+            return new ResultJson("400","用户数据为空！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }
