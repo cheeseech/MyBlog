@@ -94,7 +94,12 @@
           prop="tagName"
           :label-width="formLabelWidth"
         >
-          <el-input v-model="form.tagName" autocomplete="off"></el-input>
+          <el-input
+            v-model="form.tagName"
+            autocomplete="off"
+            maxlength="10"
+            show-word-limit
+          ></el-input>
         </el-form-item>
         <!-- 标签类型 -->
         <el-form-item
