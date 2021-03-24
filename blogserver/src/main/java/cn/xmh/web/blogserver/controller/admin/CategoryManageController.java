@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Xmh
@@ -27,22 +25,6 @@ public class CategoryManageController {
 
     @Resource
     private CategoryService categoryService;
-
-    @RequestMapping(value = "/category/{name}")
-    @ApiOperation("根据专栏名获取专栏信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "name",value = "专栏名",dataType = "string",required = true)
-    })
-    public ResultJson getCategoryByName(@PathVariable String name){
-        try {
-            Category category=categoryService.getByCategoryName(name);
-            return new ResultJson("200","获取成功！",category);
-        }catch (NullPointerException e){
-            return new ResultJson("404","该专栏名不存在！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
 
     @RequestMapping(value = "/category",method = RequestMethod.PUT)
     @ApiOperation("新建一个专栏")
@@ -92,6 +74,9 @@ public class CategoryManageController {
 
     @RequestMapping(value = "/category/analysis",method = RequestMethod.POST)
     @ApiOperation("分页获取专栏数据分析")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageQuery",value = "分页对象",dataType = "PageRequest",required = true)
+    })
     public ResultJson getCateAnalysis(PageRequest pageQuery){
         try{
             PageResult pageResult =categoryService.getCateAnalysis(pageQuery);
@@ -100,6 +85,22 @@ public class CategoryManageController {
             return new ResultJson("422","获取失败！请稍后再试！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员！",null);
+        }
+    }
+
+    @RequestMapping(value = "/category/page",method = RequestMethod.POST)
+    @ApiOperation("分页获取专栏数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageQuery",value = "分页对象",dataType = "PageRequest",required = true)
+    })
+    public ResultJson getAllCategories(PageRequest pageQuery){
+        try{
+            PageResult pageResult=categoryService.getCategoriesByPage(pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
+        }catch (NullPointerException e){
+            return new ResultJson("400","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
         }
     }
 }

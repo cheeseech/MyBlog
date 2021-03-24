@@ -5,7 +5,6 @@ import cn.xmh.web.blogserver.mapper.CategoryMapper;
 import cn.xmh.web.blogserver.model.Category;
 import cn.xmh.web.blogserver.model.PageRequest;
 import cn.xmh.web.blogserver.model.PageResult;
-import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.CategoryService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,18 +32,8 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAllCategory() {
         //获取所有专栏
         List<Category> category= categoryMapper.getAllCategory();
+        //专栏数据判空
         if(category.isEmpty()){
-            throw  new NullPointerException();
-        }
-
-        return category;
-    }
-
-    @Override
-    public Category getByCategoryName(String cateName) {
-        //根据专栏名获取专栏
-        Category category= categoryMapper.getByCategoryName(cateName);
-        if(category == null){
             throw  new NullPointerException();
         }
 
@@ -102,6 +90,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Map<String, Long>> getCateArticleCount() {
         //获取专栏文章数
         List<Map<String, Long>> map=categoryMapper.getCateArticleCount();
+        //专栏数据判空
         if(map.isEmpty()){
             throw  new NullPointerException();
         }
@@ -125,5 +114,21 @@ public class CategoryServiceImpl implements CategoryService {
 
         //调用分页工具类完成分页信息的封装
         return PageUtils.getPageResult(pageRequest, new PageInfo<>(category));
+    }
+
+    @Override
+    public PageResult getCategoriesByPage(PageRequest pageRequest) {
+        int pageSize=pageRequest.getPageSize();
+        int pageNum=pageRequest.getPageNum();
+        // 设置页码及长度
+        PageHelper.startPage(pageNum,pageSize);
+
+        List<Category> categories=categoryMapper.getAllCategory();
+        // 专栏数据判空
+        if(categories.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        return PageUtils.getPageResult(pageRequest,new PageInfo<>(categories));
     }
 }

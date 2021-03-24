@@ -3,8 +3,6 @@ package cn.xmh.web.blogserver.service;
 import cn.xmh.web.blogserver.model.Category;
 import cn.xmh.web.blogserver.model.PageRequest;
 import cn.xmh.web.blogserver.model.PageResult;
-import cn.xmh.web.blogserver.model.Tags;
-import org.apache.ibatis.annotations.Param;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,13 +19,6 @@ public interface CategoryService {
      * @return 专栏集合
      */
     List<Category> getAllCategory();
-
-    /**
-     *  根据专栏名获取专栏信息
-     * @param cateName 专栏名
-     * @return 专栏信息
-     */
-    Category getByCategoryName(String cateName);
 
     /**
      * 添加一个专栏
@@ -62,5 +53,12 @@ public interface CategoryService {
      * @return 专栏分析信息
      */
     PageResult getCateAnalysis(PageRequest pageRequest);
+
+    /**
+     * 分页获取专栏数据
+     * @param pageRequest 统一分页请求对象
+     * @return 专栏数据
+     */
+    PageResult getCategoriesByPage(PageRequest pageRequest);
 
 }
