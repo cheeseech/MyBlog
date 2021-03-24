@@ -141,9 +141,12 @@
 /*文章icon文字对齐*/
 .m-article-icon {
   vertical-align: middle;
+  font-size: 27px;
+  color: #909399;
 }
 .m-article-icon-text {
   font-size: 15px;
+  color: #909399;
 }
 
 /*行间距*/
@@ -170,7 +173,7 @@
 .m-search-input .el-input__inner {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
-  width: auto;
+  width: 100%;
 }
 .m-search-btn .el-input-group__append {
   border-top-right-radius: 25px;
@@ -268,6 +271,15 @@
   margin-top: 20px;
   width: 90%;
   margin-left: 5%;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
+/* show-overflow-tooltip长度限制 */
+.el-tooltip__popper {
+  max-width: 30%;
+}
+
+/* 后台管理分页位置 */
+.m-paging {
+  margin-top: 1%;
+}

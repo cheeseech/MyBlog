@@ -537,8 +537,4 @@ export default {
 .dialog-switch {
   margin-left: 25%;
 }
-
-.m-paging {
-  margin-top: 1%;
-}
 </style>
