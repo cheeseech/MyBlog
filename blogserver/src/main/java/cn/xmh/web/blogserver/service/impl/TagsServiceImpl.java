@@ -1,9 +1,14 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.config.PageUtils;
 import cn.xmh.web.blogserver.mapper.ArticleTagsMapper;
 import cn.xmh.web.blogserver.mapper.TagsMapper;
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.TagsService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,10 +35,28 @@ public class TagsServiceImpl implements TagsService {
     public List<Tags> getAllTags() {
 
         List<Tags> tags=tagsMapper.getAllTags();
+        // 标签信息判空
         if(tags.isEmpty()){
             throw new NullPointerException();
         }
+
         return tagsMapper.getAllTags();
+    }
+
+    @Override
+    public PageResult getTagsByPage(PageRequest pageRequest) {
+        int pageSize=pageRequest.getPageSize();
+        int pageNum=pageRequest.getPageNum();
+        // 设置页码以及长度
+        PageHelper.startPage(pageNum,pageSize);
+
+        List<Tags> tags=tagsMapper.getAllTags();
+        // 标签信息判空
+        if(tags.isEmpty()){
+            throw new NullPointerException();
+        }
+
+        return PageUtils.getPageResult(pageRequest,new PageInfo<>(tags));
     }
 
     @Override
@@ -59,6 +82,7 @@ public class TagsServiceImpl implements TagsService {
             throw  new IllegalArgumentException();
         }
 
+        // 新建标签
         int i= tagsMapper.insertTag(tags);
         if(i != 1){
             throw new SQLException();
@@ -72,7 +96,7 @@ public class TagsServiceImpl implements TagsService {
         //判断标签名是否相同
         Tags checkTag=tagsMapper.getTagsName(tags.getTagName());
         if(checkTag!=null){
-            //当表单传值的id等于根据标签名查找的id时表示只进行了标签类型的更改，
+            //当表单传值的id等于根据标签名查找的id时表示更改了标签信息，
             //否则表示标签名重复
             if(!tags.getTagId().equals(checkTag.getTagId())){
                 throw  new IllegalArgumentException();
@@ -86,36 +110,31 @@ public class TagsServiceImpl implements TagsService {
     }
 
     @Override
-    public Tags getTagsName(String tagName) {
-        Tags tags= tagsMapper.getTagsName(tagName);
-        if(tags == null){
-            throw new NullPointerException();
-        }
-        return tags;
-    }
-
-    @Override
     public List<Tags> getTagsByArticleId(Long articleId) {
         List<Tags> tags= tagsMapper.getTagsByArticleId(articleId);
+        // 标签信息判空
         if(tags.isEmpty()){
             throw new NullPointerException();
         }
+
         return tags;
     }
 
     @Override
     public List<Map<String, String>> getTagsAndCount() {
         List<Map<String, String>> maps=tagsMapper.getTagsAndCount();
+        // 标签及标签文章数信息判空
         if(maps.isEmpty()){
             throw new NullPointerException();
         }
+
         return maps;
     }
 
     @Override
     public List<Map<String, Object>> getTagsAndCountOrder() {
-        //获取标签及标签文章数
         List<Map<String, Object>> tagsCount=tagsMapper.getTagsAndCountOrder();
+        //标签及标签及标签文章信息判空
         if(tagsCount.isEmpty()){
             throw new NullPointerException();
         }
@@ -126,9 +145,11 @@ public class TagsServiceImpl implements TagsService {
     @Override
     public List<Map<String, String>> getTagsAndCountLike(String tagName) {
         List<Map<String, String>> tags=tagsMapper.getTagsAndCountLike(tagName);
+        // 标签及标签文章信息判空
         if(tags.isEmpty()){
             throw new NullPointerException();
         }
+
         return tags;
     }
 }

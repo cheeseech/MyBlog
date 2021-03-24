@@ -1,5 +1,7 @@
 package cn.xmh.web.blogserver.controller.admin;
 
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Tags;
 import cn.xmh.web.blogserver.service.TagsService;
@@ -24,17 +26,17 @@ public class TagsManageController {
     @Resource
     private TagsService tagsService;
 
-    @RequestMapping(value = "/tags/{tagName}",method = RequestMethod.GET)
-    @ApiOperation("根据标签名查找标签")
+    @RequestMapping(value = "/tags/page/",method = RequestMethod.POST)
+    @ApiOperation("分页获取标签信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "tagName",value = "标签名",dataType = "String",required = true)
+            @ApiImplicitParam(name = "pageQuery",value = "分页对象",dataType = "PageRequest",required = true)
     })
-    public ResultJson getTag(@PathVariable String tagName){
-        try {
-            Tags tags = tagsService.getTagsName(tagName);
-            return new ResultJson("200", "查找成功！", tags);
+    public ResultJson getTagsByPage(PageRequest pageQuery){
+        try{
+            PageResult pageResult=tagsService.getTagsByPage(pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
         }catch (NullPointerException e){
-            return new ResultJson("400","该标签名不存在！",null);
+            return new ResultJson("400","获取失败！列表为空。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }

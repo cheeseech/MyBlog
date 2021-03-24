@@ -1,5 +1,7 @@
 package cn.xmh.web.blogserver.service;
 
+import cn.xmh.web.blogserver.model.PageRequest;
+import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.Tags;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,6 +22,13 @@ public interface TagsService {
     List<Tags> getAllTags();
 
     /**
+     *  分页获取标签信息
+     * @param pageRequest 同一分页请求对象
+     * @return 标签信息
+     */
+    PageResult getTagsByPage(PageRequest pageRequest);
+
+    /**
      * 根据ID删除一个标签
      * @param tagId 标签ID
      */
@@ -36,13 +45,6 @@ public interface TagsService {
      * @param tags 标签信息
      */
     void updateTagById(Tags tags) throws SQLException;
-
-    /**
-     * 根据标签名称查找
-     * @param tagName 标签名
-     * @return 标签集合
-     */
-    Tags getTagsName(String tagName);
 
     /**
      * 根据文章ID获取标签集合

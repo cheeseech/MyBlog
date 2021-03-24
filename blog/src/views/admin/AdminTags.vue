@@ -1,8 +1,16 @@
+<!--
+ * @FileDescription: 后台管理标签管理组件
+ * @Author: 徐茂华
+ * @Date: 2020-09-11 21:33:39
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-10 17:27:06
+ * @FilePath: \src\views\admin\AdminTags.vue
+-->
 <template>
   <div id="tags">
     <el-table
       :data="
-        tags.filter(
+        tagsInfo.filter(
           data =>
             !search || data.tagName.toLowerCase().includes(search.toLowerCase())
         )
@@ -14,7 +22,12 @@
       <el-table-column label="序号" type="index"> </el-table-column>
 
       <!-- 标签名称 -->
-      <el-table-column label="标签名" prop="tagName" sortable show-overflow-tooltip>
+      <el-table-column
+        label="标签名"
+        prop="tagName"
+        sortable
+        show-overflow-tooltip
+      >
       </el-table-column>
 
       <!-- 标签类型 -->
@@ -51,7 +64,7 @@
             icon="el-icon-info"
             iconColor="red"
             title="确定删除这一条信息吗？"
-            @onConfirm="handleDelete(scope.$index, scope.row)"
+            @onConfirm="deleteTag(scope.$index, scope.row)"
           >
             <el-button slot="reference" size="mini" type="danger"
               >删除</el-button
@@ -75,19 +88,15 @@
         ref="ruleForm"
         label-position="right"
       >
+        <!-- 标签名 -->
         <el-form-item
           label="标签名:"
           prop="tagName"
           :label-width="formLabelWidth"
         >
-          <el-input
-            id="tagName"
-            v-focus
-            v-model="form.tagName"
-            autocomplete="off"
-          ></el-input>
+          <el-input v-model="form.tagName" autocomplete="off"></el-input>
         </el-form-item>
-
+        <!-- 标签类型 -->
         <el-form-item
           label="标签类型:"
           prop="tagType"
@@ -106,11 +115,25 @@
           </el-select>
         </el-form-item>
       </el-form>
+
       <div slot="footer" class="dialog-footer">
         <el-button @click="resetForm">取 消</el-button>
         <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
     </el-dialog>
+
+    <!-- 分页 -->
+    <div class="m-paging">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="totalTagsLen"
+        :page-size="pageSize"
+        :current-page="currentPage"
+        @current-change="getTagsByCurrentPage"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -127,14 +150,20 @@ export default {
   name: "tags",
   data() {
     return {
-      tags: [],
-      search: "",
-      formLabelWidth: "100px",
-      centerDialogVisible: false,
+      search: "", // 标签名搜索关键字
+      tagsInfo: [], // 标签信息
+      pageSize: 10, // 分页长度
+      currentPage: 1, // 当前页码
+      totalPages: 0, // 总页数
+      totalTagsLen: 0, // 总标签个数
+      formLabelWidth: "100px", // label长度
+      centerDialogVisible: false, // dialog是否开启
+      // 标签表单
       form: {
         tagName: "",
         tagType: ""
       },
+      // 验证规则
       rules: {
         tagName: [
           { required: true, message: "请输入标签名称", trigger: "blur" }
@@ -143,6 +172,7 @@ export default {
           { required: true, message: "请选择标签类型", trigger: "blur" }
         ]
       },
+      // 标签颜色
       options: [
         {
           value: "success",
@@ -169,7 +199,10 @@ export default {
   },
   //在路由跳转前获取数据
   beforeRouteEnter(to, from, next) {
-    axios.all([getRequest("/tags/")]).then(
+    // 分页对象
+    var page = { pageNum: 1, pageSize: 10 };
+
+    axios.all([postRequest("/admin/tags/page/", page)]).then(
       axios.spread(response => {
         next(vm => {
           vm.setData(response);
@@ -178,16 +211,30 @@ export default {
     );
   },
   methods: {
-    //获取所有标签数据
-    getTags() {
-      getRequest("/tags/").then(response => {
-        if (response.status == 200) {
-          this.tags = response.data;
-        }
-      });
+    /**
+     * @description: 处理标签相关数据
+     * @param {Map} response
+     * @return {void}
+     */
+    setData(response) {
+      if (response.status == 200) {
+        // 标签信息
+        this.tagsInfo = response.data.content;
+        // 当前页码
+        this.currentPage = response.data.pageNum;
+        // 总标签数
+        this.totalTagsLen = response.data.totalSize;
+        // 总页数
+        this.totalPages = response.data.totalPages;
+      }
     },
-    //点击提交执行方法
+
+    /**
+     * @description: 进行提交标签信息操作
+     * @return {void}
+     */
     onSubmit() {
+      // 验证表单
       this.$refs["ruleForm"].validate(valid => {
         if (valid) {
           //关闭Dialog
@@ -204,43 +251,74 @@ export default {
         }
       });
     },
-    //关闭Dialog，清除表单
+
+    /**
+     * @description: 关闭Dialog，清除表单
+     * @return {void}
+     */
     resetForm() {
       this.$refs["ruleForm"].resetFields();
       //关闭Dialog
       this.centerDialogVisible = false;
     },
-    //根据表单更新标签
+
+    /**
+     * @description: 根据页码获取标签信息
+     * @param {Number} currentPage
+     * @return {void}
+     */
+    getTagsByCurrentPage(currentPage) {
+      // 分页对象
+      var page = { pageNum: currentPage, pageSize: this.pageSize };
+
+      postRequest("/admin/tags/page/", page).then(response => {
+        this.setData(response);
+      });
+    },
+
+    /**
+     * @description: 进行更新标签操作
+     * @return {void}
+     */
     updateTag() {
       postRequest("/admin/tags/", this.form).then(response => {
+        var successMessage = "标签更新成功！";
+        var errorMessage = "标签更新失败！已存在相同标签名或请稍后再试。";
+        // 显示消息提示
+        this.common.insertUpdateMessage(successMessage, errorMessage, response);
+        // 回到最后一页
         if (response.status == 201) {
-          Message.success(response.msg);
-          //重新获取标签数据
-          this.getTags();
-        } else {
-          Message.error(response.msg);
+          this.getTagsByCurrentPage(this.totalPages);
         }
       });
     },
-    //根据表单添加标签
+
+    /**
+     * @description: 进行添加标签操作
+     * @return {void}
+     */
     insertTag() {
       putRequest("/admin/tags/", this.form).then(response => {
+        var successMessage = "标签添加成功！";
+        var errorMessage = "标签添加失败！已存在相同标签名或请稍后再试。";
+        // 显示消息提示
+        this.common.insertUpdateMessage(successMessage, errorMessage, response);
+        // 回到最后一页
         if (response.status == 201) {
-          Message.success(response.msg);
-          //重新获取标签数据
-          this.getTags();
-        } else {
-          Message.error(response.msg);
+          if (this.totalTagsLen % this.pageSize == 0) {
+            this.getTagsByCurrentPage(this.totalPages + 1);
+          } else {
+            this.getTagsByCurrentPage(this.totalPages);
+          }
         }
       });
     },
-    //数据处理
-    setData(response) {
-      if (response.status == 200) {
-        this.tags = response.data;
-      }
-    },
-    //点击按钮弹出Dialog赋值表单
+
+    /**
+     * @description: 点击按钮弹出Dialog并赋值表单
+     * @param {Map} row
+     * @return {void}
+     */
     handleCurrentChange(row) {
       //弹出Dialog
       this.centerDialogVisible = true;
@@ -260,25 +338,28 @@ export default {
         };
       }
     },
-    //执行标签删除方法
-    handleDelete(index, row) {
+
+    /**
+     * @description: 进行删除标签操作
+     * @param {Number} index
+     * @param {Map} row
+     * @return {void}
+     */
+    deleteTag(index, row) {
       deleteRequest("/admin/tags/" + row.tagId).then(response => {
+        var successMessage = "标签删除成功！";
+        var errorMessage = "标签删除失败！请稍后再试。";
+        // 显示消息提示
+        this.common.deleteMessage(successMessage, errorMessage, response);
+        // 回到最后一页
         if (response.status == 204) {
-          Message.success(response.msg);
-          this.getTags();
-        } else {
-          Message.error(response.msg);
+          if ((this.totalSize - 1) % this.pageSize == 0) {
+            this.getTagsByCurrentPage(this.totalPages - 1);
+          } else {
+            this.getTagsByCurrentPage(this.totalPages);
+          }
         }
       });
-    }
-  },
-  directives: {
-    focus: {
-      //聚焦输入框
-      inserted: function(el) {
-        var element = document.getElementById("tagName");
-        element.focus();
-      }
     }
   }
 };
