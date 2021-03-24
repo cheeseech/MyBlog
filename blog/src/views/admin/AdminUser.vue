@@ -50,7 +50,7 @@
       </el-table-column>
 
       <!-- 密码 -->
-      <el-table-column label="密码" min-width="100">
+      <el-table-column label="密码" min-width="110">
         <template slot-scope="scope">
           <el-tooltip placement="top" effect="light">
             <div slot="content">{{ scope.row.password }}</div>
@@ -69,7 +69,7 @@
       </el-table-column>
 
       <!-- 状态 -->
-      <el-table-column label="状态" min-width="50">
+      <el-table-column label="状态" min-width="60">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.enabled"
@@ -86,7 +86,7 @@
       <el-table-column
         label="创建时间"
         sortable
-        min-width="140"
+        min-width="160"
         prop="createTime"
       >
         <template slot-scope="scope">
@@ -99,7 +99,7 @@
         label="更新时间"
         sortable
         prop="updateTime"
-        min-width="140"
+        min-width="160"
       >
         <template slot-scope="scope">
           <span>{{ scope.row.updateTime | dateTimeLongFormat }}</span>
