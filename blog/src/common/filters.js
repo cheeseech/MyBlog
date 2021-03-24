@@ -1,16 +1,36 @@
-//年月日时间表示
+/**
+ * @description: 返回形如 年月日 时:分:秒格式字符串
+ * @param {Date} value
+ * @return {String}
+ */
 function dateTime(value) {
   return getDate(value, 1);
 }
-//-号表示
+
+/**
+ * @description: 返回形如 年-月-日 时:分:秒格式字符串
+ * @param {Date} value
+ * @return {String}
+ */
 function dateTimeLong(value) {
   return getDate(value, 0);
 }
-//返回年月日格式
-function date(value){
-    return getDate(value, 2);
+
+/**
+ * @description: 返回形如 年月日格式字符串
+ * @param {Date} value
+ * @return {String}
+ */
+function date(value) {
+  return getDate(value, 2);
 }
-//日期时间格式化,可以返回多种格式字符串
+
+/**
+ * @description: 日期时间格式化,可以返回多种格式字符串
+ * @param {Date} value
+ * @param {Number} choose
+ * @return {String}
+ */
 function getDate(value, choose) {
   var date = new Date(value);
 
@@ -34,13 +54,18 @@ function getDate(value, choose) {
     .padStart(2, "0");
   if (choose === 1) {
     return `${years}年${months}月${days}日 ${hours}:${minutes}:${seconds}`;
-  } else if(choose === 0){
+  } else if (choose === 0) {
     return `${years}-${months}-${days} ${hours}:${minutes}:${seconds}`;
-  }else if(choose === 2){
+  } else if (choose === 2) {
     return `${years}年${months}月${days}日`;
   }
 }
-//月份格式化
+
+/**
+ * @description: 返回指定月份中文字符串
+ * @param {Number} value
+ * @return {String}
+ */
 function months(value) {
   var months = [
     "",
@@ -61,7 +86,12 @@ function months(value) {
 
   return `${month}`;
 }
-//返回月份 日，年格式字符串
+
+/**
+ * @description: 返回形如 月份 日，年格式字符串
+ * @param {Date} value
+ * @return {String}
+ */
 function monthDayYear(value) {
   // 根据给定的字符串，得到特定的日期
   var date = new Date(value);
@@ -90,12 +120,22 @@ function monthDayYear(value) {
 
   return `${month} ${day}, ${year}`;
 }
-//数字过滤器：不足十位自动补0
+
+/**
+ * @description: 数字过滤器：不足十位自动补0
+ * @param {Number} value
+ * @return {String}
+ */
 function count(value) {
   var num = value.toString().padStart(2, "0");
   return `${num}`;
 }
-//文章标题过滤器：限制标题为15字符超过加...
+
+/**
+ * @description: 文章标题过滤器：限制标题为15字符超过加...
+ * @param {String} value
+ * @return {String}
+ */
 function title(value) {
   if (value.length > 15) {
     value = value.substring(0, 15) + "...";
@@ -107,8 +147,8 @@ export function dateTimeFormat(time) {
   return dateTime(time);
 }
 export function dateFormat(time) {
-    return date(time);
-  }
+  return date(time);
+}
 export function dateTimeLongFormat(time) {
   return dateTimeLong(time);
 }
