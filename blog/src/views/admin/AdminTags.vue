@@ -293,7 +293,7 @@ export default {
         this.common.insertUpdateMessage(successMessage, errorMessage, response);
         // 回到最后一页
         if (response.status == 201) {
-          this.getTagsByCurrentPage(this.totalPages);
+          this.getTagsByCurrentPage(this.currentPage);
         }
       });
     },
@@ -359,9 +359,13 @@ export default {
         // 回到最后一页
         if (response.status == 204) {
           if ((this.totalSize - 1) % this.pageSize == 0) {
-            this.getTagsByCurrentPage(this.totalPages - 1);
+            var pageNum = this.currentPage - 1;
+            if (pageNum < 0) {
+              pageNum = 0;
+            }
+            this.getTagsByCurrentPage(pageNum);
           } else {
-            this.getTagsByCurrentPage(this.totalPages);
+            this.getTagsByCurrentPage(this.currentPage);
           }
         }
       });

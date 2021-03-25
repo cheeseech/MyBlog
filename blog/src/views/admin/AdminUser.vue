@@ -414,7 +414,7 @@ export default {
         // 显示消息提示
         this.common.insertUpdateMessage(successMessage, errorMessage, response);
         // 回到最后一页
-        this.getUsersByCurrentPage(this.totalPages);
+        this.getUsersByCurrentPage(this.currentPage);
       });
     },
 
@@ -494,9 +494,13 @@ export default {
         // 回到最后一页
         if (response.status == 204) {
           if ((this.totalUsersLen - 1) % this.pageSize == 0) {
-            this.getUsersByCurrentPage(this.totalPages - 1);
+            var pageNum = this.currentPage - 1;
+            if (pageNum < 0) {
+              pageNum = 0;
+            }
+            this.getUsersByCurrentPage(pageNum);
           } else {
-            this.getUsersByCurrentPage(this.totalPages);
+            this.getUsersByCurrentPage(this.currentPage);
           }
         }
       });
