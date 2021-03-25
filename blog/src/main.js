@@ -11,12 +11,16 @@ import "@/assets/css/me.css";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import echarts from 'echarts'
-import * as filters from '@/views/index' // global filters
+import * as filters from '@/common/filters' // global filters
+import common from '@/common/common' // global function
+// import highlight from 'highlight'
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+
+Vue.prototype.common=common;
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
@@ -49,3 +53,11 @@ new Vue({
   components: { App },
   template: "<App/>"
 });
+
+//在main.js定义自定义指令 
+Vue.directive('highlight',function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  blocks.forEach((block)=>{
+    highlight.highlightBlock(block)
+  })
+})
