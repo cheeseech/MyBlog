@@ -494,11 +494,7 @@ export default {
         // 回到最后一页
         if (response.status == 204) {
           if ((this.totalUsersLen - 1) % this.pageSize == 0) {
-            var pageNum = this.currentPage - 1;
-            if (pageNum < 0) {
-              pageNum = 0;
-            }
-            this.getUsersByCurrentPage(pageNum);
+            this.getUsersByCurrentPage(this.currentPage - 1);
           } else {
             this.getUsersByCurrentPage(this.currentPage);
           }
