@@ -1,7 +1,16 @@
+<!--
+ * @FileDescription: 登录组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-29 14:26:00
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-15 17:07:15
+ * @FilePath: \src\components\Login.vue
+-->
 <template>
   <div id="login">
     <el-form class="login-container" label-position="left" label-width="0px">
-      <h3 class="login_title">系统登录</h3>
+      <h3 class="login_title">欢迎登录博客后台管理系统</h3>
+      <!-- 用户名 -->
       <el-form-item>
         <el-input
           id="userName"
@@ -11,7 +20,8 @@
           placeholder="账号"
         ></el-input>
       </el-form-item>
-
+      
+      <!-- 密码 -->
       <el-form-item>
         <el-input
           type="password"
@@ -20,9 +30,9 @@
           @keyup.enter.native="login"
         ></el-input>
       </el-form-item>
-
+      
+      <!-- 登录 -->
       <el-form-item style="width: 100%">
-        记住我注册
         <el-button
           type="primary"
           style="width: 100%;background: #505458;border: none"
@@ -35,36 +45,44 @@
 </template>
 
 <script>
-import { postRequest } from "../../untils/axiosApi";
 import { Message } from "element-ui";
+import { postRequest } from "../../untils/axiosApi";
 
 export default {
   name: "Login",
   data() {
     return {
-      bgImg: require("../assets/images/content.jpg"),
+      bgImg: require("../assets/images/content.jpg"), // 背景图片
       loginForm: {
-        username: "",
-        password: ""
-      },
-      responseResult: []
+        username: "", // 用户名
+        password: "" // 密码
+      }
     };
   },
   methods: {
     //用户登录
     login() {
-      var _this = this;
       postRequest("/login", {
-        username: _this.loginForm.username,
-        password: _this.loginForm.password
+        username: this.loginForm.username,
+        password: this.loginForm.password
       }).then(response => {
         if (response != undefined && response.status == 200) {
-          Message.success(response.msg);
+          // 登录成功消息提示
+          Message({
+            type: "success",
+            dangerouslyUseHTMLString: true,
+            message: "<strong>登录成功！</strong>"
+          });
           //跳转页面
-          _this.$router.push({ path: "/admin/welcome" });
+          this.$router.push({ path: "/admin/welcome" });
         } else {
           if (response != undefined) {
-            Message.error(response.msg);
+            // 登录失败消息提示
+            Message({
+              type: "error",
+              dangerouslyUseHTMLString: true,
+              message: "<strong>" + response.msg + "</strong>"
+            });
           }
         }
       });

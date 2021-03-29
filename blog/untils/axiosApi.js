@@ -102,7 +102,11 @@ axios.interceptors.response.use(
   error => {
     var code = error.response.status;
     if (code === 401) {
-      Message.error("尚未登录或登录过期，请先登录！");
+      Message({
+        type: "error",
+        dangerouslyUseHTMLString: true,
+        message: "<strong>尚未登录或登录过期，请先登录！</strong>"
+      });
       router.push({
         path: "/doLogin"
       });
