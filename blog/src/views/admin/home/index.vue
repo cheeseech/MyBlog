@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 后台管理主组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-27 20:36:17
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-03-18 15:52:36
+ * @FilePath: \src\views\admin\home\index.vue
+-->
 <template>
   <div id="admin">
     <el-container>
@@ -36,7 +44,7 @@ export default {
   data() {
     return {
       height: {
-        height: window.innerHeight - 60 + "px"
+        height: window.innerHeight - 60 + "px" // 获取当前窗口 - 60px长度
       }
     };
   },

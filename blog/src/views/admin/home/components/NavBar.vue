@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 后台标题栏组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-11 10:06:53
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-10 17:21:54
+ * @FilePath: \src\views\admin\home\components\NavBar.vue
+-->
 <template>
   <div id="navBar">
     <el-menu class="el-menu-demo" mode="horizontal" active-text-color="#fff">
@@ -33,7 +41,9 @@
         <template slot="title">
           <el-avatar shape="square" :size="45" :src="squareUrl"> </el-avatar>
         </template>
-        <el-menu-item index="1-4-1">注销</el-menu-item>
+        <el-menu-item index="1-4-1" @click="logout">
+          注 销
+        </el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
@@ -41,15 +51,17 @@
 
 <script>
 import { eventBus } from "@/main";
+import { Message } from "element-ui";
+import { postRequest } from "@/../untils/axiosApi";
 
 export default {
   name: "NavBar",
   data() {
     return {
       squareUrl:
-        "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
-      collapse: true,
-      breadList: null
+        "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80", // 头像
+      collapse: true, // 侧边栏是否开启
+      breadList: null // 面包屑
     };
   },
   watch: {
@@ -63,14 +75,24 @@ export default {
     this.getBreadList(this.$route);
   },
   methods: {
-    //切换侧边栏状态
+    /**
+     * @description: 切换侧边栏状态
+     * @return {void}
+     */
     sendCollapse() {
       this.collapse = !this.collapse;
+      // 传递侧边栏状态
       eventBus.$emit("collapse", this.collapse);
     },
-    //根据路由设置面包屑
+
+    /**
+     * @description: 根据路由设置面包屑
+     * @param {Map} to
+     * @return {void}
+     */
     getBreadList(to) {
       var name = to.name;
+      // 判断当前是否是欢迎页
       if (name !== "欢迎页") {
         if (name === "管理文章" || name === "发布文章" || name === "回收站") {
           this.breadList = ["文章管理", name, "文章详情"];
@@ -81,6 +103,34 @@ export default {
       } else {
         this.breadList = null;
       }
+    },
+
+    /**
+     * @description: 登出用户
+     * @return {void}
+     */
+    logout() {
+      postRequest("/logout").then(response => {
+        if (response.status == 200) {
+          // 登出成功消息提示
+          Message({
+            type: "success",
+            dangerouslyUseHTMLString: true,
+            message: "<strong>登出成功！</strong>"
+          });
+          // 跳转到登录页面
+          this.$router.push({
+            name: "登录"
+          });
+        } else {
+          // 登出失败消息提示
+          Message({
+            type: "error",
+            dangerouslyUseHTMLString: true,
+            message: "<strong>登出失败！请稍后重试。</strong>"
+          });
+        }
+      });
     }
   }
 };

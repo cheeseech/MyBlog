@@ -85,7 +85,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler((request, response, authentication) -> {
                     response.setContentType("application/json; charset=UTF-8");
                     PrintWriter out = response.getWriter();
-                    out.write("\"status\":200,\"msg\":\"登出成功！\"");
+                    ResultJson resultJson=new ResultJson("200","登出成功！",null);
+                    out.write(new ObjectMapper().writeValueAsString(resultJson));
                 }).
                 permitAll();
 

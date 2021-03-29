@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 后台侧边栏组件
+ * @Author: 徐茂华
+ * @Date: 2020-08-10 20:20:17
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-10 17:23:48
+ * @FilePath: \src\views\admin\home\components\SideBar.vue
+-->
 <template>
   <div id="sideBar">
     <el-menu
@@ -68,6 +76,7 @@
           回收站</el-menu-item
         >
       </el-submenu>
+
       <!-- 数据统计 -->
       <el-menu-item index="/admin/adminData">
         <svg class="icon m-svg-size m-font-size-big" aria-hidden="true">
@@ -75,7 +84,6 @@
         </svg>
         <span slot="title">数据统计</span>
       </el-menu-item>
-
     </el-menu>
   </div>
 </template>
@@ -87,8 +95,8 @@ export default {
   name: "SideBar",
   data() {
     return {
-      activePath: "/admin/welcome",
-      isCollapse: true
+      activePath: "/admin/welcome", // 默认选中路由
+      isCollapse: true // 侧边栏是否开启
     };
   },
   watch: {
@@ -103,7 +111,7 @@ export default {
     this.activePath = path;
   },
   created() {
-    //   接受并设置侧边栏状态
+    // 接受并设置侧边栏状态
     eventBus.$on("collapse", message => {
       this.isCollapse = message;
     });
