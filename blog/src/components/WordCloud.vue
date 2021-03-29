@@ -1,3 +1,11 @@
+<!--
+ * @FileDescription: 博客词云组件
+ * @Author: 徐茂华
+ * @Date: 2020-09-19 20:06:11
+ * @LastEditors: 徐茂华
+ * @LastEditTime: 2021-02-10 17:41:55
+ * @FilePath: \src\components\WordCloud.vue
+-->
 <template>
   <div
     :id="wc_id"
@@ -14,7 +22,7 @@ export default {
   props: ["wc_id", "wc_height", "wc_width", "wc_data"],
   data() {
     return {
-      myChart: null
+      myChart: null //词云组件ID
     };
   },
   mounted() {
@@ -35,6 +43,10 @@ export default {
     }
   },
   methods: {
+    /**
+     * @description: 初始化词云
+     * @return {void}
+     */
     initChart() {
       const _this = this;
       this.myChart = echarts.init(document.getElementById(this.wc_id));
