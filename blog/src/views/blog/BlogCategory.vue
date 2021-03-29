@@ -141,6 +141,13 @@ export default {
       //设置专栏名
       if (categoryName) {
         this.checkedCateName = categoryName;
+        //设置选中专栏概述
+        var categoriesInfo = categoryResponse.data;
+        for (var i = 0; i < categoriesInfo.length; i++) {
+          if (categoriesInfo[i].cate_name === categoryName) {
+            this.checkedCategorySummary = categoriesInfo[i].cate_summary;
+          }
+        }
       }
 
       // 处理文章相关数据
