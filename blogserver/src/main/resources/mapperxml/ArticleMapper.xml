@@ -129,7 +129,7 @@
     </select>
 
     <select id="getMarkdownInfoById" resultType="java.util.Map">
-        SELECT a.article_id,title,md_content,a.type_id,a.cate_id,nickname,user_face,recommend
+        SELECT a.article_id,title,md_content,a.type_id,a.cate_id,nickname,user_face,recommend,summary
         from article a
         LEFT JOIN user u on a.user_id=u.user_id
         LEFT JOIN types t on a.type_id=t.type_id

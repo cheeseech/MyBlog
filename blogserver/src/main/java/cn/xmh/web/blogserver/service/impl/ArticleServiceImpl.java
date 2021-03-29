@@ -179,13 +179,6 @@ public class ArticleServiceImpl implements ArticleService {
         article.setLikes(0);
         article.setComments(0);
 
-        //设置文章概述
-        String content=article.getMdContent();
-        if(content.length() > 100){
-            content=content.substring(0,101);
-        }
-        article.setSummary(content);
-
         //从security获取当前登录用户
         UsernamePasswordAuthenticationToken authenticationToken= (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User user=(User)authenticationToken.getPrincipal();
@@ -234,13 +227,6 @@ public class ArticleServiceImpl implements ArticleService {
         //设置文章更新时间
         Date day=new Date();
         article.setUpdateTime(day);
-
-        //设置文章概述
-        String content=article.getMdContent();
-        if(content.length() > 100){
-            content=content.substring(0,101);
-        }
-        article.setSummary(content);
 
         //更新文章
         int i= articleMapper.updateByArticleId(article);

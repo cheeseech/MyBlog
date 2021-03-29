@@ -53,6 +53,18 @@
         class="demo-ruleForm"
         :label-width="formLabelWidth"
       >
+        <!-- 文章概述 -->
+        <el-form-item label="文章概述:" prop="summary">
+          <el-input
+            :rows="3"
+            type="textarea"
+            maxlength="200"
+            style="width:90%"
+            v-model="form.summary"
+            placeholder="请输入文章概述..."
+          >
+          </el-input>
+        </el-form-item>
         <!-- 文章标签 -->
         <el-form-item label="文章标签:">
           <el-tag
@@ -196,6 +208,9 @@ export default {
         ],
         recommend: [
           { required: true, message: "是否推荐该文章", trigger: "change" }
+        ],
+        summary: [
+          { required: true, message: "请输入文章概述", trigger: "change" }
         ]
       }
     };
@@ -249,13 +264,13 @@ export default {
         this.form = {
           articleId: article.article_id,
           title: article.title,
+          summary: article.summary,
           cateId: article.cate_id,
           typeId: article.type_id,
           tags: [],
           recommend: article.recommend ? 1 : 0
         };
         // 赋值文章标签数据
-        console.log(article.tags);
         var tagsLen = article.tags.length;
         for (var i = 0; i < tagsLen; i++) {
           this.changeTagState(article.tags[i], 1);
