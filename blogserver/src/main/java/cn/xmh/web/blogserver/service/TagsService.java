@@ -47,13 +47,6 @@ public interface TagsService {
     void updateTagById(Tags tags) throws SQLException;
 
     /**
-     * 根据文章ID获取标签集合
-     * @param articleId 文章ID
-     * @return 标签集合
-     */
-    List<Tags> getTagsByArticleId(Long articleId);
-
-    /**
      * 获取标签及标签文章数
      * @return
      */

@@ -3,6 +3,7 @@ package cn.xmh.web.blogserver.mapper;
 import cn.xmh.web.blogserver.model.Article;
 import cn.xmh.web.blogserver.model.DaysData;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -36,4 +37,11 @@ public interface DaysDataMapper {
      * @return 文章信息
      */
     List<Article> getSingleArticle(Date start,Date end);
+
+    /**
+     * 根据文章ID删除日数据
+     * @param articleId 文章ID
+     * @return 受影响的行
+     */
+    int deleteDaysByArticleId(@Param("article_id") Long articleId);
 }

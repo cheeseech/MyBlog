@@ -1,19 +1,15 @@
 package cn.xmh.web.blogserver.service.impl;
 
 import cn.xmh.web.blogserver.config.PageUtils;
-import cn.xmh.web.blogserver.mapper.ArticleMapper;
-import cn.xmh.web.blogserver.mapper.ArticleTagsMapper;
-import cn.xmh.web.blogserver.mapper.CategoryMapper;
-import cn.xmh.web.blogserver.mapper.TagsMapper;
-import cn.xmh.web.blogserver.model.Article;
-import cn.xmh.web.blogserver.model.PageRequest;
-import cn.xmh.web.blogserver.model.PageResult;
-import cn.xmh.web.blogserver.model.Tags;
+import cn.xmh.web.blogserver.mapper.*;
+import cn.xmh.web.blogserver.model.*;
 import cn.xmh.web.blogserver.service.ArticleService;
 import cn.xmh.web.blogserver.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.omg.CORBA.OBJ_ADAPTER;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import springfox.documentation.schema.Entry;
@@ -39,6 +35,8 @@ public class ArticleServiceImpl implements ArticleService {
     private TagsMapper tagsMapper;
     @Resource
     private CategoryMapper categoryMapper;
+    @Resource
+    private DaysDataMapper daysDataMapper;
 
     @Override
     public PageResult findPage(PageRequest pageRequest) {
@@ -123,52 +121,77 @@ public class ArticleServiceImpl implements ArticleService {
 
         //获取文章标签集合
         for(Article article:articles){
-            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
+            article.setTags(articleTagsMapper.getTagsByArticleId(article.getArticleId()));
         }
         return articles;
     }
 
     @Override
-    public List<Article> getArticleByDelete() {
+    public PageResult getArticleByDelete(PageRequest pageRequest) {
+        int pageSize=pageRequest.getPageSize();
+        int pageNum=pageRequest.getPageNum();
+        //设置页码及长度
+        PageHelper.startPage(pageNum,pageSize);
+
         //获取删除状态的文章
         List<Article> articles= articleMapper.getArticleByDelete();
+        //文章数据判空
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
 
-        return articles;
+        return PageUtils.getPageResult(pageRequest,new PageInfo<>(articles));
     }
 
     @Override
-    public List<Article> getArticleByNotDelete() {
+    public PageResult getArticleByNotDelete(PageRequest pageRequest) {
+        int pageSize=pageRequest.getPageSize();
+        int pageNum=pageRequest.getPageNum();
+        //设置页码及长度
+        PageHelper.startPage(pageNum,pageSize);
+
         //获取未删除状态的文章
         List<Article> articles= articleMapper.getArticleByNotDelete();
+        //文章数据判空
         if(articles.isEmpty()){
             throw new NullPointerException();
         }
 
-        return insertTagsIntoArticle(articles);
+        return PageUtils.getPageResult(pageRequest,new PageInfo<>(insertTagsIntoArticle(articles)));
     }
 
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void insertArticle(Article article) {
+        //检查文章标题是否重复
+        List<Article> checkedTitle=articleMapper.getArticleByTitle(article.getTitle());
+        if(!checkedTitle.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+
         //添加文章发布时间以及更新时间
         Date day=new Date();
         article.setUpdateTime(day);
         article.setPublishTime(day);
+
         //初始化文章浏览量、点赞数以及评论数
         article.setViews(0);
         article.setLikes(0);
         article.setComments(0);
+
         //设置文章概述
         String content=article.getMdContent();
         if(content.length() > 100){
             content=content.substring(0,101);
         }
         article.setSummary(content);
+
+        //从security获取当前登录用户
+        UsernamePasswordAuthenticationToken authenticationToken= (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User user=(User)authenticationToken.getPrincipal();
         //设置用户ID
-        article.setUserId(1L);
+        article.setUserId(user.getUserId());
+
         //新建文章
         articleMapper.insertArticle(article);
 
@@ -185,6 +208,9 @@ public class ArticleServiceImpl implements ArticleService {
         //删除文章标签关联
         articleTagsMapper.deleteByArticleId(articleId);
 
+        //删除文章日数据关联
+        daysDataMapper.deleteDaysByArticleId(articleId);
+
         //删除文章
         int i= articleMapper.deleteByArticleId(articleId);
         if(i != 1){
@@ -195,22 +221,35 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public void updateByArticleId(Long articleId, Article article) {
+        //检查文章标题是否重复
+        List<Article> checkedTitle=articleMapper.getArticleByTitle(article.getTitle());
+        if(!checkedTitle.isEmpty()){
+            //当表单传值的id等于根据标题查找的id时表示更改了文章信息，
+            //否则表示标签名重复
+            if(!articleId.equals(checkedTitle.get(0).getArticleId())){
+                throw new IllegalArgumentException();
+            }
+        }
+
         //设置文章更新时间
         Date day=new Date();
         article.setUpdateTime(day);
+
         //设置文章概述
         String content=article.getMdContent();
         if(content.length() > 100){
             content=content.substring(0,101);
         }
         article.setSummary(content);
+
         //更新文章
-        int i= articleMapper.updateByArticleId(articleId,article);
+        int i= articleMapper.updateByArticleId(article);
         if(i != 1){
             throw new IllegalArgumentException();
         }
-
-        //更新文章标签
+        //删除文章标签关联
+        articleTagsMapper.deleteByArticleId(articleId);
+        //更新文章标签关联
         for(Tags tags : article.getTags()){
             articleTagsMapper.insertArticleTags(tags.getTagId(),article.getArticleId());
         }
@@ -259,7 +298,7 @@ public class ArticleServiceImpl implements ArticleService {
 
         //获取文章标签集合
         for(Article article:articles){
-            article.setTags(tagsMapper.getTagsByArticleId(article.getArticleId()));
+            article.setTags(articleTagsMapper.getTagsByArticleId(article.getArticleId()));
         }
         return articles;
     }
@@ -321,7 +360,7 @@ public class ArticleServiceImpl implements ArticleService {
         if(articleInfo.isEmpty()){
             throw new NullPointerException();
         }
-        List<Tags> tags=tagsMapper.getTagsByArticleId(articleId);
+        List<Tags> tags=articleTagsMapper.getTagsByArticleId(articleId);
         articleInfo.put("tags",tags);
         return articleInfo;
     }
@@ -332,7 +371,7 @@ public class ArticleServiceImpl implements ArticleService {
         if(articleInfo.isEmpty()){
             throw new NullPointerException();
         }
-        List<Tags> tags=tagsMapper.getTagsByArticleId(articleId);
+        List<Map<String, Object>> tags=tagsMapper.getTagsByArticleIdBuAdmin(articleId);
         articleInfo.put("tags",tags);
 
         return articleInfo;

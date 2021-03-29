@@ -42,6 +42,13 @@ public interface ArticleMapper {
     List<Article> getLikeTitleArticle(@Param("title") String title);
 
     /**
+     * 根据标题查找文章
+     * @param title
+     * @return
+     */
+    List<Article> getArticleByTitle(String title);
+
+    /**
      *  插入文章信息
      * @param article 文章信息
      * @return 受影响的行
@@ -57,11 +64,10 @@ public interface ArticleMapper {
 
     /**
      * 更新文章信息
-     * @param articleId 文章ID
      * @param article 文章信息
      * @return 受影响的行
      */
-    int updateByArticleId(@Param("article_id") Long articleId,Article article);
+    int updateByArticleId(Article article);
 
     /**
      *  更新文章状态

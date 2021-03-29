@@ -49,17 +49,17 @@ public interface TagsMapper {
     Tags getTagsName(@Param("tag_name") String tagName);
 
     /**
-     * 根据文章ID获取标签集合
-     * @param articleId 文章ID
-     * @return 标签集合
-     */
-    List<Tags> getTagsByArticleId(@Param("article_id") Long articleId);
-
-    /**
      * 获取标签及标签文章数
      * @return 标签及标签文章数
      */
     List<Map<String,String>> getTagsAndCount();
+
+    /**
+     * 根据文章ID获取后台需要的标签集合
+     * @param articleId 文章ID
+     * @return 标签集合
+     */
+    List<Map<String, Object>> getTagsByArticleIdBuAdmin(@Param("article_id") Long articleId);
 
     /**
      * 从大到小获取标签及标签文章数

@@ -43,4 +43,10 @@ public interface ArticleTagsMapper {
      */
     int deleteByTagId(@Param("tag_id") Long tagId);
 
+    /**
+     * 根据文章ID获取标签集合
+     * @param articleId 文章ID
+     * @return 标签集合
+     */
+    List<Tags> getTagsByArticleId(@Param("article_id") Long articleId);
 }

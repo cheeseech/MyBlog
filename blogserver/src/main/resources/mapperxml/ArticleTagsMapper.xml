@@ -21,4 +21,9 @@
     <delete id="deleteByTagId">
         delete from article_tags where tag_id=#{tag_id}
     </delete>
+
+    <select id="getTagsByArticleId" resultType="cn.xmh.web.blogserver.model.Tags">
+        select tags.tag_id,tag_name,tag_type from tags,article_tags
+        where tags.tag_id=article_tags.tag_id and article_id=#{article_id}
+    </select>
 </mapper>

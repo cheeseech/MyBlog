@@ -42,22 +42,6 @@ public class TagsController {
         }
     }
 
-    @RequestMapping(value = "/article/{articleId}",method = RequestMethod.GET)
-    @ApiOperation("根据文章ID获取标签集合")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "Long",required = true)
-    })
-    public ResultJson getTagsByArticle(@PathVariable Long articleId){
-        try {
-            List<Tags> tags = tagsService.getTagsByArticleId(articleId);
-            return new ResultJson("200", "查找成功！", tags);
-        }catch (NullPointerException e){
-            return new ResultJson("400","该文章标签不存在！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
     @RequestMapping(value = "/counts",method = RequestMethod.GET)
     @ApiOperation("获取标签集合及文章数")
     public ResultJson getTagsAndCount(){

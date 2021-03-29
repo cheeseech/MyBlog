@@ -51,16 +51,18 @@ public interface ArticleService {
     PageResult getLikeTitleArticleInPage(String title,PageRequest pageRequest);
 
     /**
-     * 获取已删除状态的文章
+     * 分页获取已删除状态的文章
+     * @param pageRequest 统一分页请求
      * @return 文章集合
      */
-    List<Article> getArticleByDelete();
+    PageResult getArticleByDelete(PageRequest pageRequest);
 
     /**
-     * 获取未删除状态的文章
+     * 分页获取未删除状态的文章
+     * @param pageRequest 统一分页请求
      * @return 文章集合
      */
-    List<Article> getArticleByNotDelete();
+    PageResult getArticleByNotDelete(PageRequest pageRequest);
 
     /**
      *  添加一篇文章

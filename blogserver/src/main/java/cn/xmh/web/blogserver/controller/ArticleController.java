@@ -68,32 +68,6 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    @ApiOperation("获取已删除状态的文章")
-    public ResultJson getArticlesDe(){
-        try {
-            List<Article> articles=articleService.getArticleByDelete();
-            return new ResultJson("200","获取成功！",articles);
-        }catch (NullPointerException e){
-            return new ResultJson("404","列表为空！"+e,null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
-    @RequestMapping(value = "/notDelete",method = RequestMethod.GET)
-    @ApiOperation("获取未删除状态的文章")
-    public ResultJson getArticlesNoDe(){
-        try {
-            List<Article> articles=articleService.getArticleByNotDelete();
-            return new ResultJson("200","获取成功！",articles);
-        }catch (NullPointerException e){
-            return new ResultJson("404","列表为空！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
-        }
-    }
-
     @RequestMapping(value = "/new",method = RequestMethod.GET)
     @ApiOperation("获取最新四篇文章标题")
     public ResultJson getNew(){

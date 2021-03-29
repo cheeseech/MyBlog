@@ -9,6 +9,10 @@
         values (#{days},#{views},#{likes},#{comments},#{articleId})
     </insert>
 
+    <delete id="deleteDaysByArticleId">
+        delete from days_data where article_id=#{article_id}
+    </delete>
+
     <select id="getDataByRange" resultType="cn.xmh.web.blogserver.model.DaysData">
         select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments'
         from days_data where days &gt;=#{start} and days &lt;=#{end}

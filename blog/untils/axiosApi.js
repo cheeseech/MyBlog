@@ -1,5 +1,5 @@
 import axios from "axios";
-import Qs from "qs";
+import qs from "qs";
 import { Message } from "element-ui";
 import router from "@/router/index";
 
@@ -42,6 +42,18 @@ export const postRequest = (url, params) => {
   });
 };
 
+export const postArticleRequest = (url, params) => {
+  return axios({
+    method: "POST",
+    url: `${base}${url}`,
+    data: params,
+    dataType: "json",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    }
+  });
+};
+
 export const putRequest = (url, params) => {
   return axios({
     method: "put",
@@ -59,6 +71,18 @@ export const putRequest = (url, params) => {
     ],
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
+    }
+  });
+};
+
+export const putArticleRequest = (url, params) => {
+  return axios({
+    method: "put",
+    url: `${base}${url}`,
+    data: params,
+    dataType: "json",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
     }
   });
 };

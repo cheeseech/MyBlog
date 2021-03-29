@@ -1,8 +1,6 @@
 package cn.xmh.web.blogserver.controller.admin;
 
-import cn.xmh.web.blogserver.model.ResultJson;
-import cn.xmh.web.blogserver.model.Article;
-import cn.xmh.web.blogserver.model.Tags;
+import cn.xmh.web.blogserver.model.*;
 import cn.xmh.web.blogserver.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -34,7 +32,7 @@ public class ArticleManageController {
             articleService.insertArticle(article);
             return new ResultJson("201","创建文章成功！",null);
         }catch (IllegalArgumentException e){
-            return new ResultJson("422","创建文章失败！请稍后再试。",null);
+            return new ResultJson("422","创建文章失败！存在相同标题。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
@@ -52,7 +50,7 @@ public class ArticleManageController {
         }catch (IllegalArgumentException e){
             return new ResultJson("400","删除失败！请稍后再试。",null);
         }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+            return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
     }
 
@@ -66,7 +64,7 @@ public class ArticleManageController {
         }catch (IllegalArgumentException e){
             return new ResultJson("422","更新失败！请稍后再试。",null);
         }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+            return new ResultJson("500","未知错误！请联系管理员。"+e,null);
         }
     }
 
@@ -97,6 +95,32 @@ public class ArticleManageController {
             return new ResultJson("422","获取失败！请稍后再试！",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员！",null);
+        }
+    }
+
+    @RequestMapping(value = "/article/delete",method = RequestMethod.POST)
+    @ApiOperation("分页获取已删除状态的文章")
+    public ResultJson getArticlesDe(PageRequest pageQuery){
+        try {
+            PageResult pageResult=articleService.getArticleByDelete(pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/article/not-delete",method = RequestMethod.POST)
+    @ApiOperation("分页获取未删除状态的文章")
+    public ResultJson getArticlesNoDe(PageRequest pageQuery){
+        try {
+            PageResult pageResult=articleService.getArticleByNotDelete(pageQuery);
+            return new ResultJson("200","获取成功！",pageResult);
+        }catch (NullPointerException e){
+            return new ResultJson("404","列表为空！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
         }
     }
 }

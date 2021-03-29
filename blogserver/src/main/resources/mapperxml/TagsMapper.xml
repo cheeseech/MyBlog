@@ -26,11 +26,6 @@
         select * from tags where tag_name=#{tag_name}
     </select>
 
-    <select id="getTagsByArticleId" resultType="cn.xmh.web.blogserver.model.Tags">
-        select tags.tag_id,tag_name,tag_type from tags,article_tags
-        where tags.tag_id=article_tags.tag_id and article_id=#{article_id}
-    </select>
-
     <select id="getTagsAndCount" resultType="java.util.Map">
         SELECT t.tag_id,t.tag_name name,t.tag_type,COUNT(a.article_id) value FROM tags t
         LEFT JOIN article_tags a ON t.tag_id=a.tag_id GROUP BY tag_name
@@ -60,6 +55,13 @@
         FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id
         GROUP BY tag_name
         ORDER BY count DESC
+    </select>
+
+    <select id="getTagsByArticleIdBuAdmin" resultType="java.util.Map">
+        SELECT t.tag_id,t.tag_name value,t.tag_type type
+        FROM tags t LEFT JOIN article_tags a ON t.tag_id=a.tag_id
+        WHERE article_id=#{article_id}
+        GROUP BY tag_name
     </select>
 
 </mapper>

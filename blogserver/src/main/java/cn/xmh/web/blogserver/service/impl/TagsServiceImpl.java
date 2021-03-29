@@ -110,17 +110,6 @@ public class TagsServiceImpl implements TagsService {
     }
 
     @Override
-    public List<Tags> getTagsByArticleId(Long articleId) {
-        List<Tags> tags= tagsMapper.getTagsByArticleId(articleId);
-        // 标签信息判空
-        if(tags.isEmpty()){
-            throw new NullPointerException();
-        }
-
-        return tags;
-    }
-
-    @Override
     public List<Map<String, String>> getTagsAndCount() {
         List<Map<String, String>> maps=tagsMapper.getTagsAndCount();
         // 标签及标签文章数信息判空

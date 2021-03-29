@@ -23,8 +23,8 @@
     <update id="updateByArticleId">
         update article set title=#{title}, md_content=#{mdContent}, html_content=#{htmlContent}, summary=#{summary},
         type_id=#{typeId}, cate_id=#{cateId},update_time=#{updateTime},recommend=#{recommend},
-        article_state=#{articleState}, views=#{views}, likes=#{likes}, comments=#{comments}, first_picture=#{firstPicture})
-        where article_id=#{article_id}
+        article_state=#{articleState}
+        where article_id=#{articleId}
     </update>
 
     <update id="resetArticleState">
@@ -98,11 +98,13 @@
     <select id="getArticleByDelete" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         where article_state = -1
+        ORDER BY update_time
     </select>
 
     <select id="getArticleByNotDelete" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         where article_state != -1
+        ORDER BY update_time
     </select>
 
     <select id="getArticleNum" resultType="java.lang.Integer">
@@ -133,6 +135,11 @@
         LEFT JOIN types t on a.type_id=t.type_id
         LEFT JOIN category c on a.cate_id=c.cate_id
         WHERE a.article_id=#{article_id}
+    </select>
+
+    <select id="getArticleByTitle" resultType="cn.xmh.web.blogserver.model.Article">
+        <include refid="selectAll"></include>
+        where title =#{title}
     </select>
 
 </mapper>
