@@ -180,4 +180,19 @@ public interface ArticleMapper {
      * @return 文章详细信息
      */
     Map<String, Object> getMarkdownInfoById(@Param("article_id") Long articleId);
+
+    /**
+     * 文章浏览量加一
+     * @param articleId 文章ID
+     * @return 受影响的行
+     */
+    int updateArticleViews(@Param("article_id") Long articleId);
+
+    /**
+     * 更新文章评论数
+     * @param articleId 文章ID
+     * @param commentsLen 评论数
+     * @return 受影响的行
+     */
+    int updateArticleCommentLen(@Param("article_id") Long articleId,int commentsLen);
 }

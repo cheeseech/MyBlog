@@ -31,6 +31,14 @@
         update article set article_state=#{article_state},update_time=#{time} where article_id=#{article_id}
     </update>
 
+    <update id="updateArticleViews">
+        update article set views=views+1 where article_id=#{article_id}
+    </update>
+
+    <update id="updateArticleCommentLen">
+        update article set comments=#{commentsLen} where article_id=#{article_id}
+    </update>
+
     <delete id="deleteByArticleId">
         delete from article where article_id=#{article_id}
     </delete>

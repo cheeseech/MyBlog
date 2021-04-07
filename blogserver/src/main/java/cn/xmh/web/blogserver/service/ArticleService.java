@@ -5,6 +5,7 @@ import cn.xmh.web.blogserver.model.PageRequest;
 import cn.xmh.web.blogserver.model.PageResult;
 import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -131,9 +132,10 @@ public interface ArticleService {
     /**
      * 根据文章ID获取文章详细信息
      * @param articleId 文章ID
+     * @param request 响应
      * @return 文章详细信息
      */
-    Map<String, Object> getArticleInfoById(Long articleId);
+    Map<String, Object> getArticleInfoById(Long articleId, HttpServletRequest request);
 
     /**
      * 根据文章ID获取文章详细信息以及markdown数据
@@ -141,4 +143,11 @@ public interface ArticleService {
      * @return 文章详细信息
      */
     Map<String, Object> getMarkdownInfoById(Long articleId);
+
+    /**
+     * 根据文章ID更新文章评论数
+     * @param articleId 文章ID
+     * @param comments 评论数
+     */
+    void updateArticleComments(Long articleId,int comments);
 }

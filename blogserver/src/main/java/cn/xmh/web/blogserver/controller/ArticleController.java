@@ -1,10 +1,12 @@
 package cn.xmh.web.blogserver.controller;
 
+import cn.xmh.web.blogserver.config.IPUtil;
 import cn.xmh.web.blogserver.model.PageRequest;
 import cn.xmh.web.blogserver.model.PageResult;
 import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Article;
 import cn.xmh.web.blogserver.service.ArticleService;
+import com.qiniu.util.Auth;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -12,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -185,9 +188,9 @@ public class ArticleController {
 
     @RequestMapping(value = "/info/{articleId}",method = RequestMethod.GET)
     @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "Long",required = true)
-    public ResultJson getArticleInfo(@PathVariable Long articleId){
+    public ResultJson getArticleInfo(@PathVariable Long articleId,HttpServletRequest request){
         try{
-            Map<String, Object> articleInfo=articleService.getArticleInfoById(articleId);
+            Map<String, Object> articleInfo=articleService.getArticleInfoById(articleId,request);
             return new ResultJson("200","获取成功！",articleInfo);
         }catch (NullPointerException e){
             return new ResultJson("422","获取失败！",null);
@@ -205,6 +208,23 @@ public class ArticleController {
             return new ResultJson("200","读取文章数据成功！",articleInfo);
         }catch (NullPointerException e){
             return new ResultJson("422","获取文章数据失败！",null);
+        }catch (Exception e){
+            return new ResultJson("500","未知错误！请联系管理员。",null);
+        }
+    }
+
+    @RequestMapping(value = "/comments/{articleId}/{commentsLen}", method = RequestMethod.POST)
+    @ApiOperation("更新文章评论数")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "articleId",value = "文章ID",dataType = "Long",required = true),
+            @ApiImplicitParam(name = "commentsLen",value = "评论数",dataType = "int",required = true)
+    })
+    public ResultJson updateArticleComments(@PathVariable Long articleId ,@PathVariable int commentsLen){
+        try {
+            articleService.updateArticleComments(articleId,commentsLen);
+            return new ResultJson("200","评论更新成功！",null);
+        }catch (IllegalArgumentException e){
+            return new ResultJson("422","更新失败！请稍后重试。",null);
         }catch (Exception e){
             return new ResultJson("500","未知错误！请联系管理员。",null);
         }

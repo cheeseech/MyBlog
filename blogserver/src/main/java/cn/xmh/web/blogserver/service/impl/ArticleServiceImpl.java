@@ -1,6 +1,8 @@
 package cn.xmh.web.blogserver.service.impl;
 
+import cn.xmh.web.blogserver.config.IPUtil;
 import cn.xmh.web.blogserver.config.PageUtils;
+import cn.xmh.web.blogserver.config.RedisUtil;
 import cn.xmh.web.blogserver.mapper.*;
 import cn.xmh.web.blogserver.model.*;
 import cn.xmh.web.blogserver.service.ArticleService;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import springfox.documentation.schema.Entry;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,6 +40,8 @@ public class ArticleServiceImpl implements ArticleService {
     private CategoryMapper categoryMapper;
     @Resource
     private DaysDataMapper daysDataMapper;
+    @Resource
+    private RedisUtil redisUtil;
 
     @Override
     public PageResult findPage(PageRequest pageRequest) {
@@ -341,11 +346,24 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Map<String, Object> getArticleInfoById(Long articleId) {
+    public Map<String, Object> getArticleInfoById(Long articleId, HttpServletRequest request) {
+
+        // 获取当前访问ip
+        String ipAddress= IPUtil.getIpAddr(request);
+        // 设置redis key
+        String checkedKey=ipAddress+"-"+articleId;
+        // 如果redis中不存在当前key则添加key并更新文章浏览数
+        if(!redisUtil.hasKey(checkedKey)){
+            redisUtil.set(checkedKey,ipAddress,86400);
+            articleMapper.updateArticleViews(articleId);
+        }
+        // 否则不更新文章浏览数
         Map<String, Object> articleInfo=articleMapper.getArticleInfoById(articleId);
+        // 文章信息判空
         if(articleInfo.isEmpty()){
             throw new NullPointerException();
         }
+        // 添加文章下标签集合
         List<Tags> tags=articleTagsMapper.getTagsByArticleId(articleId);
         articleInfo.put("tags",tags);
         return articleInfo;
@@ -361,6 +379,17 @@ public class ArticleServiceImpl implements ArticleService {
         articleInfo.put("tags",tags);
 
         return articleInfo;
+    }
+
+    @Override
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    public void updateArticleComments(Long articleId, int comments) {
+
+        // 更新文章评论数
+        int i=articleMapper.updateArticleCommentLen(articleId,comments);
+        if(i != 1){
+            throw new IllegalArgumentException();
+        }
     }
 }
 
