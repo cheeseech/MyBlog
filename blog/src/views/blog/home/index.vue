@@ -11,7 +11,9 @@
     <el-container>
       <el-header>
         <!--导航栏-->
-        <homeNav class="navBarWrap"></homeNav>
+        <transition name="el-fade-in-linear">
+          <homeNav class="navBarWrap"></homeNav>
+        </transition>
       </el-header>
 
       <el-main>
