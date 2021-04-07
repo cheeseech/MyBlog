@@ -32,6 +32,12 @@ export default {
     this.$router.afterEach((to, from) => {
       //  finish the progress bar
       this.$Progress.finish();
+
+      // 移除加载动画
+      var loading = document.getElementById("test");
+      if (loading != null) {
+        document.body.removeChild(loading);
+      }
     });
   }
 };
