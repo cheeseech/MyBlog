@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-09 22:00:51
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-11 11:18:35
+ * @LastEditTime: 2021-04-04 22:24:59
  * @FilePath: \src\views\blog\BlogArticle.vue
 -->
 <template>
@@ -83,12 +83,7 @@
                   <use xlink:href="#icon-ai-eye"></use>
                 </svg>
                 <span class="m-article-icon-text">{{ articleInfo.views }}</span>
-
-                <svg class="icon m-svg-size m-article-icon" aria-hidden="true">
-                  <use xlink:href="#icon-icon4"></use>
-                </svg>
-                <span class="m-article-icon-text">{{ articleInfo.likes }}</span>
-
+                &nbsp;
                 <svg class="icon m-svg-size m-article-icon" aria-hidden="true">
                   <use xlink:href="#icon-pinglun2"></use>
                 </svg>
@@ -107,7 +102,7 @@
             ></div>
 
             <!-- 文章下标签集合 -->
-            <div>
+            <div class="article-tags-pos">
               <el-button
                 type="primary"
                 round
@@ -143,6 +138,11 @@
 
             <!-- 分割线 -->
             <el-divider></el-divider>
+
+            <div
+              id="gitalk-container"
+              v-createComment="{ articleId, comments }"
+            ></div>
           </div>
         </el-card>
       </el-col>
@@ -169,18 +169,19 @@
     </el-row>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 import tocbot from "tocbot";
 import "mavon-editor/dist/css/index.css";
-import { getRequest } from "@/../untils/axiosApi";
+import { getRequest, postRequest } from "@/../untils/axiosApi";
 import { addCodeBtn } from "@/views/blog/mavon";
 
 export default {
   name: "ArticleInfo",
   data() {
     return {
+      commetns: null, // 评论数
+      articleId: null, // 文章ID
       articleInfo: null, // 文章数据集合
       ccImg: require("@/assets/images/cc.png")
     };
@@ -191,7 +192,7 @@ export default {
     axios.all([getRequest("/article/info/" + articleId)]).then(
       axios.spread(response => {
         next(vm => {
-          vm.setData(response);
+          vm.setData(response, articleId);
         });
       })
     );
@@ -222,9 +223,14 @@ export default {
      * @param {Map} response
      * @return {void}
      */
-    setData(response) {
+    setData(response, articleId) {
       if (response.status == 200) {
+        // 设置文章ID
+        this.articleId = articleId;
+        // 设置文章信息
         this.articleInfo = response.data;
+        //　设置文章评论数
+        this.comments = response.data.comments;
       }
     },
 
@@ -242,6 +248,38 @@ export default {
             node.id = node.firstElementChild.id;
             node.firstElementChild.removeAttribute("id");
           }
+        }
+      }
+    }
+  },
+  directives: {
+    createComment: {
+      inserted: function(el) {
+        // gitalk初始化
+        const gitalk = new Gitalk({
+          clientID: "82ccf717d9793b11b8e3",
+          clientSecret: "355de23675147c00cf7e8b5ba0416822dbb9fb5c",
+          repo: "blog-talk",
+          owner: "cheeseech",
+          admin: "cheeseech",
+          id: location.hash, // 如果要每篇文章都使用独立评论 需要改为 location.hash
+          // 或者md5(location.hash)注意md5包需要单独引入
+          distractionFreeMode: false // 无干扰模式
+        });
+        gitalk.render("gitalk-container");
+      },
+      unbind: function(el, binding) {
+        // 获取最新评论数
+        var newCommentLen = el.getElementsByClassName("gt-link-counts")[0]
+          .innerText;
+        // 文章ID
+        var articleId = binding.value.articleId;
+        // 获取旧评论数
+        var comments = binding.value.comments;
+        // 若新评论数与旧评论数不相等时更新文章评论数
+        if (newCommentLen != comments) {
+          // 更新文章评论数请求
+          postRequest("/article/comments/" + articleId + "/" + newCommentLen);
         }
       }
     }
@@ -267,6 +305,7 @@ export default {
   display: inline-block;
   font-size: 26px;
 }
+/* 知识共享协议 */
 .cc-license {
   text-align: center;
   margin-top: 2%;
@@ -277,6 +316,10 @@ export default {
 }
 .cc-license a:hover {
   color: #3476d2;
+}
+/* 文章标签位置 */
+.article-tags-pos {
+  margin-top: 3%;
 }
 </style>
 
