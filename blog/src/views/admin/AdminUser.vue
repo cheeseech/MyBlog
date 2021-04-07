@@ -158,13 +158,42 @@
         class="demo-ruleForm"
       >
         <!-- 头像 -->
-        <el-form-item>
+        <el-form-item style="margin-right: 100px;">
           <el-avatar
             :label-width="formLabelWidth"
             :size="60"
             :src="form.userFace"
             class="dialog-img"
           ></el-avatar>
+        </el-form-item>
+
+        <!-- 头像上传 -->
+        <el-form-item label="头像上传:">
+          <el-upload
+            class="upload-demo"
+            ref="upload"
+            :action="domain"
+            :data="QiniuData"
+            :before-upload="beforeAvatarUpload"
+            :on-success="uploadSuccess"
+            :auto-upload="false"
+            :multiple="false"
+          >
+            <el-button
+              style="margin-left: 10%;"
+              slot="trigger"
+              size="small"
+              type="primary"
+              >选取文件</el-button
+            >
+            <el-button
+              style="margin-left: 10%;"
+              size="small"
+              type="success"
+              @click="submitUpload"
+              >上传头像</el-button
+            >
+          </el-upload>
         </el-form-item>
 
         <!-- 昵称 -->
@@ -289,6 +318,12 @@ export default {
       switch: "true", // 用户状态
       formLabelWidth: "100px", // label长度
       centerDialogVisible: false, // dialog是否开启
+      domain: "http://upload-z1.qiniup.com/",
+      baseUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/", // 七牛云外链域名
+      QiniuData: {
+        file: "", //图片名字处理
+        token: "" //七牛云token
+      },
       // 用户表单
       form: {
         userId: "",
@@ -336,6 +371,10 @@ export default {
       })
     );
   },
+  mounted() {
+    // 获取七牛云上传凭证
+    this.getQiniuToken();
+  },
   methods: {
     /**
      * @description: 处理用户相关数据
@@ -355,6 +394,44 @@ export default {
       }
     },
 
+    /**
+     * @description: 上传头像时将图片放进QiniuData
+     * @param {Map} file
+     * @return {void}
+     */
+    beforeAvatarUpload(file) {
+      this.QiniuData.file = file;
+    },
+
+    /**
+     * @description: 上传图片成功回调，处理图片URL并放进表单中
+     * @param {Map} response
+     * @param {Map} file
+     * @param {Array} fileList
+     * @return {void}
+     */
+    uploadSuccess(response, file, fileList) {
+      this.form.userFace = this.baseUrl + response.key;
+    },
+
+    /**
+     * @description: 上传图片操作
+     * @return {void}
+     */
+    submitUpload() {
+      this.$refs.upload.submit();
+    },
+
+    /**
+     * @description: 获取七牛云上传凭证
+     * @return {void}
+     */
+    getQiniuToken() {
+      getRequest("/admin/img/upload/").then(response => {
+        this.QiniuData.token = response.data;
+      });
+    },
+    
     /**
      * @description: 根据页码获取用户信息
      * @param {Number} currentPage
@@ -536,5 +613,8 @@ export default {
 }
 .dialog-switch {
   margin-left: 25%;
+}
+.el-dialog__body {
+  padding-bottom: 0 !important;
 }
 </style>
