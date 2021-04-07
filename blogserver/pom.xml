@@ -116,7 +116,12 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        
+        <!-- 七牛云SDK -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.4.0, 7.4.99]</version>
+        </dependency>
 
     </dependencies>
 
