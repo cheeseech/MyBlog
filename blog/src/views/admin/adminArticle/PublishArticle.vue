@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-11-06 14:50:30
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-03-28 17:16:19
+ * @LastEditTime: 2021-04-06 14:34:18
  * @FilePath: \src\views\admin\adminArticle\PublishArticle.vue
 -->
 <template>
@@ -36,9 +36,12 @@
       </div>
       <!-- markdown编辑区 -->
       <mavon-editor
+        ref="md"
         v-model="value"
         @save="save"
         @change="change"
+        @imgAdd="$imgAdd"
+        @imgDel="$imgDel"
         placeholder="读书破万卷，下笔如有神..."
         fontSize="16px"
         style="height: 100%;"
@@ -170,9 +173,11 @@ import axios from "axios";
 import { Message } from "element-ui";
 import { clickNode } from "@/views/blog/mavon";
 import {
+    uploadImg,
   getRequest,
+  deleteRequest,
   putArticleRequest,
-  postArticleRequest
+  postArticleRequest,
 } from "@/../untils/axiosApi";
 
 export default {
@@ -187,6 +192,7 @@ export default {
       search: "", // 标签筛选关键字
       dialogFormVisible: false, // dialog是否显示
       formLabelWidth: "120px", // label大小
+      baseUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/", // 七牛云外链域名
       // 文章提交表单
       form: {
         title: "", // 文章标题
@@ -461,6 +467,44 @@ export default {
       //赋值文章数据
       this.form.mdContent = markdown;
       this.form.htmlContent = html;
+    },
+
+    /**
+     * @description: mavonEditor上传图片操作
+     * @param {Number} pos
+     * @param {Map} file
+     * @return {void}
+     */
+    $imgAdd(pos, file) {
+      // 从后端回去token
+      getRequest("/admin/img/upload/").then(response => {
+        if (response.status == 200) {
+          // 上传图片到七牛云
+          let data = new FormData();
+          data.append("file", file);
+          data.append("token", response.data);
+          uploadImg("http://upload-z1.qiniup.com/", data).then(response => {
+            var backUrl = this.baseUrl + response.key;
+            this.$refs.md.$img2Url(pos, backUrl);
+          });
+        }
+      });
+    },
+
+    /**
+     * @description: mavonEditor删除图片操作
+     * @param {Map} fileName
+     * @return {void}
+     */
+    $imgDel(fileName) {
+      // 截取图片链接key
+      var key = fileName[0].split("/")[3];
+      deleteRequest("/admin/img/delete/" + key).then(response => {
+        var successMessage = "图片删除成功！";
+        var errorMessage = "图片删除失败！请稍后再试。";
+        // 显示消息提示
+        this.common.deleteMessage(successMessage, errorMessage, response);
+      });
     },
 
     /**

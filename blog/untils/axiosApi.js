@@ -87,6 +87,17 @@ export const putArticleRequest = (url, params) => {
   });
 };
 
+export const uploadImg=(url,params)=>{
+    return axios({
+        method: "post",
+        url:url,
+        data:params,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+}
+
 export const deleteRequest = url => {
   return axios({
     method: "delete",
