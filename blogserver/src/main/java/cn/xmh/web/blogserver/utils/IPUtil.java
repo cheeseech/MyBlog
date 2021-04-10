@@ -1,4 +1,4 @@
-package cn.xmh.web.blogserver.config;
+package cn.xmh.web.blogserver.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
@@ -7,6 +7,7 @@ import java.net.UnknownHostException;
 /**
  * @author Xmh
  * @date 2021/4/4 17:36
+ * IP获取工具类
  */
 public class IPUtil {
 
