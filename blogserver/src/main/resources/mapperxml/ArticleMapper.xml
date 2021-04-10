@@ -92,7 +92,7 @@
     </select>
 
     <select id="getTotalData" resultType="java.util.Map">
-        SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
+        SELECT SUM(views) 'views',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
     </select>
 
     <select id="getById" resultType="cn.xmh.web.blogserver.model.Article">
@@ -124,7 +124,7 @@
     </select>
 
     <select id="getInfoById" resultType="java.util.Map">
-        SELECT a.article_id,title,html_content,type_name,cate_name,nickname,user_face,a.update_time,recommend,views,likes,comments
+        SELECT a.article_id,title,html_content,type_name,cate_name,nickname,user_face,a.update_time,recommend,views,comments
         from article a
         LEFT JOIN user u on a.user_id=u.user_id
         LEFT JOIN types t on a.type_id=t.type_id

@@ -5,22 +5,29 @@
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
 
     <insert id="newDay">
-        insert into days_data(days,views,likes,comments,article_id)
-        values (#{days},#{views},#{likes},#{comments},#{articleId})
+        insert into days_data(days,views,comments,article_id)
+        values (#{days},#{views},#{comments},#{articleId})
     </insert>
+
+    <update id="updateViewsByDaysAndArticleId">
+        UPDATE days_data set views=views+1 WHERE days=#{day} AND article_id=#{article_id}
+    </update>
+    <update id="updateCommentsByDaysAndArticleId">
+        UPDATE days_data set comments=comments+1 WHERE days=#{day} AND article_id=#{article_id}
+    </update>
 
     <delete id="removeByArticleId">
         delete from days_data where article_id=#{article_id}
     </delete>
 
     <select id="listByRange" resultType="cn.xmh.web.blogserver.model.DaysData">
-        select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments'
+        select days_id,days,SUM(views) 'views',SUM(comments) 'comments'
         from days_data where days &gt;=#{start} and days &lt;=#{end}
         GROUP BY days
     </select>
 
     <select id="listSingleArticle" resultType="cn.xmh.web.blogserver.model.Article">
-        SELECT a.title,cate_name, a.update_time,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments'
+        SELECT a.title,cate_name, a.update_time,a.publish_time,SUM(d.views) 'views',SUM(d.comments) 'comments'
         from days_data d
         LEFT JOIN article a on d.article_id=a.article_id
         LEFT JOIN category c on a.cate_id=c.cate_id

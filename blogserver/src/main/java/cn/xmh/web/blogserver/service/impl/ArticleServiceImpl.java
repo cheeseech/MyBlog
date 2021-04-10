@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -310,7 +311,11 @@ public class ArticleServiceImpl implements ArticleService {
         // 如果redis中不存在当前key则添加key并更新文章浏览数
         if (!redisUtil.hasKey(checkedKey)) {
             redisUtil.set(checkedKey, ipAddress, 86400);
+            // 更新文章浏览量
             articleMapper.updateViews(articleId);
+            // 更新日期数据文章浏览量
+            String day = getDateToString();
+            daysDataMapper.updateViewsByDaysAndArticleId(day, articleId);
         }
         // 否则不更新文章浏览数
         Map<String, Object> articleInfo = articleMapper.getInfoById(articleId);
@@ -346,7 +351,11 @@ public class ArticleServiceImpl implements ArticleService {
     public void updateCommentsById(Long articleId, int comments) {
         // 更新文章评论数
         int i = articleMapper.updateComments(articleId, comments);
-        if (i != 1) {
+
+        // 更新日期数据文章评论数
+        String day = getDateToString();
+        int j = daysDataMapper.updateCommentsByDaysAndArticleId(day, articleId);
+        if (i != 1 || j != 1) {
             throw new IllegalArgumentException();
         }
     }
@@ -377,6 +386,16 @@ public class ArticleServiceImpl implements ArticleService {
             article.setTags(articleTagsMapper.getTagsByArticleId(article.getArticleId()));
         }
         return articles;
+    }
+
+    /**
+     * 获取当亲时间转字符串
+     *
+     * @return 时间字符串
+     */
+    private String getDateToString() {
+        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-dd");
+        return df.format(new Date());
     }
 }
 

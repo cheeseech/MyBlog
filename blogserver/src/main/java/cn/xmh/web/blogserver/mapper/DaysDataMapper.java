@@ -4,6 +4,7 @@ import cn.xmh.web.blogserver.model.Article;
 import cn.xmh.web.blogserver.model.DaysData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Date;
 import java.util.List;
@@ -49,4 +50,20 @@ public interface DaysDataMapper {
      * @return 受影响的行
      */
     int removeByArticleId(@Param("article_id") Long articleId);
+
+    /**
+     * 根据日期及文章ID更行浏览量加一
+     * @param day 日期
+     * @param articleId 文章ID
+     * @return 受影响的行
+     */
+    int updateViewsByDaysAndArticleId(String day, @Param("article_id") Long articleId);
+
+    /**
+     * 根据日期及文章ID更行评论数加一
+     * @param day 日期
+     * @param articleId 文章ID
+     * @return 受影响的行
+     */
+    int updateCommentsByDaysAndArticleId(String day, @Param("article_id") Long articleId);
 }
