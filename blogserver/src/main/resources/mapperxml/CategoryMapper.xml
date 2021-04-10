@@ -11,39 +11,39 @@
         <result column="counts"></result>
     </resultMap>
 
-    <insert id="insertCategory">
+    <insert id="save">
         insert into category (cate_name, cate_summary, create_time) values (#{cateName},#{cateSummary},#{createTime})
     </insert>
 
-    <update id="updateByCategory">
+    <update id="update">
         update category set cate_name=#{cateName},cate_summary=#{cateSummary} where cate_id=#{cateId}
     </update>
 
-    <delete id="deleteByCategoryId">
+    <delete id="removeById">
         delete from category where cate_id=#{cate_id}
     </delete>
 
-    <select id="getAllCategory" resultType="cn.xmh.web.blogserver.model.Category">
+    <select id="listAll" resultType="cn.xmh.web.blogserver.model.Category">
         select * from category
     </select>
 
-    <select id="getByCategoryName" resultType="cn.xmh.web.blogserver.model.Category">
+    <select id="getByName" resultType="cn.xmh.web.blogserver.model.Category">
         select * from category where cate_name=#{cate_name}
     </select>
 
-    <select id="getCateArticleCount" resultType="java.util.HashMap">
+    <select id="listArticleCount" resultType="java.util.HashMap">
         SELECT c.cate_id,cate_name,COUNT(a.article_id) counts,cate_summary FROM article a
         LEFT JOIN category c ON a.cate_id=c.cate_id GROUP BY cate_name LIMIT 4
     </select>
 
-    <select id="getCateAnalysis" resultType="java.util.Map">
+    <select id="listAnalysis" resultType="java.util.Map">
         SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' FROM category c
         LEFT JOIN article a on c.cate_id=a.cate_id
         where article_state=1
         GROUP BY c.cate_id
     </select>
 
-    <select id="getCategoryNum" resultType="java.lang.Integer">
+    <select id="getCategoryCount" resultType="java.lang.Integer">
         select COUNT(cate_id) from category
     </select>
 

@@ -293,7 +293,7 @@ public class ArticleServiceImpl implements ArticleService {
         Map<String, Integer> info = new HashMap<>(3);
         Integer article = articleMapper.getCountArticle();
         Integer category = categoryMapper.getCategoryCount();
-        Integer tag = tagsMapper.getTagsNum();
+        Integer tag = tagsMapper.getTagsCount();
 
         info.put("article", article);
         info.put("category", category);
@@ -335,7 +335,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
 
         // 添加文章下标签信息集合
-        List<Map<String, Object>> tags = tagsMapper.getTagsByArticleIdBuAdmin(articleId);
+        List<Map<String, Object>> tags = tagsMapper.listByArticleIdOnAdmin(articleId);
         articleInfo.put("tags", tags);
 
         return articleInfo;
