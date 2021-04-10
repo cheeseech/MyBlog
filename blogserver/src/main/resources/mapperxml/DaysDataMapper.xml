@@ -9,17 +9,17 @@
         values (#{days},#{views},#{likes},#{comments},#{articleId})
     </insert>
 
-    <delete id="deleteDaysByArticleId">
+    <delete id="removeByArticleId">
         delete from days_data where article_id=#{article_id}
     </delete>
 
-    <select id="getDataByRange" resultType="cn.xmh.web.blogserver.model.DaysData">
+    <select id="listByRange" resultType="cn.xmh.web.blogserver.model.DaysData">
         select days_id,days,SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments'
         from days_data where days &gt;=#{start} and days &lt;=#{end}
         GROUP BY days
     </select>
 
-    <select id="getSingleArticle" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listSingleArticle" resultType="cn.xmh.web.blogserver.model.Article">
         SELECT a.title,cate_name, a.update_time,a.publish_time,SUM(d.views) 'views',SUM(d.likes) 'likes',SUM(d.comments) 'comments'
         from days_data d
         LEFT JOIN article a on d.article_id=a.article_id

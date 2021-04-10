@@ -174,7 +174,7 @@ public class ArticleServiceImpl implements ArticleService {
         articleTagsMapper.deleteByArticleId(articleId);
 
         // 删除文章日数据关联
-        daysDataMapper.deleteDaysByArticleId(articleId);
+        daysDataMapper.removeByArticleId(articleId);
 
         // 删除文章
         int i = articleMapper.removeById(articleId);

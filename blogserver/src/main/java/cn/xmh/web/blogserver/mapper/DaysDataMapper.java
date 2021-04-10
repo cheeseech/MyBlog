@@ -11,12 +11,14 @@ import java.util.List;
 /**
  * @author Xmh
  * @date 2020/11/16 10:03
+ * 日期数据持久层
  */
 @Mapper
 public interface DaysDataMapper {
 
     /**
      * 添加新的一天的数据
+     *
      * @param daysData 数据
      * @return 条数
      */
@@ -24,24 +26,27 @@ public interface DaysDataMapper {
 
     /**
      * 根据范围查找日期数据
+     *
      * @param start 开始日期
-     * @param end 结束日期
+     * @param end   结束日期
      * @return 日期数据集合
      */
-    List<DaysData> getDataByRange(Date start,Date end);
+    List<DaysData> listByRange(Date start, Date end);
 
     /**
      * 获取指定日期内文章标题、创建日期、浏览量、点赞数以及评论数
+     *
      * @param start 开始日期
-     * @param end 结束日期
+     * @param end   结束日期
      * @return 文章信息
      */
-    List<Article> getSingleArticle(Date start,Date end);
+    List<Article> listSingleArticle(Date start, Date end);
 
     /**
      * 根据文章ID删除日数据
+     *
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int deleteDaysByArticleId(@Param("article_id") Long articleId);
+    int removeByArticleId(@Param("article_id") Long articleId);
 }
