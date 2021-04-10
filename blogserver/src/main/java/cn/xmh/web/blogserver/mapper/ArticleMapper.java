@@ -4,7 +4,6 @@ import cn.xmh.web.blogserver.model.Article;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.awt.event.MouseAdapter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -12,62 +11,63 @@ import java.util.Map;
 /**
  * @author Xmh
  * @date 2020/7/28 22:29
+ * 文章持久层
  */
 @Mapper
 public interface ArticleMapper {
 
     /**
-     * 分页查询用户
+     * 查询所有用户
      * @return 文章集合
      */
-    List<Article> getAllPage();
+    List<Article> listByPage();
 
     /**
-     * 获取删除状态的文章
+     * 获取已删除状态的文章
      * @return 文章集合
      */
-    List<Article> getArticleByDelete();
+    List<Article> listByDelete();
 
     /**
      * 获取未删除状态的文章
      * @return 文章集合
      */
-    List<Article> getArticleByNotDelete();
+    List<Article> listByNotDelete();
 
     /**
      * 根据标题模糊查询文章信息
      * @param title 标题
      * @return 文章集合
      */
-    List<Article> getLikeTitleArticle(@Param("title") String title);
+    List<Article> listLikeByTitle(@Param("title") String title);
 
     /**
      * 根据标题查找文章
      * @param title
      * @return
      */
-    List<Article> getArticleByTitle(String title);
+    List<Article> listByTitle(String title);
 
     /**
-     *  插入文章信息
+     *  插入一篇文章
      * @param article 文章信息
      * @return 受影响的行
      */
-    int insertArticle(Article article);
+    int save(Article article);
 
     /**
      *  根据文章ID删除文章信息
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int deleteByArticleId(@Param("article_id") Long articleId);
+    int removeById(@Param("article_id") Long articleId);
 
     /**
-     * 更新文章信息
+     * 更新一篇文章
      * @param article 文章信息
      * @return 受影响的行
      */
-    int updateByArticleId(Article article);
+    int updateById(Article article);
 
     /**
      *  更新文章状态
@@ -76,55 +76,48 @@ public interface ArticleMapper {
      * @param time 更新时间
      * @return 受影响的行
      */
-    int resetArticleState(@Param("article_state") Integer articleState,@Param("article_id") Long articleId,Date time);
+    int updateState(@Param("article_state") Integer articleState, @Param("article_id") Long articleId, Date time);
 
     /**
-     * 获取最新推荐五篇文章标题
+     * 获取最新推荐五篇标题及ID
      * @return
      */
-    List<Map<String,String>> getNewRecommend();
+    List<Map<String,String>> listRecommendByTop5();
 
     /**
-     * 获取最新四篇文章
+     * 获取最新四篇标题及ID
      * @return
      */
-    List<Map<String,String>> getNewTitle();
-
-    /**
-     * 根据类型获取文章
-     * @param typeName 类型名
-     * @return 文章列表
-     */
-    List<Article> getTypeArticle(@Param("type_name") String typeName);
+    List<Map<String,String>> listNewByTop4();
 
     /**
      * 获取某标签下的所有文章
      * @param tagId 标签ID
      * @param title 标题关键字
-     * @return
+     * @return 文章集合
      */
-    List<Article> getArticleByTagId(@Param("tag_id") Long tagId,String title);
+    List<Article> listByTagId(@Param("tag_id") Long tagId, String title);
 
     /**
      * 获取某专栏下的所有文章
      * @param cateName 专栏名
      * @param title 文章标题
-     * @return
+     * @return 文章集合
      */
-    List<Article> getArticleByCateNameAndTitle(@Param("cate_name") String cateName,String title);
+    List<Article> listByCateNameAndTitle(@Param("cate_name") String cateName, String title);
 
     /**
      * 获取每年的文章数量
      * @return 年份+文章数量
      */
-    List<Map<String,Object>> getYearsCountArticle();
+    List<Map<String,Object>> listYearsCountArticle();
 
     /**
      * 获取某年中月份及文章数量
      * @param year 年份
      * @return 月份及文章数量
      */
-    List<Map<String,Object>> getMonthsByYear(@Param("year") String year);
+    List<Map<String,Object>> listMonthsByYear(@Param("year") String year);
 
     /**
      * 根据年份、月份获取文章标题即发布日期
@@ -132,7 +125,7 @@ public interface ArticleMapper {
      * @param month 月份
      * @return 文章信息
      */
-    List<Map<String, Object>> getInfoByMonthYear(@Param("year") String year,@Param("month") String month);
+    List<Map<String, Object>> listInfoByMonthYear(@Param("year") String year, @Param("month") String month);
 
     /**
      * 获取总文章数、总浏览量、总点赞数以及总评论数
@@ -141,23 +134,23 @@ public interface ArticleMapper {
     Map<String,String> getTotalData();
 
     /**
-     * 根据文章id获取文章信息
+     * 根据id获取文章信息
      * @param articleId 文章ID
      * @return 文章信息
      */
-    Article getArticleById(@Param("article_id") Long articleId);
+    Article getById(@Param("article_id") Long articleId);
 
     /**
-     * 获取文章数量
-     * @return 文章数量
+     * 获取文章总数量
+     * @return 总文章数量
      */
-    Integer getArticleNum();
+    Integer getCountArticle();
 
     /**
      * 获取所有已发布状态文章id集合
      * @return 文章ID集合
      */
-    List<Long> getAllArticleId();
+    List<Long> listByPublish();
 
     /**
      * 删除近一个月内为已删除状态的文章
@@ -165,28 +158,28 @@ public interface ArticleMapper {
      * @param end 结束时间
      * @return 删除的文章数
      */
-    int recycleArticle(Date start,Date end);
+    int recycleByDeleteInMonth(Date start, Date end);
 
     /**
      * 根据文章ID获取文章详细ID
      * @param articleId 文章ID
      * @return 文章详细信息
      */
-    Map<String, Object> getArticleInfoById(@Param("article_id") Long articleId);
+    Map<String, Object> getInfoById(@Param("article_id") Long articleId);
 
     /**
      * 根据文章ID获取文章详细信息以及markdown数据
      * @param articleId 文章ID
      * @return 文章详细信息
      */
-    Map<String, Object> getMarkdownInfoById(@Param("article_id") Long articleId);
+    Map<String, Object> getMarkdownById(@Param("article_id") Long articleId);
 
     /**
-     * 文章浏览量加一
+     * 更新文章浏览量
      * @param articleId 文章ID
      * @return 受影响的行
      */
-    int updateArticleViews(@Param("article_id") Long articleId);
+    int updateViews(@Param("article_id") Long articleId);
 
     /**
      * 更新文章评论数
@@ -194,5 +187,5 @@ public interface ArticleMapper {
      * @param commentsLen 评论数
      * @return 受影响的行
      */
-    int updateArticleCommentLen(@Param("article_id") Long articleId,int commentsLen);
+    int updateComments(@Param("article_id") Long articleId, int commentsLen);
 }

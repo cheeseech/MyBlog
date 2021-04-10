@@ -12,83 +12,79 @@
         LEFT JOIN types tp ON tp.type_id=a.type_id
     </sql>
 
-    <insert id="insertArticle" keyColumn="article_id" keyProperty="articleId" useGeneratedKeys="true">
+    <insert id="save" keyColumn="article_id" keyProperty="articleId" useGeneratedKeys="true">
         insert into article (title, md_content, html_content, summary, type_id, cate_id, publish_time,
-        update_time, recommend, article_state, views, likes, comments,user_id)
+        update_time, recommend, article_state, views, comments,user_id)
         values (#{title},#{mdContent},#{htmlContent},#{summary},
         #{typeId},#{cateId},#{publishTime},#{updateTime}
-        ,#{recommend},#{articleState},#{views},#{likes},#{comments},#{userId})
+        ,#{recommend},#{articleState},#{views},#{comments},#{userId})
     </insert>
 
-    <update id="updateByArticleId">
+    <update id="updateById">
         update article set title=#{title}, md_content=#{mdContent}, html_content=#{htmlContent}, summary=#{summary},
         type_id=#{typeId}, cate_id=#{cateId},update_time=#{updateTime},recommend=#{recommend},
         article_state=#{articleState}
         where article_id=#{articleId}
     </update>
 
-    <update id="resetArticleState">
+    <update id="updateState">
         update article set article_state=#{article_state},update_time=#{time} where article_id=#{article_id}
     </update>
 
-    <update id="updateArticleViews">
+    <update id="updateViews">
         update article set views=views+1 where article_id=#{article_id}
     </update>
 
-    <update id="updateArticleCommentLen">
+    <update id="updateComments">
         update article set comments=#{commentsLen} where article_id=#{article_id}
     </update>
 
-    <delete id="deleteByArticleId">
+    <delete id="removeById">
         delete from article where article_id=#{article_id}
     </delete>
 
-    <delete id="recycleArticle">
+    <delete id="recycleByDeleteInMonth">
         DELETE FROM article WHERE article_state = -1 and
         update_time &gt;=#{start} and update_time &lt;=#{end}
     </delete>
 
-    <select id="getLikeTitleArticle" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listLikeByTitle" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         where title like concat('%',#{title},'%')
     </select>
 
-    <select id="getNewRecommend" resultType="java.util.Map">
+    <select id="listRecommendByTop5" resultType="java.util.Map">
         SELECT article_id,title FROM article WHERE recommend=1 ORDER BY publish_time DESC LIMIT 5
     </select>
 
-    <select id="getNewTitle" resultType="java.util.Map">
+    <select id="listNewByTop4" resultType="java.util.Map">
         SELECT article_id,title FROM article ORDER BY publish_time DESC LIMIT 4
     </select>
 
-    <select id="getTypeArticle" resultType="cn.xmh.web.blogserver.model.Article">
-        <include refid="selectAll"></include>
-        where type_name=#{type_name}
-    </select>
 
-    <select id="getArticleByTagId" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listByTagId" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         LEFT JOIN article_tags t ON a.article_id=t.article_id
         WHERE tag_id=#{tag_id}
         and title like concat('%',#{title},'%')
     </select>
 
-    <select id="getArticleByCateNameAndTitle" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listByCateNameAndTitle" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         WHERE c.cate_name=#{cate_name}
         and title like concat('%',#{title},'%')
     </select>
 
-    <select id="getYearsCountArticle" resultType="java.util.Map">
+    <select id="listYearsCountArticle" resultType="java.util.Map">
         SELECT YEAR(publish_time) years,COUNT(article_id) counts FROM article GROUP BY years ORDER BY years DESC
     </select>
 
-    <select id="getMonthsByYear" resultType="java.util.Map">
+    <select id="listMonthsByYear" resultType="java.util.Map">
         SELECT COUNT(article_id) monthCount, month(publish_time) months FROM article
         WHERE YEAR(publish_time)=#{year} GROUP BY month(publish_time)
     </select>
 
-    <select id="getInfoByMonthYear" resultType="java.util.Map">
+    <select id="listInfoByMonthYear" resultType="java.util.Map">
         SELECT article_id,title,publish_time,cate_name,type_name
         FROM article a LEFT JOIN category c on a.cate_id=c.cate_id
         LEFT JOIN types t on a.type_id =t.type_id
@@ -99,35 +95,35 @@
         SELECT SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' ,COUNT(article_id) 'articles' FROM article
     </select>
 
-    <select id="getArticleById" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="getById" resultType="cn.xmh.web.blogserver.model.Article">
         select * from article where article_id=#{article_id}
     </select>
 
-    <select id="getArticleByDelete" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listByDelete" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         where article_state = -1
         ORDER BY update_time
     </select>
 
-    <select id="getArticleByNotDelete" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listByNotDelete" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         where article_state != -1
         ORDER BY update_time
     </select>
 
-    <select id="getArticleNum" resultType="java.lang.Integer">
+    <select id="getCountArticle" resultType="java.lang.Integer">
         select COUNT(article_id) from article
     </select>
 
-    <select id="getAllPage" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listByPage" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
     </select>
 
-    <select id="getAllArticleId" resultType="java.lang.Long">
+    <select id="listByPublish" resultType="java.lang.Long">
         select article_id from article where article_state=1
     </select>
 
-    <select id="getArticleInfoById" resultType="java.util.Map">
+    <select id="getInfoById" resultType="java.util.Map">
         SELECT a.article_id,title,html_content,type_name,cate_name,nickname,user_face,a.update_time,recommend,views,likes,comments
         from article a
         LEFT JOIN user u on a.user_id=u.user_id
@@ -136,7 +132,7 @@
         WHERE a.article_id=#{article_id}
     </select>
 
-    <select id="getMarkdownInfoById" resultType="java.util.Map">
+    <select id="getMarkdownById" resultType="java.util.Map">
         SELECT a.article_id,title,md_content,a.type_id,a.cate_id,nickname,user_face,recommend,summary
         from article a
         LEFT JOIN user u on a.user_id=u.user_id
@@ -145,7 +141,7 @@
         WHERE a.article_id=#{article_id}
     </select>
 
-    <select id="getArticleByTitle" resultType="cn.xmh.web.blogserver.model.Article">
+    <select id="listByTitle" resultType="cn.xmh.web.blogserver.model.Article">
         <include refid="selectAll"></include>
         where title =#{title}
     </select>
