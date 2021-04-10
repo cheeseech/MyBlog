@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-08-07 19:45:49
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-03-05 16:30:53
+ * @LastEditTime: 2021-04-09 15:06:43
  * @FilePath: \src\views\blog\blogIndex\index.vue
 -->
 <template>
@@ -79,11 +79,11 @@ export default {
   beforeRouteEnter(to, from, next) {
     axios
       .all([
-        postRequest("/article/", { pageNum: 1, pageSize: 6 }),
+        postRequest("/article/page/", { pageNum: 1, pageSize: 6 }),
         getRequest("/category/counts/"),
         getRequest("/tags/counts/"),
         getRequest("/article/recommend/"),
-        getRequest("/article/info/")
+        getRequest("/article/count/")
       ])
       .then(
         axios.spread(

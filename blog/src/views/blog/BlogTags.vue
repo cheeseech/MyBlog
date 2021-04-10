@@ -119,7 +119,7 @@ export default {
         postRequest("/article/tags/" + tagName + "/", page)
       ];
     } else {
-      list = [getRequest("/tags/counts/"), postRequest("/article/", page)];
+      list = [getRequest("/tags/counts/"), postRequest("/article/page/", page)];
     }
     //请求数据
     axios.all(list).then(

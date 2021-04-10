@@ -107,7 +107,7 @@ export default {
         getRequest("/category/counts")
       ];
     } else {
-      list = [postRequest("/article/", page), getRequest("/category/counts")];
+      list = [postRequest("/article/page/", page), getRequest("/category/counts")];
     }
     //请求数据
     axios.all(list).then(
