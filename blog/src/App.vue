@@ -52,4 +52,22 @@ export default {
   background-color: #f4f4f4;
   text-decoration: none;
 }
+
+/* 设置滚动条样式 */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  /*background: #fd7286;*/
+  transition: color 0.2s ease;
+  background-image: linear-gradient(#ff9900);
+}
 </style>
