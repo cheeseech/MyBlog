@@ -1,7 +1,7 @@
 package cn.xmh.web.blogserver.controller;
 
-import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.model.Category;
+import cn.xmh.web.blogserver.model.ResultJson;
 import cn.xmh.web.blogserver.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +16,7 @@ import java.util.Map;
 /**
  * @author Xmh
  * @date 2020/7/31 19:50
+ * 专栏获取接口
  */
 @RestController
 @RequestMapping("/category")
@@ -25,29 +26,29 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     @ApiOperation("获取所有专栏信息")
-    public ResultJson getCategory(){
-        try{
-            List<Category> categoryList=categoryService.getAllCategory();
-            return new ResultJson("200","获取成功！",categoryList);
-        }catch (NullPointerException e){
-            return new ResultJson("404","列表为空！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+    public ResultJson listCategory() {
+        try {
+            List<Category> categoryList = categoryService.listAll();
+            return new ResultJson("200", "获取成功！", categoryList);
+        } catch (NullPointerException e) {
+            return new ResultJson("404", "列表为空！", null);
+        } catch (Exception e) {
+            return new ResultJson("500", "未知错误！请联系管理员。", null);
         }
     }
 
-    @RequestMapping(value = "/counts",method = RequestMethod.GET)
-    @ApiOperation("获取专栏文章数量")
-    public ResultJson getCateArticleCount(){
-        try{
-            List<Map<String,Long>> map=categoryService.getCateArticleCount();
-            return new ResultJson("200","获取成功！",map);
-        }catch (NullPointerException e){
-            return new ResultJson("404","列表为空！",null);
-        }catch (Exception e){
-            return new ResultJson("500","未知错误！请联系管理员。",null);
+    @RequestMapping(value = "/counts", method = RequestMethod.GET)
+    @ApiOperation("获取专栏下文章数量")
+    public ResultJson listArticleCount() {
+        try {
+            List<Map<String, Long>> map = categoryService.listArticleCount();
+            return new ResultJson("200", "获取成功！", map);
+        } catch (NullPointerException e) {
+            return new ResultJson("404", "列表为空！", null);
+        } catch (Exception e) {
+            return new ResultJson("500", "未知错误！请联系管理员。", null);
         }
     }
 }

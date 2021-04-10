@@ -292,7 +292,7 @@ public class ArticleServiceImpl implements ArticleService {
         // 获取文章数量、专栏数量以及标签数量
         Map<String, Integer> info = new HashMap<>(3);
         Integer article = articleMapper.getCountArticle();
-        Integer category = categoryMapper.getCategoryNum();
+        Integer category = categoryMapper.getCategoryCount();
         Integer tag = tagsMapper.getTagsNum();
 
         info.put("article", article);
