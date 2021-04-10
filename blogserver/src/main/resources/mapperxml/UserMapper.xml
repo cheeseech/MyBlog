@@ -18,31 +18,31 @@
         <result column="update_time" property="updateTime"></result>
     </resultMap>
 
-    <insert id="insertUser">
+    <insert id="save">
         insert into user (user_face, username, nickname,password, email,enabled,create_time,update_time)
         values (#{user.userFace},#{user.userName},#{user.nickName},#{user.password},#{user.email},#{enabled},
         #{user.createTime},#{user.updateTime})
     </insert>
 
-    <update id="updateUserState">
+    <update id="updateState">
         update user set enabled=#{userState} where user_id=#{userId}
     </update>
 
-    <update id="updateByUserId">
+    <update id="updateById">
         update user set user_face=#{user.userFace},nickname=#{user.nickName},username=#{user.userName},
         password=#{user.password},email=#{user.email}, enabled=#{enabled},update_time=#{user.updateTime} where user_id=#{userId}
     </update>
 
-    <delete id="deleteByUserId">
+    <delete id="removeById">
         delete from user where user_id=#{userId}
     </delete>
 
-    <select id="getUserByUserName" resultMap="BaseResultMap">
+    <select id="getByName" resultMap="BaseResultMap">
         SELECT * from user
         where username=#{userName}
     </select>
 
-    <select id="getAllUser" resultMap="BaseResultMap">
+    <select id="listAll" resultMap="BaseResultMap">
         SELECT * from user
     </select>
 
