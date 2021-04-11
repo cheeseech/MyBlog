@@ -1,0 +1,130 @@
+<template>
+  <div class="tcy_404 container">
+    <img :src="errorUrl" />
+    <h2>抱歉，您访问的页面出错了哦</h2>
+    <p>您可能输错了网址，或该网页已删除或不存在。</p>
+    <a @click="toHome" class="btn btn-primary btn_blue">返回首页</a>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      errorUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/404.png" // 404图片
+    };
+  },
+  methods: {
+    toHome() {
+      this.$router.push({
+        name: "首页"
+      });
+    }
+  }
+};
+</script>
+<style scoped>
+body {
+  font-size: 12px;
+  background: #fff;
+  font-family: "Lantinghei SC", "Helvetica Neue", "Microsoft YaHei",
+    "WenQuanYi Micro Hei", "Heiti SC", "Segoe UI", Arial, sans-serif;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.tcy_404 {
+  padding-top: 180px;
+  padding-bottom: 80px;
+}
+.container {
+  width: 1170px;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.tcy_404 img {
+  display: block;
+  margin: auto;
+}
+.tcy_404 h2 {
+  font-size: 32px;
+  color: #333333;
+  text-align: center;
+  letter-spacing: 5px;
+  padding-top: 33px;
+  padding-bottom: 25px;
+}
+.tcy_404 p {
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 1px;
+  text-align: center;
+  padding-bottom: 35px;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn_blue {
+  display: inline-block;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  border-radius: 3px;
+  background: #7caced;
+  color: #fff;
+  letter-spacing: 5px;
+  border: 0;
+  font-size: 18px;
+  padding: 0;
+  text-decoration: none;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: background;
+  transition-property: background;
+}
+.tcy_404 a {
+  display: block;
+  margin: auto;
+  width: 220px;
+  height: 56px;
+}
+</style>

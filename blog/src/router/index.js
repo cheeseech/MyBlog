@@ -44,16 +44,19 @@ const recycle = () =>
 const adminData = () =>
   import(/* webpackChunkName:"data_manager"*/ "@/views/admin/adminData/index");
 
+const notFound = () =>
+  import(/* webpackChunkName:"not_found" */ "@/views/error/404");
+
 // 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
-const originalPush = Router.prototype.push
+const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
+  return originalPush.call(this, location).catch(err => err);
+};
 
 Vue.use(Router);
 
 export default new Router({
-//   mode: 'history',
+  //   mode: 'history',
   routes: [
     {
       path: "/",
@@ -154,6 +157,15 @@ export default new Router({
       path: "/doLogin",
       name: "登录",
       component: login
+    },
+    {
+      path: "/404",
+      name: "notFound",
+      component: notFound
+    },
+    {
+      path: "*", // 此处需特别注意置于最底部
+      redirect: "/404"
     }
   ],
   // 每次做路由切换时，始终回到最顶部
@@ -161,5 +173,3 @@ export default new Router({
     return { x: 0, y: 0 };
   }
 });
-
-
