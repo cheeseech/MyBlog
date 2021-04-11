@@ -72,7 +72,7 @@ export default {
       initRecommend: null, // 最新推荐文章列表集合
       initCategoryCount: null, // 专栏集合
       articleCateTagCount: null, // 文章数、专栏数及标签数
-      wechatUrl: require("@/assets/images/wechat.png") // 微信二维码
+      wechatUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/wechat.png" // 微信二维码
     };
   },
   //在路由组件跳转前获取数据

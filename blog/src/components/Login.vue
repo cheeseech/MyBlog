@@ -52,7 +52,6 @@ export default {
   name: "Login",
   data() {
     return {
-      bgImg: require("../assets/images/content.jpg"), // 背景图片
       loginForm: {
         username: "", // 用户名
         password: "" // 密码
@@ -102,7 +101,7 @@ export default {
 
 <style>
 #login {
-  background: url("../assets/images/content.jpg") no-repeat;
+  background: url("http://qr3f6y9b1.hb-bkt.clouddn.com/content.jpg") no-repeat;
   background-position: center;
   height: 100%;
   width: 100%;

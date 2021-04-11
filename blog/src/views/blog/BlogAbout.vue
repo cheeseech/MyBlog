@@ -132,10 +132,10 @@ export default {
   name: "BlogAbout",
   data() {
     return {
-      qqImg: require("@/assets/images/qq.jpg"), // qq图片
-      cImg: require("@/assets/images/c.png"), // CSDN图片
-      gitImg: require("@/assets/images/github.jpg"), // Github图片
-      emailImg: require("@/assets/images/email.jpg") // 邮箱图片
+      qqImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/qq.jpg", // qq图片
+      cImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/c.png", // CSDN图片
+      gitImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/github.jpg", // Github图片
+      emailImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/email.jpg" // 邮箱图片
     };
   }
 };

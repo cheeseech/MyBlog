@@ -65,8 +65,8 @@ export default {
   name: "BlogFooter",
   data() {
     return {
-      wechatUrl: require("@/assets/images/wechat.png"), // 二维码图片
-      articles: null , // 文章列表集合
+        articles: null , // 文章列表集合
+        wechatUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/wechat.png", // 二维码图片
     };
   },
   created() {

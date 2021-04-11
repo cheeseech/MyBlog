@@ -98,7 +98,7 @@ export default {
     return {
       input: "", // 搜索关键字
       activeIndex: "/index", // 默认选中导航
-      logoUrl: require("@/assets/images/logo.png") // 导航栏图标
+      logoUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/logo.png" // 导航栏图标
     };
   },
   watch: {
