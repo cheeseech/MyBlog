@@ -3,8 +3,8 @@
  * @Author: 徐茂华
  * @Date: 2020-08-02 15:05:48
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-10 17:05:39
- * @FilePath: \src\components\Comment.vue
+ * @LastEditTime: 2021-04-17 16:25:30
+ * @FilePath: \src\views\blog\BlogAbout.vue
 -->
 <template>
   <div id="about">
@@ -19,11 +19,12 @@
           <!-- 主要内容 -->
           <div class="card-content-text">
             <ul>
-              <li>前端相关：Html/CSS/Js/Vue</li>
+              <li>前端相关：Html / CSS / Js / Vue</li>
               <li>
-                Java相关：Java/Spring/SpringMVC/Mybatis/<br />&emsp;&emsp;&emsp;&emsp;&emsp;SpringBoot/Security
+                Java相关：Java / Spring / SpringMVC / Mybatis / SpringBoot /
+                Security
               </li>
-              <li>数据库相关：MySQL/Redis</li>
+              <li>数据库相关：MySQL / Redis</li>
               <li>项目管理：Maven</li>
               <li>版本控制：Git</li>
               <li>其他：Linux</li>
@@ -55,7 +56,7 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" style="margin-top: 20px;">
+    <el-row :gutter="20" class="row-second">
       <el-col :span="12">
         <!-- 关于本站卡片 -->
         <el-card class="m-radius-small">
@@ -132,10 +133,10 @@ export default {
   name: "BlogAbout",
   data() {
     return {
-      qqImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/qq.jpg", // qq图片
-      cImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/c.png", // CSDN图片
-      gitImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/github.jpg", // Github图片
-      emailImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/email.jpg" // 邮箱图片
+      qqImg: "http://images.cheese.host/qq.jpg", // qq图片
+      cImg: "http://images.cheese.host/c.png", // CSDN图片
+      gitImg: "http://images.cheese.host/github.jpg", // Github图片
+      emailImg: "http://images.cheese.host/email.jpg" // 邮箱图片
     };
   }
 };
@@ -144,6 +145,7 @@ export default {
 <style scoped>
 /* 列表圆点 */
 li {
+  width: 95%;
   list-style-type: disc;
 }
 /* 卡片文字居中 */
@@ -167,5 +169,10 @@ li {
   line-height: 30px;
   font-size: 18px;
   margin-top: 25px;
+}
+/* 第二行卡片上下距离 */
+.row-second {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>

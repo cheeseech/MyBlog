@@ -3,7 +3,7 @@ import qs from "qs";
 import { Message } from "element-ui";
 import router from "@/router/index";
 
-let base = " ";
+let base = "/api";
 export const getRequest = (url, params) => {
   return axios({
     method: "get",
