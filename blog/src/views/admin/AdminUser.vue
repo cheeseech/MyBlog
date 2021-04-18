@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-12-03 09:04:23
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-03-18 17:14:37
+ * @LastEditTime: 2021-04-18 11:25:35
  * @FilePath: \src\views\admin\AdminUser.vue
 -->
 <template>
@@ -316,10 +316,10 @@ export default {
       totalPages: 0, // 总页数
       totalUsersLen: 0, // 总用户长度
       switch: "true", // 用户状态
-      formLabelWidth: "100px", // label长度
+      formLabelWidth: "110px", // label长度
       centerDialogVisible: false, // dialog是否开启
       domain: "http://upload-z1.qiniup.com/",
-      baseUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/", // 七牛云外链域名
+      baseUrl: "http://images.cheese.host/", // 七牛云外链域名
       QiniuData: {
         file: "", //图片名字处理
         token: "" //七牛云token

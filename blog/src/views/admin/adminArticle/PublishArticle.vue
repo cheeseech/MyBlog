@@ -192,7 +192,7 @@ export default {
       search: "", // 标签筛选关键字
       dialogFormVisible: false, // dialog是否显示
       formLabelWidth: "120px", // label大小
-      baseUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/", // 七牛云外链域名
+      baseUrl: "http://images.cheese.host/", // 七牛云外链域名
       // 文章提交表单
       form: {
         title: "", // 文章标题

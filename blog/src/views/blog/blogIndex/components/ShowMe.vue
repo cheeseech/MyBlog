@@ -84,7 +84,7 @@ export default {
   props: ["article_cate_tag_count"],
   data() {
     return {
-      meUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/60744894621_avatar.png" // 头像
+      meUrl: "http://images.cheese.host/60744894621_avatar.png" // 头像
     };
   },
   methods: {

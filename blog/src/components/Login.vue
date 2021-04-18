@@ -101,7 +101,7 @@ export default {
 
 <style>
 #login {
-  background: url("http://qr3f6y9b1.hb-bkt.clouddn.com/content.jpg") no-repeat;
+  background: url("http://images.cheese.host/content.jpg") no-repeat;
   background-position: center;
   height: 100%;
   width: 100%;

@@ -183,7 +183,7 @@ export default {
       commetns: null, // 评论数
       articleId: null, // 文章ID
       articleInfo: null, // 文章数据集合
-      ccImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/cc.png"
+      ccImg: "http://images.cheese.host/cc.png"
     };
   },
   // 在路由组件跳转前获取数据

@@ -53,7 +53,7 @@
     <el-divider></el-divider>
 
     <p class="m-footer-p" style="text-align: center;">
-      Copyright@2020-2021 Xumaohua Designed by Xumaohua
+        <a href="http://beian.miit.gov.cn/" target="_blank">闽ICP备2021004965号</a>
     </p>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
   data() {
     return {
         articles: null , // 文章列表集合
-        wechatUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/wechat.png", // 二维码图片
+        wechatUrl: "http://images.cheese.host/wechat.png", // 二维码图片
     };
   },
   created() {
@@ -135,11 +135,11 @@ export default {
 .m-new-blog h3 {
   color: white;
 }
-.m-new-blog a {
+a{
   color: #e9eef3;
   line-height: 1.8;
 }
-.m-new-blog a:hover {
+a:hover {
   color: #3476d2;
 }
 .m-footer-p {

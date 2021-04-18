@@ -77,9 +77,9 @@ export default {
   props: ["total_data"],
   data() {
     return {
-      msgImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/msg.png", // 评论条数
-      eyeImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/eye.png", // 浏览次数
-      articleImg: "http://qr3f6y9b1.hb-bkt.clouddn.com/article.png" // 文章篇数
+      msgImg: "http://images.cheese.host/msg.png", // 评论条数
+      eyeImg: "http://images.cheese.host/eye.png", // 浏览次数
+      articleImg: "http://images.cheese.host/article.png" // 文章篇数
     };
   }
 };

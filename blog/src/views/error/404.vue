@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      errorUrl: "http://qr3f6y9b1.hb-bkt.clouddn.com/404.png" // 404图片
+      errorUrl: "http://images.cheese.host/404.png" // 404图片
     };
   },
   methods: {
