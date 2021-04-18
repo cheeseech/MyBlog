@@ -17,7 +17,7 @@
       </el-header>
 
       <el-main>
-        <div class="m-container-small">
+        <div class="m-container-small" style="margin-top:3.5em">
           <!--路由渲染页面-->
           <transition name="el-fade-in-linear">
             <router-view></router-view>

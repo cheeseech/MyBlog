@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-09-11 21:34:02
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-10 17:26:33
+ * @LastEditTime: 2021-04-18 11:26:19
  * @FilePath: \src\views\admin\AdminCategory.vue
 -->
 <template>
@@ -163,7 +163,7 @@ export default {
       currentPage: 1, // 当前页码
       categoriesInfo: [], // 专栏信息
       totalCategoriesLen: 0, // 总专栏数
-      formLabelWidth: "100px", // label长度
+      formLabelWidth: "110px", // label长度
       centerDialogVisible: false, // dialog是否开启
       // 专栏表单
       form: {

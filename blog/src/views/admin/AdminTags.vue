@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-09-11 21:33:39
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-02-10 17:27:06
+ * @LastEditTime: 2021-04-18 11:26:06
  * @FilePath: \src\views\admin\AdminTags.vue
 -->
 <template>
@@ -161,7 +161,7 @@ export default {
       currentPage: 1, // 当前页码
       totalPages: 0, // 总页数
       totalTagsLen: 0, // 总标签个数
-      formLabelWidth: "100px", // label长度
+      formLabelWidth: "110px", // label长度
       centerDialogVisible: false, // dialog是否开启
       // 标签表单
       form: {

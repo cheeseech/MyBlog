@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-11-22 15:33:09
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-03-08 10:35:24
+ * @LastEditTime: 2021-04-18 15:28:45
  * @FilePath: \src\views\admin\adminData\components\CategoryAnalysis.vue
 -->
 <template>
@@ -139,7 +139,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .category-name {
   font-size: 17px;
   font-weight: bold;

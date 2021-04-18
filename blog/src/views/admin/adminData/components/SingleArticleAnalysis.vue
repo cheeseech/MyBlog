@@ -3,7 +3,7 @@
  * @Author: 徐茂华
  * @Date: 2020-11-22 09:10:20
  * @LastEditors: 徐茂华
- * @LastEditTime: 2021-03-17 15:53:30
+ * @LastEditTime: 2021-04-18 15:28:28
  * @FilePath: \src\views\admin\adminData\components\SingleArticleAnalysis.vue
 -->
 <template>
@@ -202,7 +202,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .article-title {
   font-size: 17px;
   font-weight: bold;
