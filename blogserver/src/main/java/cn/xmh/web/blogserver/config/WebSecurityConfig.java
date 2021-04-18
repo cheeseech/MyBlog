@@ -38,8 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 //表示访问/admin接口需要登录.hasRole("admin")
                 .antMatchers("/admin/**").authenticated()
-                .antMatchers("/swagger-ui.html").permitAll()
-                .antMatchers("/swagger-resources/**").permitAll()
+                //.antMatchers("/swagger-ui.html").permitAll()
+                //.antMatchers("/swagger-resources/**").permitAll()
                 //剩余接口放行
                 .anyRequest().permitAll()
                 .and()
