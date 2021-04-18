@@ -37,7 +37,7 @@
     </select>
 
     <select id="listAnalysis" resultType="java.util.Map">
-        SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',SUM(views) 'views',SUM(likes) 'likes',SUM(comments) 'comments' FROM category c
+        SELECT cate_name 'name',cate_summary 'summary',create_time,COUNT(article_id) 'articles',SUM(views) 'views',SUM(comments) 'comments' FROM category c
         LEFT JOIN article a on c.cate_id=a.cate_id
         where article_state=1
         GROUP BY c.cate_id

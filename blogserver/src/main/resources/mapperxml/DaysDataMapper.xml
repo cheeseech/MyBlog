@@ -23,7 +23,7 @@
     <select id="listByRange" resultType="cn.xmh.web.blogserver.model.DaysData">
         select days_id,days,SUM(views) 'views',SUM(comments) 'comments'
         from days_data where days &gt;=#{start} and days &lt;=#{end}
-        GROUP BY days
+        GROUP BY days DESC
     </select>
 
     <select id="listSingleArticle" resultType="cn.xmh.web.blogserver.model.Article">
